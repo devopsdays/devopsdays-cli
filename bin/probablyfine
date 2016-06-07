@@ -11,7 +11,7 @@ end
 
 include GLI::App
 
-program_desc 'Describe your application here'
+program_desc 'Maintenance application for devopsdays.org hugo website'
 
 version Probablyfine::VERSION
 
@@ -27,17 +27,20 @@ arguments :strict
 # flag [:f,:flagname]
 
 desc 'Used for creating a new sponsor'
-arg_name 'Describe arguments to sponsor here'
+long_desc %{
+  This is used when you are creating a new sponsor. It will NOT over-write an existing sponsor.
+}
+arg '<sponsor name>'
+arg '<image path>'
 # TODO add more flags, maybe for modifying an existing sponsor
 command :sponsor do |c|
-  c.desc 'Describe a switch to sponsor'
-  c.switch :s
 
-  c.desc 'Describe a flag to sponsor'
+  c.flag 'path,p', :default_value => Dir.getwd,
+                     :arg_name => 'path',
+                     :type => String,
+                     :desc => 'The root path of your devopsdays-web directory. Example: /home/matt/src/devopsdays-web/. If not specified, assumes the current directory'
   c.default_value 'default'
-  c.flag :f
   c.action do |global_options,options,args|
-
     # Your command logic here
 
     # If you have any errors, just raise them
