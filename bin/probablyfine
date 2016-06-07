@@ -26,28 +26,50 @@ arguments :strict
 # arg_name 'The name of the argument'
 # flag [:f,:flagname]
 
-desc 'Used for creating a new sponsor'
+desc 'Used for adding/creating sponsors'
 long_desc %{
-  This is used when you are creating a new sponsor. It will NOT over-write an existing sponsor.
+  This is used for manipulating sponsors. You can use it to add a new sponsor, or add a sponsor to an event. If you attempt to add a non-existent sponsor to an event, you might be prompted to create it.
 }
 arg '<sponsor name>'
 arg '<image path>'
 # TODO add more flags, maybe for modifying an existing sponsor
 command :sponsor do |c|
+  desc 'Create a new sponsor'
+  c.command :create do |create|
 
-  c.flag 'path,p', :default_value => Dir.getwd,
-                     :arg_name => 'path',
-                     :type => String,
-                     :desc => 'The root path of your devopsdays-web directory. Example: /home/matt/src/devopsdays-web/. If not specified, assumes the current directory'
-  c.default_value 'default'
-  c.action do |global_options,options,args|
-    # Your command logic here
+    create.flag 'path,p', :default_value => Dir.getwd,
+                       :arg_name => 'path',
+                       :type => String,
+                       :desc => 'The root path of your devopsdays-web directory. Example: /home/matt/src/devopsdays-web/. If not specified, assumes the current directory'
+    create.default_value 'default'
+    create.action do |global_options,options,args|
+      # Your command logic here
 
-    # If you have any errors, just raise them
-    # raise "that command made no sense"
+      # If you have any errors, just raise them
+      # raise "that command made no sense"
 
-    puts "sponsor command ran"
+      puts "sponsor command ran"
+    end
   end
+
+  desc 'Add a sponsor to an existing event'
+  c.command :add do |add|
+
+    add.flag 'path,p', :default_value => Dir.getwd,
+                       :arg_name => 'path',
+                       :type => String,
+                       :desc => 'The root path of your devopsdays-web directory. Example: /home/matt/src/devopsdays-web/. If not specified, assumes the current directory'
+    add.default_value 'default'
+    add.action do |global_options,options,args|
+      # Your command logic here
+
+      # If you have any errors, just raise them
+      # raise "that command made no sense"
+
+      puts "sponsor command ran"
+    end
+  end
+  c.default_command :create
 end
 
 desc 'Used for migrating an event'
