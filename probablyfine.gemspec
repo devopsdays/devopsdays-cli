@@ -1,13 +1,13 @@
 # Ensure we require the local version and not one we might have installed already
 require File.join([File.dirname(__FILE__),'lib','probablyfine','version.rb'])
-spec = Gem::Specification.new do |s| 
+spec = Gem::Specification.new do |s|
   s.name = 'probablyfine'
   s.version = Probablyfine::VERSION
-  s.author = 'Your Name Here'
-  s.email = 'your@email.address.com'
-  s.homepage = 'http://your.website.com'
+  s.author = 'Matt Stratton'
+  s.email = 'matt.stratton@gmail.com'
+  s.homepage = 'http://www.mattstratton.io/probablyfine/'
   s.platform = Gem::Platform::RUBY
-  s.summary = 'A description of your project'
+  s.summary = 'Maintenance application for devopsdays.org website'
   s.files = `git ls-files`.split("
 ")
   s.require_paths << 'lib'
