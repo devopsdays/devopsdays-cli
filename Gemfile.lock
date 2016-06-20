@@ -17,6 +17,7 @@ GEM
     builder (3.2.2)
     childprocess (0.5.9)
       ffi (~> 1.0, >= 1.0.11)
+    chronic (0.10.2)
     contracts (0.14.0)
     cucumber (2.3.3)
       builder (>= 2.1.2)
@@ -50,6 +51,7 @@ PLATFORMS
 
 DEPENDENCIES
   aruba
+  chronic
   probablyfine!
   rake
   rdoc
