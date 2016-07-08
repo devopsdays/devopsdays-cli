@@ -1,0 +1,23 @@
+<% @psponsors = [
+    {:image => 'ca_technologies.png', :name => 'CA Technologies', :link => 'http://www.ca.com/fr', :width => '100px', :height => '100px'},
+    {:image => 'puppetlabs.png', :name => 'PuppetLabs', :link => 'https://puppetlabs.com', :width => '100px', :height => '100px'},
+    {:image => 'microsoft_azure.png', :name => 'Microsoft Azure', :link => 'http://www.microsoft.com/click/services/Redirect2.ashx?CR_CC=200618989', :width => '100px', :height => '100px'},
+] %>
+<% if @psponsors.empty? %>
+    <i>&nbsp;&nbsp;&nbsp;<a href='http://localhost'>Be the first to sponsor!</a></i>
+<% end %>
+<% @psponsors.each do |sponsor| %>
+    <a href="<%= sponsor[:link] %>"><img border="1" alt="<%= sponsor[:name] %>" title="<%= sponsor[:name] %>" width="<%= sponsor[:width] %>" height="<%= sponsor[:height] %>" src="<%= File.join('/', @eventhome, "logos/#{sponsor[:image]}") %>"/></a>
+<% end %>
+<h1>Gold sponsors</h1>
+<% @gsponsors = [
+    {:image => 'normation.png', :name => 'Normation', :link => 'http://www.normation.com', :width => '100px', :height => '100px'},
+    {:image => 'gandi.png', :name => 'Gandi.net', :link => 'https://www.gandi.net', :width => '100px', :height => '100px'},
+    {:image => 'xebialabs.png', :name => 'XebiaLabs', :link => 'http://www.xebialabs.com', :width => '100px', :height => '100px'},
+    {:image => 'redhat.png', :name => 'Red Hat', :link => 'https://www.redhat.com', :width => '100px', :height => '100px'},
+    {:image => 'delphix.png', :name => 'Delphix', :link => 'http://delphix.com', :width => '100px', :height => '100px'},
+    {:image => 'chef.png', :name => 'Chef', :link => 'http://chef.io', :width => '100px', :height => '100px'},
+] %>
+<% @gsponsors.each do |sponsor| %>
+    <a href="<%= sponsor[:link] %>"><img border="1" alt="<%= sponsor[:name] %>" title="<%= sponsor[:name] %>" width="<%= sponsor[:width] %>" height="<%= sponsor[:height] %>" src="<%= File.join('/', @eventhome, "logos/#{sponsor[:image]}") %>"/></a>
+<% end %>

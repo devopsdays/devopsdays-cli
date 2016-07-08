@@ -1,15 +1,18 @@
 #!/usr/bin/env ruby
 
+# require 'parse_date'
 # we use parse_date by @shad https://gist.github.com/shad/114749
 
 # ParseDate
 #
 # A helper for parsing dates of an unknown format.
 #
-# Takes a randomly formatted date and makes a best guess at the date, or throws and exception if
-# there's no best guess.  Will take international dates into account if you pass in a 'short form' date
-# to help suggest a starting point for the search.
-# Will also try Chronic parsing to get relative dates (yesterday, tomorrow, in 3 days, etc.)
+# Takes a randomly formatted date and makes a best guess at the date, or
+# throws an exception if there's no best guess.  Will take international date
+# into account if you pass in a 'short form' date to help suggest a starting
+# point for the search.
+# Will also try Chronic parsing to get relative dates (yesterday, tomorrow
+# in 3 days, etc.)
 #
 # Examples:
 #   date = ParseDate.parse('08-09-1977')
@@ -24,13 +27,14 @@ require 'date'
 require 'rubygems'
 require 'chronic'
 
-
 module ParseDate
-
   # Parse a date of unknown format.
-  # Optionally, you can pass in a "short_form" to suggest potential characteristics expected.
-  # It will be used to determine if the date is international format, or US formatted
-  # (Note: Date separators don't matter with short dates, they will be stripped out)
+  # Optionally, you can pass in a "short_form" to suggest potential
+  # characteristics expected.
+  # It will be used to determine if the date is international format,
+  # or US formatted
+  # (Note: Date separators don't matter with short dates,
+  # they will be stripped out)
   def self.parse( date_string, options={} )
     date = nil
     short_form = options[:short_form]
@@ -72,18 +76,15 @@ module ParseDate
 
 end
 
-## here's where our stuff starts
-
-require 'yaml' # TODO decide if I really need this
-
+require 'yaml' # TODO: decide if I really need this
 
 event_slug = '2015-paris'
-city = "Paris"
+city = 'Paris'
 
-event_directory = "/Users/mstratton/src/devopsdays-webby/site/content/events/#{event_slug}"
-# TODO take this as some kind of argument
+event_directory = "/Users/mattstratton/src/devopsdays-webby/site/content/events/#{event_slug}"
+# TODO: take this as some kind of argument
 
-# TODO turn all these get date things into a module
+# TODO: turn all these get date things into a module
 
 def get_event_start(event_directory)
   file = File.open("#{event_directory}/_event_date_start.txt", "r")
@@ -111,7 +112,7 @@ def get_plat_sponsors(event_directory)
   sponsor_array = ''
   File.open("#{event_directory}/_sponsors.txt", "r") do |file|
     file.readlines.each do |line|
-      if line.match('@psponsors')
+      if line.match('@.sponsors')
         is_plat = true
       end
       if is_plat == true
@@ -126,40 +127,42 @@ def get_plat_sponsors(event_directory)
   sponsor_array.chomp!
   sponsor_array = sponsor_array[3...-2]
   eval(sponsor_array)
-  puts @psponsors.first
+  # puts @psponsors
+  # puts @psponsors.first
   a = Array.new
   @psponsors.each do |sponsor|
     sponsor.each do |key, value|
       if key == :image
-        puts value[0...-4]
+        # puts value[0...-4]
         a.push value[0...-4]
       end
     end
   end
+  puts a
   return a
 end
 
 def write_event_file(event_slug, city)
-  unless File.exists?("/Users/mstratton/src/probablyfine/#{event_slug}.yml")
-    config = File.new("/Users/mstratton/src/probablyfine/#{event_slug}.yml", "w+")
+  unless File.exist?("/Users/mattstratton/src/probablyfine/#{event_slug}.yml")
+    config = File.new("/Users/mattstratton/src/probablyfine/#{event_slug}.yml", 'w+')
     config.puts "name: #{event_slug}"
     config.close
   end
-  event_data_file = YAML::load_file("/Users/mstratton/src/probablyfine/#{event_slug}.yml")
+  event_data_file = YAML::load_file("/Users/mattstratton/src/probablyfine/#{event_slug}.yml")
 
   slug_array = event_slug.split('-') #TODO this need to not split becasue some slugs have dashes in them. Basically need to regex the stuff before and after the first dash. Will need to take the city as an argument
   year = slug_array.first
   city = city.capitalize
   status = 'past'
-  startdate = get_event_start("/Users/mstratton/src/devopsdays-webby/site/content/events/#{event_slug}")
-  enddate = get_event_end("/Users/mstratton/src/devopsdays-webby/site/content/events/#{event_slug}")
+  startdate = get_event_start("/Users/mattstratton/src/devopsdays-webby/site/content/events/#{event_slug}")
+  enddate = get_event_end("/Users/mattstratton/src/devopsdays-webby/site/content/events/#{event_slug}")
   cfp_date_start = ''
   cfp_date_end = ''
   cfp_date_announce = ''
   coordinates = ''
-  nav_elements = Dir.entries("/Users/mstratton/src/devopsdays-webby/site/content/events/#{event_slug}").select {|entry| File.directory? File.join("/Users/mstratton/src/devopsdays-webby/site/content/events/#{event_slug}",entry) and !(entry =='.' || entry == '..' || entry == 'logos' || entry == 'images') }
+  nav_elements = Dir.entries("/Users/mattstratton/src/devopsdays-webby/site/content/events/#{event_slug}").select {|entry| File.directory? File.join("/Users/mattstratton/src/devopsdays-webby/site/content/events/#{event_slug}",entry) and !(entry =='.' || entry == '..' || entry == 'logos' || entry == 'images') }
 
-  event_data_file = File.open("/Users/mstratton/src/probablyfine/#{event_slug}.yml", 'w')
+  event_data_file = File.open("/Users/mattstratton/src/probablyfine/#{event_slug}.yml", 'w')
   event_data_file.puts "name: #{event_slug}"
   event_data_file.puts "year: \"#{year}\""
   event_data_file.puts "city: \"#{city}\""
@@ -194,15 +197,15 @@ def write_event_file(event_slug, city)
   #   event_data_file['nav_elements'][element] = element
   # end
   # # event_data_file['nav_elements']['name'] = nav_elements
-  # File.open("/Users/mstratton/src/probablyfine/#{event_slug}.yml", 'w') do |h|
+  # File.open("/Users/mattstratton/src/probablyfine/#{event_slug}.yml", 'w') do |h|
   #   h.write event_data_file.to_yaml
   # end
 
   puts "The year is #{year} and the city is #{city}"
 end
 
-write_event_file(event_slug, city)
-get_plat_sponsors("/Users/mstratton/src/devopsdays-webby/site/content/events/#{event_slug}")
+# write_event_file(event_slug, city)
+get_plat_sponsors("/Users/mattstratton/src/devopsdays-webby/site/content/events/#{event_slug}")
 
 
 # Dir.glob("#{event_directory}/*.txt") do |item| # note one extra "*"
