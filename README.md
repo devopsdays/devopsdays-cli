@@ -1,6 +1,3 @@
 = probablyfine
 
 Describe your project here
-
-:include:probablyfine.rdoc
-
