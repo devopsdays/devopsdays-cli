@@ -91,6 +91,9 @@ func addEvent(city string) (err error) {
 		fmt.Println("Enter the city: ")
 		city, _ = reader.ReadString('\n')
 	}
+	if validateField(city, "city") == false {
+		return fmt.Errorf("That is an invalid city. It should be less than 100 characters.")
+	}
 	t := time.Now()
 	fmt.Printf("Enter your event year (default %s): ", t.Format("2006")) // TODO: Prompt user to keep trying on invalid entry
 	eventYear, _ := reader.ReadString('\n')
@@ -98,7 +101,7 @@ func addEvent(city string) (err error) {
 		eventYear = t.Format("2006")
 	}
 	if validateField(eventYear, "year") == false {
-		return fmt.Errorf("That is an invalid year")
+		return fmt.Errorf("That is an invalid year. It must be four digits and between 2016 and 2030.")
 	}
 	fmt.Println("Enter your devopsdays event twitter handle (defaults to devopsdays): ")
 	eventTwitter, _ := reader.ReadString('\n')
@@ -204,7 +207,7 @@ func validateField(input, field string) bool { // TODO: Write validateField() fu
 		if strings.Count(input, "") != 5 {
 			return false
 		} else if s, err := strconv.ParseInt(input, 10, 32); err == nil {
-			if s < 2016 {
+			if s < 2016 || s > 2030 {
 				return false
 			} else {
 				return true

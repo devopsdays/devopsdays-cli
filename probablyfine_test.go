@@ -34,6 +34,12 @@ func TestValidateField(t *testing.T) {
 	if v := validateField("19008", "year"); v == true {
 		t.Error("Invalid year passed validation test in validateField")
 	}
+	if v := validateField("2011", "year"); v == true {
+		t.Error("Invalid year passed validation test in validateField")
+	}
+	if v := validateField("2031", "year"); v == true {
+		t.Error("Invalid year passed validation test in validateField")
+	}
 	if v := validateField("devopsdays", "twitter"); v != true {
 		t.Error("Valid twitter did not pass validation test in validateField")
 	}
