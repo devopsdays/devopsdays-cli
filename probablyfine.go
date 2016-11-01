@@ -82,8 +82,8 @@ func main() {
 	app.Run(os.Args)
 }
 
-// addEvent creates a new event based upon city, year, and twitter handle
-// It returns an empty string and an error if the event already exists
+// addEvent creates a new event based upon city, year, and twitter handle.
+// It returns an empty string and an error if the event already exists.
 func addEvent(city string) (err error) {
 
 	reader := bufio.NewReader(os.Stdin) // TODO: Convert to a loop for each argument
