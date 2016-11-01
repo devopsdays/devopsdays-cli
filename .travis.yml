@@ -4,4 +4,4 @@ go:
   - 1.7.3
 
 os:
-  - osx
+  - linux
