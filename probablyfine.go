@@ -39,7 +39,7 @@ func main() {
 					Description: "Adds a new event. Takes the city name as an argument. Put the city name in quotes if there are spaces",
 					ArgsUsage:   "[cityname, year]",
 					Action: func(c *cli.Context) error {
-						city := c.Args().Get(0)
+						city := c.Args().Get(0) // TODO: Add ability to take year and twitter as arguments
 						// fmt.Printf("new event for %s added\n", city)
 						addEvent(city)
 						return nil
@@ -77,15 +77,15 @@ func main() {
 	app.Run(os.Args)
 }
 
-func addEvent(city string) (err error) { // TODO: write add event function
+func addEvent(city string) (err error) {
 
-	reader := bufio.NewReader(os.Stdin)
+	reader := bufio.NewReader(os.Stdin) // TODO: Convert to a loop for each argument
 	if city == "" {
 		fmt.Println("Enter the city: ")
 		city, _ = reader.ReadString('\n')
 	}
 	t := time.Now()
-	fmt.Printf("Enter your event year (default %s): ", t.Format("2006")) //TODO: Add year validation
+	fmt.Printf("Enter your event year (default %s): ", t.Format("2006")) // TODO: Add year validation
 	eventYear, _ := reader.ReadString('\n')
 	if eventYear == "\n" {
 		eventYear = t.Format("2006")
@@ -174,8 +174,16 @@ func cityClean(city string) (cityClean string) {
 	return
 }
 
-func eventDataPath(city, year string) (eventDataPath string) {
+func eventDataPath(city, year string) (eventDataPath string) { // TODO: Add argument for webdir path
 	s := []string{webdir, "/data/events/", strings.TrimSpace(year), "-", strings.Replace(strings.TrimSpace(strings.ToLower(city)), " ", "-", 10), ".yml"}
 	eventDataPath = strings.Join(s, "")
 	return eventDataPath
+}
+
+func validateField(input, field string) bool { // TODO: Write validateField() function
+	// define fields (city, year, twitter)
+	// switch statement based upon field type
+	// check if input passes validation
+	// if not, return error, else return true
+	return true
 }

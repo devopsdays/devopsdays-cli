@@ -11,7 +11,7 @@ func TestCityClean(t *testing.T) {
 }
 
 func TestEventDataPath(t *testing.T) {
-	testDataPath := eventDataPath("New York", "2018")
+	testDataPath := eventDataPath("New York", "2018") // TODO: Pass in webdir path to function
 
 	if testDataPath != "/Users/mattstratton/src/devopsdays-web/data/events/2018-new-york.yml" {
 		t.Error("Response from eventDataPath is an unexpected value")
