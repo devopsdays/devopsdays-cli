@@ -12,7 +12,7 @@ import (
 	"gopkg.in/urfave/cli.v1"
 )
 
-const version = "0.0.1"
+const version = "0.1.1"
 const webdir = "/Users/mattstratton/src/devopsdays-web"
 
 func main() {
