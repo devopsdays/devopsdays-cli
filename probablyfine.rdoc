@@ -1,5 +1,0 @@
-= probablyfine
-
-Generate this with
-    probablyfine rdoc
-After you have described your command line interface
