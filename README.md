@@ -2,6 +2,9 @@
 
 Command-line utilities for the [devopsdays](https://www.devopsdays.org) website built with love by [mattstratton](https://github.com/mattstratton) in [Go][].
 
+[![GoDoc](https://godoc.org/github.com/mattstratton/probablyfine?status.svg)](https://godoc.org/github.com/mattstratton/probablyfine)
+[![Go Report Card](https://goreportcard.com/badge/github.com/mattstratton/probablyfine)](https://goreportcard.com/report/github.com/mattstratton/probablyfine)
+
 ## Overview
 
 Probably Fine is used to ....
