@@ -9,21 +9,21 @@ before_install:
 script:
   - "$HOME/gopath/bin/goveralls -service=travis-ci"
 
-before_deploy:
-  - make release
-
-deploy:
-  provider: releases
-  skip_cleanup: true
-  api_key:
-    secure: M7Xy9yiq2LMrD+IsJ0dAvmwYiW6llGLS81aSe0kGq/kAZBEXFXoGCi/YFZyRjfywiZlXMGsHzW4zFhMYOCIDu62wPfAGJqdpzno6et+VwWXOlaydakbLK7+CiGE3c6jJ3vgQOGowmNkjPoB0yqXOoQMg6nJmaa5dQItuJWDM/dYpA8EG566pOgV1dZIRj1KmkJn4FaX7PLMJnnmpJHxENkkSvqUrCFEr7hhLxgLdaO+yRrsDCY/IaqXqlxjQgeaeQgCUp5FjWuXxN3BWEUAySvVhuh9hjJeYKEb4oA6UKqVPIgxVtJVlwR/h902bV7fPLB+Qx0K9K7ckx8SjKzMbngDtQiqbSMzyTe3IlXuzqXqEF6hGkbugRcL+maMmdao3fFfl34NJDSO16C9/N8WMsVnUDGAE7UIFO8pNynayL/TaNq4NMKYSHEZ34LVaLfh7u8ZbqeVajwF1ltshkmZBhe9Tal9nrcTfAoeADW9UZl68HSRwUbYx4HqoesOwl/w+pYDlXcmb5VpR+CYJgEUVkOPMSdKJVpoNBbOm0wylBzQYeXtRPJSPIeR6Fr0wq8Si1wL5jI6TEakUNrgRIQWuigx9wzjpmwGXoZ7YD8e6pCnqhVruFvd2p0a3qAK/BukLbqo7U7MwdS3z96DqOPgQajkFa512RJpNJq58R9XSKHg=
-  file:
-    - release/probablyfine-linux-amd64
-    - release/probablyfine-linux-386
-    - release/probablyfine-darwin-amd64
-    - release/probablyfine-darwin-386
-    - release/probablyfine-windows-amd64.exe
-    - release/probablyfine-windows-386.exe
-  on:
-    repo: mattstratton/probablyfine
-    tags: true
+# before_deploy:
+#   - make release
+#
+# deploy:
+#   provider: releases
+#   skip_cleanup: true
+#   api_key:
+#     secure: M7Xy9yiq2LMrD+IsJ0dAvmwYiW6llGLS81aSe0kGq/kAZBEXFXoGCi/YFZyRjfywiZlXMGsHzW4zFhMYOCIDu62wPfAGJqdpzno6et+VwWXOlaydakbLK7+CiGE3c6jJ3vgQOGowmNkjPoB0yqXOoQMg6nJmaa5dQItuJWDM/dYpA8EG566pOgV1dZIRj1KmkJn4FaX7PLMJnnmpJHxENkkSvqUrCFEr7hhLxgLdaO+yRrsDCY/IaqXqlxjQgeaeQgCUp5FjWuXxN3BWEUAySvVhuh9hjJeYKEb4oA6UKqVPIgxVtJVlwR/h902bV7fPLB+Qx0K9K7ckx8SjKzMbngDtQiqbSMzyTe3IlXuzqXqEF6hGkbugRcL+maMmdao3fFfl34NJDSO16C9/N8WMsVnUDGAE7UIFO8pNynayL/TaNq4NMKYSHEZ34LVaLfh7u8ZbqeVajwF1ltshkmZBhe9Tal9nrcTfAoeADW9UZl68HSRwUbYx4HqoesOwl/w+pYDlXcmb5VpR+CYJgEUVkOPMSdKJVpoNBbOm0wylBzQYeXtRPJSPIeR6Fr0wq8Si1wL5jI6TEakUNrgRIQWuigx9wzjpmwGXoZ7YD8e6pCnqhVruFvd2p0a3qAK/BukLbqo7U7MwdS3z96DqOPgQajkFa512RJpNJq58R9XSKHg=
+#   file:
+#     - release/probablyfine-linux-amd64
+#     - release/probablyfine-linux-386
+#     - release/probablyfine-darwin-amd64
+#     - release/probablyfine-darwin-386
+#     - release/probablyfine-windows-amd64.exe
+#     - release/probablyfine-windows-386.exe
+#   on:
+#     repo: mattstratton/probablyfine
+#     tags: true
