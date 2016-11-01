@@ -149,8 +149,24 @@ func createEventFile(city, year, twitter string) {
 	return
 }
 
-func addSponsor() { // TODO: write add sponsor function
+func addSponsor(sponsor string) { // TODO: write addSponsor() function
+	// Read in the sponsor name
 
+	// Check if the sponsor exists already (use the checkSponsor() function) TODO: Write checkSponsor() function
+
+	// If the sponsor already exists, prompt the user for a new name, suggesting to append "-YYYY" after the sponsors name
+
+	// check if the new sponsor suggested name exists
+
+	// prompt for the path to the sponsor image file
+
+	// check if the sponsor image file meets requirements using checkSponsorImageSize() TODO: write checkSponsorImageSize() function
+
+	// if sponsor image doesn't meet requirements, offer to resize it using resizeImage() TODO: write resizeImage()
+
+	// prompt for sponsor URL
+
+	// write sponsor YAML file and copy image from path to proper destination
 }
 
 func cityClean(city string) (cityClean string) {
