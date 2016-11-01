@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"fmt"
 	"os"
+	"strconv"
 	"strings"
 	"text/template"
 	"time"
@@ -41,7 +42,11 @@ func main() {
 					Action: func(c *cli.Context) error {
 						city := c.Args().Get(0) // TODO: Add ability to take year and twitter as arguments
 						// fmt.Printf("new event for %s added\n", city)
-						addEvent(city)
+						if err := addEvent(city); err != nil {
+							fmt.Printf("Error: %s\n", err)
+						} else {
+							fmt.Println("New event for", strings.TrimSpace(city)) // TODO: Add full values being returned
+						}
 						return nil
 					},
 				},
@@ -77,6 +82,8 @@ func main() {
 	app.Run(os.Args)
 }
 
+// addEvent creates a new event based upon city, year, and twitter handle
+// It returns an empty string and an error if the event already exists
 func addEvent(city string) (err error) {
 
 	reader := bufio.NewReader(os.Stdin) // TODO: Convert to a loop for each argument
@@ -85,12 +92,15 @@ func addEvent(city string) (err error) {
 		city, _ = reader.ReadString('\n')
 	}
 	t := time.Now()
-	fmt.Printf("Enter your event year (default %s): ", t.Format("2006")) // TODO: Add year validation
+	fmt.Printf("Enter your event year (default %s): ", t.Format("2006")) // TODO: Prompt user to keep trying on invalid entry
 	eventYear, _ := reader.ReadString('\n')
 	if eventYear == "\n" {
 		eventYear = t.Format("2006")
 	}
-	fmt.Println("Enter your devopsdays event twitter handle (defaults to devopsdays)")
+	if validateField(eventYear, "year") == false {
+		return fmt.Errorf("That is an invalid year")
+	}
+	fmt.Println("Enter your devopsdays event twitter handle (defaults to devopsdays): ")
 	eventTwitter, _ := reader.ReadString('\n')
 	if eventTwitter == "\n" {
 		eventTwitter = "devopsdays"
@@ -98,12 +108,11 @@ func addEvent(city string) (err error) {
 		eventTwitter = strings.TrimSpace(strings.Replace(eventTwitter, "@", "", 1))
 	}
 	// Just some output for now
-	fmt.Println("New event for", strings.TrimSpace(city), "in", strings.TrimSpace(eventYear))
+	// fmt.Println("New event for", strings.TrimSpace(city), "in", strings.TrimSpace(eventYear))
 	// build the event data file path
 	s := []string{webdir, "/data/events/", strings.TrimSpace(eventYear), "-", strings.Replace(strings.TrimSpace(strings.ToLower(city)), " ", "-", 10), ".yml"}
 	eventDataPath := strings.Join(s, "")
 	if _, err := os.Stat(eventDataPath); err == nil {
-		fmt.Println("The event already exists")
 		return fmt.Errorf("The event already exists")
 	}
 	// fmt.Println("The friendly name is ", strings.Replace(city, " ", "-", 2))
@@ -111,11 +120,15 @@ func addEvent(city string) (err error) {
 	// fmt.Println("The twitter ID is ", eventTwitter)
 
 	// create the event file
-	createEventFile(city, eventYear, eventTwitter)
+	if result, err := createEventFile(city, eventYear, eventTwitter); err != nil {
+		fmt.Printf("Error: %s\n", err)
+	} else {
+		fmt.Printf("Event created for %s!!!", result)
+	}
 	return
 }
 
-func createEventFile(city, year, twitter string) {
+func createEventFile(city, year, twitter string) (string, error) {
 
 	s := []string{strings.TrimSpace(year), "-", strings.Replace(strings.TrimSpace(strings.ToLower(city)), " ", "-", 10)}
 	slug := strings.Join(s, "")
@@ -136,8 +149,7 @@ func createEventFile(city, year, twitter string) {
 	}
 	f, err := os.Create(eventDataPath(city, year))
 	if err != nil {
-		fmt.Println(err)
-		return
+		return "", err
 	}
 	defer f.Close()
 	t.Execute(f, data)
@@ -146,7 +158,7 @@ func createEventFile(city, year, twitter string) {
 	} else {
 		fmt.Println("Created event file for", city, "for year", year, "at", eventDataPath(city, year))
 	}
-	return
+	return city, nil
 }
 
 func addSponsor(sponsor string) { // TODO: write addSponsor() function
@@ -181,9 +193,28 @@ func eventDataPath(city, year string) (eventDataPath string) { // TODO: Add argu
 }
 
 func validateField(input, field string) bool { // TODO: Write validateField() function
-	// define fields (city, year, twitter)
-	// switch statement based upon field type
-	// check if input passes validation
-	// if not, return error, else return true
+	switch field {
+	case "city":
+		if strings.Count(input, "") > 100 {
+			return false
+		} else {
+			return true
+		}
+	case "year":
+		if strings.Count(input, "") != 5 {
+			return false
+		} else if s, err := strconv.ParseInt(input, 10, 32); err == nil {
+			if s < 2016 {
+				return false
+			} else {
+				return true
+			}
+		}
+	case "twitter":
+		if strings.ContainsAny(input, " ") {
+			return false
+		}
+		return true
+	}
 	return true
 }
