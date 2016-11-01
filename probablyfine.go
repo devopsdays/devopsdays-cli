@@ -1,7 +1,23 @@
+// Copyright 2016 Matt Stratton. All rights reserved.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+// Package main sets up the probablyfine application.
+
 package main
 
 import (
 	"bufio"
+	"errors"
 	"fmt"
 	"os"
 	"strconv"
@@ -13,12 +29,12 @@ import (
 )
 
 const version = "0.1.1"
-const webdir = "/Users/mattstratton/src/devopsdays-web"
+const webdir = "/Users/mattstratton/src/devopsdays-web" // TODO: Change this to read an environment variable, and default to cwd if envar not set
 
 func main() {
 	app := cli.NewApp()
 	app.Version = version
-	app.Name = "Probably Fine"
+	app.Name = "probablyfine"
 	app.Usage = "Run maintainence tasks for the devopsdays.org website"
 	app.Authors = []cli.Author{
 		cli.Author{
@@ -61,8 +77,20 @@ func main() {
 					Name:  "add",
 					Usage: "add a new sponsor",
 					Action: func(c *cli.Context) error {
-						sponsor := "Chef"
-						fmt.Printf("new sponsor for %s added\n", sponsor)
+						sponsor := c.Args().Get(0)
+						if sponsor == "" {
+							fmt.Println("You must specify a sponsor name") //TODO: Make this an error
+							return nil
+						}
+						if c.Args().Get(1) != "" {
+							fmt.Println("Sponsors must not have spaces")
+							return nil
+						}
+						if err := addSponsor(sponsor); err != nil {
+							fmt.Printf("Error: %s\n", err)
+						} else {
+							fmt.Println("New sponsor for", sponsor, "created.") // TODO: Add full values being returned
+						}
 						return nil
 					},
 				},
@@ -110,17 +138,16 @@ func addEvent(city string) (err error) {
 	} else {
 		eventTwitter = strings.TrimSpace(strings.Replace(eventTwitter, "@", "", 1))
 	}
-	// Just some output for now
-	// fmt.Println("New event for", strings.TrimSpace(city), "in", strings.TrimSpace(eventYear))
+	if validateField(eventTwitter, "twitter") == false {
+		return fmt.Errorf("That is an invalid Twitter handle. It must not contain spaces.")
+	}
+
 	// build the event data file path
 	s := []string{webdir, "/data/events/", strings.TrimSpace(eventYear), "-", strings.Replace(strings.TrimSpace(strings.ToLower(city)), " ", "-", 10), ".yml"}
 	eventDataPath := strings.Join(s, "")
 	if _, err := os.Stat(eventDataPath); err == nil {
 		return fmt.Errorf("The event already exists")
 	}
-	// fmt.Println("The friendly name is ", strings.Replace(city, " ", "-", 2))
-	// fmt.Println("The data path is ", eventDataPath)
-	// fmt.Println("The twitter ID is ", eventTwitter)
 
 	// create the event file
 	if result, err := createEventFile(city, eventYear, eventTwitter); err != nil {
@@ -164,24 +191,72 @@ func createEventFile(city, year, twitter string) (string, error) {
 	return city, nil
 }
 
-func addSponsor(sponsor string) { // TODO: write addSponsor() function
-	// Read in the sponsor name
+func createSponsorFile(sponsor, sponsorName, sponsorUrl string) (string, error) {
+	t := template.Must(template.New("sponsor.yml.tmpl").ParseFiles("sponsor.yml.tmpl"))
+	data := struct {
+		Name string
+		Url  string
+	}{
+		strings.TrimSpace(sponsorName),
+		strings.TrimSpace(sponsorUrl),
+	}
+	f, err := os.Create(sponsorDataPath(webdir, sponsor))
+	if err != nil {
+		return "", err
+	}
+	defer f.Close()
+	t.Execute(f, data)
+	if err != nil {
+		fmt.Println(err)
+	} else {
+		fmt.Println("Created sponsor file for", sponsor, "at", sponsorDataPath(webdir, sponsor))
+	}
+	return sponsor, nil
+
+}
+
+func addSponsor(sponsor string) (err error) { // TODO: write addSponsor() function
 
 	// Check if the sponsor exists already (use the checkSponsor() function) TODO: Write checkSponsor() function
+	if checkSponsor(sponsor) == true {
+		return errors.New("Sponsor already exists. Try adding it again, perhaps appending '-YYYY'\nFor example, 'chef-2017'")
+	}
 
-	// If the sponsor already exists, prompt the user for a new name, suggesting to append "-YYYY" after the sponsors name
-
-	// check if the new sponsor suggested name exists
-
+	reader := bufio.NewReader(os.Stdin)
 	// prompt for the path to the sponsor image file
-
+	// fmt.Println("Enter the path to the sponsor's image. It must be the full path. For example: `/Users/mattstratton/chef.png`")
+	// sponsorImage, _ := reader.ReadString('\n')
+	// if sponsorImage == "\n" {
+	// 	return errors.New("Sponsor images are required.")
+	// }
+	//
+	// if sponsorImage = strings.TrimSpace(sponsorImage); checkSponsorImage(sponsorImage) == false {
+	// 	return errors.New("Sponsor image not found.")
+	// }
 	// check if the sponsor image file meets requirements using checkSponsorImageSize() TODO: write checkSponsorImageSize() function
 
 	// if sponsor image doesn't meet requirements, offer to resize it using resizeImage() TODO: write resizeImage()
+	// prompt for sponsor's name
+	fmt.Println("Enter the sponsor's full name. For example: `Chef Software, Inc`")
+	sponsorName, _ := reader.ReadString('\n')
+	if sponsorName == "\n" {
+		return errors.New("Sponsor Name is required.")
+	}
+	fmt.Println(sponsorName)
 
 	// prompt for sponsor URL
+	fmt.Println("Enter the sponsor's URL. It must include 'http://' or 'https://'. For example: `https://www.chef.io`")
+	sponsorUrl, _ := reader.ReadString('\n')
+	if sponsorUrl == "\n" {
+		return errors.New("Sponsor URL is required.")
+	}
 
 	// write sponsor YAML file and copy image from path to proper destination
+	createSponsorFile(sponsor, sponsorName, sponsorUrl)
+	fmt.Println("Sponsor created for ", sponsorName)
+	fmt.Println("Don't forget to place the sponsor image at ", sponsorImagePath(webdir, sponsor))
+	// copySponsorImage(strings.TrimSpace(sponsorImage), sponsorImagePath(webdir, sponsor))
+	return
 }
 
 func cityClean(city string) (cityClean string) {
@@ -219,5 +294,45 @@ func validateField(input, field string) bool { // TODO: Write validateField() fu
 		}
 		return true
 	}
-	return true
+	return true // TODO: Make this return an error if no field was matched
 }
+
+// checkSponsor takes in one argument, the name of a sponsor, and returns true if the sponsor already exists.
+func checkSponsor(sponsor string) bool {
+	fmt.Println(sponsorDataPath(webdir, sponsor))
+	if _, err := os.Stat(sponsorDataPath(webdir, sponsor)); err == nil {
+		return true
+	} else {
+		return false
+	}
+}
+
+func checkSponsorImage(path string) bool {
+	fmt.Println(path)
+	if _, err := os.Stat(path); err == nil {
+		return true
+	} else {
+		return false
+	}
+}
+
+func sponsorDataPath(webdir, sponsor string) (sponsorDataPath string) {
+	s := []string{webdir, "/data/sponsors/", strings.TrimSpace(sponsor), ".yml"}
+	sponsorDataPath = strings.Join(s, "")
+	return sponsorDataPath
+}
+
+func sponsorImagePath(webdir, sponsor string) (sponsorImagePath string) {
+	s := []string{webdir, "/static/img/sponsors/", strings.TrimSpace(sponsor), ".png"}
+	sponsorImagePath = strings.Join(s, "")
+	return sponsorImagePath
+}
+
+// func copySponsorImage(sponsorImagePathSource, sponsorImagePathDestination string) error {
+// 	fmt.Printf("The source file is %s, the destination file is %s\n", sponsorImagePathSource, sponsorImagePathDestination)
+//
+// 	if data, err := ioutil.ReadFile(sponsorImagePathSource); err != nil {
+// 		err = ioutil.WriteFile(sponsorImagePathDestination, data, 0644)
+// 	}
+// 	return nil
+// }
