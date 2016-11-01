@@ -1,26 +1,32 @@
 package main
 
 import (
+	"bufio"
 	"fmt"
 	"os"
+	"strings"
+	"text/template"
+	"time"
 
 	"gopkg.in/urfave/cli.v1"
 )
 
 const version = "0.0.1"
+const webdir = "/Users/mattstratton/src/devopsdays-web"
 
 func main() {
 	app := cli.NewApp()
 	app.Version = version
-	app.Name = "probablyfine"
+	app.Name = "Probably Fine"
 	app.Usage = "Run maintainence tasks for the devopsdays.org website"
-	app.Flags = []cli.Flag{
-		cli.StringFlag{
-			Name:  "city, c",
-			Value: "Chicago",
-			Usage: "The city for the event. If there are spaces, surround it with quotes",
+	app.Authors = []cli.Author{
+		cli.Author{
+			Name:  "Matt Stratton",
+			Email: "matt.stratton@gmail.com",
 		},
 	}
+	app.Copyright = "(c) 2016 Matt Stratton"
+	app.HelpName = "probablyfine"
 	app.Commands = []cli.Command{
 		{
 			Name:    "event",
@@ -28,11 +34,14 @@ func main() {
 			Usage:   "options for events",
 			Subcommands: []cli.Command{
 				{
-					Name:  "add",
-					Usage: "add a new event",
+					Name:        "add",
+					Usage:       "add a new event",
+					Description: "Adds a new event. Takes the city name as an argument. Put the city name in quotes if there are spaces",
+					ArgsUsage:   "[cityname, year]",
 					Action: func(c *cli.Context) error {
-						city := c.GlobalString("city")
-						fmt.Printf("new event for %s added\n", city)
+						city := c.Args().Get(0)
+						// fmt.Printf("new event for %s added\n", city)
+						addEvent(city)
 						return nil
 					},
 				},
@@ -68,10 +77,89 @@ func main() {
 	app.Run(os.Args)
 }
 
-func addEvent() { // TODO: write add event function
+func addEvent(city string) (err error) { // TODO: write add event function
 
+	reader := bufio.NewReader(os.Stdin)
+	if city == "" {
+		fmt.Println("Enter the city: ")
+		city, _ = reader.ReadString('\n')
+	}
+	t := time.Now()
+	fmt.Printf("Enter your event year (default %s): ", t.Format("2006")) //TODO: Add year validation
+	eventYear, _ := reader.ReadString('\n')
+	if eventYear == "\n" {
+		eventYear = t.Format("2006")
+	}
+	fmt.Println("Enter your devopsdays event twitter handle (defaults to devopsdays)")
+	eventTwitter, _ := reader.ReadString('\n')
+	if eventTwitter == "\n" {
+		eventTwitter = "devopsdays"
+	} else {
+		eventTwitter = strings.TrimSpace(strings.Replace(eventTwitter, "@", "", 1))
+	}
+	// Just some output for now
+	fmt.Println("New event for", strings.TrimSpace(city), "in", strings.TrimSpace(eventYear))
+	// build the event data file path
+	s := []string{webdir, "/data/events/", strings.TrimSpace(eventYear), "-", strings.Replace(strings.TrimSpace(strings.ToLower(city)), " ", "-", 10), ".yml"}
+	eventDataPath := strings.Join(s, "")
+	if _, err := os.Stat(eventDataPath); err == nil {
+		fmt.Println("The event already exists")
+		return fmt.Errorf("The event already exists")
+	}
+	// fmt.Println("The friendly name is ", strings.Replace(city, " ", "-", 2))
+	// fmt.Println("The data path is ", eventDataPath)
+	// fmt.Println("The twitter ID is ", eventTwitter)
+
+	// create the event file
+	createEventFile(city, eventYear, eventTwitter)
+	return
+}
+
+func createEventFile(city, year, twitter string) {
+
+	s := []string{strings.TrimSpace(year), "-", strings.Replace(strings.TrimSpace(strings.ToLower(city)), " ", "-", 10)}
+	slug := strings.Join(s, "")
+	// cityClean := strings.Replace(strings.TrimSpace(strings.ToLower(city)), " ", "-", 10)
+	t := template.Must(template.New("event.yml.tmpl").ParseFiles("event.yml.tmpl"))
+	data := struct {
+		City      string
+		Year      string
+		Twitter   string
+		Slug      string
+		CityClean string
+	}{
+		city,
+		strings.TrimSpace(year),
+		twitter,
+		slug,
+		cityClean(city),
+	}
+	f, err := os.Create(eventDataPath(city, year))
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+	defer f.Close()
+	t.Execute(f, data)
+	if err != nil {
+		fmt.Println(err)
+	} else {
+		fmt.Println("Created event file for", city, "for year", year, "at", eventDataPath(city, year))
+	}
+	return
 }
 
 func addSponsor() { // TODO: write add sponsor function
 
+}
+
+func cityClean(city string) (cityClean string) {
+	cityClean = strings.Replace(strings.TrimSpace(strings.ToLower(city)), " ", "-", 10)
+	return
+}
+
+func eventDataPath(city, year string) (eventDataPath string) {
+	s := []string{webdir, "/data/events/", strings.TrimSpace(year), "-", strings.Replace(strings.TrimSpace(strings.ToLower(city)), " ", "-", 10), ".yml"}
+	eventDataPath = strings.Join(s, "")
+	return eventDataPath
 }
