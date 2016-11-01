@@ -1,3 +1,5 @@
+![Probably Fine](https://raw.githubusercontent.com/mattstratton/probablyfine/master/docs/img/pf-logo.png)
+
 Command-line utilities for the [devopsdays](https://www.devopsdays.org) website built with love by [mattstratton](https://github.com/mattstratton) in [Go][].
 
 ## Overview
