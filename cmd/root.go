@@ -12,6 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+// Package cmd defines and implements command-line commands and flags
+// used by probablyfine. Commands and flags are implemented using Cobra.
 package cmd
 
 import (
@@ -22,6 +24,7 @@ import (
 	"github.com/spf13/viper"
 )
 
+// webdir is the path to the source files for the Hugo website
 const webdir = "/Users/mattstratton/src/devopsdays-web" // TODO: Change this to read an environment variable, and default to cwd if envar not set
 
 var cfgFile string
