@@ -34,11 +34,26 @@ import (
 const version = "0.1.1"
 const webdir = "/Users/mattstratton/src/devopsdays-web" // TODO: Change this to read an environment variable, and default to cwd if envar not set
 
+// TODO: Fix error handling to be consistent
+
+// TODO: Consider creating a struct for event, sponsor, etc
+// type event struct {
+//   City string
+//   Year string
+//   Twitter string
+// }
+//
+// myEvent := event{
+//   City: "Chicago",
+//   Year: "2016",
+//   Twitter: "devopsdayschi",
+// }
+
 func main() {
 	app := cli.NewApp()
 	app.Version = version
 	app.Name = "probablyfine"
-	app.Usage = "Run maintainence tasks for the devopsdays.org website"
+	app.Usage = "Run maintenance tasks for the devopsdays.org website"
 	app.Authors = []cli.Author{
 		cli.Author{
 			Name:  "Matt Stratton",
@@ -117,7 +132,7 @@ func main() {
 // It returns an empty string and an error if the event already exists.
 func addEvent(city string) (err error) {
 
-	reader := bufio.NewReader(os.Stdin) // TODO: Convert to a loop for each argument
+	reader := bufio.NewReader(os.Stdin) // TODO: Convert to a loop for each argument - maybe a map?
 	if city == "" {
 		fmt.Println("Enter the city: ")
 		city, _ = reader.ReadString('\n')
@@ -237,9 +252,7 @@ func addSponsor(sponsor string) (err error) { // TODO: write addSponsor() functi
 			return errors.New("Sponsor image not found.")
 		}
 	}
-	// check if the sponsor image file meets requirements using checkSponsorImageSize() TODO: write checkSponsorImageSize() function
 
-	// if sponsor image doesn't meet requirements, offer to resize it using resizeImage() TODO: write resizeImage()
 	// prompt for sponsor's name
 	fmt.Println("Enter the sponsor's full name. For example: `Chef Software, Inc`")
 	sponsorName, _ := reader.ReadString('\n')
