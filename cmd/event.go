@@ -34,8 +34,11 @@ var eventCmd = &cobra.Command{
 The 'city' and 'year' arguments are optional, but if you provide year, you must also provide city.
 City must not have a space. Replace spaces with '-'`,
 	Run: func(cmd *cobra.Command, args []string) {
-		// TODO: Work your own magic here
-		fmt.Println("event called")
+		if len(args) > 0 {
+			addEvent(args[0])
+		} else {
+			addEvent("")
+		}
 	},
 }
 
@@ -72,7 +75,7 @@ func addEvent(city string) (err error) {
 	if eventYear == "\n" {
 		eventYear = t.Format("2006")
 	}
-	if validateField(eventYear, "year") == false {
+	if validateField(strings.TrimSpace(eventYear), "year") == false {
 		return fmt.Errorf("That is an invalid year. It must be four digits and between 2016 and 2030.")
 	}
 	fmt.Println("Enter your devopsdays event twitter handle (defaults to devopsdays): ")
@@ -94,15 +97,15 @@ func addEvent(city string) (err error) {
 	}
 
 	// create the event file
-	if result, err := createEventFile(city, eventYear, eventTwitter); err != nil {
+	if result, err := createEventFile(city, eventYear); err != nil {
 		fmt.Printf("Error: %s\n", err)
 	} else {
-		fmt.Printf("Event created for %s!!!", result)
+		fmt.Printf("Event created for %s!!!\n", result)
 	}
 	return
 }
 
-func createEventFile(city, year, twitter string) (string, error) {
+func createEventFile(city, year string) (string, error) {
 
 	s := []string{strings.TrimSpace(year), "-", strings.Replace(strings.TrimSpace(strings.ToLower(city)), " ", "-", 10)}
 	slug := strings.Join(s, "")
@@ -111,13 +114,11 @@ func createEventFile(city, year, twitter string) (string, error) {
 	data := struct {
 		City      string
 		Year      string
-		Twitter   string
 		Slug      string
 		CityClean string
 	}{
 		city,
 		strings.TrimSpace(year),
-		twitter,
 		slug,
 		cityClean(city),
 	}
