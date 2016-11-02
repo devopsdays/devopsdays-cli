@@ -19,12 +19,15 @@ import (
 	"bufio"
 	"errors"
 	"fmt"
+	"image/png"
+	"log"
 	"os"
 	"strconv"
 	"strings"
 	"text/template"
 	"time"
 
+	"github.com/nfnt/resize"
 	"gopkg.in/urfave/cli.v1"
 )
 
@@ -163,7 +166,7 @@ func createEventFile(city, year, twitter string) (string, error) {
 	s := []string{strings.TrimSpace(year), "-", strings.Replace(strings.TrimSpace(strings.ToLower(city)), " ", "-", 10)}
 	slug := strings.Join(s, "")
 	// cityClean := strings.Replace(strings.TrimSpace(strings.ToLower(city)), " ", "-", 10)
-	t := template.Must(template.New("event.yml.tmpl").ParseFiles("event.yml.tmpl"))
+	t := template.Must(template.New("event.yml.tmpl").ParseFiles("templates/event.yml.tmpl"))
 	data := struct {
 		City      string
 		Year      string
@@ -192,7 +195,7 @@ func createEventFile(city, year, twitter string) (string, error) {
 }
 
 func createSponsorFile(sponsor, sponsorName, sponsorUrl string) (string, error) {
-	t := template.Must(template.New("sponsor.yml.tmpl").ParseFiles("sponsor.yml.tmpl"))
+	t := template.Must(template.New("sponsor.yml.tmpl").ParseFiles("templates/sponsor.yml.tmpl"))
 	data := struct {
 		Name string
 		Url  string
@@ -224,15 +227,16 @@ func addSponsor(sponsor string) (err error) { // TODO: write addSponsor() functi
 
 	reader := bufio.NewReader(os.Stdin)
 	// prompt for the path to the sponsor image file
-	// fmt.Println("Enter the path to the sponsor's image. It must be the full path. For example: `/Users/mattstratton/chef.png`")
-	// sponsorImage, _ := reader.ReadString('\n')
-	// if sponsorImage == "\n" {
-	// 	return errors.New("Sponsor images are required.")
-	// }
-	//
-	// if sponsorImage = strings.TrimSpace(sponsorImage); checkSponsorImage(sponsorImage) == false {
-	// 	return errors.New("Sponsor image not found.")
-	// }
+	fmt.Println("Optional: Enter the path to the sponsor's image. It must be the full path. For example: `/Users/mattstratton/chef.png`. Enter return to add the sponsor image manually later.")
+	sponsorImage, _ := reader.ReadString('\n')
+	if sponsorImage == "\n" {
+		fmt.Println("No sponsor image found. Be sure to copy it to the path ", sponsorImagePath(webdir, sponsor), "later.")
+	} else {
+
+		if sponsorImage = strings.TrimSpace(sponsorImage); checkSponsorImage(sponsorImage) == false {
+			return errors.New("Sponsor image not found.")
+		}
+	}
 	// check if the sponsor image file meets requirements using checkSponsorImageSize() TODO: write checkSponsorImageSize() function
 
 	// if sponsor image doesn't meet requirements, offer to resize it using resizeImage() TODO: write resizeImage()
@@ -254,8 +258,11 @@ func addSponsor(sponsor string) (err error) { // TODO: write addSponsor() functi
 	// write sponsor YAML file and copy image from path to proper destination
 	createSponsorFile(sponsor, sponsorName, sponsorUrl)
 	fmt.Println("Sponsor created for ", sponsorName)
-	fmt.Println("Don't forget to place the sponsor image at ", sponsorImagePath(webdir, sponsor))
-	// copySponsorImage(strings.TrimSpace(sponsorImage), sponsorImagePath(webdir, sponsor))
+	if sponsorImage != "\n" {
+		resizeSponsorImage(strings.TrimSpace(sponsorImage), sponsorImagePath(webdir, sponsor))
+	} else {
+		fmt.Println("Don't forget to place the sponsor image at ", sponsorImagePath(webdir, sponsor))
+	}
 	return
 }
 
@@ -328,11 +335,26 @@ func sponsorImagePath(webdir, sponsor string) (sponsorImagePath string) {
 	return sponsorImagePath
 }
 
-// func copySponsorImage(sponsorImagePathSource, sponsorImagePathDestination string) error {
-// 	fmt.Printf("The source file is %s, the destination file is %s\n", sponsorImagePathSource, sponsorImagePathDestination)
-//
-// 	if data, err := ioutil.ReadFile(sponsorImagePathSource); err != nil {
-// 		err = ioutil.WriteFile(sponsorImagePathDestination, data, 0644)
-// 	}
-// 	return nil
-// }
+func resizeSponsorImage(srcPath, destPath string) {
+	fmt.Println("Resizing image")
+	file, err := os.Open(srcPath)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	img, err := png.Decode(file)
+	if err != nil {
+		log.Fatal(err)
+	}
+	file.Close()
+
+	m := resize.Resize(200, 200, img, resize.Lanczos3)
+
+	out, err := os.Create(destPath)
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer out.Close()
+
+	png.Encode(out, m)
+}
