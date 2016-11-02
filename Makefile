@@ -6,6 +6,7 @@ install:
 	go get -t -v ./...
 
 release:
+	go get -v github.com/inconshreveable/mousetrap
 	mkdir -p release
 	GOOS=linux GOARCH=amd64 go build -o release/probablyfine-linux-amd64 $(package)
 	GOOS=linux GOARCH=386 go build -o release/probablyfine-linux-386 $(package)
