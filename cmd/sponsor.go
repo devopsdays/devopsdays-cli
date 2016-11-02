@@ -130,18 +130,18 @@ func checkSponsor(sponsor string) bool {
 	fmt.Println(sponsorDataPath(webdir, sponsor))
 	if _, err := os.Stat(sponsorDataPath(webdir, sponsor)); err == nil {
 		return true
-	} else {
-		return false
 	}
+	return false
+
 }
 
 func checkSponsorImage(path string) bool {
 	fmt.Println(path)
 	if _, err := os.Stat(path); err == nil {
 		return true
-	} else {
-		return false
 	}
+	return false
+
 }
 
 func sponsorDataPath(webdir, sponsor string) (sponsorDataPath string) {

@@ -151,18 +151,17 @@ func validateField(input, field string) bool { // TODO: Write validateField() fu
 	case "city":
 		if strings.Count(input, "") > 100 {
 			return false
-		} else {
-			return true
 		}
+		return true
 	case "year":
 		if strings.Count(input, "") != 5 {
 			return false
 		} else if s, err := strconv.ParseInt(input, 10, 32); err == nil {
 			if s < 2016 || s > 2030 {
 				return false
-			} else {
-				return true
 			}
+			return true
+
 		}
 	case "twitter":
 		if strings.ContainsAny(input, " ") {
