@@ -6,6 +6,7 @@ Command-line utilities for the [devopsdays](https://www.devopsdays.org) website 
 [![Build Status](https://travis-ci.org/mattstratton/probablyfine.svg?branch=master)](https://travis-ci.org/mattstratton/probablyfine)
 [![Coverage Status](https://coveralls.io/repos/github/mattstratton/probablyfine/badge.svg?branch=master)](https://coveralls.io/github/mattstratton/probablyfine?branch=master)
 [![Go Report Card](https://goreportcard.com/badge/github.com/mattstratton/probablyfine)](https://goreportcard.com/report/github.com/mattstratton/probablyfine)
+[![GitHub release](https://img.shields.io/github/release/qubyte/rubidium.svg)]()
 
 ## Overview
 

@@ -147,7 +147,7 @@ func eventDataPath(city, year string) (eventDataPath string) { // TODO: Add argu
 	return eventDataPath
 }
 
-func validateField(input, field string) bool { // TODO: Write validateField() function
+func validateField(input, field string) bool {
 	switch field {
 	case "city":
 		if strings.Count(input, "") > 100 {

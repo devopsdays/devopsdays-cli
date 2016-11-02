@@ -79,9 +79,9 @@ func createSponsorFile(sponsor, sponsorName, sponsorUrl string) (string, error) 
 
 }
 
-func addSponsor(sponsor string) (err error) { // TODO: write addSponsor() function
+func addSponsor(sponsor string) (err error) {
 
-	// Check if the sponsor exists already (use the checkSponsor() function) TODO: Write checkSponsor() function
+	// Check if the sponsor exists already
 	if checkSponsor(sponsor) == true {
 		return errors.New("Sponsor already exists. Try adding it again, perhaps appending '-YYYY'\nFor example, 'chef-2017'")
 	}
