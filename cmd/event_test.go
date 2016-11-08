@@ -1,6 +1,8 @@
 package cmd
 
-import "testing"
+import (
+	"testing"
+)
 
 func TestCityClean(t *testing.T) {
 	t.Log("Cleaning city value... (expected result: 'new-york')")
@@ -13,10 +15,9 @@ func TestCityClean(t *testing.T) {
 
 func TestEventDataPath(t *testing.T) {
 	t.Log("Testing eventDataPath function... (expected result: '/Users/mattstratton/src/devopsdays-web/data/events/2018-new-york.yml')")
-	testDataPath := eventDataPath("New York", "2018") // TODO: Pass in webdir path to function
-
+	testDataPath := eventDataPath("/Users/mattstratton/src/devopsdays-web", "New York", "2018") // TODO: Pass in webdir path to function
 	if testDataPath != "/Users/mattstratton/src/devopsdays-web/data/events/2018-new-york.yml" {
-		t.Error("Response from eventDataPath is an unexpected value")
+		t.Errorf("Expected result of '/Users/mattstratton/src/devopsdays-web/data/events/2018-new-york.yml' but it was %s instead.", testDataPath)
 	}
 }
 

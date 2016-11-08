@@ -122,7 +122,7 @@ func createEventFile(city, year string) (string, error) {
 		slug,
 		cityClean(city),
 	}
-	f, err := os.Create(eventDataPath(city, year))
+	f, err := os.Create(eventDataPath(webdir, city, year))
 	if err != nil {
 		return "", err
 	}
@@ -131,7 +131,7 @@ func createEventFile(city, year string) (string, error) {
 	if err != nil {
 		fmt.Println(err)
 	} else {
-		fmt.Println("Created event file for", city, "for year", year, "at", eventDataPath(city, year))
+		fmt.Println("Created event file for", city, "for year", year, "at", eventDataPath(webdir, city, year))
 	}
 	return city, nil
 }
@@ -141,9 +141,10 @@ func cityClean(city string) (cityClean string) {
 	return
 }
 
-func eventDataPath(city, year string) (eventDataPath string) { // TODO: Add argument for webdir path
+func eventDataPath(webdir, city, year string) (eventDataPath string) { // TODO: Add argument for webdir path
 	s := []string{webdir, "/data/events/", strings.TrimSpace(year), "-", strings.Replace(strings.TrimSpace(strings.ToLower(city)), " ", "-", 10), ".yml"}
 	eventDataPath = strings.Join(s, "")
+	// eventDataPath = webdir
 	return eventDataPath
 }
 
