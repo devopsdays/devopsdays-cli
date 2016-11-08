@@ -19,13 +19,16 @@ package cmd
 import (
 	"fmt"
 	"os"
+	"strings"
 
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 )
 
 // webdir is the path to the source files for the Hugo website
-const webdir = "/Users/mattstratton/src/devopsdays-web" // TODO: Change this to read an environment variable, and default to cwd if envar not set
+var webdir string = setWebdir()
+
+// const webdir = "/Users/mattstratton/src/devopsdays-web"
 
 var cfgFile string
 
@@ -77,5 +80,21 @@ func initConfig() {
 	// If a config file is found, read it in.
 	if err := viper.ReadInConfig(); err == nil {
 		fmt.Println("Using config file:", viper.ConfigFileUsed())
+	}
+}
+
+func setWebdir() string {
+	if os.Getenv("DODPATH") == "" {
+		pwd, err := os.Getwd()
+		if err != nil {
+			fmt.Println(err)
+			os.Exit(1)
+		}
+		return pwd
+	} else {
+		s := os.Getenv("DODPATH")
+		s = strings.TrimSuffix(s, "/")
+		s = strings.TrimSuffix(s, "\\")
+		return s
 	}
 }
