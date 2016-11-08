@@ -16,6 +16,11 @@ package main
 
 import "github.com/mattstratton/probablyfine/cmd"
 
+var (
+	Version string
+	Build   string
+)
+
 func main() {
 	cmd.Execute()
 }

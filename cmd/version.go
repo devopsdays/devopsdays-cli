@@ -6,6 +6,11 @@ import (
 	"github.com/spf13/cobra"
 )
 
+var (
+	Version string
+	Build   string
+)
+
 func init() {
 	RootCmd.AddCommand(versionCmd)
 }
@@ -15,6 +20,7 @@ var versionCmd = &cobra.Command{
 	Short: "Print the version number of Hugo",
 	Long:  `All software has versions. This is Hugo's`,
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("Probably Fine Version 0.1.0.")
+		fmt.Println("Version: ", Version)
+		fmt.Println("Build Time: ", Build)
 	},
 }
