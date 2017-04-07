@@ -13,6 +13,7 @@ import (
 	"bufio"
 	"fmt"
 	"os"
+	"path/filepath"
 	"strconv"
 	"strings"
 	"text/template"
@@ -97,6 +98,26 @@ func addEvent(city string) (err error) {
 	} else {
 		fmt.Printf("Event created for %s!!!\n", result)
 	}
+
+	// create the event content directory
+	if result, err := createEventContentDir(city, eventYear); err != nil {
+		fmt.Printf("Error: %s\n", err)
+	} else {
+		fmt.Printf("Event content directory created for %s!!!\n", result)
+	}
+
+	// create the event content files
+	contentfiles := []string{"index", "conduct", "contact", "location", "program", "propose", "registration", "sponsor"}
+	for _, contentFile := range contentfiles {
+
+		if result, err := createEventContentFile(city, eventYear, contentFile); err != nil {
+			fmt.Printf("Error: %s\n", err)
+		} else {
+			fmt.Printf("Event content file created for %s!!!\n", result)
+		}
+
+	}
+
 	return
 }
 
@@ -112,7 +133,7 @@ func createEventFile(city, year string) (string, error) {
 		Slug      string
 		CityClean string
 	}{
-		city,
+		strings.TrimSpace(city),
 		strings.TrimSpace(year),
 		slug,
 		cityClean(city),
@@ -131,16 +152,63 @@ func createEventFile(city, year string) (string, error) {
 	return city, nil
 }
 
+func createEventContentDir(city, year string) (string, error) {
+	err := os.MkdirAll((eventContentPath(webdir, city, year)), 0755)
+	if err != nil {
+		return "", err
+	}
+	return city, nil
+}
+
+func createEventContentFile(city, year, page string) (string, error) { // add page as an argument later
+	s := []string{strings.TrimSpace(year), "-", strings.Replace(strings.TrimSpace(strings.ToLower(city)), " ", "-", 10)}
+	slug := strings.Join(s, "")
+	t := template.Must(template.New(page+".md.tmpl").Delims("[[", "]]").ParseFiles("templates/events/" + page + ".md.tmpl"))
+	data := struct {
+		City      string
+		Year      string
+		Slug      string
+		CityClean string
+	}{
+		strings.TrimSpace(city),
+		strings.TrimSpace(year),
+		slug,
+		cityClean(city),
+	}
+	filePath := filepath.Join((eventContentPath(webdir, city, year)), (page + ".md"))
+	f, err := os.Create(filePath)
+	if err != nil {
+		return "", err
+	}
+	defer f.Close()
+	t.Execute(f, data)
+	if err != nil {
+		fmt.Println(err)
+	} else {
+		fmt.Println("Created event content file for", city, "for year", year, "at", filePath)
+	}
+	return city, nil
+
+}
+
 func cityClean(city string) (cityClean string) {
 	cityClean = strings.Replace(strings.TrimSpace(strings.ToLower(city)), " ", "-", 10)
 	return
 }
 
 func eventDataPath(webdir, city, year string) (eventDataPath string) { // TODO: Add argument for webdir path
-	s := []string{webdir, "/data/events/", strings.TrimSpace(year), "-", strings.Replace(strings.TrimSpace(strings.ToLower(city)), " ", "-", 10), ".yml"}
-	eventDataPath = strings.Join(s, "")
+	s := []string{strings.TrimSpace(year), "-", strings.Replace(strings.TrimSpace(strings.ToLower(city)), " ", "-", 10), ".yml"}
+	eventDataPath = filepath.Join(webdir, "data", "events", strings.Join(s, ""))
+	// eventDataPath = strings.Join(s, "")
 	// eventDataPath = webdir
 	return eventDataPath
+}
+
+func eventContentPath(webdir, city, year string) (eventContentPath string) { // TODO: Add argument for webdir path
+	s := []string{strings.TrimSpace(year), "-", strings.Replace(strings.TrimSpace(strings.ToLower(city)), " ", "-", 10)}
+	eventContentPath = filepath.Join(webdir, "content", "events", strings.Join(s, ""))
+	// eventContentPath = webdir
+	return eventContentPath
 }
 
 func validateField(input, field string) bool {
