@@ -16,7 +16,7 @@ func TestCityClean(t *testing.T) {
 func TestEventDataPath(t *testing.T) {
 	t.Log("Testing eventDataPath function... (expected result: '/Users/mattstratton/src/devopsdays-web/data/events/2018-new-york.yml')")
 	testDataPath := eventDataPath(webdir, "New York", "2018")
-	if testDataPath != "/Users/mattstratton/src/devopsdays-web/data/events/2018-new-york.yml" {
+	if testDataPath != webdir+"/data/events/2018-new-york.yml" {
 		t.Errorf("Expected result of '/Users/mattstratton/src/devopsdays-web/data/events/2018-new-york.yml' but it was %s instead.", testDataPath)
 	}
 }
@@ -24,7 +24,7 @@ func TestEventDataPath(t *testing.T) {
 func TestEventContentPath(t *testing.T) {
 	t.Log("Testing eventContentPath function... (expected result: '/Users/mattstratton/src/devopsdays-web/content/events/2018-new-york')")
 	testContentPath := eventContentPath(webdir, "New York", "2018")
-	if testContentPath != "/Users/mattstratton/src/devopsdays-web/content/events/2018-new-york" {
+	if testContentPath != webdir+"/content/events/2018-new-york" {
 		t.Errorf("Expected result of '/Users/mattstratton/src/devopsdays-web/content/events/2018-new-york' but it was %s instead.", testContentPath)
 	}
 }
