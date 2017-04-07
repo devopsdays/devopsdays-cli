@@ -23,8 +23,7 @@ release:
 	GOOS=darwin GOARCH=386 go build ${LDFLAGS} -o release/probablyfine_${VERSION}-darwin-386 $(package)
 	GOOS=windows GOARCH=amd64 go build ${LDFLAGS} -o release/probablyfine_${VERSION}-windows-amd64.exe $(package)
 	GOOS=windows GOARCH=386 go build ${LDFLAGS} -o release/probablyfine_${VERSION}-windows-386.exe $(package)
-	cd release
-	ls
+	ls release
 
 test:
 	go test -v
