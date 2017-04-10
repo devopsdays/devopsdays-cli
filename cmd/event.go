@@ -12,6 +12,7 @@ package cmd
 import (
 	"bufio"
 	"fmt"
+	"log"
 	"os"
 	"path/filepath"
 	"strconv"
@@ -19,6 +20,7 @@ import (
 	"text/template"
 	"time"
 
+	"github.com/GeertJohan/go.rice"
 	"github.com/spf13/cobra"
 )
 
@@ -123,10 +125,26 @@ func addEvent(city string) (err error) {
 
 func createEventFile(city, year string) (string, error) {
 
+	// find a rice.Box
+	templateBox, err := rice.FindBox("templates")
+	if err != nil {
+		log.Fatal(err)
+	}
+	// get file contents as string
+	templateString, err := templateBox.String("event.yml.tmpl")
+	if err != nil {
+		log.Fatal(err)
+	}
+
 	s := []string{strings.TrimSpace(year), "-", strings.Replace(strings.TrimSpace(strings.ToLower(city)), " ", "-", 10)}
 	slug := strings.Join(s, "")
 	// cityClean := strings.Replace(strings.TrimSpace(strings.ToLower(city)), " ", "-", 10)
-	t := template.Must(template.New("event.yml.tmpl").ParseFiles("templates/event.yml.tmpl"))
+	// t := template.Must(template.New("event.yml.tmpl").ParseFile("templates/event.yml.tmpl"))
+	// parse and execute the template
+	t, err := template.New("event.yml").Parse(templateString)
+	if err != nil {
+		log.Fatal(err)
+	}
 	data := struct {
 		City      string
 		Year      string
@@ -161,9 +179,28 @@ func createEventContentDir(city, year string) (string, error) {
 }
 
 func createEventContentFile(city, year, page string) (string, error) { // add page as an argument later
+
+	// find a rice.Box
+	templateBox, err := rice.FindBox("templates")
+	if err != nil {
+		log.Fatal(err)
+	}
+	templateName := "events/" + page + ".md.tmpl"
+	// templateName := "index.md.tmpl"
+	// get file contents as string
+	templateString, err := templateBox.String(templateName)
+	if err != nil {
+		// log.Fatal(templateName)
+		log.Fatal(err)
+	}
 	s := []string{strings.TrimSpace(year), "-", strings.Replace(strings.TrimSpace(strings.ToLower(city)), " ", "-", 10)}
 	slug := strings.Join(s, "")
-	t := template.Must(template.New(page+".md.tmpl").Delims("[[", "]]").ParseFiles("templates/events/" + page + ".md.tmpl"))
+	// t := template.Must(template.New(page+".md.tmpl").Delims("[[", "]]").ParseFiles(templateString))
+	// parse and execute the template
+	t, err := template.New(page+".md").Delims("[[", "]]").Parse(templateString)
+	if err != nil {
+		log.Fatal(err)
+	}
 	data := struct {
 		City      string
 		Year      string
@@ -178,12 +215,12 @@ func createEventContentFile(city, year, page string) (string, error) { // add pa
 	filePath := filepath.Join((eventContentPath(webdir, city, year)), (page + ".md"))
 	f, err := os.Create(filePath)
 	if err != nil {
-		return "", err
+		return "Cannot create", err
 	}
 	defer f.Close()
 	t.Execute(f, data)
 	if err != nil {
-		fmt.Println(err)
+		fmt.Println(err, "template execute error")
 	} else {
 		fmt.Println("Created event content file for", city, "for year", year, "at", filePath)
 	}
