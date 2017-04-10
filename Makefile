@@ -21,6 +21,7 @@ release:
 	go get github.com/GeertJohan/go.rice/rice
 	mkdir -p release
 	rice embed-go
+	rm release/probablyfine
 	GOOS=linux GOARCH=amd64 go build ${LDFLAGS} -o release/probablyfine_${VERSION}-linux-amd64 $(package)
 	GOOS=linux GOARCH=386 go build ${LDFLAGS} -o release/probablyfine_${VERSION}-linux-386 $(package)
 	GOOS=darwin GOARCH=amd64 go build ${LDFLAGS} -o release/probablyfine_${VERSION}-darwin-amd64 $(package)

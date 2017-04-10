@@ -95,7 +95,7 @@ func addEvent(city string) (err error) {
 	}
 
 	// create the event file
-	if result, err := createEventFile(city, eventYear); err != nil {
+	if result, err := createEventFile(city, eventYear, eventTwitter); err != nil {
 		fmt.Printf("Error: %s\n", err)
 	} else {
 		fmt.Printf("Event created for %s!!!\n", result)
@@ -123,7 +123,7 @@ func addEvent(city string) (err error) {
 	return
 }
 
-func createEventFile(city, year string) (string, error) {
+func createEventFile(city, year, twitter string) (string, error) {
 
 	// find a rice.Box
 	templateBox, err := rice.FindBox("templates")
@@ -150,11 +150,13 @@ func createEventFile(city, year string) (string, error) {
 		Year      string
 		Slug      string
 		CityClean string
+		Twitter   string
 	}{
 		strings.TrimSpace(city),
 		strings.TrimSpace(year),
 		slug,
 		cityClean(city),
+		strings.TrimSpace(twitter),
 	}
 	f, err := os.Create(eventDataPath(webdir, city, year))
 	if err != nil {
