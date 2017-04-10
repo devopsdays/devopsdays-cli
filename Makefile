@@ -7,7 +7,6 @@ BUILD=`date +%FT%T%z`
 LDFLAGS=-ldflags "-w -s -X github.com/mattstratton/probablyfine/cmd.Version=${VERSION} -X github.com/mattstratton/probablyfine/cmd.Build=${BUILD}"
 
 build:
-	rice embed-go
 	go build ${LDFLAGS} -o release/${BINARY} $(package)
 
 .PHONY: install release test travis
@@ -17,10 +16,7 @@ install:
 
 release:
 	go get -v github.com/inconshreveable/mousetrap
-	go get github.com/GeertJohan/go.rice
-	go get github.com/GeertJohan/go.rice/rice
 	mkdir -p release
-	rice embed-go
 	rm release/probablyfine
 	GOOS=linux GOARCH=amd64 go build ${LDFLAGS} -o release/probablyfine_${VERSION}-linux-amd64 $(package)
 	GOOS=linux GOARCH=386 go build ${LDFLAGS} -o release/probablyfine_${VERSION}-linux-386 $(package)

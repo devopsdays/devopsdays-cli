@@ -20,7 +20,7 @@ import (
 	"text/template"
 	"time"
 
-	"github.com/GeertJohan/go.rice"
+	rice "github.com/GeertJohan/go.rice"
 	"github.com/spf13/cobra"
 )
 
@@ -126,7 +126,7 @@ func addEvent(city string) (err error) {
 func createEventFile(city, year, twitter string) (string, error) {
 
 	// find a rice.Box
-	templateBox, err := rice.FindBox("templates")
+	templateBox, err := rice.FindBox("../templates")
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -183,7 +183,7 @@ func createEventContentDir(city, year string) (string, error) {
 func createEventContentFile(city, year, page string) (string, error) { // add page as an argument later
 
 	// find a rice.Box
-	templateBox, err := rice.FindBox("templates")
+	templateBox, err := rice.FindBox("../templates")
 	if err != nil {
 		log.Fatal(err)
 	}

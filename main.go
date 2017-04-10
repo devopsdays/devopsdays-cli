@@ -9,15 +9,14 @@
 
 package main
 
-import "github.com/mattstratton/probablyfine/cmd"
-import "github.com/GeertJohan/go.rice"
+import (
+	"github.com/mattstratton/probablyfine/cmd"
+)
 
 var (
 	Version string
 	Build   string
 )
-
-var templateBox = rice.MustFindBox("templates")
 
 func main() {
 	cmd.Execute()
