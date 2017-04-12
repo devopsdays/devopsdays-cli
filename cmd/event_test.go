@@ -14,10 +14,10 @@ func TestCityClean(t *testing.T) {
 }
 
 func TestEventDataPath(t *testing.T) {
-	t.Log("Testing eventDataPath function... (expected result: '/Users/mattstratton/src/devopsdays-web/data/events/2018-new-york.yml')")
+	t.Log("Testing eventDataPath function... (expected result: '" + webdir + "/data/events/2018-new-york.yml')")
 	testDataPath := eventDataPath(webdir, "New York", "2018")
 	if testDataPath != webdir+"/data/events/2018-new-york.yml" {
-		t.Errorf("Expected result of '/Users/mattstratton/src/devopsdays-web/data/events/2018-new-york.yml' but it was %s instead.", testDataPath)
+		t.Errorf("Expected result of '"+webdir+"/data/events/2018-new-york.yml' but it was %s instead.", testDataPath)
 	}
 }
 

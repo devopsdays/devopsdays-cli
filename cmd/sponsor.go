@@ -16,9 +16,11 @@ import (
 	"image/png"
 	"log"
 	"os"
+	"path/filepath"
 	"strings"
 	"text/template"
 
+	rice "github.com/GeertJohan/go.rice"
 	"github.com/nfnt/resize"
 	"github.com/spf13/cobra"
 )
@@ -30,8 +32,12 @@ var sponsorCmd = &cobra.Command{
 	Long: `Create a new sponsor file, and optionally add the sponsor's image.
 The name argument must not contain any spaces.`,
 	Run: func(cmd *cobra.Command, args []string) {
-		// TODO: Work your own magic here
-		fmt.Println("sponsor called")
+
+		if len(args) > 0 {
+			addSponsor(args[0])
+		} else {
+			addSponsor("")
+		}
 	},
 }
 
@@ -50,43 +56,22 @@ func init() {
 
 }
 
-func createSponsorFile(sponsor, sponsorName, sponsorUrl string) (string, error) {
-	t := template.Must(template.New("sponsor.yml.tmpl").ParseFiles("templates/sponsor.yml.tmpl"))
-	data := struct {
-		Name string
-		Url  string
-	}{
-		strings.TrimSpace(sponsorName),
-		strings.TrimSpace(sponsorUrl),
-	}
-	f, err := os.Create(sponsorDataPath(webdir, sponsor))
-	if err != nil {
-		return "", err
-	}
-	defer f.Close()
-	t.Execute(f, data)
-	if err != nil {
-		fmt.Println(err)
-	} else {
-		fmt.Println("Created sponsor file for", sponsor, "at", sponsorDataPath(webdir, sponsor))
-	}
-	return sponsor, nil
-
-}
-
 func addSponsor(sponsor string) (err error) {
 
+	reader := bufio.NewReader(os.Stdin)
+	if sponsor == "" {
+		fmt.Println("Enter the sponsor's name. It must not contain any spaces: ")
+		sponsor, _ = reader.ReadString('\n')
+	}
 	// Check if the sponsor exists already
 	if checkSponsor(sponsor) == true {
 		return errors.New("Sponsor already exists. Try adding it again, perhaps appending '-YYYY'\nFor example, 'chef-2017'")
 	}
-
-	reader := bufio.NewReader(os.Stdin)
 	// prompt for the path to the sponsor image file
 	fmt.Println("Optional: Enter the path to the sponsor's image. It must be the full path. For example: `/Users/mattstratton/chef.png`. Enter return to add the sponsor image manually later.")
 	sponsorImage, _ := reader.ReadString('\n')
 	if sponsorImage == "\n" {
-		fmt.Println("No sponsor image found. Be sure to copy it to the path ", sponsorImagePath(webdir, sponsor), "later.")
+		fmt.Println("No sponsor image entered. Be sure to copy it to the path ", sponsorImagePath(webdir, sponsor), "later.")
 	} else {
 
 		if sponsorImage = strings.TrimSpace(sponsorImage); checkSponsorImage(sponsorImage) == false {
@@ -120,6 +105,41 @@ func addSponsor(sponsor string) (err error) {
 	return
 }
 
+func createSponsorFile(sponsor, sponsorName, sponsorUrl string) (string, error) {
+	// find a rice.Box
+	templateBox, err := rice.FindBox("../templates")
+	if err != nil {
+		log.Fatal(err)
+	}
+	// get file contents as string
+	templateString, err := templateBox.String("sponsor.yml.tmpl")
+	if err != nil {
+		log.Fatal(err)
+	}
+	// t := template.Must(template.New("sponsor.yml.tmpl").ParseFiles("templates/sponsor.yml.tmpl"))
+	t, err := template.New("sponsor.yml").Parse(templateString)
+	data := struct {
+		Name string
+		Url  string
+	}{
+		strings.TrimSpace(sponsorName),
+		strings.TrimSpace(sponsorUrl),
+	}
+	f, err := os.Create(sponsorDataPath(webdir, sponsor))
+	if err != nil {
+		return "", err
+	}
+	defer f.Close()
+	t.Execute(f, data)
+	if err != nil {
+		fmt.Println(err)
+	} else {
+		fmt.Println("Created sponsor file for", sponsor, "at", sponsorDataPath(webdir, sponsor))
+	}
+	return sponsor, nil
+
+}
+
 // checkSponsor takes in one argument, the name of a sponsor, and returns true if the sponsor already exists.
 func checkSponsor(sponsor string) bool {
 	fmt.Println(sponsorDataPath(webdir, sponsor))
@@ -140,8 +160,9 @@ func checkSponsorImage(path string) bool {
 }
 
 func sponsorDataPath(webdir, sponsor string) (sponsorDataPath string) {
-	s := []string{webdir, "/data/sponsors/", strings.TrimSpace(sponsor), ".yml"}
-	sponsorDataPath = strings.Join(s, "")
+	s := []string{strings.TrimSpace(sponsor), ".yml"}
+	// sponsorDataPath = strings.Join(s, "")
+	sponsorDataPath = filepath.Join(webdir, "data", "sponsors", strings.Join(s, ""))
 	return sponsorDataPath
 }
 

@@ -34,12 +34,10 @@ var doctorCmd = &cobra.Command{
 		re := regexp.MustCompile("v....")
 		hugoVersion := re.FindString(s)
 		switch hugoVersion {
-		case "v0.16":
-			fmt.Println("\u2713 Hugo version", hugoVersion, "is okay")
-		case "v0.17":
+		case "v0.19":
 			fmt.Println("\u2713 Hugo version", hugoVersion, "is okay")
 		default:
-			fmt.Println("\u2717 Hugo version", hugoVersion, "is incompatible. Please use a supported version (0.16 or 0.17)")
+			fmt.Println("\u2717 Hugo version", hugoVersion, "is incompatible. Please use a supported version (0.19)")
 		}
 	},
 }
