@@ -20,10 +20,10 @@ import (
 	"github.com/spf13/cobra"
 )
 
-// listSpeakersCmd represents the listSpeakers command
-var listSpeakersCmd = &cobra.Command{
-	Use:   "list",
-	Short: "A brief description of your command",
+// speakerCmd represents the speakers command
+var speakerCmd = &cobra.Command{
+	Use:   "speaker",
+	Short: "Create or modify your speakers",
 	Long: `A longer description that spans multiple lines and likely contains examples
 and usage of using your command. For example:
 
@@ -37,16 +37,16 @@ to quickly create a Cobra application.`,
 }
 
 func init() {
-	speakersCmd.AddCommand(listSpeakersCmd)
+	RootCmd.AddCommand(speakerCmd)
 
 	// Here you will define your flags and configuration settings.
 
 	// Cobra supports Persistent Flags which will work for this command
 	// and all subcommands, e.g.:
-	// listSpeakersCmd.PersistentFlags().String("foo", "", "A help for foo")
+	// speakerCmd.PersistentFlags().String("foo", "", "A help for foo")
 
 	// Cobra supports local flags which will only run when this command
 	// is called directly, e.g.:
-	// listSpeakersCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
+	// speakerCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 
 }

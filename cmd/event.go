@@ -275,3 +275,12 @@ func validateField(input, field string) bool {
 	}
 	return true // TODO: Make this return an error if no field was matched
 }
+
+// checkEvent takes in two arguments, the city and the year, and returns true if the city  exists.
+func checkEvent(city, year string) bool {
+	if _, err := os.Stat(eventDataPath(webdir, city, year)); err == nil {
+		return true
+	}
+	return false
+
+}

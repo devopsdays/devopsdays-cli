@@ -15,8 +15,13 @@
 package cmd
 
 import (
+	"bufio"
 	"fmt"
 	"io/ioutil"
+	"os"
+	"reflect"
+	"strconv"
+	"strings"
 
 	"github.com/spf13/cobra"
 	"gopkg.in/yaml.v2"
@@ -35,7 +40,19 @@ to quickly create a Cobra application.`,
 	Run: func(cmd *cobra.Command, args []string) {
 		// TODO: Work your own magic here
 		fmt.Println("editEvent called")
-		editEvent("ponyville", "2018")
+		// TODO: Check for args first
+		reader := bufio.NewReader(os.Stdin)
+		fmt.Println("Enter the city:")
+		city, _ := reader.ReadString('\n')
+		fmt.Println("Enter the year:")
+		year, _ := reader.ReadString('\n')
+		if checkEvent(city, year) == false {
+			fmt.Println("That city does not exist.")
+		}
+		myEvent := eventStruct(city, year)
+		editEvent(myEvent)
+		// fmt.Println(fieldMap())
+		// spew.Dump(myEvent)
 	},
 }
 
@@ -55,26 +72,26 @@ func init() {
 }
 
 type Event struct {
-	Name                  string      `yaml:"name"`
-	Year                  string      `yaml:"year"`
-	City                  string      `yaml:"city"`
-	EventTwitter          string      `yaml:"event_twitter"`
-	Description           string      `yaml:"description"`
-	GaTrackingID          string      `yaml:"ga_tracking_id"`
-	Startdate             interface{} `yaml:"startdate"`
-	Enddate               interface{} `yaml:"enddate"`
-	CfpDateStart          interface{} `yaml:"cfp_date_start"`
-	CfpDateEnd            interface{} `yaml:"cfp_date_end"`
-	CfpDateAnnounce       interface{} `yaml:"cfp_date_announce"`
-	CfpOpen               string      `yaml:"cfp_open"`
-	CfpLink               string      `yaml:"cfp_link"`
-	RegistrationDateStart interface{} `yaml:"registration_date_start"`
-	RegistrationDateEnd   interface{} `yaml:"registration_date_end"`
-	RegistrationClosed    string      `yaml:"registration_closed"`
-	RegistrationLink      string      `yaml:"registration_link"`
-	Coordinates           string      `yaml:"coordinates"`
-	Location              string      `yaml:"location"`
-	LocationAddress       string      `yaml:"location_address"`
+	Name                  string `yaml:"name"`
+	Year                  string `yaml:"year"`
+	City                  string `yaml:"city"`
+	EventTwitter          string `yaml:"event_twitter"`
+	Description           string `yaml:"description"`
+	GaTrackingID          string `yaml:"ga_tracking_id"`
+	Startdate             string `yaml:"startdate"`
+	Enddate               string `yaml:"enddate"`
+	CfpDateStart          string `yaml:"cfp_date_start"`
+	CfpDateEnd            string `yaml:"cfp_date_end"`
+	CfpDateAnnounce       string `yaml:"cfp_date_announce"`
+	CfpOpen               string `yaml:"cfp_open"`
+	CfpLink               string `yaml:"cfp_link"`
+	RegistrationDateStart string `yaml:"registration_date_start"`
+	RegistrationDateEnd   string `yaml:"registration_date_end"`
+	RegistrationClosed    string `yaml:"registration_closed"`
+	RegistrationLink      string `yaml:"registration_link"`
+	Coordinates           string `yaml:"coordinates"`
+	Location              string `yaml:"location"`
+	LocationAddress       string `yaml:"location_address"`
 	NavElements           []struct {
 		Name string `yaml:"name"`
 	} `yaml:"nav_elements"`
@@ -102,26 +119,127 @@ type Event struct {
 	} `yaml:"sponsor_levels"`
 }
 
-func editEvent(city, year string) (err error) {
-	var event Event
-	yamlFile, err := ioutil.ReadFile(eventDataPath(webdir, city, year))
-	err = yaml.Unmarshal(yamlFile, &event)
-	if err != nil {
-		panic(err)
+func fieldMap() (fieldMap map[string]string) {
+	tempMap := make(map[string]string)
+	tempMap["EventTwitter"] = "Twitter"
+	tempMap["GaTrackingID"] = "Google Analytics Tracking ID"
+	tempMap["Startdate"] = "Start Date"
+	tempMap["Enddate"] = "End Date"
+	tempMap["CfpDateStart"] = "CFP Start Date"
+	tempMap["CfpDateEnd"] = "CFP End Date"
+	tempMap["CfpDateAnnounce"] = "CFP Announcement Date"
+	tempMap["CfpOpen"] = "CFP Link"
+	tempMap["RegistrationDateStart"] = "Registation Start Date"
+	tempMap["RegistrationDateEnd"] = "Registration End Date"
+	tempMap["RegistrationLink"] = "Registration Link"
+	tempMap["Coordinates"] = "Coordinates"
+	tempMap["Location"] = "Location"
+	tempMap["LocationAddress"] = "Location Address"
+
+	return tempMap
+}
+
+func eventFields() []string {
+	fields := make([]string, 14)
+	fields[0] = "EventTwitter"
+	fields[1] = "GaTrackingID"
+	fields[2] = "Startdate"
+	fields[3] = "Enddate"
+	fields[4] = "CfpDateStart"
+	fields[5] = "CfpDateEnd"
+	fields[6] = "CfpDateAnnounce"
+	fields[7] = "CfpOpen"
+	fields[8] = "RegistrationDateStart"
+	fields[9] = "RegistrationDateEnd"
+	fields[10] = "RegistrationLink"
+	fields[11] = "Coordinates"
+	fields[12] = "Location"
+	fields[13] = "LocationAddress"
+
+	return fields
+}
+
+func editEvent(event Event) (err error) {
+
+	reader := bufio.NewReader(os.Stdin)
+	fmt.Println("Do you want to [1] edit the value of a field, [2] add an organizer, or [3] add a sponsor?")
+	c, _ := reader.ReadString('\n')
+	c = strings.TrimSpace(c)
+	switch c {
+	case "1":
+		s := eventFields()
+		myField := makeMenu(s)
+		fmt.Println("The value of this field is: ", returnField(event, myField))
+		fmt.Println("Would you like to change it?")
+		c, _ := reader.ReadString('\n')
+		c = strings.TrimSpace(c)
+		if c == "y" {
+			fmt.Println("What would you like to change it to?")
+			c, _ := reader.ReadString('\n')
+			c = strings.TrimSpace(c)
+			editField(event, myField, c)
+		}
+	case "2":
+		fmt.Println("Adding organizers is not yet supported.")
+	case "3":
+		fmt.Println("Adding sponsors is not yet supported.")
+	default:
+		fmt.Println("This is the default.")
 	}
-	event.Name = "mugsyville"
-	fmt.Print(event.Name)
-	y, err := yaml.Marshal(&event)
-	ioutil.WriteFile((eventDataPath(webdir, city, year)), y, 0755)
+
+	// Note: This is commented out for now, but we want to use this functionality somewhere
+	// event.Name = "mugsyville"
+	// fmt.Print(event.Name)
+	// y, err := yaml.Marshal(&event)
+	// ioutil.WriteFile((eventDataPath(webdir, city, year)), y, 0755)
 
 	return
 
 }
 
-// func eventDataPath(webdir, city, year string) (eventDataPath string) { // TODO: Add argument for webdir path
-// 	s := []string{strings.TrimSpace(year), "-", strings.Replace(strings.TrimSpace(strings.ToLower(city)), " ", "-", 10), ".yml"}
-// 	eventDataPath = filepath.Join(webdir, "data", "events", strings.Join(s, ""))
-// 	// eventDataPath = strings.Join(s, "")
-// 	// eventDataPath = webdir
-// 	return eventDataPath
-// }
+func eventStruct(city, year string) (event Event) {
+	// var event Event
+	yamlFile, err := ioutil.ReadFile(eventDataPath(webdir, city, year))
+	err = yaml.Unmarshal(yamlFile, &event)
+	if err != nil {
+		panic(err)
+	}
+	return event
+}
+
+// TODO: This should actually return the key to change; rather than just create the menu
+func makeMenu(items []string) (field string) {
+	fmt.Println("Which field would you like to modify?")
+	myMap := fieldMap()
+	menu := "\n"
+	for i, v := range items {
+		menu += "["
+		menu += strconv.Itoa(i + 1)
+		menu += "] "
+		menu += myMap[v]
+		menu += "\n"
+	}
+	fmt.Println(menu)
+	reader := bufio.NewReader(os.Stdin)
+	var c, _ = reader.ReadString('\n')
+	c = strings.TrimSpace(c)
+	c2, _ := strconv.Atoi(c)
+	field = items[(c2 - 1)]
+
+	return field
+}
+
+func returnField(event Event, field string) (name string) {
+	r := reflect.ValueOf(event)
+	f := reflect.Indirect(r).FieldByName(field)
+	return f.String()
+}
+
+func editField(event Event, field, value string) {
+	// r := reflect.ValueOf(event)
+	// f := reflect.Indirect(r).FieldByName(field)
+	reflect.ValueOf(&event).Elem().FieldByName(field).SetString(value)
+	y, _ := yaml.Marshal(&event)
+	ioutil.WriteFile((eventDataPath(webdir, event.City, event.Year)), y, 0755)
+	return
+}
