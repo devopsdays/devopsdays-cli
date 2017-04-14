@@ -18,6 +18,7 @@ import (
 	"bufio"
 	"fmt"
 	"io/ioutil"
+	"log"
 	"os"
 	"reflect"
 	"strconv"
@@ -47,11 +48,10 @@ to quickly create a Cobra application.`,
 		fmt.Println("Enter the year:")
 		year, _ := reader.ReadString('\n')
 		if checkEvent(city, year) == false {
-			fmt.Println("That city does not exist.")
+			log.Fatal("That city does not exist.")
 		}
 		myEvent := eventStruct(city, year)
 		editEvent(myEvent)
-		// fmt.Println(fieldMap())
 		// spew.Dump(myEvent)
 	},
 }
@@ -104,6 +104,7 @@ type Event struct {
 		Linkedin string `yaml:"linkedin,omitempty"`
 		Website  string `yaml:"website,omitempty"`
 		Image    string `yaml:"image,omitempty"`
+		Bio      string `yaml:"bio,omitempty"`
 	} `yaml:"team_members"`
 	OrganizerEmail string `yaml:"organizer_email"`
 	ProposalEmail  string `yaml:"proposal_email"`
