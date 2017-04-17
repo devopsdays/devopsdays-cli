@@ -6,6 +6,7 @@ branches:
   only:
     - master
 
+skip_tags: true # Just for now because of looping!
 clone_folder: c:\gopath\src\github.com\mattstratton\probablyfine
 
 environment:
