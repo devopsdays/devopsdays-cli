@@ -1,0 +1,38 @@
+version: 1.0.0.{build}
+
+platform: x64
+
+branches:
+  only:
+    - master
+
+clone_folder: c:\gopath\src\github.com\mattstratton\probablyfine
+
+environment:
+  GOPATH: c:\gopath
+
+install:
+- echo %PATH%
+- echo %GOPATH%
+- set PATH=%GOPATH%\bin;c:\go\bin;%PATH%
+- go version
+- go env
+
+build_script:
+  - go build -o buildOutput\probablyfine -i .
+
+artifacts:
+  - path: buildOutput/probablyfine
+    name: binary
+
+deploy:
+  release: probablyfine-$(appveyor_build_version)
+  description: 'This is a release of my awesome application.'
+  provider: GitHub
+  auth_token:
+    secure: iNVocPf2TIAUFwOG5txOr4blIMmAOI+iI/yJulYPoYJOxucpdpEmPX/uuBz7rDPu
+  artifact: binary # This is the name we specified in the artifacts section.
+  draft: false
+  prerelease: false
+  on:
+    branch: master

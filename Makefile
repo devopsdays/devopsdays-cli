@@ -16,14 +16,29 @@ install:
 
 release:
 	go get -v github.com/inconshreveable/mousetrap
-	mkdir -p release
-	rm release/probablyfine
-	GOOS=linux GOARCH=amd64 go build ${LDFLAGS} -o release/probablyfine_${VERSION}-linux-amd64 $(package)
-	GOOS=linux GOARCH=386 go build ${LDFLAGS} -o release/probablyfine_${VERSION}-linux-386 $(package)
-	GOOS=darwin GOARCH=amd64 go build ${LDFLAGS} -o release/probablyfine_${VERSION}-darwin-amd64 $(package)
-	GOOS=darwin GOARCH=386 go build ${LDFLAGS} -o release/probablyfine_${VERSION}-darwin-386 $(package)
-	GOOS=windows GOARCH=amd64 go build ${LDFLAGS} -o release/probablyfine_${VERSION}-windows-amd64.exe $(package)
-	GOOS=windows GOARCH=386 go build ${LDFLAGS} -o release/probablyfine_${VERSION}-windows-386.exe $(package)
+	rm -rf build/probablyfine
+	mkdir -p build/probablyfine
+	mkdir -p build/linux-amd64
+	mkdir -p build/linux-386
+	mkdir -p build/darwin-amd64
+	mkdir -p build/darwin-386
+	mkdir -p build/windows-amd64
+	mkdir -p build/windows-386
+
+	GOOS=linux GOARCH=amd64 go build ${LDFLAGS} -o build/linux-amd64/probablyfine_${VERSION} $(package)
+	GOOS=linux GOARCH=386 go build ${LDFLAGS} -o build/linux-386/probablyfine_${VERSION} $(package)
+	GOOS=darwin GOARCH=amd64 go build ${LDFLAGS} -o build/darwin-amd64/probablyfine_${VERSION} $(package)
+	GOOS=darwin GOARCH=386 go build ${LDFLAGS} -o build/darwin-386/probablyfine_${VERSION} $(package)
+	GOOS=windows GOARCH=amd64 go build ${LDFLAGS} -o build/windows-amd64/probablyfine_${VERSION}.exe $(package)
+	GOOS=windows GOARCH=386 go build ${LDFLAGS} -o build/windows-386/probablyfine_${VERSION}.exe $(package)
+
+	zip -r build/linux-amd64/probablyfine_${VERSION}.zip release/linux-amd64_probablyfine_${VERSION}
+	zip -r build/linux-amd64/probablyfine_${VERSION}.zip release/linux-386_probablyfine_${VERSION}
+	zip -r build/linux-amd64/probablyfine_${VERSION}.zip release/darwin-amd64_probablyfine_${VERSION}
+	zip -r build/linux-amd64/probablyfine_${VERSION}.zip release/darwin-386_probablyfine_${VERSION}
+	zip -r build/linux-amd64/probablyfine_${VERSION}.zip release/windows-amd64_probablyfine_${VERSION}
+	zip -r build/linux-amd64/probablyfine_${VERSION}.zip release/windows-386_probablyfine_${VERSION}
+
 	ls release
 
 test:

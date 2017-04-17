@@ -32,3 +32,4 @@ vendor/
 # released binaries
 dist/
 release/
+build/
