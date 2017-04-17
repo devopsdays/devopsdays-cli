@@ -14,12 +14,37 @@ import (
 // 	}
 // }
 
+func TestEventFields(t *testing.T) {
+	t.Log("Testing event field list (expected result: 'EventTwitter')")
+	s := eventFields()
+	if s[0] != "EventTwitter" {
+		t.Errorf("Expect result of 'EventTwitter', but it was %s instead", s[0])
+	}
+}
+
+func TestOrganizerFields(t *testing.T) {
+	t.Log("Testing event field list (expected result: 'Name')")
+	s := organizerFields()
+	if s[0] != "Name" {
+		t.Errorf("Expect result of 'Name', but it was %s instead", s[0])
+	}
+}
+
 func TestFieldMap(t *testing.T) {
 	t.Log("Testing field mappings (expected result: 'myMap[EventTwitter]' = 'Twitter')")
 	myMap := fieldMap()
 
 	if myMap["EventTwitter"] != "Twitter" {
 		t.Errorf("Expected result of 'myMap[EventTwitter]' = 'Twitter' but it was %s instead.", myMap["EventTwitter"])
+	}
+}
+
+func TestOrganizerFieldMap(t *testing.T) {
+	t.Log("Testing field mappings (expected result: 'myMap[Name]' = 'Organizer Name')")
+	myMap := organizerFieldMap()
+
+	if myMap["Name"] != "Organizer Name" {
+		t.Errorf("Expected result of 'myMap[Name]' = 'Organizer Name' but it was %s instead.", myMap["EventTwitter"])
 	}
 }
 

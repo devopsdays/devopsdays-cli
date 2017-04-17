@@ -13,7 +13,8 @@ Probably Fine is used to ....
 
 ## Installation
 
-Download from here. Then do some stuff
+1. Download the latest release appropriate file for your OS/platform from [here](https://github.com/mattstratton/probablyfine/releases).
+2. Rename the file to `probablyfine` and put it somewhere in your path. Make sure it has execute permissions.
 
 ## Usage
 

@@ -24,6 +24,7 @@ import (
 	"strconv"
 	"strings"
 
+	"github.com/davecgh/go-spew/spew"
 	"github.com/spf13/cobra"
 	"gopkg.in/yaml.v2"
 )
@@ -52,7 +53,7 @@ to quickly create a Cobra application.`,
 		}
 		myEvent := eventStruct(city, year)
 		editEvent(myEvent)
-		// spew.Dump(myEvent)
+
 	},
 }
 
@@ -140,6 +141,21 @@ func fieldMap() (fieldMap map[string]string) {
 	return tempMap
 }
 
+func organizerFieldMap() (fieldMap map[string]string) {
+	tempMap := make(map[string]string)
+	tempMap["Name"] = "Organizer Name"
+	tempMap["Twitter"] = "Twitter name (without @ symbol)"
+	tempMap["Employer"] = "Optional Employer Name"
+	tempMap["Github"] = "GitHub Username"
+	tempMap["Facebook"] = "Facebook URL"
+	tempMap["Linkedin"] = "Linkedin URL"
+	tempMap["Website"] = "URL to personal website"
+	tempMap["Image"] = "image name"
+	tempMap["Bio"] = "Bio - markdown allowed"
+
+	return tempMap
+}
+
 func eventFields() []string {
 	fields := make([]string, 14)
 	fields[0] = "EventTwitter"
@@ -156,6 +172,21 @@ func eventFields() []string {
 	fields[11] = "Coordinates"
 	fields[12] = "Location"
 	fields[13] = "LocationAddress"
+
+	return fields
+}
+
+func organizerFields() []string {
+	fields := make([]string, 9)
+	fields[0] = "Name"
+	fields[1] = "Twitter"
+	fields[2] = "Employer"
+	fields[3] = "Github"
+	fields[4] = "Facebook"
+	fields[5] = "Linkedin"
+	fields[6] = "Website"
+	fields[7] = "Image"
+	fields[8] = "Bio"
 
 	return fields
 }
@@ -181,9 +212,38 @@ func editEvent(event Event) (err error) {
 			editField(event, myField, c)
 		}
 	case "2":
-		fmt.Println("Adding organizers is not yet supported.")
+		fmt.Println("The list of organizers is:")
+		for _, value := range event.TeamMembers {
+			s := reflect.ValueOf(&value).Elem()
+			typeOfT := s.Type()
+			for i := 0; i < s.NumField(); i++ {
+				f := s.Field(i)
+				if typeOfT.Field(i).Name == "Name" {
+					fmt.Print(f.Interface(), "\n")
+				}
+			}
+		}
+		fmt.Println("Who would you like to see more about?")
+		c, _ := reader.ReadString('\n')
+		c = strings.TrimSpace(c)
+		for _, value := range event.TeamMembers {
+			s := reflect.ValueOf(&value).Elem()
+			r := reflect.Indirect(s).FieldByName("Name")
+			r2 := r.String()
+			if r2 == c {
+				typeOfT := s.Type()
+				for i := 0; i < s.NumField(); i++ {
+					f := s.Field(i)
+					fmt.Print(typeOfT.Field(i).Name, ": ")
+					fmt.Print(f.Interface(), "\n")
+				}
+			}
+		}
+
 	case "3":
 		fmt.Println("Adding sponsors is not yet supported.")
+		spew.Dump(event)
+
 	default:
 		fmt.Println("This is the default.")
 	}
