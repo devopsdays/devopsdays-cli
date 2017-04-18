@@ -29,6 +29,9 @@ import (
 	"gopkg.in/yaml.v2"
 )
 
+var city string
+var year string
+
 // editEventCmd represents the editEvent command
 var editEventCmd = &cobra.Command{
 	Use:   "edit",
@@ -41,18 +44,27 @@ This application is a tool to generate the needed files
 to quickly create a Cobra application.`,
 	Run: func(cmd *cobra.Command, args []string) {
 		// TODO: Work your own magic here
-		fmt.Println("editEvent called")
 		// TODO: Check for args first
-		reader := bufio.NewReader(os.Stdin)
-		fmt.Println("Enter the city:")
-		city, _ := reader.ReadString('\n')
-		fmt.Println("Enter the year:")
-		year, _ := reader.ReadString('\n')
-		if checkEvent(city, year) == false {
-			log.Fatal("That city does not exist.")
+		city := cityFlag
+		year := yearFlag
+		if city != "" {
+			if checkEvent(city, year) == false {
+				log.Fatal("That city does not exist.")
+			}
+			myEvent := eventStruct(city, year)
+			editEvent(myEvent)
+		} else {
+			reader := bufio.NewReader(os.Stdin)
+			fmt.Println("Enter the city:")
+			city, _ := reader.ReadString('\n')
+			fmt.Println("Enter the year:")
+			year, _ := reader.ReadString('\n')
+			if checkEvent(city, year) == false {
+				log.Fatal("That city does not exist.")
+			}
+			myEvent := eventStruct(city, year)
+			editEvent(myEvent)
 		}
-		myEvent := eventStruct(city, year)
-		editEvent(myEvent)
 
 	},
 }
@@ -119,6 +131,18 @@ type Event struct {
 		Label string `yaml:"label"`
 		Max   int    `yaml:"max,omitempty"`
 	} `yaml:"sponsor_levels"`
+}
+
+type Organizer struct {
+	Name     string
+	Twitter  string
+	Employer string
+	Github   string
+	Facebook string
+	Linkedin string
+	Website  string
+	Image    string
+	Bio      string
 }
 
 func fieldMap() (fieldMap map[string]string) {
@@ -213,36 +237,54 @@ func editEvent(event Event) (err error) {
 		}
 	case "2":
 		fmt.Println("The list of organizers is:")
-		for _, value := range event.TeamMembers {
+		m := make(map[int]string)
+		for o, value := range event.TeamMembers {
 			s := reflect.ValueOf(&value).Elem()
 			typeOfT := s.Type()
 			for i := 0; i < s.NumField(); i++ {
 				f := s.Field(i)
 				if typeOfT.Field(i).Name == "Name" {
-					fmt.Print(f.Interface(), "\n")
+					fmt.Print("[", (o + 1), "] ", f.Interface(), "\n")
+					n := f.String()
+					m[o+1] = n
 				}
 			}
 		}
 		fmt.Println("Who would you like to see more about?")
 		c, _ := reader.ReadString('\n')
 		c = strings.TrimSpace(c)
+		c2, _ := strconv.Atoi(c)
+		o := m[c2]
 		for _, value := range event.TeamMembers {
 			s := reflect.ValueOf(&value).Elem()
 			r := reflect.Indirect(s).FieldByName("Name")
 			r2 := r.String()
-			if r2 == c {
+			if r2 == o {
 				typeOfT := s.Type()
 				for i := 0; i < s.NumField(); i++ {
 					f := s.Field(i)
 					fmt.Print(typeOfT.Field(i).Name, ": ")
 					fmt.Print(f.Interface(), "\n")
+					updateOrganizer(event, o, "Twitter", "Dude")
 				}
 			}
 		}
 
 	case "3":
-		fmt.Println("Adding sponsors is not yet supported.")
-		spew.Dump(event)
+		// fmt.Println("Adding sponsors is not yet supported.")
+		fmt.Print(event.NavElements)
+		fmt.Print("The length is", len(event.NavElements))
+		myOrg := organizerStruct("matt", "mattstratton", "", "mattstratton", "fb", "li", "website", "img", "stuff and junk")
+		fmt.Print(myOrg)
+		spew.Dump(myOrg)
+		spew.Dump(event.TeamMembers)
+		for _, value := range event.TeamMembers {
+			s := reflect.ValueOf(&value).Elem()
+			fmt.Println("-------------")
+			fmt.Println(value)
+			fmt.Println("-------------")
+			fmt.Println(s.Field(0))
+		}
 
 	default:
 		fmt.Println("This is the default.")
@@ -266,6 +308,13 @@ func eventStruct(city, year string) (event Event) {
 		panic(err)
 	}
 	return event
+}
+
+func organizerStruct(name, twitter, employer, github, facebook, linkedin, website, image, bio string) (organizer Organizer) {
+	o := Organizer{name, twitter, employer, github, facebook, linkedin, website, image, bio}
+
+	return o
+
 }
 
 // TODO: This should actually return the key to change; rather than just create the menu
@@ -303,4 +352,30 @@ func editField(event Event, field, value string) {
 	y, _ := yaml.Marshal(&event)
 	ioutil.WriteFile((eventDataPath(webdir, event.City, event.Year)), y, 0755)
 	return
+}
+
+func updateOrganizer(event Event, name, field, value string) {
+	for _, loopvalue := range event.TeamMembers {
+		s := reflect.ValueOf(&loopvalue).Elem()
+		r := reflect.Indirect(s).FieldByName(field)
+		if (s.Field(0)).String() == name {
+			r.SetString(value)
+			fmt.Println(r)
+			y, _ := yaml.Marshal(&event)
+			ioutil.WriteFile((eventDataPath(webdir, event.City, event.Year)), y, 0755)
+		}
+	}
+}
+
+func editOrganizer(event Event, organizer, field, value string) {
+	for _, value := range event.TeamMembers {
+		s := reflect.ValueOf(&value).Elem()
+		fmt.Print(s)
+		typeOfT := s.Type()
+		for i := 0; i < s.NumField(); i++ {
+			f := s.Field(i)
+			fmt.Print("key: ", typeOfT.Field(i).Name, "\n")
+			fmt.Print("value: ", f.Interface(), "\n")
+		}
+	}
 }
