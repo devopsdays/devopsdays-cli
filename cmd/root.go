@@ -8,7 +8,7 @@
 // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 // Package cmd defines and implements command-line commands and flags
-// used by probablyfine. Commands and flags are implemented using Cobra.
+// used by devopsdays. Commands and flags are implemented using Cobra.
 package cmd
 
 import (
@@ -31,12 +31,12 @@ var yearFlag string
 
 // RootCmd represents the base command when called without any subcommands
 var RootCmd = &cobra.Command{
-	Use:   "probablyfine",
+	Use:   "devopsdays",
 	Short: "Run maintenance tasks for the devopsdays.org website",
 	Long: `Command-line utilities for the devopsdays.org website
 built with love by mattstratton in Go.
 
-Complete documentation is available at https://github.com/mattstratton/probablyfine`,
+Complete documentation is available at https://github.com/mattstratton/devopsdays`,
 	// Uncomment the following line if your bare application
 	// has an action associated with it:
 	//	Run: func(cmd *cobra.Command, args []string) { },
@@ -60,7 +60,7 @@ func init() {
 	// Cobra supports Persistent Flags, which, if defined here,
 	// will be global for your application.
 
-	// RootCmd.PersistentFlags().StringVar(&cfgFile, "config", "", "config file (default is $HOME/.probablyfine.yaml)")
+	// RootCmd.PersistentFlags().StringVar(&cfgFile, "config", "", "config file (default is $HOME/.devopsdays.yaml)")
 	// Cobra also supports local flags, which will only run
 	// when this action is called directly.
 	// RootCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
@@ -72,9 +72,9 @@ func initConfig() {
 		viper.SetConfigFile(cfgFile)
 	}
 
-	viper.SetConfigName(".probablyfine") // name of config file (without extension)
-	viper.AddConfigPath("$HOME")         // adding home directory as first search path
-	viper.AutomaticEnv()                 // read in environment variables that match
+	viper.SetConfigName(".devopsdays") // name of config file (without extension)
+	viper.AddConfigPath("$HOME")       // adding home directory as first search path
+	viper.AutomaticEnv()               // read in environment variables that match
 
 	// If a config file is found, read it in.
 	if err := viper.ReadInConfig(); err == nil {

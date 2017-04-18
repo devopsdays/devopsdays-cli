@@ -10,7 +10,7 @@
 package main
 
 import (
-	"github.com/mattstratton/probablyfine/cmd"
+	"github.com/mattstratton/devopsdays/cmd"
 )
 
 var (

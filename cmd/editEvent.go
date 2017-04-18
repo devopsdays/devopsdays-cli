@@ -1,4 +1,4 @@
-// Copyright © 2017 NAME HERE <EMAIL ADDRESS>
+// Copyright © 2017 Matt Stratton <matt.stratton@gmail.com>
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -361,6 +361,7 @@ func updateOrganizer(event Event, name, field, value string) {
 		if (s.Field(0)).String() == name {
 			r.SetString(value)
 			fmt.Println(r)
+			spew.Dump(event.TeamMembers)
 			y, _ := yaml.Marshal(&event)
 			ioutil.WriteFile((eventDataPath(webdir, event.City, event.Year)), y, 0755)
 		}
