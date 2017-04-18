@@ -9,8 +9,8 @@ before_install:
 install:
   - make install
 
-script:
-  - make travis
+# script:
+#   - make travis
 
 before_deploy:
   - make release
