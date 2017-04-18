@@ -28,13 +28,14 @@ artifacts:
     name: binary
 
 deploy:
-  release: probablyfine-$(appveyor_build_version)
+  release: $(APPVEYOR_REPO_TAG_NAME)
   description: 'This is a release of my awesome application.'
   provider: GitHub
   auth_token:
     secure: iNVocPf2TIAUFwOG5txOr4blIMmAOI+iI/yJulYPoYJOxucpdpEmPX/uuBz7rDPu
   artifact: binary # This is the name we specified in the artifacts section.
   draft: false
-  prerelease: false
+  prerelease: true
   on:
     branch: master
+    appveyor_repo_tag: true
