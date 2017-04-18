@@ -26,6 +26,8 @@ var webdir string = setWebdir()
 // const webdir = "/Users/mattstratton/src/devopsdays-web"
 
 var cfgFile string
+var cityFlag string
+var yearFlag string
 
 // RootCmd represents the base command when called without any subcommands
 var RootCmd = &cobra.Command{
@@ -51,6 +53,8 @@ func Execute() {
 
 func init() {
 	cobra.OnInitialize(initConfig)
+	RootCmd.PersistentFlags().StringVarP(&cityFlag, "city", "c", "", "city name")
+	RootCmd.PersistentFlags().StringVarP(&yearFlag, "year", "y", "", "year")
 
 	// Here you will define your flags and configuration settings.
 	// Cobra supports Persistent Flags, which, if defined here,
