@@ -1,8 +1,10 @@
 package = github.com/devopsdays/devopsdays-cli
 
 BINARY=devopsdays-cli
-VERSION=`git describe --tags`
-BUILD=`date +%FT%T%z`
+TMP:=$(shell mktemp -d /tmp/.XXXXX)
+
+VERSION:=$(shell git describe --tags)
+BUILD:=$(shell date +%FT%T%z)
 
 LDFLAGS=-ldflags "-w -s -X github.com/devopsdays/devopsdays-cli/cmd.Version=${VERSION} -X github.com/devopsdays/devopsdays-cli/cmd.Build=${BUILD}"
 

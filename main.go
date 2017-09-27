@@ -10,9 +10,6 @@
 package main
 
 import (
-	"fmt"
-
-	"github.com/c-bata/go-prompt"
 	"github.com/devopsdays/devopsdays-cli/cmd"
 )
 
@@ -21,21 +18,6 @@ var (
 	Build   string
 )
 
-// var (
-// 	version  string
-// 	revision string
-// )
-
 func main() {
-	fmt.Printf("devopsdays-cli %s (Build: %s)\n", Version, Build)
-	fmt.Println("Please use `exit` or `Ctrl-D` to exit this program..")
-	defer fmt.Println("Bye!")
-	p := prompt.New(
-		cmd.Executor,
-		cmd.Completer,
-		prompt.OptionTitle("devopsdays-cli: interactive tool for devopsdays website"),
-		prompt.OptionPrefix(">>> "),
-		prompt.OptionInputTextColor(prompt.Yellow),
-	)
-	p.Run()
+	cmd.Execute()
 }
