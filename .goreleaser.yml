@@ -9,11 +9,12 @@ builds:
 - goos:
   - linux
   - darwin
+  - windows
   goarch:
   - amd64
   - 386
   main: .
-  ldflags: -s -w -X main.version={{.Version}} -X main.commit={{.Commit}} -X main.date={{.Date}} -X github.com/devopsdays/devopsdays-cli/cmd.Version={{.Version}} -X github.com/devopsdays/devopsdays-cli/cmd.Build={{.Date}}
+  ldflags: -s -w -X main.version={{.Version}} -X main.commit={{.Commit}} -X main.date={{.Date}} -X cmd.Version={{.Version}} -X cmd.Build={{.Date}}
   binary: devopsdays-cli
 archive:
   format: tar.gz
