@@ -1,7 +1,6 @@
 package = github.com/devopsdays/devopsdays-cli
 
 BINARY=devopsdays-cli
-TMP:=$(shell mktemp -d /tmp/.XXXXX)
 
 VERSION:=$(shell git describe --tags)
 BUILD:=$(shell date +%FT%T%z)
