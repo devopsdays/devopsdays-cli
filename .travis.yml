@@ -14,16 +14,17 @@ install:
 # after_success:
 #   - test -n "$TRAVIS_TAG" && curl -sL https://git.io/goreleaser | bash
 
+
+before_deploy:
+  - go get -v github.com/inconshreveable/mousetrap
+  
 deploy:
   - provider: script
     skip_cleanup: true
-    script: make deploy
+    script: curl -sL http://git.io/goreleaser | bash
     on:
       tags: true
 
-# before_deploy:
-#   - make release
-#
 # deploy:
 #   provider: releases
 #   skip_cleanup: true
