@@ -21,8 +21,8 @@ deploy:
     on:
       tags: true
 
-# before_deploy:
-#   - make release
+before_deploy:
+  - make release
 #
 # deploy:
 #   provider: releases
