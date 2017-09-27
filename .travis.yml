@@ -14,24 +14,24 @@ install:
 # after_success:
 #   - test -n "$TRAVIS_TAG" && curl -sL https://git.io/goreleaser | bash
 
-deploy:
-  - provider: script
-    skip_cleanup: true
-    script: curl -sL http://git.io/goreleaser | bash
-    on:
-      tags: true
+# deploy:
+#   - provider: script
+#     skip_cleanup: true
+#     script: curl -sL http://git.io/goreleaser | bash
+#     on:
+#       tags: true
 
 before_deploy:
   - make release
-#
-# deploy:
-#   provider: releases
-#   skip_cleanup: true
-#   api_key:
-#     secure: 0nGJEi8rLiOSZMkYjlsS1t167irkCmcTvaW5287m2LofrViv+Mjsh5sSvKf+ngVV0HVTI9Wfo/hhmdpxYFmyLt/ucSIPZ3wIKF5xNvVGUpG150MT7KxHVknF0U3ZuMQDedL2iIpznycLh5vGo2dVIr78H5cXmmBnmUSrrllntgVYz8MJPOqteRJLOz/Xl1C97uBMcUckmvuzx7dsPadc1ykbEKkGrEA/H1vkZp4C8c9n87BgqxnQEN2nRecKYlr2qLU1SZPQUL9nfRieyoKaNQA9cInMLpJzxHyIfQatcnHBXN8zFdLhmK92V2nEj3l1CUiIdjSHuitBb0HLhtVbaYr1DAnvHFVx0eMaM/TlLpwkgBHopxscvO7Iu0ZeMRKSzeuCq9C8fctoEUyrADJSwOx5cSGF5WGSAZdWFWIUA8kA2r614D2QfS+g+g0WvuoGjag6C+XCEot+DqLJm8vnnxXeEL7M5RDepB4op91F2eDgoPv2iy2XP3Kr3/xqUyYlCSRzdVi3fdaiLM1ob9n4H6uEfxULilparQ/y+xJv7FSLj71uSB/gSwgoUWh27ADytCFpELLaxXj3p/CblZUFkaoMjIw4aMJCrAKWLsRsHQyLo40/S6aGSppqOselGS/UaTNk7C1WpVPsyOFbQN9Ga1NiSMBJA27fPr1mIYccDGk=
-#   file_glob: true
-#   file:
-#     - release/*
-#   on:
-#     repo: devopsdays/devopsdays-cli
-#     tags: true
+
+deploy:
+  provider: releases
+  skip_cleanup: true
+  api_key:
+    secure: 0nGJEi8rLiOSZMkYjlsS1t167irkCmcTvaW5287m2LofrViv+Mjsh5sSvKf+ngVV0HVTI9Wfo/hhmdpxYFmyLt/ucSIPZ3wIKF5xNvVGUpG150MT7KxHVknF0U3ZuMQDedL2iIpznycLh5vGo2dVIr78H5cXmmBnmUSrrllntgVYz8MJPOqteRJLOz/Xl1C97uBMcUckmvuzx7dsPadc1ykbEKkGrEA/H1vkZp4C8c9n87BgqxnQEN2nRecKYlr2qLU1SZPQUL9nfRieyoKaNQA9cInMLpJzxHyIfQatcnHBXN8zFdLhmK92V2nEj3l1CUiIdjSHuitBb0HLhtVbaYr1DAnvHFVx0eMaM/TlLpwkgBHopxscvO7Iu0ZeMRKSzeuCq9C8fctoEUyrADJSwOx5cSGF5WGSAZdWFWIUA8kA2r614D2QfS+g+g0WvuoGjag6C+XCEot+DqLJm8vnnxXeEL7M5RDepB4op91F2eDgoPv2iy2XP3Kr3/xqUyYlCSRzdVi3fdaiLM1ob9n4H6uEfxULilparQ/y+xJv7FSLj71uSB/gSwgoUWh27ADytCFpELLaxXj3p/CblZUFkaoMjIw4aMJCrAKWLsRsHQyLo40/S6aGSppqOselGS/UaTNk7C1WpVPsyOFbQN9Ga1NiSMBJA27fPr1mIYccDGk=
+  file_glob: true
+  file:
+    - release/*
+  on:
+    repo: devopsdays/devopsdays-cli
+    tags: true
