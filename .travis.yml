@@ -11,8 +11,15 @@ install:
 
 # script:
 #   - make travis
-after_success:
-  - test -n "$TRAVIS_TAG" && curl -sL https://git.io/goreleaser | bash
+# after_success:
+#   - test -n "$TRAVIS_TAG" && curl -sL https://git.io/goreleaser | bash
+
+deploy:
+  - provider: script
+    skip_cleanup: true
+    script: curl -sL http://git.io/goreleaser | bash
+    on:
+      tags: true
 
 # before_deploy:
 #   - make release
