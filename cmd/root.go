@@ -31,12 +31,12 @@ var yearFlag string
 
 // RootCmd represents the base command when called without any subcommands
 var RootCmd = &cobra.Command{
-	Use:   "devopsdays",
+	Use:   "devopsdays-cli",
 	Short: "Run maintenance tasks for the devopsdays.org website",
 	Long: `Command-line utilities for the devopsdays.org website
 built with love by mattstratton in Go.
 
-Complete documentation is available at https://github.com/devopsdays/devopsdays`,
+Complete documentation is available at https://github.com/devopsdays/devopsdays-cli`,
 	// Uncomment the following line if your bare application
 	// has an action associated with it:
 	//	Run: func(cmd *cobra.Command, args []string) { },
@@ -72,9 +72,9 @@ func initConfig() {
 		viper.SetConfigFile(cfgFile)
 	}
 
-	viper.SetConfigName(".devopsdays") // name of config file (without extension)
-	viper.AddConfigPath("$HOME")       // adding home directory as first search path
-	viper.AutomaticEnv()               // read in environment variables that match
+	viper.SetConfigName(".devopsdays-cli") // name of config file (without extension)
+	viper.AddConfigPath("$HOME")           // adding home directory as first search path
+	viper.AutomaticEnv()                   // read in environment variables that match
 
 	// If a config file is found, read it in.
 	if err := viper.ReadInConfig(); err == nil {

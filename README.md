@@ -7,13 +7,13 @@ Command-line utilities for the [devopsdays](https://www.devopsdays.org) website 
 
 ## Overview
 
-`devopsdays` is used to ....
+`devopsdays-cli` is used to ....
 
 ## Installation
 
 1. Download the latest release appropriate file for your OS/platform from [here](https://github.com/mattstratton/devopsdays/releases).
-2. Rename the file to `devopsdays` and put it somewhere in your path. Make sure it has execute permissions.
+2. Rename the file to `devopsdays-cli` and put it somewhere in your path. Make sure it has execute permissions.
 
 ## Usage
 
-Run `devopsdays` blah blah blah
+Run `devopsdays-cli` blah blah blah

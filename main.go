@@ -10,7 +10,7 @@
 package main
 
 import (
-	"github.com/mattstratton/devopsdays/cmd"
+	"github.com/devopsdays/devopsdays-cli/cmd"
 )
 
 var (

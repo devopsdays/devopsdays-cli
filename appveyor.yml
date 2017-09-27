@@ -7,7 +7,7 @@ branches:
     - master
 
 skip_tags: true # Just for now because of looping!
-clone_folder: c:\gopath\src\github.com\mattstratton\probablyfine
+clone_folder: c:\gopath\src\github.com\devopsdays\devopsdays-cli
 
 environment:
   GOPATH: c:\gopath
@@ -21,10 +21,10 @@ install:
 - go get -t -v ./...
 
 build_script:
-  - go build -o buildOutput\probablyfine -i .
+  - go build -o buildOutput\devopsdays-cli -i .
 
 artifacts:
-  - path: buildOutput/probablyfine
+  - path: buildOutput/devopsdays-cli
     name: binary
 
 deploy:
