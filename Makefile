@@ -45,5 +45,9 @@ release:
 test:
 	go test -v
 
+deploy:
+	go get -v github.com/inconshreveable/mousetrap
+	curl -sL http://git.io/goreleaser | bash
+
 travis:
 	$(HOME)/gopath/bin/goveralls -service=travis-ci
