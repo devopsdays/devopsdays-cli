@@ -13,11 +13,6 @@ import (
 	"github.com/devopsdays/devopsdays-cli/cmd"
 )
 
-var (
-	Version string
-	Build   string
-)
-
 func main() {
 	cmd.Execute()
 }

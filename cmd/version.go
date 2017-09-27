@@ -16,7 +16,7 @@ import (
 )
 
 var (
-	Version string
+	Version = "master"
 	Build   string
 )
 
