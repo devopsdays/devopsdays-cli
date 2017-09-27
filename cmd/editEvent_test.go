@@ -50,9 +50,9 @@ func TestOrganizerFieldMap(t *testing.T) {
 
 func TestEventStruct(t *testing.T) {
 	t.Log("Testing creation of a new Event struct")
-	myEvent := eventStruct("chicago", "2017")
+	myEvent := eventStruct("ponyville", "2017")
 
-	if myEvent.Name != "2017-chicago" {
-		t.Errorf("Expected result of '2017-chicago' but it was %s instead", myEvent.Name)
+	if myEvent.Name != "2017-ponyville" {
+		t.Errorf("Expected result of '2017-ponyville' but it was %s instead", myEvent.Name)
 	}
 }

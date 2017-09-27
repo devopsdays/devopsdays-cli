@@ -36,7 +36,7 @@ var RootCmd = &cobra.Command{
 	Long: `Command-line utilities for the devopsdays.org website
 built with love by mattstratton in Go.
 
-Complete documentation is available at https://github.com/mattstratton/devopsdays`,
+Complete documentation is available at https://github.com/devopsdays/devopsdays`,
 	// Uncomment the following line if your bare application
 	// has an action associated with it:
 	//	Run: func(cmd *cobra.Command, args []string) { },

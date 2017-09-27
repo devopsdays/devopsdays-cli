@@ -1,10 +1,10 @@
-package = github.com/mattstratton/devopdays
+package = github.com/devopsdays/devopsdays
 
 BINARY=devopsdays
 VERSION=`git describe --tags`
 BUILD=`date +%FT%T%z`
 
-LDFLAGS=-ldflags "-w -s -X github.com/mattstratton/devopsdays/cmd.Version=${VERSION} -X github.com/mattstratton/devopsdays/cmd.Build=${BUILD}"
+LDFLAGS=-ldflags "-w -s -X github.com/devopsdays/devopsdays/cmd.Version=${VERSION} -X github.com/mattstratton/devopsdays/cmd.Build=${BUILD}"
 
 build:
 	go build ${LDFLAGS} -o release/${BINARY} $(package)
