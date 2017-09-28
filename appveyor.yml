@@ -87,8 +87,8 @@ deploy:
 deploy_script:
 
   - set GOARCH=386
-  - github-release info -s "%GH_TOKEN" -u devopsdays -r devopsdays-cli -t "0.7.36"
-  # - github-release upload -s %GH_TOKEN -u devopsdays -r devopsdays-cli -t 0.7.36 -f %APPVEYOR_PROJECT_NAME%-%GOARCH%-%VERSION%.msi -n %APPVEYOR_PROJECT_NAME%-%GOARCH%-%VERSION%.msi
+  # - github-release info -s "%GH_TOKEN" -u devopsdays -r devopsdays-cli -t "0.7.36"
+  - github-release upload -s "%GH_TOKEN" -u "devopsdays" -r "devopsdays-cli" -t "0.7.36" -f "%APPVEYOR_PROJECT_NAME%-%GOARCH%-%VERSION%.msi" -n "%APPVEYOR_PROJECT_NAME%-%GOARCH%-%VERSION%.msi"
   # setup both "choco" and "msi" repositories on bintray
   # - never-fail jfrog bt pc --user mattstratton --key %BT_KEY% --licenses=MIT --vcs-url=https://github.com/%APPVEYOR_REPO_NAME%/ devopsdays/msi/%APPVEYOR_PROJECT_NAME%
   # - never-fail jfrog bt pc --user mattstratton --key %BT_KEY% --licenses=MIT --vcs-url=https://github.com/%APPVEYOR_REPO_NAME%/ devopsdays/choco/%APPVEYOR_PROJECT_NAME%
