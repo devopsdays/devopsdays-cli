@@ -72,8 +72,9 @@ artifacts:
 # setup the github release page upload
 deploy:
     provider: GitHub
-    release: $(VERSION)
-    description: ''
+    release: devopsdays-cli-v$(VERSION)
+    tag: $(appveyor_repo_tag_name)
+    description: Automated release of v$(VERSION)
     artifact: msi-x86 #, msi-x64
     force_update: true
     draft: false
