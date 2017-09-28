@@ -1,0 +1,27 @@
+{
+  "product": "devopsdays-cli",
+  "company": "Matt Stratton",
+  "license": "MIT",
+  "upgrade-code": "f0eeebc3-5007-4812-8ee2-f055b4d0974d",
+  "files": {
+    "guid": "6e399f65-99a9-4e2a-bb71-f559e5bf29ba",
+    "items": [
+      "devopsdays-cli.exe"
+    ]
+  },
+  "env": {
+    "guid": "cd9222e1-87c7-401d-a33d-db72346a2949",
+    "vars": [
+      {
+        "name": "PATH",
+        "value": "[INSTALLDIR]",
+        "permanent": "no",
+        "system": "no",
+        "action": "set",
+        "part": "last"
+      }
+    ]
+  },
+  "shortcuts": {},
+  "choco": {}
+}
