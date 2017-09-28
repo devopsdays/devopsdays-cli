@@ -13,7 +13,7 @@ PREVERSION=
   # go run main.go # alike tests when you don t have tests
   # finalize the changelog
   # changelog finalize --version !newversion!
-  # git commit change.log -m "changelog: !newversion!"
+  git commit CHANGELOG.md -m "changelog: !newversion!"
   # update the README
   # emd gen -in README.e.md > README.md
   # git commit README.md -m "README: !newversion!"
