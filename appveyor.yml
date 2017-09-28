@@ -42,8 +42,6 @@ test_script:
   # - go test ./...
   - go run main.go
 
-  - ls
-
 # build msi artifacts
 build_script:
   # build the program for x386 arch
@@ -58,13 +56,14 @@ build_script:
   - set GOARCH=amd64
   - go build -o %APPVEYOR_PROJECT_NAME%.exe --ldflags "-X cmd.Version=%VERSION%" main.go
   # generate the amd64 MSI package
-  - go-msi make --msi %APPVEYOR_PROJECT_NAME%-%GOARCH%-%VERSION%.msi --version %VERSION% --arch %GOARCH%
+  - go-msi make --msi ./build/%APPVEYOR_PROJECT_NAME%-%GOARCH%-%VERSION%.msi --version %VERSION% --arch %GOARCH%
+  - dir ./build/
 
 # configure the artifacts to upload to the github releae page
 artifacts:
   - path: 'devopsdays-cli-386-*.msi'
     name: msi-x86
-  - path: devopsdays-cli-amd64-*.msi
+  - path: build/devopsdays-cli-amd64-*.msi
     name: msi-x64
 
 # setup the github release page upload
