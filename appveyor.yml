@@ -86,7 +86,7 @@ deploy:
       appveyor_repo_tag: true
 
 # deploy the nuget/msi packages to bintray
-deploy_script:
+after_build:
 
   - set GOARCH=386
   # - github-release info -s "%GH_TOKEN" -u devopsdays -r devopsdays-cli -t "0.7.36"
