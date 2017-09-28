@@ -45,6 +45,7 @@ test_script:
 # build msi artifacts
 build_script:
   # build the program for x386 arch
+  - go get ./...
   - set GOARCH=386
   - go build -o %APPVEYOR_PROJECT_NAME%.exe --ldflags "-X cmd.Version=%VERSION%" main.go
   # generate the x386 MSI package
