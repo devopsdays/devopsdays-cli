@@ -38,6 +38,7 @@ install:
   - set PATH=%GOPATH%\bin;%PATH%
   - go get -u github.com/mh-cbon/never-fail
   - go get -u github.com/Masterminds/glide
+  - go get -u github.com/aktau/github-release
 
 # test_script:
 #   # - go test ./...
@@ -84,6 +85,9 @@ deploy:
 
 # deploy the nuget/msi packages to bintray
 deploy_script:
+  
+  - set GOARCH=386
+  - github-release upload -s %GH_TOKEN -u devopsdays -r devopsdays-cli -t %APPVEYOR_REPO_TAG_NAME% -f %APPVEYOR_PROJECT_NAME%-%GOARCH%-%VERSION%.msi
   # setup both "choco" and "msi" repositories on bintray
   # - never-fail jfrog bt pc --user mattstratton --key %BT_KEY% --licenses=MIT --vcs-url=https://github.com/%APPVEYOR_REPO_NAME%/ devopsdays/msi/%APPVEYOR_PROJECT_NAME%
   # - never-fail jfrog bt pc --user mattstratton --key %BT_KEY% --licenses=MIT --vcs-url=https://github.com/%APPVEYOR_REPO_NAME%/ devopsdays/choco/%APPVEYOR_PROJECT_NAME%
