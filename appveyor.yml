@@ -7,20 +7,19 @@ skip_non_tags: true
 environment:
   # improve readability
   VCS_URL: https://github.com/%APPVEYOR_REPO_NAME%
-  GH_APP: %APPVEYOR_PROJECT_NAME%
-  GH_USER: %APPVEYOR_ACCOUNT_NAME%
-  VERSION: %APPVEYOR_REPO_TAG_NAME%
+  GH_USER: "%APPVEYOR_ACCOUNT_NAME%"
+  VERSION: "%APPVEYOR_REPO_TAG_NAME%"
   # specific to go
   GOPATH: c:\gopath
   # specific to bintray
   JFROG_CLI_OFFER_CONFIG: false
   #  define secure tokens
   CHOCOKEY:
-    secure: %CHOCOKEY%
+    secure: "%CHOCOKEY%"
   BT_KEY:
-    secure: %BINTRAYKEY%
+    secure: "%BINTRAYKEY%"
   GH_TOKEN:
-    secure: %GH_TOKEN%
+    secure: "%GH_TOKEN%"
 
 # prepare system and project
 install:
@@ -48,16 +47,16 @@ test_script:
 build_script:
   # build the program for x386 arch
   - set GOARCH=386
-  - go build -o %GH_APP%.exe --ldflags "-X cmd.Version=%VERSION%" main.go
+  - go build -o %APPVEYOR_PROJECT_NAME%.exe --ldflags "-X cmd.Version=%VERSION%" main.go
   # generate the x386 MSI package
-  - go-msi make --msi %GH_APP%-%GOARCH%-%VERSION%.msi --version %VERSION% --arch %GOARCH%
+  - go-msi make --msi %APPVEYOR_PROJECT_NAME%-%GOARCH%-%VERSION%.msi --version %VERSION% --arch %GOARCH%
   # build a cross platform x386 nuget package.
-  - go-msi choco --path wix.json --version %VERSION% --input %GH_APP%-%GOARCH%-%VERSION%.msi --changelog-cmd "changelog ghrelease --version %VERSION%"
+  - go-msi choco --path wix.json --version %VERSION% --input %APPVEYOR_PROJECT_NAME%-%GOARCH%-%VERSION%.msi --changelog-cmd "changelog ghrelease --version %VERSION%"
   # build the program for amd64 arch
   - set GOARCH=amd64
-  - go build -o %GH_APP%.exe --ldflags "-X cmd.Version=%VERSION%" main.go
+  - go build -o %APPVEYOR_PROJECT_NAME%.exe --ldflags "-X cmd.Version=%VERSION%" main.go
   # generate the amd64 MSI package
-  - go-msi make --msi %GH_APP%-%GOARCH%-%VERSION%.msi --version %VERSION% --arch %GOARCH%
+  - go-msi make --msi %APPVEYOR_PROJECT_NAME%-%GOARCH%-%VERSION%.msi --version %VERSION% --arch %GOARCH%
 
 # configure the artifacts to upload to the github releae page
 artifacts:
@@ -74,21 +73,20 @@ deploy:
     draft: false
     prerelease: false
     description: "Release %APPVEYOR_REPO_TAG_NAME%"
-    auth_token:
-      secure: %GH_TOKEN%
+    auth_token: "%GH_TOKEN%"
     on:
       appveyor_repo_tag: true
 
 # deploy the nuget/msi packages to bintray
 deploy_script:
   # setup both "choco" and "msi" repositories on bintray
-  - never-fail jfrog bt pc --user %GH_USER% --key %BT_KEY% --licenses=MIT --vcs-url=https://github.com/%APPVEYOR_REPO_NAME% %GH_USER%/msi/%GH_APP%
-  - never-fail jfrog bt pc --user %GH_USER% --key %BT_KEY% --licenses=MIT --vcs-url=https://github.com/%APPVEYOR_REPO_NAME% %GH_USER%/choco/%GH_APP%
+  - never-fail jfrog bt pc --user %GH_USER% --key %BT_KEY% --licenses=MIT --vcs-url=https://github.com/%APPVEYOR_REPO_NAME% %GH_USER%/msi/%APPVEYOR_PROJECT_NAME%
+  - never-fail jfrog bt pc --user %GH_USER% --key %BT_KEY% --licenses=MIT --vcs-url=https://github.com/%APPVEYOR_REPO_NAME% %GH_USER%/choco/%APPVEYOR_PROJECT_NAME%
   # upload the nupkg
-  - jfrog bt upload --user %GH_USER% --key %BT_KEY%  --override=true --publish=true %GH_APP%.%VERSION%.nupkg %GH_USER%/choco/%GH_APP%/%VERSION%
+  - jfrog bt upload --user %GH_USER% --key %BT_KEY%  --override=true --publish=true %APPVEYOR_PROJECT_NAME%.%VERSION%.nupkg %GH_USER%/choco/%APPVEYOR_PROJECT_NAME%/%VERSION%
   # upload the x386 msi artifact
   - set GOARCH=386
-  - jfrog bt upload --user %GH_USER% --key %BT_KEY%  --override=true --publish=true %GH_APP%-%GOARCH%-%VERSION%.msi %GH_USER%/msi/%GH_APP%/%VERSION%
+  - jfrog bt upload --user %GH_USER% --key %BT_KEY%  --override=true --publish=true %APPVEYOR_PROJECT_NAME%-%GOARCH%-%VERSION%.msi %GH_USER%/msi/%APPVEYOR_PROJECT_NAME%/%VERSION%
   # upload the amd64 msi artifact
   - set GOARCH=amd64
-  - jfrog bt upload --user %GH_USER% --key %BT_KEY%  --override=true --publish=true %GH_APP%-%GOARCH%-%VERSION%.msi %GH_USER%/msi/%GH_APP%/%VERSION%
+  - jfrog bt upload --user %GH_USER% --key %BT_KEY%  --override=true --publish=true %APPVEYOR_PROJECT_NAME%-%GOARCH%-%VERSION%.msi %GH_USER%/msi/%APPVEYOR_PROJECT_NAME%/%VERSION%
