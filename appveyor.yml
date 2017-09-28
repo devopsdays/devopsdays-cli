@@ -61,9 +61,9 @@ build_script:
 
 # configure the artifacts to upload to the github releae page
 artifacts:
-  - path: '*devopsdays-cli-386-*.msi'
+  - path: 'devopsdays-cli-386-0.7.18.msi'
     name: msi-x86
-  - path: '*devopsdays-cli-amd64-*.msi'
+  - path: 'devopsdays-cli-amd64-0.7.18.msi'
     name: msi-x64
 
 # setup the github release page upload
