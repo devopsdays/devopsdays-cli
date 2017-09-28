@@ -51,7 +51,7 @@ build_script:
   # generate the x386 MSI package
   - go-msi make --msi %APPVEYOR_PROJECT_NAME%-%GOARCH%-%VERSION%.msi --version %VERSION% --arch %GOARCH%
   # build a cross platform x386 nuget package.
-  - go-msi choco --path wix.json --version %VERSION% --input %APPVEYOR_PROJECT_NAME%-%GOARCH%-%VERSION%.msi --changelog-cmd "changelog ghrelease --version %VERSION%"
+  - go-msi choco --path wix.json --version %VERSION% --input %APPVEYOR_PROJECT_NAME%-%GOARCH%-%VERSION%.msi --version %VERSION%"
   # build the program for amd64 arch
   - set GOARCH=amd64
   - go build -o %APPVEYOR_PROJECT_NAME%.exe --ldflags "-X cmd.Version=%VERSION%" main.go

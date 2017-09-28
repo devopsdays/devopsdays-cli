@@ -26,4 +26,4 @@ POSTVERSION=
   git push
   git push --tags
   # create a github release
-  github-release release -u devopsdays -r devopsdays-cli --tag !newversion! --draft
+  # github-release release -u devopsdays -r devopsdays-cli --tag !newversion! --draft
