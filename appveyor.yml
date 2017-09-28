@@ -62,12 +62,13 @@ build_script:
 
 # configure the artifacts to upload to the github releae page
 artifacts:
-  - path: '**\*.msi'
+  - path: Makefile
+    name: stupid
 
 # setup the github release page upload
 deploy:
   - provider: GitHub
-    artifact: /.*\.msi/
+    artifact: stupid
     force_update: false
     draft: false
     prerelease: false
