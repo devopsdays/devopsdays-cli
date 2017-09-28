@@ -1,5 +1,5 @@
 image: Visual Studio 2017
-clone_folder: c:\gopath\src\github.com\%APPVEYOR_REPO_NAME%
+# clone_folder: c:\gopath\src\github.com\%APPVEYOR_REPO_NAME%
 
 # set to false to build on any commit.
 skip_non_tags: true
@@ -21,8 +21,6 @@ environment:
   GH_TOKEN:
     secure: 7bl6S1pr1BMfewnyzvgZeuaArs2mhO04rQg5XbzCXs4zYemWKRaeKoMmXNaPRpfP
 
-init:
-  - ps: iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
 
 # prepare system and project
 install:
@@ -101,6 +99,3 @@ deploy_script:
   # upload the amd64 msi artifact
   - set GOARCH=amd64
   - jfrog bt upload --user mattstratton --key %BT_KEY%  --override=true --publish=true %APPVEYOR_PROJECT_NAME%-%GOARCH%-%VERSION%.msi devopsdays/msi/%APPVEYOR_PROJECT_NAME%/%VERSION%
-
-on_finish:
-  - ps: $blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
