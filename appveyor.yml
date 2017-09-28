@@ -82,7 +82,6 @@ deploy:
     auth_token:
       secure: 7bl6S1pr1BMfewnyzvgZeuaArs2mhO04rQg5XbzCXs4zYemWKRaeKoMmXNaPRpfP
     on:
-      branch: master
       appveyor_repo_tag: true
 
 # deploy the nuget/msi packages to bintray
