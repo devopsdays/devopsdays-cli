@@ -63,6 +63,10 @@ build_script:
   - pwd
   - dir
 
+after_build:
+  - pwd
+  - dir
+
 # configure the artifacts to upload to the github releae page
 artifacts:
   - path: './devopsdays-cli-386-*.msi'
