@@ -3,7 +3,7 @@ release:
   github:
     owner: devopsdays
     name: devopsdays-cli
-  draft: true
+  draft: false
 builds:
 - goos:
   - linux

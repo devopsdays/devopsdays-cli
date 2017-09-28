@@ -18,12 +18,12 @@ install:
 before_deploy:
   - go get -v github.com/inconshreveable/mousetrap
 
-# deploy:
-#   - provider: script
-#     skip_cleanup: true
-#     script: curl -sL http://git.io/goreleaser | bash
-#     on:
-#       tags: true
+deploy:
+  - provider: script
+    skip_cleanup: true
+    script: curl -sL http://git.io/goreleaser | bash
+    on:
+      tags: true
 
 # deploy:
 #   provider: releases
