@@ -41,7 +41,7 @@ install:
 test_script:
   # - go test ./...
   - go run main.go
-  - pwd
+
   - ls
 
 # build msi artifacts
@@ -62,13 +62,15 @@ build_script:
 
 # configure the artifacts to upload to the github releae page
 artifacts:
-  - path: Makefile
-    name: stupid
+  - path: 'devopsdays-cli-386-*.msi'
+    name: msi-x86
+  - path: devopsdays-cli-amd64-*.msi
+    name: msi-x64
 
 # setup the github release page upload
 deploy:
   - provider: GitHub
-    artifact: stupid
+    artifact: msi-x86, msi-x64
     force_update: false
     draft: false
     prerelease: false
