@@ -80,13 +80,13 @@ deploy:
 # deploy the nuget/msi packages to bintray
 deploy_script:
   # setup both "choco" and "msi" repositories on bintray
-  - never-fail jfrog bt pc --user %GH_USER% --key %BT_KEY% --licenses=MIT --vcs-url=https://github.com/%APPVEYOR_REPO_NAME% %GH_USER%/msi/%APPVEYOR_PROJECT_NAME%
-  - never-fail jfrog bt pc --user %GH_USER% --key %BT_KEY% --licenses=MIT --vcs-url=https://github.com/%APPVEYOR_REPO_NAME% %GH_USER%/choco/%APPVEYOR_PROJECT_NAME%
+  - never-fail jfrog bt pc --user %GH_USER% --key %BINTRAYKEY% --licenses=MIT --vcs-url=https://github.com/%APPVEYOR_REPO_NAME% %GH_USER%/msi/%APPVEYOR_PROJECT_NAME%
+  - never-fail jfrog bt pc --user %GH_USER% --key %BINTRAYKEY% --licenses=MIT --vcs-url=https://github.com/%APPVEYOR_REPO_NAME% %GH_USER%/choco/%APPVEYOR_PROJECT_NAME%
   # upload the nupkg
-  - jfrog bt upload --user %GH_USER% --key %BT_KEY%  --override=true --publish=true %APPVEYOR_PROJECT_NAME%.%VERSION%.nupkg %GH_USER%/choco/%APPVEYOR_PROJECT_NAME%/%VERSION%
+  - jfrog bt upload --user %GH_USER% --key %BINTRAYKEY%  --override=true --publish=true %APPVEYOR_PROJECT_NAME%.%VERSION%.nupkg %GH_USER%/choco/%APPVEYOR_PROJECT_NAME%/%VERSION%
   # upload the x386 msi artifact
   - set GOARCH=386
-  - jfrog bt upload --user %GH_USER% --key %BT_KEY%  --override=true --publish=true %APPVEYOR_PROJECT_NAME%-%GOARCH%-%VERSION%.msi %GH_USER%/msi/%APPVEYOR_PROJECT_NAME%/%VERSION%
+  - jfrog bt upload --user %GH_USER% --key %BINTRAYKEY%  --override=true --publish=true %APPVEYOR_PROJECT_NAME%-%GOARCH%-%VERSION%.msi %GH_USER%/msi/%APPVEYOR_PROJECT_NAME%/%VERSION%
   # upload the amd64 msi artifact
   - set GOARCH=amd64
-  - jfrog bt upload --user %GH_USER% --key %BT_KEY%  --override=true --publish=true %APPVEYOR_PROJECT_NAME%-%GOARCH%-%VERSION%.msi %GH_USER%/msi/%APPVEYOR_PROJECT_NAME%/%VERSION%
+  - jfrog bt upload --user %GH_USER% --key %BINTRAYKEY%  --override=true --publish=true %APPVEYOR_PROJECT_NAME%-%GOARCH%-%VERSION%.msi %GH_USER%/msi/%APPVEYOR_PROJECT_NAME%/%VERSION%
