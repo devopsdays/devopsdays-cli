@@ -29,3 +29,7 @@ snapshot:
   name_template: SNAPSHOT-{{ .Commit }}
 checksum:
   name_template: '{{ .ProjectName }}_{{ .Version }}_checksums.txt'
+brew:
+  github:
+    owner: devopsdays
+    name: homebrew-devopsdays-cli
