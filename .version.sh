@@ -26,4 +26,4 @@ POSTVERSION=
   git push
   git push --tags
   # create a github release
-  hub release create -d -m "v!newversion!" !newversion!
+  hub release create -d -m "!newversion!" !newversion!
