@@ -39,7 +39,7 @@ install:
   - go get -u github.com/Masterminds/glide
 
 test_script:
-  - go test ./...
+  # - go test ./...
   - go run main.go
 
 # build msi artifacts
@@ -61,21 +61,23 @@ build_script:
 
 # configure the artifacts to upload to the github releae page
 artifacts:
-  - path: '*-386.msi'
+  - path: '*-386-*.msi'
     name: msi-x86
-  - path: '*-amd64.msi'
+  - path: '*-amd64-*.msi'
     name: msi-x64
 
 # setup the github release page upload
 deploy:
   - provider: GitHub
-    artifact: msi-x86, msi-x64
+    artifact: /.*\.msi/
     force_update: false
     draft: false
     prerelease: false
     description: "Release %APPVEYOR_REPO_TAG_NAME%"
-    auth_token: "%GH_TOKEN%"
+    auth_token:
+      secure: 7bl6S1pr1BMfewnyzvgZeuaArs2mhO04rQg5XbzCXs4zYemWKRaeKoMmXNaPRpfP
     on:
+      branch: master
       appveyor_repo_tag: true
 
 # deploy the nuget/msi packages to bintray
