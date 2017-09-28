@@ -3,8 +3,7 @@ release:
   github:
     owner: devopsdays
     name: devopsdays-cli
-# brew:
-#   install: bin.install "devopsdays-cli"
+  draft: true
 builds:
 - goos:
   - linux
@@ -33,3 +32,5 @@ brew:
   github:
     owner: devopsdays
     name: homebrew-devopsdays-cli
+  install:
+    bin.install "devopsdays-cli"
