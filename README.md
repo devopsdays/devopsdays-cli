@@ -1,19 +1,60 @@
+
+# devopsdays-cli
+
+[![travis Status](https://travis-ci.org/devopsdays/devopsdays-cli.svg?branch=master)](https://travis-ci.org/devopsdays/devopsdays-cli) [![Appveyor Status](https://ci.appveyor.com/api/projects/status/github/devopsdays/devopsdays-cli?branch=master&svg=true)](https://ci.appveyor.com/project/devopsdays/devopsdays-cli) [![Go Report Card](https://goreportcard.com/badge/github.com/devopsdays/devopsdays-cli)](https://goreportcard.com/report/github.com/devopsdays/devopsdays-cli) [![GoDoc](https://godoc.org/github.com/devopsdays/devopsdays-cli?status.svg)](http://godoc.org/github.com/devopsdays/devopsdays-cli) [![MIT License](http://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
 Command-line utilities for the [devopsdays](https://www.devopsdays.org) website built with :heart: by [mattstratton](https://github.com/mattstratton) in [Go](https://golang.org/).
 
-[![GoDoc](https://godoc.org/github.com/devopsdays/devopsdays-cli?status.svg)](https://godoc.org/github.com/devopsdays/devopsdays-cli)
-[![Build Status](https://travis-ci.org/devopsdays/devopsdays-cli.svg?branch=master)](https://travis-ci.org/devopsdays/devopsdays-cli)
-[![Coverage Status](https://coveralls.io/repos/github/devopsdays/devopsdays-cli/badge.svg?branch=master)](https://coveralls.io/github/devopsdays/devopsdays-cli?branch=master)
-[![Go Report Card](https://goreportcard.com/badge/github.com/devopsdays/devopsdays-cli)](https://goreportcard.com/report/github.com/devopsdays/devopsdays-cli)
 
-## Overview
+# TOC
+- [Install](#install)
+  - [Bintray](#bintray)
+- [Usage](#usage)
+  - [$ devopsdays-cli --help](#-devopsdays-cli---help)
+- [History](#history)
 
-`devopsdays-cli` is used to ....
+# Install
 
-## Installation
+Check the [release page](https://github.com/devopsdays/devopsdays-cli/releases)!
 
-1. Download the latest release appropriate file for your OS/platform from [here](https://github.com/devopsdays/devopsdays-cli/releases).
-2. Rename the file to `devopsdays-cli` and put it somewhere in your path. Make sure it has execute permissions.
+#### Bintray
+```sh
+choco source add -n=devopsdays -s="https://api.bintray.com/nuget/devopsdays/choco"
+choco install devopsdays-cli
+```
 
-## Usage
+# Usage
 
-Run `devopsdays-cli` blah blah blah
+#### $ devopsdays-cli --help
+```sh
+Command-line utilities for the devopsdays.org website
+built with love by mattstratton in Go.
+
+Complete documentation is available at https://github.com/devopsdays/devopsdays-cli
+
+Usage:
+  devopsdays-cli [command]
+
+Available Commands:
+  config      Returns the current configuration
+  doctor      Check that everything looks good
+  event       Create a new event
+  help        Help about any command
+  program     Create or modify your program
+  speaker     Create or modify your speakers
+  sponsor     Create a sponsor
+  version     Print the version number of devopsdays-cli
+
+Flags:
+  -c, --city string   city name
+  -h, --help          help for devopsdays-cli
+  -y, --year string   year
+
+Use "devopsdays-cli [command] --help" for more information about a command.
+```
+
+
+
+# History
+
+[CHANGELOG](CHANGELOG.md)

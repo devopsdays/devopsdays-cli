@@ -9,6 +9,7 @@ PREVERSION=
   # use it to declare tasks that should run for any kind of bump
   go vet ./...
   go fmt ./...
+  github_changelog_generator --future-release !newversion! --no-pull-requests
   # go run main.go # alike tests when you don t have tests
   # finalize the changelog
   # changelog finalize --version !newversion!

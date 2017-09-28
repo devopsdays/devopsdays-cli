@@ -8,7 +8,8 @@ LicenseColor: yellow
 
 {{template "badge/travis" .}} {{template "badge/appveyor" .}} {{template "badge/goreport" .}} {{template "badge/godoc" .}} {{template "license/shields" .}}
 
-{{pkgdoc}}
+Command-line utilities for the [devopsdays](https://www.devopsdays.org) website built with :heart: by [mattstratton](https://github.com/mattstratton) in [Go](https://golang.org/).
+
 
 # {{toc 5}}
 
@@ -21,11 +22,11 @@ LicenseColor: yellow
 
 # Usage
 
-#### $ {{exec "emd" "-help" | color "sh"}}
+#### $ {{exec "devopsdays-cli" "--help" | color "sh"}}
 
-#### $ {{shell "emd gen -help" | color "sh"}}
+{{/* #### $ {{shell "emd gen -help" | color "sh"}}
 
-#### $ {{shell "emd init -help" | color "sh"}}
+#### $ {{shell "emd init -help" | color "sh"}} */}}
 
 # History
 
