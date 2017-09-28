@@ -57,7 +57,7 @@ build_script:
   - go build -o %APPVEYOR_PROJECT_NAME%.exe --ldflags "-X cmd.Version=%VERSION%" main.go
   # generate the amd64 MSI package
   - go-msi make --msi ./build/%APPVEYOR_PROJECT_NAME%-%GOARCH%-%VERSION%.msi --version %VERSION% --arch %GOARCH%
-  - dir ./build/
+  - dir build
 
 # configure the artifacts to upload to the github releae page
 artifacts:
