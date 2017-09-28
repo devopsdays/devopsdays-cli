@@ -71,12 +71,12 @@ artifacts:
 
 # setup the github release page upload
 deploy:
-  - provider: GitHub
+    provider: GitHub
+    release: "%APPVEYOR_REPO_TAG_NAME%"
     artifact: msi-x86 #, msi-x64
     force_update: true
     draft: false
     prerelease: false
-    description: "Release %APPVEYOR_REPO_TAG_NAME%"
     auth_token:
       secure: 7bl6S1pr1BMfewnyzvgZeuaArs2mhO04rQg5XbzCXs4zYemWKRaeKoMmXNaPRpfP
     on:
