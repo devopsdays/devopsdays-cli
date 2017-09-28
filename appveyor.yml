@@ -37,7 +37,6 @@ install:
   - set PATH=%GOPATH%\bin;%PATH%
   - go get -u github.com/mh-cbon/never-fail
   - go get -u github.com/Masterminds/glide
-  - glide install
 
 test_script:
   - go test
