@@ -1,5 +1,5 @@
 image: Visual Studio 2017
-# clone_folder: c:\gopath\src\github.com\%APPVEYOR_REPO_NAME%
+clone_folder: c:\gopath\src\github.com\devopsdays\devopsdays-cli
 
 # set to false to build on any commit.
 skip_non_tags: true
@@ -39,9 +39,9 @@ install:
   - go get -u github.com/mh-cbon/never-fail
   - go get -u github.com/Masterminds/glide
 
-test_script:
-  # - go test ./...
-  - go run main.go
+# test_script:
+#   # - go test ./...
+#   - go run main.go
 
 # build msi artifacts
 build_script:
@@ -61,15 +61,11 @@ build_script:
   - pwd
   - dir
 
-after_build:
-  - pwd
-  - dir
-
-# configure the artifacts to upload to the github releae page
+# configure the artifacts to upload to the github release page
 artifacts:
-  - path: './devopsdays-cli-386-*.msi'
+  - path: 'devopsdays-cli-386-*.msi'
     name: msi-x86
-  - path: './devopsdays-cli-amd64-*.msi'
+  - path: 'devopsdays-cli-amd64-*.msi'
     name: msi-x64
 
 # setup the github release page upload
