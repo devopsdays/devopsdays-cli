@@ -65,14 +65,14 @@ build_script:
 artifacts:
   - path: 'devopsdays-cli-386-*.msi'
     name: msi-x86
-  - path: 'devopsdays-cli-amd64-*.msi'
-    name: msi-x64
+  # - path: 'devopsdays-cli-amd64-*.msi'
+  #   name: msi-x64
 
 # setup the github release page upload
 deploy:
   - provider: GitHub
-    artifact: msi-x86, msi-x64
-    force_update: false
+    artifact: msi-x86 #, msi-x64
+    force_update: true
     draft: false
     prerelease: false
     description: "Release %APPVEYOR_REPO_TAG_NAME%"
