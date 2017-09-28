@@ -66,8 +66,8 @@ build_script:
 artifacts:
   - path: 'devopsdays-cli-386-*.msi'
     name: msi-x86
-  # - path: 'devopsdays-cli-amd64-*.msi'
-  #   name: msi-x64
+  - path: 'devopsdays-cli-amd64-*.msi'
+    name: msi-x64
 
 # setup the github release page upload
 deploy:
@@ -75,7 +75,7 @@ deploy:
     release: devopsdays-cli-v$(VERSION)
     tag: $(appveyor_repo_tag_name)
     description: Automated release of v$(VERSION)
-    artifact: msi-x86 #, msi-x64
+    artifact: msi-x86, msi-x64
     force_update: true
     draft: false
     prerelease: false
