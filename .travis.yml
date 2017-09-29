@@ -16,8 +16,8 @@ before_install:
 - go get github.com/mattn/goveralls
 install:
 - make install
-before_deploy:
-  - gem install fpm
+# before_deploy:
+#   - gem install fpm
 # after_deploy:
 # - go get -v github.com/inconshreveable/mousetrap
 # - curl -fL https://getcli.jfrog.io | sh
