@@ -15,6 +15,8 @@
 package cmd
 
 import (
+	"fmt"
+
 	"github.com/spf13/cobra"
 )
 
@@ -30,8 +32,59 @@ This application is a tool to generate the needed files
 to quickly create a Cobra application.`,
 }
 
+// addTalkCmd represents the "talk add" command
+var addTalkCmd = &cobra.Command{
+	Use:   "add",
+	Short: "A brief description of your command",
+	Long: `A longer description that spans multiple lines and likely contains examples
+and usage of using your command. For example:
+
+Cobra is a CLI library for Go that empowers applications.
+This application is a tool to generate the needed files
+to quickly create a Cobra application.`,
+	Run: func(cmd *cobra.Command, args []string) {
+		// TODO: Work your own magic here
+		fmt.Println("addTalk called")
+	},
+}
+
+// editTalkCmd represents the "talk edi" command
+var editTalkCmd = &cobra.Command{
+	Use:   "edit",
+	Short: "A brief description of your command",
+	Long: `A longer description that spans multiple lines and likely contains examples
+and usage of using your command. For example:
+
+Cobra is a CLI library for Go that empowers applications.
+This application is a tool to generate the needed files
+to quickly create a Cobra application.`,
+	Run: func(cmd *cobra.Command, args []string) {
+		// TODO: Work your own magic here
+		fmt.Println("addTalk called")
+	},
+}
+
+// removeTalkCmd represents the "talk remove" command
+var removeTalkCmd = &cobra.Command{
+	Use:   "remove",
+	Short: "A brief description of your command",
+	Long: `A longer description that spans multiple lines and likely contains examples
+and usage of using your command. For example:
+
+Cobra is a CLI library for Go that empowers applications.
+This application is a tool to generate the needed files
+to quickly create a Cobra application.`,
+	Run: func(cmd *cobra.Command, args []string) {
+		// TODO: Work your own magic here
+		fmt.Println("removeTalk called")
+	},
+}
+
 func init() {
 	RootCmd.AddCommand(talkCmd)
+	talkCmd.AddCommand(addTalkCmd)
+	talkCmd.AddCommand(editTalkCmd)
+	talkCmd.AddCommand(removeTalkCmd)
 
 	// Here you will define your flags and configuration settings.
 

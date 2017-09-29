@@ -15,7 +15,6 @@ import (
 	"log"
 	"os"
 	"path/filepath"
-	"strconv"
 	"strings"
 	"text/template"
 	"time"
@@ -24,9 +23,25 @@ import (
 	"github.com/spf13/cobra"
 )
 
-// eventCmd represents the event command
+// eventCmd represents the "event" command
 var eventCmd = &cobra.Command{
-	Use:   "event [city year]",
+	Use:   "event",
+	Short: "A brief description of your command",
+	Long: `A longer description that spans multiple lines and likely contains examples
+and usage of using your command. For example:
+
+Cobra is a CLI library for Go that empowers applications.
+This application is a tool to generate the needed files
+to quickly create a Cobra application.`,
+	// Run: func(cmd *cobra.Command, args []string) {
+	// 	// TODO: Work your own magic here
+	// 	fmt.Println("speaker called")
+	// },
+}
+
+// createEventCmd represents the "event create" command
+var createEventCmd = &cobra.Command{
+	Use:   "event create [city year]",
 	Short: "Create a new event",
 	Long: `Create a new event.
 The 'city' and 'year' arguments are optional, but if you provide year, you must also provide city.
@@ -40,8 +55,47 @@ City must not have a space. Replace spaces with '-'`,
 	},
 }
 
+// editEventCmd represents the editEvent command
+var editEventCmd = &cobra.Command{
+	Use:   "edit",
+	Short: "A brief description of your command",
+	Long: `A longer description that spans multiple lines and likely contains examples
+and usage of using your command. For example:
+
+Cobra is a CLI library for Go that empowers applications.
+This application is a tool to generate the needed files
+to quickly create a Cobra application.`,
+	Run: func(cmd *cobra.Command, args []string) {
+		// TODO: Work your own magic here
+		// TODO: Check for args first
+		city := cityFlag
+		year := yearFlag
+		if city != "" {
+			if checkEvent(city, year) == false {
+				log.Fatal("That city does not exist.")
+			}
+			myEvent := eventStruct(city, year)
+			editEvent(myEvent)
+		} else {
+			reader := bufio.NewReader(os.Stdin)
+			fmt.Println("Enter the city:")
+			city, _ := reader.ReadString('\n')
+			fmt.Println("Enter the year:")
+			year, _ := reader.ReadString('\n')
+			if checkEvent(city, year) == false {
+				log.Fatal("That city does not exist.")
+			}
+			myEvent := eventStruct(city, year)
+			editEvent(myEvent)
+		}
+
+	},
+}
+
 func init() {
 	RootCmd.AddCommand(eventCmd)
+	eventCmd.AddCommand(createEventCmd)
+	eventCmd.AddCommand(editEventCmd)
 
 	// Here you will define your flags and configuration settings.
 
@@ -227,60 +281,5 @@ func createEventContentFile(city, year, page string) (string, error) { // add pa
 		fmt.Println("Created event content file for", city, "for year", year, "at", filePath)
 	}
 	return city, nil
-
-}
-
-func cityClean(city string) (cityClean string) {
-	cityClean = strings.Replace(strings.TrimSpace(strings.ToLower(city)), " ", "-", 10)
-	return
-}
-
-func eventDataPath(webdir, city, year string) (eventDataPath string) { // TODO: Add argument for webdir path
-	s := []string{strings.TrimSpace(year), "-", strings.Replace(strings.TrimSpace(strings.ToLower(city)), " ", "-", 10), ".yml"}
-	eventDataPath = filepath.Join(webdir, "data", "events", strings.Join(s, ""))
-	// eventDataPath = strings.Join(s, "")
-	// eventDataPath = webdir
-	return eventDataPath
-}
-
-func eventContentPath(webdir, city, year string) (eventContentPath string) { // TODO: Add argument for webdir path
-	s := []string{strings.TrimSpace(year), "-", strings.Replace(strings.TrimSpace(strings.ToLower(city)), " ", "-", 10)}
-	eventContentPath = filepath.Join(webdir, "content", "events", strings.Join(s, ""))
-	// eventContentPath = webdir
-	return eventContentPath
-}
-
-func validateField(input, field string) bool {
-	switch field {
-	case "city":
-		if strings.Count(input, "") > 100 {
-			return false
-		}
-		return true
-	case "year":
-		if strings.Count(input, "") != 5 {
-			return false
-		} else if s, err := strconv.ParseInt(input, 10, 32); err == nil {
-			if s < 2016 || s > 2030 {
-				return false
-			}
-			return true
-
-		}
-	case "twitter":
-		if strings.ContainsAny(input, " ") {
-			return false
-		}
-		return true
-	}
-	return true // TODO: Make this return an error if no field was matched
-}
-
-// checkEvent takes in two arguments, the city and the year, and returns true if the city  exists.
-func checkEvent(city, year string) bool {
-	if _, err := os.Stat(eventDataPath(webdir, city, year)); err == nil {
-		return true
-	}
-	return false
 
 }

@@ -21,7 +21,7 @@ import (
 )
 
 // webdir is the path to the source files for the Hugo website
-var webdir string = setWebdir()
+var webdir = setWebdir()
 
 // const webdir = "/Users/mattstratton/src/devopsdays-web"
 

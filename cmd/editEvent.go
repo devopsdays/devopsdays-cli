@@ -13,71 +13,17 @@ import (
 	"bufio"
 	"fmt"
 	"io/ioutil"
-	"log"
 	"os"
 	"reflect"
 	"strconv"
 	"strings"
 
 	"github.com/davecgh/go-spew/spew"
-	"github.com/spf13/cobra"
 	"gopkg.in/yaml.v2"
 )
 
 var city string
 var year string
-
-// editEventCmd represents the editEvent command
-var editEventCmd = &cobra.Command{
-	Use:   "edit",
-	Short: "A brief description of your command",
-	Long: `A longer description that spans multiple lines and likely contains examples
-and usage of using your command. For example:
-
-Cobra is a CLI library for Go that empowers applications.
-This application is a tool to generate the needed files
-to quickly create a Cobra application.`,
-	Run: func(cmd *cobra.Command, args []string) {
-		// TODO: Work your own magic here
-		// TODO: Check for args first
-		city := cityFlag
-		year := yearFlag
-		if city != "" {
-			if checkEvent(city, year) == false {
-				log.Fatal("That city does not exist.")
-			}
-			myEvent := eventStruct(city, year)
-			editEvent(myEvent)
-		} else {
-			reader := bufio.NewReader(os.Stdin)
-			fmt.Println("Enter the city:")
-			city, _ := reader.ReadString('\n')
-			fmt.Println("Enter the year:")
-			year, _ := reader.ReadString('\n')
-			if checkEvent(city, year) == false {
-				log.Fatal("That city does not exist.")
-			}
-			myEvent := eventStruct(city, year)
-			editEvent(myEvent)
-		}
-
-	},
-}
-
-func init() {
-	eventCmd.AddCommand(editEventCmd)
-
-	// Here you will define your flags and configuration settings.
-
-	// Cobra supports Persistent Flags which will work for this command
-	// and all subcommands, e.g.:
-	// editEventCmd.PersistentFlags().String("foo", "", "A help for foo")
-
-	// Cobra supports local flags which will only run when this command
-	// is called directly, e.g.:
-	// editEventCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
-
-}
 
 type Event struct {
 	Name                  string `yaml:"name"`

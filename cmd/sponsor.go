@@ -185,7 +185,7 @@ func resizeSponsorImage(srcPath, destPath string) {
 	}
 	file.Close()
 
-	m := resize.Resize(200, 200, img, resize.Lanczos3)
+	m := resize.Resize(600, 0, img, resize.Lanczos3)
 
 	out, err := os.Create(destPath)
 	if err != nil {
