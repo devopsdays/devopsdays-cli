@@ -20,6 +20,12 @@ Command-line utilities for the [devopsdays](https://www.devopsdays.org) website 
 #### Bintray
 {{template "choco_bintray/install" .}}
 
+#### homebrew
+
+```sh
+brew install devopsdays/homebrew-devopsdays-cli/devopsdays-cli
+```
+
 # Usage
 
 #### $ {{exec "devopsdays-cli" "--help" | color "sh"}}

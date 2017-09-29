@@ -9,6 +9,7 @@ Command-line utilities for the [devopsdays](https://www.devopsdays.org) website 
 # TOC
 - [Install](#install)
   - [Bintray](#bintray)
+  - [homebrew](#homebrew)
 - [Usage](#usage)
   - [$ devopsdays-cli --help](#-devopsdays-cli---help)
 - [History](#history)
@@ -21,6 +22,12 @@ Check the [release page](https://github.com/devopsdays/devopsdays-cli/releases)!
 ```sh
 choco source add -n=devopsdays -s="https://api.bintray.com/nuget/devopsdays/choco"
 choco install devopsdays-cli
+```
+
+#### homebrew
+
+```sh
+brew install devopsdays/homebrew-devopsdays-cli/devopsdays-cli
 ```
 
 # Usage
@@ -38,11 +45,12 @@ Usage:
 Available Commands:
   config      Returns the current configuration
   doctor      Check that everything looks good
-  event       Create a new event
+  event       A brief description of your command
   help        Help about any command
   program     Create or modify your program
-  speaker     Create or modify your speakers
+  speaker     A brief description of your command
   sponsor     Create a sponsor
+  talk        A brief description of your command
   version     Print the version number of devopsdays-cli
 
 Flags:
