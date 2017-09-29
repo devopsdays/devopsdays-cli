@@ -46,8 +46,11 @@ test:
 	go test -v
 
 deploy:
-	go get -v github.com/inconshreveable/mousetrap
+	# go get -v github.com/inconshreveable/mousetrap
+	gem install fpm
+	which fpm
 	curl -sL http://git.io/goreleaser | bash
+	ls dist
 
 travis:
 	$(HOME)/gopath/bin/goveralls -service=travis-ci
