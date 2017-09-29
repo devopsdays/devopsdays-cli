@@ -1,36 +1,20 @@
 language: go
 sudo: false
 go:
-- 1.8
-env:
-  # matrix:
-  # - OSARCH=amd64
-  # - OSARCH=i386
-  global:
-  - VERSION=${TRAVIS_TAG}
-  - GH_USER=${TRAVIS_REPO_SLUG%/*}
-  - GH_APP=${TRAVIS_REPO_SLUG#*/}
-  - JFROG_CLI_OFFER_CONFIG=false
-  - secure: dnaK4aCgnc2mgu9djNU8BQx13d+mLQW0U26ChUxNxeZTfDrT1JcQ4A3CXL72dTyUUQsfjadfi7vUvaYNz4anDRGBCYiDkMKBeuq6yPOQFYITcF4l2yPRBMHXt7KFMk2NryeYtJwztra4sSEyRbs9OGzvEVdDikpxtkZ3g0d1tz22E93GOkVPR2Lv5Wi2mqcctjyxc4+mQjSgYXckw6OXCtrp6w/n9lFkJFb2qWVf/mnuvSmO8BYSfbxGw5IpYDuU+q5DI9vqvo598wVbOGbqIgFoZXFd89WJNaUbNsXikV9dK5BfouISxSXh+UfCEBFCMjgwu6tRZrzGdTDVthsbVTGo4lsFioohz9srflt1ydxCmq0vuSAwZkoIy+/06loQuCQtS+YK45b9+pKAJMRvJeLuYQu+pBF1as2XIjpu8yOJL22PsWa407tEGORR3nBeFGLdhH1dh+VG3i9oh5XgaWYd19WObRFPpj88auj2U+hYbS+oDXNyIZ0qEGDgHdGIDK+o95u01xCOPvJPit+EKPHUPdqn1e3pcbcQ9J8cx7PmRtLJ3X8Yf+SttC2BmT5GOfoDbYKyeXmYCYn4dKI7GjYOSMH/MSf8551vKONSpwAcWwJx65XZvFW+/3y6R939kVT+tO9lqxF9KuAtcZAM9NcJ4OB9xtvPv5o6C2WXse4=
+  - 1.8
+
 before_install:
-- go get github.com/mattn/goveralls
+  - go get github.com/mattn/goveralls
+
 install:
-- make install
-# before_deploy:
-#   - gem install fpm
-# after_deploy:
-# - go get -v github.com/inconshreveable/mousetrap
-# - curl -fL https://getcli.jfrog.io | sh
-# - ./jfrog bt pc --key=$BTKEY --user=$GH_USER --licenses=MIT --vcs-url=https://github.com/$GH_USER/deb
-#   $GH_USER/deb/$GH_APP || echo "package already exists"
-# - OSARCH=amd64
-# - "./jfrog bt upload --override=true --key $BTKEY --publish=true --deb=unstable/main/$OSARCH
-#   $GH_APP-$OSARCH-$VERSION.deb $GH_USER/deb/$GH_APP/$VERSION pool/$POOL/$GH_APP/"
-# - OSARCH=i386
-# - curl -X POST -u ${GH_USER}:${BTKEY} https://api.bintray.com/calc_metadata/${GH_USER}/deb
+  - make install
+
+before_deploy:
+  - go get -v github.com/inconshreveable/mousetrap
+
 deploy:
-- provider: script
-  skip_cleanup: true
-  script: curl -sL http://git.io/goreleaser | bash
-  on:
-    tags: true
+  - provider: script
+    skip_cleanup: true
+    script: curl -sL http://git.io/goreleaser | bash
+    on:
+      tags: true
