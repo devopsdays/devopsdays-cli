@@ -11,6 +11,9 @@ package cmd
 
 import (
 	"fmt"
+	"log"
+	"os/exec"
+	"regexp"
 
 	"github.com/spf13/cobra"
 )
@@ -29,7 +32,19 @@ var versionCmd = &cobra.Command{
 	Short: "Print the version number of devopsdays-cli",
 	Long:  `All software has versions. This is ours.`,
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("Version: ", Version)
-		fmt.Println("Build Time: ", Build)
+		fmt.Println("devopsdays-cli version: ", Version)
+		fmt.Println("devopsdays-cli build: ", Build)
+		fmt.Println("hugo version: ", getHugoVersion())
 	},
+}
+
+func getHugoVersion() (hugoVersion string) {
+	out, err := exec.Command("hugo", "version").Output()
+	if err != nil {
+		log.Fatal(err)
+	}
+	s := string(out[:])
+	re := regexp.MustCompile("v....")
+	hugoVersion = re.FindString(s)
+	return
 }
