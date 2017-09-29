@@ -18,6 +18,8 @@ import (
 	"github.com/spf13/cobra"
 )
 
+// const supportedVersion = "v0.26"
+
 // doctorCmd represents the doctor command
 var doctorCmd = &cobra.Command{
 	Use:   "doctor",
@@ -26,19 +28,8 @@ var doctorCmd = &cobra.Command{
 	Run: func(cmd *cobra.Command, args []string) {
 		// TODO: Work your own magic here
 		fmt.Println("Checking your config...")
-		out, err := exec.Command("hugo", "version").Output()
-		if err != nil {
-			log.Fatal(err)
-		}
-		s := string(out[:])
-		re := regexp.MustCompile("v....")
-		hugoVersion := re.FindString(s)
-		switch hugoVersion {
-		case "v0.19":
-			fmt.Println("\u2713 Hugo version", hugoVersion, "is okay")
-		default:
-			fmt.Println("\u2717 Hugo version", hugoVersion, "is incompatible. Please use a supported version (0.19)")
-		}
+		checkHugo()
+		checkGit()
 	},
 }
 
@@ -55,4 +46,33 @@ func init() {
 	// is called directly, e.g.:
 	// doctorCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 
+}
+
+func checkHugo() {
+	supportedVersions := map[string]bool{"0.23": true, "0.24.1": true, "0.25.1": true, "0.26": true, "0.27": true, "0.28": true, "0.29": true}
+	out, err := exec.Command("hugo", "version").Output()
+	if err != nil {
+		log.Fatal(err)
+	}
+	s := string(out[:])
+	re := regexp.MustCompile(`[0-9]+(\.[0-9]+)*`)
+	hugoVersion := re.FindString(s)
+	if supportedVersions[hugoVersion] {
+		fmt.Println("\u2713 Hugo version", hugoVersion, "is okay")
+	} else {
+		fmt.Println("\u2717 Hugo version", hugoVersion, "is incompatible.")
+		fmt.Println("Supported Versions are:")
+		for k, _ := range supportedVersions {
+			fmt.Println(k)
+		}
+	}
+}
+
+func checkGit() {
+	_, err := exec.Command("git", "version").Output()
+	if err != nil {
+		fmt.Println("\u2717 git is not installed")
+	} else {
+		fmt.Println("\u2713 git is installed")
+	}
 }
