@@ -16,16 +16,16 @@ before_install:
 - go get github.com/mattn/goveralls
 install:
 - make install
-after_deploy:
-- go get -v github.com/inconshreveable/mousetrap
-- curl -fL https://getcli.jfrog.io | sh
-- ./jfrog bt pc --key=$BTKEY --user=$GH_USER --licenses=MIT --vcs-url=https://github.com/$GH_USER/deb
-  $GH_USER/deb/$GH_APP || echo "package already exists"
-- OSARCH=amd64
-- "./jfrog bt upload --override=true --key $BTKEY --publish=true --deb=unstable/main/$OSARCH
-  $GH_APP-$OSARCH-$VERSION.deb $GH_USER/deb/$GH_APP/$VERSION pool/$POOL/$GH_APP/"
-- OSARCH=i386
-- curl -X POST -u ${GH_USER}:${BTKEY} https://api.bintray.com/calc_metadata/${GH_USER}/deb
+# after_deploy:
+# - go get -v github.com/inconshreveable/mousetrap
+# - curl -fL https://getcli.jfrog.io | sh
+# - ./jfrog bt pc --key=$BTKEY --user=$GH_USER --licenses=MIT --vcs-url=https://github.com/$GH_USER/deb
+#   $GH_USER/deb/$GH_APP || echo "package already exists"
+# - OSARCH=amd64
+# - "./jfrog bt upload --override=true --key $BTKEY --publish=true --deb=unstable/main/$OSARCH
+#   $GH_APP-$OSARCH-$VERSION.deb $GH_USER/deb/$GH_APP/$VERSION pool/$POOL/$GH_APP/"
+# - OSARCH=i386
+# - curl -X POST -u ${GH_USER}:${BTKEY} https://api.bintray.com/calc_metadata/${GH_USER}/deb
 deploy:
 - provider: script
   skip_cleanup: true
