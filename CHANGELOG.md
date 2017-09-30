@@ -1,5 +1,24 @@
 # Changelog - devopsdays-cli
 
+### 0.10.0
+
+__Changes__
+
+- Make better top level verbs
+
+  Also moved the doctor command under show config.
+  Fixes #34
+
+
+
+__Contributors__
+
+- Matt Stratton
+
+Released by Matt Stratton, Sat 30 Sep 2017 -
+[see the diff](https://github.com/mh-cbon/devopsdays-cli/compare/0.9.9...0.10.0#diff)
+______________
+
 ### 0.9.9
 
 __Changes__
