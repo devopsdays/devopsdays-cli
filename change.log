@@ -1,4 +1,14 @@
 
+0.9.4
+
+  * Add ruby gems to path on travis
+
+  - Matt Stratton <matt.stratton@gmail.com>
+
+-- Matt Stratton <matt.stratton@gmail.com>; Sat, 30 Sep 2017 04:08:33 -0500
+
+
+
 0.9.3
 
   * Troubleshoot fpm on travis
