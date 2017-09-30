@@ -9,7 +9,7 @@ PREVERSION=
   # use it to declare tasks that should run for any kind of bump
   go vet ./...
   go fmt ./...
-  go run main.go # alike tests when you don t have tests
+  go run main.go
   # finalize the changelog
   changelog finalize --version !newversion!
   git commit change.log -m "changelog: !newversion!"
@@ -25,5 +25,3 @@ POSTVERSION=
   # use it to sync your local to the remote
   git push
   git push --tags
-  # create a github release
-  # github-release release -u devopsdays -r devopsdays-cli --tag !newversion! --draft
