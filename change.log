@@ -1,4 +1,14 @@
 
+0.9.7
+
+  * Remove fpm for now
+
+  - Matt Stratton <matt.stratton@gmail.com>
+
+-- Matt Stratton <matt.stratton@gmail.com>; Sat, 30 Sep 2017 04:39:29 -0500
+
+
+
 0.9.6
 
   * Specify ruby in goreleaser step
