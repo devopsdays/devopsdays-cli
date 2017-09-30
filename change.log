@@ -1,4 +1,14 @@
 
+0.9.8
+
+  * Make README nicer
+
+  - Matt Stratton <matt.stratton@gmail.com>
+
+-- Matt Stratton <matt.stratton@gmail.com>; Sat, 30 Sep 2017 04:44:36 -0500
+
+
+
 0.9.7
 
   * Remove fpm for now
