@@ -1,5 +1,19 @@
 # Changelog - devopsdays-cli
 
+### 0.9.6
+
+__Changes__
+
+- Specify ruby in goreleaser step
+
+__Contributors__
+
+- Matt Stratton
+
+Released by Matt Stratton, Sat 30 Sep 2017 -
+[see the diff](https://github.com/mh-cbon/devopsdays-cli/compare/0.9.5...0.9.6#diff)
+______________
+
 ### 0.9.5
 
 __Changes__
