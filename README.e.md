@@ -34,9 +34,9 @@ brew install devopsdays/homebrew-devopsdays-cli/devopsdays-cli
 
 #### $ {{exec "devopsdays-cli" "--help" | color "sh"}}
 
-{{/* #### $ {{shell "emd gen -help" | color "sh"}}
+#### $ {{exec "devopsdays-cli" "config" | color "sh"}}
 
-#### $ {{shell "emd init -help" | color "sh"}} */}}
+#### $ {{exec "devopsdays-cli" "doctor" | color "sh"}}
 
 # History
 
@@ -51,6 +51,6 @@ $ gump <patch|minor|major>
 
 ## Tools needed for release
 
-- [https://github.com/mh-cbon/commit](commit)
-- [https://github.com/mh-cbon/changelog](changelog)
-- [https://github.com/mh-cbon/emd#toc](emd)
+- [commit](https://github.com/mh-cbon/commit)
+- [changelog](https://github.com/mh-cbon/changelog)
+- [emd](https://github.com/mh-cbon/emd)

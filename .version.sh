@@ -20,7 +20,7 @@ PREVERSION=
   echo "committing CHANGELOG.md..."
   commit -q -m "changelog: !newversion!" -f CHANGELOG.md
   echo "installing latest devopsdays-cli"
-  go install --ldflags "-X main.VERSION=!newversion!"
+  go install --ldflags "-X github.com/devopsdays/devopsdays-cli/cmd.Version=!newversion!"
   echo "generating README.md..."
   emd gen -in README.e.md > README.md
   echo "committing README.md..."
