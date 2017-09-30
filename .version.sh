@@ -11,14 +11,21 @@ PREVERSION=
   go fmt ./...
   go run main.go
   # finalize the changelog
-  echo "about to changelog"
+  echo "finalizing changelog..."
   changelog finalize --version !newversion!
+  echo "committing change.log..."
   commit -q -m "changelog: !newversion!" -f change.log
+  echo "exporting changelog..."
   changelog md -o CHANGELOG.md --vars='{"name":"devopsdays-cli"}'
+  echo "committing CHANGELOG.md..."
   commit -q -m "changelog: !newversion!" -f CHANGELOG.md
+  echo "installing latest devopsdays-cli"
   go install --ldflags "-X main.VERSION=!newversion!"
+  echo "generating README.md..."
   emd gen -in README.e.md > README.md
+  echo "committing README.md..."
   commit -q -m "README: !newversion!" -f README.md
+  echo "preversion script complete"
 
 # POSTVERSION runs for any kind of bumps
 POSTVERSION=

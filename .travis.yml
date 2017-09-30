@@ -13,6 +13,7 @@ before_deploy:
   - go get -v github.com/inconshreveable/mousetrap
   - gem install fpm
   - which fpm
+  - export PATH=$HOME/.rvm/gems/ruby-2.4.1/bin:$PATH
 
 deploy:
   - provider: script
