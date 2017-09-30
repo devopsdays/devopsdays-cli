@@ -1,18 +1,17 @@
 
-UNRELEASED
+0.8.9
 
+  * Add changelog
   * Remove old changelog
   * Remove test file
-  * changelog: 0.9.0
   * Fix changelog stuff
   * Extra file
   * Fix extra space in gump script
-  * changelog: 0.8.9
   * Add changelog and README automation
 
   - Matt Stratton <matt.stratton@gmail.com>
 
--- Matt Stratton <matt.stratton@gmail.com>; Sat, 30 Sep 2017 03:28:15 -0500
+-- Matt Stratton <matt.stratton@gmail.com>; Sat, 30 Sep 2017 03:29:18 -0500
 
 
 
