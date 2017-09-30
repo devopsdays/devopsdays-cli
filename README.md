@@ -10,9 +10,12 @@ Command-line utilities for the [devopsdays](https://www.devopsdays.org) website 
 - [Install](#install)
   - [Bintray](#bintray)
   - [homebrew](#homebrew)
+  - [via Go](#via-go)
 - [Usage](#usage)
   - [$ devopsdays-cli --help](#-devopsdays-cli---help)
 - [History](#history)
+- [How to release](#how-to-release)
+  - [Tools needed for release](#tools-needed-for-release)
 
 # Install
 
@@ -29,6 +32,12 @@ choco install devopsdays-cli
 ```sh
 brew install devopsdays/homebrew-devopsdays-cli/devopsdays-cli
 ```
+
+#### via Go
+```sh
+go get github.com/devopsdays/devopsdays-cli
+```
+
 
 # Usage
 
@@ -66,3 +75,16 @@ Use "devopsdays-cli [command] --help" for more information about a command.
 # History
 
 [CHANGELOG](CHANGELOG.md)
+
+# How to release
+
+```sh
+$ changelog prepare
+$ gump <patch|minor|major>
+```
+
+## Tools needed for release
+
+- [https://github.com/mh-cbon/commit](commit)
+- [https://github.com/mh-cbon/changelog](changelog)
+- [https://github.com/mh-cbon/emd#toc](emd)
