@@ -1,5 +1,19 @@
 # Changelog - devopsdays-cli
 
+### 0.9.5
+
+__Changes__
+
+- More travis troubleshooting
+
+__Contributors__
+
+- Matt Stratton
+
+Released by Matt Stratton, Sat 30 Sep 2017 -
+[see the diff](https://github.com/mh-cbon/devopsdays-cli/compare/0.9.4...0.9.5#diff)
+______________
+
 ### 0.9.4
 
 __Changes__
