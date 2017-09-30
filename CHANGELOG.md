@@ -1,5 +1,19 @@
 # Changelog - devopsdays-cli
 
+### 0.9.8
+
+__Changes__
+
+- Make README nicer
+
+__Contributors__
+
+- Matt Stratton
+
+Released by Matt Stratton, Sat 30 Sep 2017 -
+[see the diff](https://github.com/mh-cbon/devopsdays-cli/compare/0.9.7...0.9.8#diff)
+______________
+
 ### 0.9.7
 
 __Changes__
