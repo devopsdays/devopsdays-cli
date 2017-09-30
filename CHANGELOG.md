@@ -1,5 +1,19 @@
 # Changelog - devopsdays-cli
 
+### 0.9.9
+
+__Changes__
+
+- Update README with proper path to brew tap
+
+__Contributors__
+
+- Matt Stratton
+
+Released by Matt Stratton, Sat 30 Sep 2017 -
+[see the diff](https://github.com/mh-cbon/devopsdays-cli/compare/0.9.8...0.9.9#diff)
+______________
+
 ### 0.9.8
 
 __Changes__
