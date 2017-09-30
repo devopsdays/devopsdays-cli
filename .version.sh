@@ -20,8 +20,8 @@ PREVERSION=
   echo "after readme"
   git commit README.md -m "README: !newversion!"
   # generate a markdwon version of your changelog
-  changelog md -o CHANGELOG.md --vars='{"name":"dummy"}'
-  git commit CHANGELOG.md -m "changelog.md: !newversion!"
+  # changelog md -o CHANGELOG.md --vars='{"name":"devopsdays-cli"}'
+  # git commit CHANGELOG.md -m "changelog.md: !newversion!"
 
 # POSTVERSION runs for any kind of bumps
 POSTVERSION=
