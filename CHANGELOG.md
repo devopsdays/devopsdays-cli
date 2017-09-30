@@ -1,270 +1,384 @@
-# Change Log
+# Changelog - devopsdays-cli
 
-## [0.7.49](https://github.com/devopsdays/devopsdays-cli/tree/0.7.49) (2017-09-28)
-[Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/0.7.48...0.7.49)
+### 0.9.2
 
-## [0.7.48](https://github.com/devopsdays/devopsdays-cli/tree/0.7.48) (2017-09-28)
-[Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/0.7.47...0.7.48)
+__Changes__
 
-## [0.7.47](https://github.com/devopsdays/devopsdays-cli/tree/0.7.47) (2017-09-28)
-[Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/0.7.46...0.7.47)
+- Add next step of version script
 
-## [0.7.46](https://github.com/devopsdays/devopsdays-cli/tree/0.7.46) (2017-09-28)
-[Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/0.7.45...0.7.46)
+__Contributors__
 
-## [0.7.45](https://github.com/devopsdays/devopsdays-cli/tree/0.7.45) (2017-09-28)
-[Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/0.7.44...0.7.45)
+- Matt Stratton
 
-## [0.7.44](https://github.com/devopsdays/devopsdays-cli/tree/0.7.44) (2017-09-28)
-[Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/0.7.43...0.7.44)
+Released by Matt Stratton, Sat 30 Sep 2017 -
+[see the diff](https://github.com/mh-cbon/devopsdays-cli/compare/0.9.1...0.9.2#diff)
+______________
 
-## [0.7.43](https://github.com/devopsdays/devopsdays-cli/tree/0.7.43) (2017-09-28)
-[Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/0.7.42...0.7.43)
+### 0.9.1
 
-## [0.7.42](https://github.com/devopsdays/devopsdays-cli/tree/0.7.42) (2017-09-28)
-[Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/0.7.41...0.7.42)
+__Changes__
 
-## [0.7.41](https://github.com/devopsdays/devopsdays-cli/tree/0.7.41) (2017-09-28)
-[Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/0.7.40...0.7.41)
+- Update version script one step
 
-## [0.7.40](https://github.com/devopsdays/devopsdays-cli/tree/0.7.40) (2017-09-28)
-[Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/0.7.39...0.7.40)
+__Contributors__
 
-## [0.7.39](https://github.com/devopsdays/devopsdays-cli/tree/0.7.39) (2017-09-28)
-[Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/0.7.38...0.7.39)
+- Matt Stratton
 
-## [0.7.38](https://github.com/devopsdays/devopsdays-cli/tree/0.7.38) (2017-09-28)
-[Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/0.7.37...0.7.38)
+Released by Matt Stratton, Sat 30 Sep 2017 -
+[see the diff](https://github.com/mh-cbon/devopsdays-cli/compare/0.9.0...0.9.1#diff)
+______________
 
-## [0.7.37](https://github.com/devopsdays/devopsdays-cli/tree/0.7.37) (2017-09-28)
-[Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/0.7.36...0.7.37)
+### 0.9.0
 
-## [0.7.36](https://github.com/devopsdays/devopsdays-cli/tree/0.7.36) (2017-09-28)
-[Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/0.7.35...0.7.36)
+__Changes__
 
-## [0.7.35](https://github.com/devopsdays/devopsdays-cli/tree/0.7.35) (2017-09-28)
-[Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/0.7.34...0.7.35)
+- Update version script
 
-## [0.7.34](https://github.com/devopsdays/devopsdays-cli/tree/0.7.34) (2017-09-28)
-[Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/0.7.33...0.7.34)
+__Contributors__
 
-## [0.7.33](https://github.com/devopsdays/devopsdays-cli/tree/0.7.33) (2017-09-28)
-[Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/0.7.32...0.7.33)
+- Matt Stratton
 
-**Closed issues:**
+Released by Matt Stratton, Sat 30 Sep 2017 -
+[see the diff](https://github.com/mh-cbon/devopsdays-cli/compare/0.8.9...0.9.0#diff)
+______________
 
-- Create release process that generates msi package for windows [\#19](https://github.com/devopsdays/devopsdays-cli/issues/19)
-- Create release process that generates brew capability [\#18](https://github.com/devopsdays/devopsdays-cli/issues/18)
+### 0.8.9
 
-## [0.7.32](https://github.com/devopsdays/devopsdays-cli/tree/0.7.32) (2017-09-28)
-[Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/0.7.31...0.7.32)
+__Changes__
 
-## [0.7.31](https://github.com/devopsdays/devopsdays-cli/tree/0.7.31) (2017-09-28)
-[Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/0.7.30...0.7.31)
+- Add changelog
+- Remove old changelog
+- Remove test file
+- Fix changelog stuff
+- Extra file
+- Fix extra space in gump script
+- Add changelog and README automation
 
-## [0.7.30](https://github.com/devopsdays/devopsdays-cli/tree/0.7.30) (2017-09-28)
-[Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/0.7.29...0.7.30)
+__Contributors__
 
-## [0.7.29](https://github.com/devopsdays/devopsdays-cli/tree/0.7.29) (2017-09-28)
-[Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/0.7.28...0.7.29)
+- Matt Stratton
 
-## [0.7.28](https://github.com/devopsdays/devopsdays-cli/tree/0.7.28) (2017-09-28)
-[Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/0.7.27...0.7.28)
+Released by Matt Stratton, Sat 30 Sep 2017 -
+[see the diff](https://github.com/mh-cbon/devopsdays-cli/compare/0.8.8...0.8.9#diff)
+______________
 
-## [0.7.27](https://github.com/devopsdays/devopsdays-cli/tree/0.7.27) (2017-09-28)
-[Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/0.7.26...0.7.27)
+### 0.8.8
 
-## [0.7.26](https://github.com/devopsdays/devopsdays-cli/tree/0.7.26) (2017-09-28)
-[Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/0.7.25...0.7.26)
+__Changes__
 
-## [0.7.25](https://github.com/devopsdays/devopsdays-cli/tree/0.7.25) (2017-09-28)
-[Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/0.7.24...0.7.25)
+- Add fpm to goreleaser again & move homebrew tap
 
-## [0.7.24](https://github.com/devopsdays/devopsdays-cli/tree/0.7.24) (2017-09-28)
-[Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/0.7.23...0.7.24)
+__Contributors__
 
-## [0.7.23](https://github.com/devopsdays/devopsdays-cli/tree/0.7.23) (2017-09-28)
-[Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/0.7.22...0.7.23)
+- Matt Stratton
 
-## [0.7.22](https://github.com/devopsdays/devopsdays-cli/tree/0.7.22) (2017-09-28)
-[Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/0.7.21...0.7.22)
+Released by Matt Stratton, Sat 30 Sep 2017 -
+[see the diff](https://github.com/mh-cbon/devopsdays-cli/compare/0.8.7...0.8.8#diff)
+______________
 
-## [0.7.21](https://github.com/devopsdays/devopsdays-cli/tree/0.7.21) (2017-09-28)
-[Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/0.7.20...0.7.21)
+### 0.8.7
 
-## [0.7.20](https://github.com/devopsdays/devopsdays-cli/tree/0.7.20) (2017-09-28)
-[Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/0.7.19...0.7.20)
+__Changes__
 
-## [0.7.19](https://github.com/devopsdays/devopsdays-cli/tree/0.7.19) (2017-09-28)
-[Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/0.7.18...0.7.19)
+- What the eff with travis
 
-## [0.7.18](https://github.com/devopsdays/devopsdays-cli/tree/0.7.18) (2017-09-28)
-[Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/0.7.17...0.7.18)
+__Contributors__
 
-## [0.7.17](https://github.com/devopsdays/devopsdays-cli/tree/0.7.17) (2017-09-28)
-[Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/0.7.16...0.7.17)
+- Matt Stratton
 
-## [0.7.16](https://github.com/devopsdays/devopsdays-cli/tree/0.7.16) (2017-09-28)
-[Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/0.7.15...0.7.16)
+Released by Matt Stratton, Fri 29 Sep 2017 -
+[see the diff](https://github.com/mh-cbon/devopsdays-cli/compare/0.8.6...0.8.7#diff)
+______________
 
-## [0.7.15](https://github.com/devopsdays/devopsdays-cli/tree/0.7.15) (2017-09-28)
-[Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/0.7.14...0.7.15)
+### 0.8.6
 
-## [0.7.14](https://github.com/devopsdays/devopsdays-cli/tree/0.7.14) (2017-09-28)
-[Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/0.7.13...0.7.14)
+__Changes__
 
-## [0.7.13](https://github.com/devopsdays/devopsdays-cli/tree/0.7.13) (2017-09-28)
-[Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/0.7.12...0.7.13)
+- fix travis
+- Update readme
 
-## [0.7.12](https://github.com/devopsdays/devopsdays-cli/tree/0.7.12) (2017-09-28)
-[Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/0.7.11...0.7.12)
+__Contributors__
 
-## [0.7.11](https://github.com/devopsdays/devopsdays-cli/tree/0.7.11) (2017-09-28)
-[Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/0.7.10...0.7.11)
+- Matt Stratton
 
-## [0.7.10](https://github.com/devopsdays/devopsdays-cli/tree/0.7.10) (2017-09-28)
-[Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/0.7.9...0.7.10)
+Released by Matt Stratton, Fri 29 Sep 2017 -
+[see the diff](https://github.com/mh-cbon/devopsdays-cli/compare/0.8.5...0.8.6#diff)
+______________
 
-## [0.7.9](https://github.com/devopsdays/devopsdays-cli/tree/0.7.9) (2017-09-28)
-[Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/0.7.8...0.7.9)
+### 0.8.5
 
-## [0.7.8](https://github.com/devopsdays/devopsdays-cli/tree/0.7.8) (2017-09-28)
-[Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/0.7.7...0.7.8)
+__Changes__
 
-## [0.7.7](https://github.com/devopsdays/devopsdays-cli/tree/0.7.7) (2017-09-28)
-[Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/0.7.6...0.7.7)
+- Remove fpm stuff
 
-## [0.7.6](https://github.com/devopsdays/devopsdays-cli/tree/0.7.6) (2017-09-28)
-[Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/0.7.5...0.7.6)
+__Contributors__
 
-## [0.7.5](https://github.com/devopsdays/devopsdays-cli/tree/0.7.5) (2017-09-28)
-[Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/0.7.4...0.7.5)
+- Matt Stratton
 
-## [0.7.4](https://github.com/devopsdays/devopsdays-cli/tree/0.7.4) (2017-09-28)
-[Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/0.7.3...0.7.4)
+Released by Matt Stratton, Fri 29 Sep 2017 -
+[see the diff](https://github.com/mh-cbon/devopsdays-cli/compare/0.8.4...0.8.5#diff)
+______________
 
-## [0.7.3](https://github.com/devopsdays/devopsdays-cli/tree/0.7.3) (2017-09-28)
-[Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/0.7.1...0.7.3)
+### 0.8.4
 
-## [0.7.1](https://github.com/devopsdays/devopsdays-cli/tree/0.7.1) (2017-09-28)
-[Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/0.7.2...0.7.1)
+__Changes__
 
-## [0.7.2](https://github.com/devopsdays/devopsdays-cli/tree/0.7.2) (2017-09-28)
-[Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/v0.6.14...0.7.2)
+- fix travis?
 
-## [v0.6.14](https://github.com/devopsdays/devopsdays-cli/tree/v0.6.14) (2017-09-28)
-[Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/0.7.0...v0.6.14)
+__Contributors__
 
-## [0.7.0](https://github.com/devopsdays/devopsdays-cli/tree/0.7.0) (2017-09-28)
-[Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/0.6.13...0.7.0)
+- Matt Stratton
 
-## [0.6.13](https://github.com/devopsdays/devopsdays-cli/tree/0.6.13) (2017-09-28)
-[Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/0.6.12...0.6.13)
+Released by Matt Stratton, Fri 29 Sep 2017 -
+[see the diff](https://github.com/mh-cbon/devopsdays-cli/compare/0.8.3...0.8.4#diff)
+______________
 
-## [0.6.12](https://github.com/devopsdays/devopsdays-cli/tree/0.6.12) (2017-09-28)
-[Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/0.6.11...0.6.12)
+### 0.8.3
 
-## [0.6.11](https://github.com/devopsdays/devopsdays-cli/tree/0.6.11) (2017-09-28)
-[Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/0.6.10...0.6.11)
+__Changes__
 
-## [0.6.10](https://github.com/devopsdays/devopsdays-cli/tree/0.6.10) (2017-09-28)
-[Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/0.6.9...0.6.10)
+- Clean up travis
 
-## [0.6.9](https://github.com/devopsdays/devopsdays-cli/tree/0.6.9) (2017-09-28)
-[Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/0.6.8...0.6.9)
+__Contributors__
 
-## [0.6.8](https://github.com/devopsdays/devopsdays-cli/tree/0.6.8) (2017-09-28)
-[Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/v0.6.7...0.6.8)
+- Matt Stratton
 
-## [v0.6.7](https://github.com/devopsdays/devopsdays-cli/tree/v0.6.7) (2017-09-28)
-[Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/v0.6.6...v0.6.7)
+Released by Matt Stratton, Fri 29 Sep 2017 -
+[see the diff](https://github.com/mh-cbon/devopsdays-cli/compare/0.8.2...0.8.3#diff)
+______________
+
+### 0.8.2
+
+__Changes__
+
+- Clean up travis
+
+__Contributors__
+
+- Matt Stratton
+
+Released by Matt Stratton, Fri 29 Sep 2017 -
+[see the diff](https://github.com/mh-cbon/devopsdays-cli/compare/0.8.1...0.8.2#diff)
+______________
+
+### 0.8.1
+
+__Changes__
+
+- Attempt packaging
+
+__Contributors__
+
+- Matt Stratton
+
+Released by Matt Stratton, Fri 29 Sep 2017 -
+[see the diff](https://github.com/mh-cbon/devopsdays-cli/compare/0.8.0...0.8.1#diff)
+______________
+
+### 0.8.0
+
+__Changes__
+
+- Build travis
+- Add a bunch of crap
+- Revert version script
+- update version script for readme stuff
+- Add doctor and version features and much more
+- Add additional data to version command
+
+  Fixes #23
+- Update appveyor
+- Remove changelog generator for now
+- Combine appveyor and travis
+- Merge branch 'refactor-cobra'
+- Fix version script
+- Update readme and some tools
+- add templated README
+- Update main.go with package description
+- Fix appveyor for the millionth time
+- move to after build
+- clean up via spinner idea
+- Try gh releases...AGAIN
+- Fix gh release thing for appveyor
+- remove travis deploy to test appveyor
+- Remove github-releases step
+- Try uploads
+- add some quotes for fun
+- Try quotes
+- Troubleshoot github-release
+- Try an old tagger
+- Hardcode tag for release upload
+- Try to fix upload again
+- Add beginning of new cobra
+- Use version for tag
+- Add long form tag flag
+- oh yeah, ponyville
+- try using github-release in appveyor
+- Try to force GH release upload
+- Trim down appveyor
+- Remove rdp and clone folder steps
+- Add after build troubleshooting step
+- Add rdp for troubleshooting
+- More appveyor debugging
+- Remove stupid build stupid stupid
+- hardcode msi directory pasth
+- Fix bad dir statement in appveyor command
+- Try using a build directory
+- Attempt another appveyor config
+- Try makefile artifact
+- Appveyor troubleshooting
+- Add all msi to deploy
+- Force artifact version
+- find artifacts in appveyor
+- Add artificats for appveyor
+- Clean up appveyor build
+- Add support for MSI to appveyor build
+- Appvery fun
+- Add user to appvey
+- Change to use tokens in appveyor
+- Update appveyor
+- More fun with builds
+- Remove test file
+- Try with newer github release process
+- Fix license file
+- add go get to appveyor
+- Add test file
+- Remove matt
+- Remove glide stuff
+- Dump thing
+- Update appveryer
+- Update version script with proper name
+- Add Appveyor stuff for Windows
+- Make draft release prettier
+- Add version script
+- Add homebrew tap
+- Update README with proper badge links
+- Add version into build
+- Fix mousetrap for real
+- Fix mousetrap
+- Try to fix version thing
+- Try with goreleaser again
+- Remove stray prompt junk
+- Tweak some version stuff
+- Revert use of prompt
+- Remove windows
+- Update travis
+- Merge pull request #28 from devopsdays/add-prompt
+
+  Start using prompt
+- Start using prompt
+- Fix makefile
+- Update build scripts
+- Add poc of prompt
+- Try a release
+- Rename to devopsdays-cli
+- Fix makefile
+- Add sample data for testing
+- remove goveralls because travis failing
+- Update travis and readme
+- Change package name to devopsdays
+
+  Fixes #26
+- Update Appveyor release stuff
+- First attempt at reflecting on TeamMembers
+- add city and year flags
+- Add function to list organizers
+- Remove tag builds since appveyor was going nuts
+- Add go get for deps in Appveyor
+- Add appveyor release step
+- Add bio to struct
+- Implement edit event command
+
+  MVP, but it mostly works
+- First implementation of event edit
+- Merge branch 'master' of github.com:mattstratton/probablyfine
+- Put rice file in the proper location
+- Put rice file in the proper location
+- Clean up and update event data file
+- Remove goveralls step for now
+- Embed templates using rice tool
+- Make travis release properly
+- Update go version
+- Better travis trigger
+- Trigger travis verbose
+- Fix tests
+- Accomplish basic new event creation
+- Change license to MIT
+- Add doctor command to confirm hugo version
+- Refactor eventDataPath to pass in webdir
+- Add config command
+- Add setWebdir function
+- Update version command to remove Hugo
+- Add version number to Makefile
+- Merge branch 'master' of github.com:mattstratton/probablyfine
+- Add version command
+- Update README.md
+- Clean up docs and add badge
+- Merge branch 'master' of github.com:mattstratton/probablyfine
+- Implement create event (data file only)
+- Implement create event (data file only)
+- Add some documentation
+- Clean up some linting errors
+- Merge pull request #8 from mattstratton/mattstratton/implement-cobra
+
+  Change from cli to cobra
+- Add mousetrap dep for release
+- Change from cli to cobra
+- Clean up some comments
+- Update README.md
+- Update README.md
+- Update README.md
+- Update README.md
+- Add image resizing for sponsors and move templates
+- Add command to add sponsor
+- Add year tests
+- Increment version
+- try to fix travis again
+- remove makefile
+- revert travis
+- fix travis again
+- Update travis file
+- remove releases stuff
+- Merge branch 'master' of github.com:mattstratton/probablyfine
+
+  # Conflicts:
+  #       .travis.yml
+- Making travis work
+- Making travis work
+- Add coveralls to travis
+- Add godoc comments for addEvent()
+- Add city, year, twitter validation
+- Add travis badge
+- Fix os in travis file
+- Add base travis file
+- Add badges
+- Add logo to README
+- Merge pull request #7 from mattstratton/mattstratton/golang-rewrite
+
+  Switch from ruby to golang
+- Add some documentation
+- Add tests for validateField()
+- Write TODO content for addSponsor()
+- Add tests for cityClean and eventDataPath
+- Added command to create event
+- Add first scaffold of golang app and tests
+- Remove all ruby files and prep for golang
+- Add some more code for sponsors
+- Worked on getting some POC going of the generating event stuff
+- Add stuff to the gemspect because it beats adding functionality
+- Create sample proposal migration script
+- Scaffold out subcommands
+- Add a bunch of help stuff
+- Merge branch 'master' of github.com:mattstratton/probablyfine
+- Initial commit and scaffold
+- Initial commit
+
+__Contributors__
+
+- Matt Stratton
+
+Released by Matt Stratton, Fri 29 Sep 2017 -
+[see the diff](https://github.com/mh-cbon/devopsdays-cli/compare/1afb5ad272771069a0d86e66314e132bfcce377c...0.8.0#diff)
+______________
 
-## [v0.6.6](https://github.com/devopsdays/devopsdays-cli/tree/v0.6.6) (2017-09-27)
-[Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/v0.6.5...v0.6.6)
 
-## [v0.6.5](https://github.com/devopsdays/devopsdays-cli/tree/v0.6.5) (2017-09-27)
-[Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/v0.6.4...v0.6.5)
-
-## [v0.6.4](https://github.com/devopsdays/devopsdays-cli/tree/v0.6.4) (2017-09-27)
-[Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/v0.6.3...v0.6.4)
-
-## [v0.6.3](https://github.com/devopsdays/devopsdays-cli/tree/v0.6.3) (2017-09-27)
-[Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/v0.6.2...v0.6.3)
-
-## [v0.6.2](https://github.com/devopsdays/devopsdays-cli/tree/v0.6.2) (2017-09-27)
-[Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/v0.6.1...v0.6.2)
-
-## [v0.6.1](https://github.com/devopsdays/devopsdays-cli/tree/v0.6.1) (2017-09-27)
-[Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/v0.6.0...v0.6.1)
-
-## [v0.6.0](https://github.com/devopsdays/devopsdays-cli/tree/v0.6.0) (2017-09-27)
-[Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/v0.5.1...v0.6.0)
-
-## [v0.5.1](https://github.com/devopsdays/devopsdays-cli/tree/v0.5.1) (2017-09-27)
-[Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/v0.5.2...v0.5.1)
-
-## [v0.5.2](https://github.com/devopsdays/devopsdays-cli/tree/v0.5.2) (2017-09-27)
-[Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/v0.5.0...v0.5.2)
-
-## [v0.5.0](https://github.com/devopsdays/devopsdays-cli/tree/v0.5.0) (2017-09-27)
-[Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/v0.4.3...v0.5.0)
-
-## [v0.4.3](https://github.com/devopsdays/devopsdays-cli/tree/v0.4.3) (2017-09-27)
-[Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/v0.4.2...v0.4.3)
-
-## [v0.4.2](https://github.com/devopsdays/devopsdays-cli/tree/v0.4.2) (2017-09-27)
-[Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/v0.4.1...v0.4.2)
-
-## [v0.4.1](https://github.com/devopsdays/devopsdays-cli/tree/v0.4.1) (2017-09-27)
-[Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/v0.4.0...v0.4.1)
-
-## [v0.4.0](https://github.com/devopsdays/devopsdays-cli/tree/v0.4.0) (2017-09-27)
-[Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/v0.3.11...v0.4.0)
-
-**Closed issues:**
-
-- Rename package to devopsdays  [\#26](https://github.com/devopsdays/devopsdays-cli/issues/26)
-
-## [v0.3.11](https://github.com/devopsdays/devopsdays-cli/tree/v0.3.11) (2017-04-18)
-[Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/probablyfine-1.0.0.8...v0.3.11)
-
-## [probablyfine-1.0.0.8](https://github.com/devopsdays/devopsdays-cli/tree/probablyfine-1.0.0.8) (2017-04-18)
-[Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/v0.3.10...probablyfine-1.0.0.8)
-
-**Implemented enhancements:**
-
-- change webdir from being a constant [\#10](https://github.com/devopsdays/devopsdays-cli/issues/10)
-
-**Closed issues:**
-
-- Ensure the user is not in master when running the commands [\#5](https://github.com/devopsdays/devopsdays-cli/issues/5)
-
-## [v0.3.10](https://github.com/devopsdays/devopsdays-cli/tree/v0.3.10) (2017-04-10)
-[Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/v0.2.4...v0.3.10)
-
-## [v0.2.4](https://github.com/devopsdays/devopsdays-cli/tree/v0.2.4) (2016-11-08)
-[Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/v0.2.3...v0.2.4)
-
-## [v0.2.3](https://github.com/devopsdays/devopsdays-cli/tree/v0.2.3) (2016-11-02)
-[Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/v0.2.2...v0.2.3)
-
-## [v0.2.2](https://github.com/devopsdays/devopsdays-cli/tree/v0.2.2) (2016-11-02)
-[Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/0.2.1...v0.2.2)
-
-## [0.2.1](https://github.com/devopsdays/devopsdays-cli/tree/0.2.1) (2016-11-02)
-[Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/0.1.1...0.2.1)
-
-**Closed issues:**
-
-- Consider rewriting the whole thing in golang [\#6](https://github.com/devopsdays/devopsdays-cli/issues/6)
-- Create sponsor creation feature [\#3](https://github.com/devopsdays/devopsdays-cli/issues/3)
-
-## [0.1.1](https://github.com/devopsdays/devopsdays-cli/tree/0.1.1) (2016-11-01)
-**Closed issues:**
-
-- Create overall legacy event migration [\#2](https://github.com/devopsdays/devopsdays-cli/issues/2)
-- Create function to migrate legacy proposal files [\#1](https://github.com/devopsdays/devopsdays-cli/issues/1)
-
-
-
-\* *This Change Log was automatically generated by [github_changelog_generator](https://github.com/skywinder/Github-Changelog-Generator)*

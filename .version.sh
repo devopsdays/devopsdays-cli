@@ -15,6 +15,7 @@ PREVERSION=
   changelog finalize --version !newversion!
   commit -q -m "changelog: !newversion!" -f change.log
   changelog md -o CHANGELOG.md --vars='{"name":"devopsdays-cli"}'
+  commit -q -m "changelog: !newversion!" -f CHANGELOG.md
   go install --ldflags "-X main.VERSION=!newversion!"
   emd gen -in README.e.md > README.md
   commit -q -m "README: !newversion!" -f README.md
