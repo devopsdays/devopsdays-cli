@@ -23,7 +23,7 @@ Command-line utilities for the [devopsdays](https://www.devopsdays.org) website 
 #### homebrew
 
 ```sh
-brew install devopsdays/homebrew-devopsdays-cli/devopsdays-cli
+brew install devopsdays/tap/devopsdays-cli
 ```
 
 #### via Go
