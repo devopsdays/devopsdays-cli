@@ -1,5 +1,19 @@
 # Changelog - devopsdays-cli
 
+### 0.9.3
+
+__Changes__
+
+- Troubleshoot fpm on travis
+
+__Contributors__
+
+- Matt Stratton
+
+Released by Matt Stratton, Sat 30 Sep 2017 -
+[see the diff](https://github.com/mh-cbon/devopsdays-cli/compare/0.9.2...0.9.3#diff)
+______________
+
 ### 0.9.2
 
 __Changes__
