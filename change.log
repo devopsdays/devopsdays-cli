@@ -1,5 +1,5 @@
 
-UNRELEASED
+0.8.9
 
   * Add changelog
   * Remove old changelog
@@ -295,3 +295,5 @@ UNRELEASED
   - Matt Stratton <matt.stratton@gmail.com>
 
 -- Matt Stratton <matt.stratton@gmail.com>; Fri, 29 Sep 2017 13:59:32 -0500
+
+
