@@ -13,6 +13,8 @@ Command-line utilities for the [devopsdays](https://www.devopsdays.org) website 
   - [via Go](#via-go)
 - [Usage](#usage)
   - [$ devopsdays-cli --help](#-devopsdays-cli---help)
+  - [$ devopsdays-cli config](#-devopsdays-cli-config)
+  - [$ devopsdays-cli doctor](#-devopsdays-cli-doctor)
 - [History](#history)
 - [How to release](#how-to-release)
   - [Tools needed for release](#tools-needed-for-release)
@@ -70,7 +72,20 @@ Flags:
 Use "devopsdays-cli [command] --help" for more information about a command.
 ```
 
+#### $ devopsdays-cli config
+```sh
+config called
+DODPATH =  /Users/mattstratton/go/src/github.com/devopsdays/devopsdays-cli/sampleData
+Current Working Directory =  /Users/mattstratton/go/src/github.com/devopsdays/devopsdays-cli
+DevOpsDays web directory =  /Users/mattstratton/go/src/github.com/devopsdays/devopsdays-cli/sampleData
+```
 
+#### $ devopsdays-cli doctor
+```sh
+Checking your config...
+✓ Hugo version 0.26 is okay
+✓ git is installed
+```
 
 # History
 
@@ -85,6 +100,6 @@ $ gump <patch|minor|major>
 
 ## Tools needed for release
 
-- [https://github.com/mh-cbon/commit](commit)
-- [https://github.com/mh-cbon/changelog](changelog)
-- [https://github.com/mh-cbon/emd#toc](emd)
+- [commit](https://github.com/mh-cbon/commit)
+- [changelog](https://github.com/mh-cbon/changelog)
+- [emd](https://github.com/mh-cbon/emd)
