@@ -38,13 +38,13 @@ brew:
     - git
   install:
     bin.install "devopsdays-cli"
-fpm:
-  vendor: devopsdays
-  homepage: https://www.devopsdays.org
-  maintainer: Matt Stratton <matt.stratton@gmail.com>
-  description: Command-line utilities for the devopsdays website
-  license: MIT
-  formats:
-    - deb
-  dependencies:
-    - git
+# fpm:
+#   vendor: devopsdays
+#   homepage: https://www.devopsdays.org
+#   maintainer: Matt Stratton <matt.stratton@gmail.com>
+#   description: Command-line utilities for the devopsdays website
+#   license: MIT
+#   formats:
+#     - deb
+#   dependencies:
+#     - git
