@@ -11,9 +11,11 @@ PREVERSION=
   go fmt ./...
   go run main.go
   # finalize the changelog
-  changelog finalize --version !newversion!
-  git commit change.log -m "changelog: !newversion!"
+  echo "about to changelog"
+  # changelog finalize --version !newversion!
+  # git commit change.log -m "changelog: !newversion!"
   # update the README
+  echo "time for readme?"
   emd gen -in README.e.md > README.md
   git commit README.md -m "README: !newversion!"
   # generate a markdwon version of your changelog
