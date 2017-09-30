@@ -12,6 +12,7 @@ install:
 before_deploy:
   - go get -v github.com/inconshreveable/mousetrap
   - gem install fpm
+  - which fpm
 
 deploy:
   - provider: script
