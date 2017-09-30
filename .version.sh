@@ -12,8 +12,8 @@ PREVERSION=
   go run main.go
   # finalize the changelog
   echo "about to changelog"
-  # changelog finalize --version !newversion!
-  # git commit change.log -m "changelog: !newversion!"
+  changelog finalize --version !newversion!
+  git commit change.log -m "changelog: !newversion!"
   # update the README
   # echo "time for readme?"
   # emd gen -in README.e.md > README.md
