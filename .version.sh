@@ -18,7 +18,7 @@ PREVERSION=
   # echo "time for readme?"
   emd gen -in README.e.md > README.md
   # echo "after readme"
-  # git commit README.md -m "README: !newversion!"
+  git commit README.md -m "README: !newversion!"
   # generate a markdwon version of your changelog
   # changelog md -o CHANGELOG.md --vars='{"name":"devopsdays-cli"}'
   # git commit CHANGELOG.md -m "changelog.md: !newversion!"
