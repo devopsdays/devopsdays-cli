@@ -26,6 +26,10 @@ Command-line utilities for the [devopsdays](https://www.devopsdays.org) website 
 brew install devopsdays/homebrew-devopsdays-cli/devopsdays-cli
 ```
 
+#### via Go
+{{template "go/install" .}}
+
+
 # Usage
 
 #### $ {{exec "devopsdays-cli" "--help" | color "sh"}}
@@ -37,3 +41,16 @@ brew install devopsdays/homebrew-devopsdays-cli/devopsdays-cli
 # History
 
 [CHANGELOG](CHANGELOG.md)
+
+# How to release
+
+```sh
+$ changelog prepare
+$ gump <patch|minor|major>
+```
+
+## Tools needed for release
+
+- [https://github.com/mh-cbon/commit](commit)
+- [https://github.com/mh-cbon/changelog](changelog)
+- [https://github.com/mh-cbon/emd#toc](emd)
