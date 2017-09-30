@@ -9,17 +9,16 @@ PREVERSION=
   # use it to declare tasks that should run for any kind of bump
   go vet ./...
   go fmt ./...
-  # github_changelog_generator --future-release !newversion! --no-pull-requests
-  # go run main.go # alike tests when you don t have tests
+  go run main.go # alike tests when you don t have tests
   # finalize the changelog
-  # changelog finalize --version !newversion!
-  # git commit CHANGELOG.md -m "changelog: !newversion!"
+  changelog finalize --version !newversion!
+  git commit change.log -m "changelog: !newversion!"
   # update the README
-  # emd gen -in README.e.md > README.md
-  # git commit README.md -m "README: !newversion!"
+  emd gen -in README.e.md > README.md
+  git commit README.md -m "README: !newversion!"
   # generate a markdwon version of your changelog
-  # changelog md -o CHANGELOG.md --vars='{"name":"dummy"}'
-  # git commit CHANGELOG.md -m "changelog.md: !newversion!"
+  changelog md -o CHANGELOG.md --vars='{"name":"dummy"}'
+  git commit CHANGELOG.md -m "changelog.md: !newversion!"
 
 # POSTVERSION runs for any kind of bumps
 POSTVERSION=
