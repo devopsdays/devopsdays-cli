@@ -32,7 +32,7 @@ choco install devopsdays-cli
 #### homebrew
 
 ```sh
-brew install devopsdays/homebrew-devopsdays-cli/devopsdays-cli
+brew install devopsdays/tap/devopsdays-cli
 ```
 
 #### via Go
@@ -57,7 +57,6 @@ Available Commands:
   config      Returns the current configuration
   doctor      Check that everything looks good
   event       A brief description of your command
-  help        Help about any command
   program     Create or modify your program
   speaker     A brief description of your command
   sponsor     Create a sponsor
@@ -66,7 +65,6 @@ Available Commands:
 
 Flags:
   -c, --city string   city name
-  -h, --help          help for devopsdays-cli
   -y, --year string   year
 
 Use "devopsdays-cli [command] --help" for more information about a command.
