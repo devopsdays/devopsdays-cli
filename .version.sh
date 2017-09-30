@@ -16,7 +16,7 @@ PREVERSION=
   echo "committing change.log..."
   commit -q -m "changelog: !newversion!" -f change.log
   echo "exporting changelog..."
-  changelog md -o CHANGELOG.md --vars='{"name":"devopsdays-cli"}'
+  changelog md -o CHANGELOG.md --vars='{"name":"devopsdays-cli", "user":"devopsdays"}'
   echo "committing CHANGELOG.md..."
   commit -q -m "changelog: !newversion!" -f CHANGELOG.md
   echo "installing latest devopsdays-cli"
