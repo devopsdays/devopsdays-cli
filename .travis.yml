@@ -20,6 +20,6 @@ before_deploy:
 deploy:
   - provider: script
     skip_cleanup: true
-    script: curl -sL http://git.io/goreleaser | bash
+    script: rvm use 2.4.1 do curl -sL http://git.io/goreleaser | bash
     on:
       tags: true
