@@ -1,4 +1,14 @@
 
+0.9.6
+
+  * Specify ruby in goreleaser step
+
+  - Matt Stratton <matt.stratton@gmail.com>
+
+-- Matt Stratton <matt.stratton@gmail.com>; Sat, 30 Sep 2017 04:26:40 -0500
+
+
+
 0.9.5
 
   * More travis troubleshooting
