@@ -1,4 +1,14 @@
 
+0.10.12
+
+  * Remove stray junk from travis
+
+  - Matt Stratton <matt.stratton@gmail.com>
+
+-- Matt Stratton <matt.stratton@gmail.com>; Sun, 01 Oct 2017 00:52:50 -0500
+
+
+
 0.10.11
 
   * Stupid yaml
@@ -115,6 +125,8 @@
 
     Also moved the doctor command under show config.
     Fixes #34
+
+
 
 
 
