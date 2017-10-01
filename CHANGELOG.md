@@ -1,5 +1,19 @@
 # Changelog - devopsdays-cli
 
+### 0.10.11
+
+__Changes__
+
+- Stupid yaml
+
+__Contributors__
+
+- Matt Stratton
+
+Released by Matt Stratton, Sun 01 Oct 2017 -
+[see the diff](https://github.com/mh-cbon/devopsdays-cli/compare/0.10.10...0.10.11#diff)
+______________
+
 ### 0.10.10
 
 __Changes__
@@ -148,6 +162,8 @@ __Changes__
 
   Also moved the doctor command under show config.
   Fixes #34
+
+
 
 
 
