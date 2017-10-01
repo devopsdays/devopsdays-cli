@@ -1,9 +1,12 @@
 dist: trusty
-sudo: required
+sudo: no
 language: go
+addons:
+  apt:
+    packages:
+    - rpm
 go: 1.9
-services:
-  - docker
+
 before_install:
   - go get github.com/mattn/goveralls
   - export DODPATH=$HOME/gopath/src/github.com/devopsdays/devopsdays-cli/sampleData
@@ -14,11 +17,6 @@ before_deploy:
   - go get -v github.com/inconshreveable/mousetrap
   - gem install fpm
   - which fpm
-  - sudo apt-get update
-  - sudo apt-get install --yes snapd rpm
-  - export PATH=/snap/bin:$PATH
-  - which snap
-  - sudo snap install snapcraft --candidate --classic
 deploy:
   skip_cleanup: true
   provider: script
