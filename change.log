@@ -1,10 +1,22 @@
 
+0.10.1
+
+  * Attempt docker update for fpm in travis
+
+  - Matt Stratton <matt.stratton@gmail.com>
+
+-- Matt Stratton <matt.stratton@gmail.com>; Sat, 30 Sep 2017 21:58:39 -0500
+
+
+
 0.10.0
 
   * Make better top level verbs
 
     Also moved the doctor command under show config.
     Fixes #34
+
+
 
 
   - Matt Stratton <matt.stratton@gmail.com>
