@@ -1,4 +1,14 @@
 
+0.10.5
+
+  * Add fpm back to goreleaser
+
+  - Matt Stratton <matt.stratton@gmail.com>
+
+-- Matt Stratton <matt.stratton@gmail.com>; Sat, 30 Sep 2017 23:08:25 -0500
+
+
+
 0.10.4
 
   * Switch back to container
@@ -45,6 +55,8 @@
 
     Also moved the doctor command under show config.
     Fixes #34
+
+
 
 
 
