@@ -1,4 +1,14 @@
 
+0.10.7
+
+  * Add bintray client install to travis
+
+  - Matt Stratton <matt.stratton@gmail.com>
+
+-- Matt Stratton <matt.stratton@gmail.com>; Sun, 01 Oct 2017 00:24:51 -0500
+
+
+
 0.10.6
 
   * Add packages to bntray upload
@@ -65,6 +75,8 @@
 
     Also moved the doctor command under show config.
     Fixes #34
+
+
 
 
 
