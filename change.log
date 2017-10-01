@@ -1,4 +1,14 @@
 
+0.10.14
+
+  * Make travis simpler
+
+  - Matt Stratton <matt.stratton@gmail.com>
+
+-- Matt Stratton <matt.stratton@gmail.com>; Sun, 01 Oct 2017 01:14:38 -0500
+
+
+
 0.10.13
 
   * Dummy commit
@@ -135,6 +145,8 @@
 
     Also moved the doctor command under show config.
     Fixes #34
+
+
 
 
 
