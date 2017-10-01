@@ -1,4 +1,14 @@
 
+0.10.11
+
+  * Stupid yaml
+
+  - Matt Stratton <matt.stratton@gmail.com>
+
+-- Matt Stratton <matt.stratton@gmail.com>; Sun, 01 Oct 2017 00:43:13 -0500
+
+
+
 0.10.10
 
   * Stupid jfrog
@@ -105,6 +115,8 @@
 
     Also moved the doctor command under show config.
     Fixes #34
+
+
 
 
 
