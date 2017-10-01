@@ -1,25 +1,29 @@
+dist: trusty
+sudo: required
 language: go
-sudo: false
-go:
-  - 1.8
-
+go: 1.9
+services:
+  - docker
 before_install:
   - go get github.com/mattn/goveralls
-
 install:
   - make install
-
+script: go test ./...
 before_deploy:
   - go get -v github.com/inconshreveable/mousetrap
+  - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
   - gem install fpm
   - which fpm
-  - export PATH=$HOME/.rvm/gems/ruby-2.4.1/bin:$PATH
-  - echo $PATH
-  - ls $HOME/.rvm/gems/ruby-2.4.1/bin/
-
+  - sudo apt-get update
+  - sudo apt-get install --yes snapd rpm
+  - export PATH=/snap/bin:$PATH
+  - which snap
+  - sudo snap install snapcraft --candidate --classic
 deploy:
-  - provider: script
-    skip_cleanup: true
-    script: rvm use 2.4.1 do curl -sL http://git.io/goreleaser | bash
-    on:
-      tags: true
+  skip_cleanup: true
+  provider: script
+  script: curl -sL https://git.io/goreleaser | rvm 2.4.1 do bash
+  on:
+    tags: true
+notifications:
+  email: false
