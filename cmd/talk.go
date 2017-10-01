@@ -20,8 +20,8 @@ to quickly create a Cobra application.`,
 
 // addTalkCmd represents the "talk add" command
 var addTalkCmd = &cobra.Command{
-	Use:   "add",
-	Short: "A brief description of your command",
+	Use:   "talk",
+	Short: "Add a talk to an event",
 	Long: `A longer description that spans multiple lines and likely contains examples
 and usage of using your command. For example:
 
@@ -68,7 +68,7 @@ to quickly create a Cobra application.`,
 
 func init() {
 	RootCmd.AddCommand(talkCmd)
-	talkCmd.AddCommand(addTalkCmd)
+	addCmd.AddCommand(addTalkCmd)
 	talkCmd.AddCommand(editTalkCmd)
 	talkCmd.AddCommand(removeTalkCmd)
 
