@@ -11,7 +11,6 @@ before_install:
 - export DODPATH=$HOME/gopath/src/github.com/devopsdays/devopsdays-cli/sampleData
 install:
 - make install
-- curl -fsSk -o jfrog -L https://api.bintray.com/content/jfrog/jfrog-cli-go/$latest/jfrog-cli-linux-amd64/jfrog?bt_package=jfrog-cli-linux-amd64
 script: go test ./...
 before_deploy:
 - go get -v github.com/inconshreveable/mousetrap
