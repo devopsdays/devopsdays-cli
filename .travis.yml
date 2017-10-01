@@ -16,9 +16,6 @@ before_deploy:
 - go get -v github.com/inconshreveable/mousetrap
 - gem install fpm
 - which fpm
-- cd $HOME
-- curl -fL https://getcli.jfrog.io | sh
-- cd $HOME/gopath/src/github.com/devopsdays/devopsdays-cli
 deploy:
   skip_cleanup: true
   provider: script
