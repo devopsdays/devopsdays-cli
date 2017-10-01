@@ -47,10 +47,15 @@ test:
 
 deploy:
 	# go get -v github.com/inconshreveable/mousetrap
-	gem install fpm
-	which fpm
-	curl -sL http://git.io/goreleaser | bash
+	curl -sL https://git.io/goreleaser | rvm 2.4.1 do bash
 	ls dist
-
+	- ./jfrog bt pc --key=$BTKEY --user=devopsdays --licenses=MIT --vcs-url=https://github.com/devopsdays/rpm devopsdays/rpm/$GH_APP || echo "package already exists"
+	- ./jfrog bt upload --override=true --key $BTKEY --publish=true dist/devopdays-cli_$VERSION_linux-386.rpm devopsdays/rpm/devopdays-cli/$VERSION pool/$POOL/devopdays-cli/
+	- ./jfrog bt upload --override=true --key $BTKEY --publish=true dist/devopdays-cli_$VERSION_linux-amd64.rpm devopsdays/rpm/devopdays-cli/$VERSION pool/$POOL/devopdays-cli/
+	- ./jfrog bt pc --key=$BTKEY --user=devopsdays --licenses=MIT --vcs-url=https://github.com/devopsdays/deb devopsdays/deb/devopdays-cli || echo "package already exists"
+	- ./jfrog bt upload --override=true --key $BTKEY --publish=true --deb=unstable/main/386 dist/devopdays-cli_$VERSION_linux-386.deb devopsdays/deb/devopdays-cli/$VERSION pool/$POOL/devopdays-cli/
+	- ./jfrog bt upload --override=true --key $BTKEY --publish=true --deb=unstable/main/amd64 dist/devopdays-cli_$VERSION_linux-amd64.deb devopsdays/deb/devopdays-cli/$VERSION pool/$POOL/devopdays-cli/
+	- curl -X POST -u mattstratton:${BTKEY} https://api.bintray.com/calc_metadata/devopsdays/deb
+	- curl -X POST -u mattstratton:${BTKEY} https://api.bintray.com/calc_metadata/devopsdays/rpm
 travis:
 	$(HOME)/gopath/bin/goveralls -service=travis-ci
