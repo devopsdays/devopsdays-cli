@@ -12,7 +12,6 @@ install:
 script: go test ./...
 before_deploy:
   - go get -v github.com/inconshreveable/mousetrap
-  - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
   - gem install fpm
   - which fpm
   - sudo apt-get update
