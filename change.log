@@ -1,4 +1,14 @@
 
+0.10.13
+
+  * Dummy commit
+
+  - Matt Stratton <matt.stratton@gmail.com>
+
+-- Matt Stratton <matt.stratton@gmail.com>; Sun, 01 Oct 2017 01:00:06 -0500
+
+
+
 0.10.12
 
   * Remove stray junk from travis
@@ -125,6 +135,8 @@
 
     Also moved the doctor command under show config.
     Fixes #34
+
+
 
 
 
