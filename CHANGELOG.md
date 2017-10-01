@@ -1,5 +1,19 @@
 # Changelog - devopsdays-cli
 
+### 0.10.15
+
+__Changes__
+
+- Make travis great again
+
+__Contributors__
+
+- Matt Stratton
+
+Released by Matt Stratton, Sun 01 Oct 2017 -
+[see the diff](https://github.com/mh-cbon/devopsdays-cli/compare/0.10.14...0.10.15#diff)
+______________
+
 ### 0.10.14
 
 __Changes__
@@ -204,6 +218,8 @@ __Changes__
 
   Also moved the doctor command under show config.
   Fixes #34
+
+
 
 
 
