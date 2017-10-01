@@ -1,4 +1,14 @@
 
+0.10.4
+
+  * Switch back to container
+
+  - Matt Stratton <matt.stratton@gmail.com>
+
+-- Matt Stratton <matt.stratton@gmail.com>; Sat, 30 Sep 2017 23:06:28 -0500
+
+
+
 0.10.3
 
   * Fix travis - doesn't need docker login
@@ -35,6 +45,8 @@
 
     Also moved the doctor command under show config.
     Fixes #34
+
+
 
 
 
