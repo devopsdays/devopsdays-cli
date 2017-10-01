@@ -13,6 +13,9 @@ Command-line utilities for the [devopsdays](https://www.devopsdays.org) website 
   - [via Go](#via-go)
 - [Usage](#usage)
   - [$ devopsdays-cli --help](#-devopsdays-cli---help)
+- [History](#history)
+- [How to release](#how-to-release)
+  - [Tools needed for release](#tools-needed-for-release)
 
 # Install
 
@@ -69,4 +72,19 @@ Flags:
 Use "devopsdays-cli [command] --help" for more information about a command.
 ```
 
-#### $ 
+# History
+
+[CHANGELOG](CHANGELOG.md)
+
+# How to release
+
+```sh
+$ changelog prepare
+$ gump <patch|minor|major>
+```
+
+## Tools needed for release
+
+- [commit](https://github.com/mh-cbon/commit)
+- [changelog](https://github.com/mh-cbon/changelog)
+- [emd](https://github.com/mh-cbon/emd)
