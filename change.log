@@ -1,4 +1,14 @@
 
+0.10.6
+
+  * Add packages to bntray upload
+
+  - Matt Stratton <matt.stratton@gmail.com>
+
+-- Matt Stratton <matt.stratton@gmail.com>; Sun, 01 Oct 2017 00:19:16 -0500
+
+
+
 0.10.5
 
   * Add fpm back to goreleaser
@@ -55,6 +65,8 @@
 
     Also moved the doctor command under show config.
     Fixes #34
+
+
 
 
 
