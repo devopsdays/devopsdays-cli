@@ -34,8 +34,6 @@ brew install devopsdays/tap/devopsdays-cli
 
 #### $ {{exec "devopsdays-cli" "--help" | color "sh"}}
 
-#### $ {{exec "devopsdays-cli" "show config" | color "sh"}}
-
 #### $ {{exec "devopsdays-cli" "show version" | color "sh"}}
 
 # History
