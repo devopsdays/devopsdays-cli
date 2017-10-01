@@ -1,4 +1,14 @@
 
+0.10.9
+
+  * embed jfrog bin
+
+  - Matt Stratton <matt.stratton@gmail.com>
+
+-- Matt Stratton <matt.stratton@gmail.com>; Sun, 01 Oct 2017 00:35:56 -0500
+
+
+
 0.10.8
 
   * Add jfrom client again
@@ -85,6 +95,8 @@
 
     Also moved the doctor command under show config.
     Fixes #34
+
+
 
 
 
