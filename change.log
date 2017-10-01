@@ -1,4 +1,14 @@
 
+0.10.10
+
+  * Stupid jfrog
+
+  - Matt Stratton <matt.stratton@gmail.com>
+
+-- Matt Stratton <matt.stratton@gmail.com>; Sun, 01 Oct 2017 00:41:37 -0500
+
+
+
 0.10.9
 
   * embed jfrog bin
@@ -95,6 +105,8 @@
 
     Also moved the doctor command under show config.
     Fixes #34
+
+
 
 
 
