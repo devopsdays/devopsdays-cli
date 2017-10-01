@@ -1,5 +1,19 @@
 # Changelog - devopsdays-cli
 
+### 0.10.8
+
+__Changes__
+
+- Add jfrom client again
+
+__Contributors__
+
+- Matt Stratton
+
+Released by Matt Stratton, Sun 01 Oct 2017 -
+[see the diff](https://github.com/mh-cbon/devopsdays-cli/compare/0.10.7...0.10.8#diff)
+______________
+
 ### 0.10.7
 
 __Changes__
@@ -106,6 +120,8 @@ __Changes__
 
   Also moved the doctor command under show config.
   Fixes #34
+
+
 
 
 
