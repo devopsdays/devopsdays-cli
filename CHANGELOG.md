@@ -1,5 +1,19 @@
 # Changelog - devopsdays-cli
 
+### 0.11.2
+
+__Changes__
+
+- Make version script use better commit tense
+
+__Contributors__
+
+- Matt Stratton
+
+Released by Matt Stratton, Mon 02 Oct 2017 -
+[see the diff](https://github.com/mh-cbon/devopsdays-cli/compare/0.11.1...0.11.2#diff)
+______________
+
 ### 0.11.1
 
 __Changes__
@@ -316,6 +330,8 @@ __Changes__
 
   Also moved the doctor command under show config.
   Fixes #34
+
+
 
 
 
