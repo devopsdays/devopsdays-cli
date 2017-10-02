@@ -1,4 +1,14 @@
 
+0.11.1
+
+  * Fix docs and help
+
+  - Matt Stratton <matt.stratton@gmail.com>
+
+-- Matt Stratton <matt.stratton@gmail.com>; Mon, 02 Oct 2017 14:12:41 -0500
+
+
+
 0.11.0
 
   * Scaffold out nouns and verbs
@@ -215,6 +225,8 @@
 
     Also moved the doctor command under show config.
     Fixes #34
+
+
 
 
 
