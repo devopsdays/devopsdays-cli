@@ -1,4 +1,14 @@
 
+0.11.0
+
+  * Scaffold out nouns and verbs
+
+  - Matt Stratton <matt.stratton@gmail.com>
+
+-- Matt Stratton <matt.stratton@gmail.com>; Mon, 02 Oct 2017 13:52:36 -0500
+
+
+
 0.10.20
 
   * Try fixing package name
@@ -205,6 +215,8 @@
 
     Also moved the doctor command under show config.
     Fixes #34
+
+
 
 
 
