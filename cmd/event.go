@@ -11,6 +11,7 @@ import (
 	"time"
 
 	rice "github.com/GeertJohan/go.rice"
+	"github.com/devopsdays/devopsdays-cli/helpers"
 	"github.com/spf13/cobra"
 )
 
@@ -62,7 +63,7 @@ to quickly create a Cobra application.`,
 		city := cityFlag
 		year := yearFlag
 		if city != "" {
-			if checkEvent(city, year) == false {
+			if helpers.CheckEvent(city, year) == false {
 				log.Fatal("That city does not exist.")
 			}
 			myEvent := eventStruct(city, year)
@@ -73,7 +74,7 @@ to quickly create a Cobra application.`,
 			city, _ := reader.ReadString('\n')
 			fmt.Println("Enter the year:")
 			year, _ := reader.ReadString('\n')
-			if checkEvent(city, year) == false {
+			if helpers.CheckEvent(city, year) == false {
 				log.Fatal("That city does not exist.")
 			}
 			myEvent := eventStruct(city, year)
@@ -136,7 +137,7 @@ func addEvent(city string) (err error) {
 		fmt.Println("Enter the city: ")
 		city, _ = reader.ReadString('\n')
 	}
-	if validateField(city, "city") == false {
+	if helpers.ValidateField(city, "city") == false {
 		return fmt.Errorf("That is an invalid city. It should be less than 100 characters.")
 	}
 	t := time.Now()
@@ -145,7 +146,7 @@ func addEvent(city string) (err error) {
 	if eventYear == "\n" {
 		eventYear = t.Format("2006")
 	}
-	if validateField(strings.TrimSpace(eventYear), "year") == false {
+	if helpers.ValidateField(strings.TrimSpace(eventYear), "year") == false {
 		return fmt.Errorf("That is an invalid year. It must be four digits and between 2016 and 2030.")
 	}
 	fmt.Println("Enter your devopsdays event twitter handle (defaults to devopsdays): ")
@@ -155,7 +156,7 @@ func addEvent(city string) (err error) {
 	} else {
 		eventTwitter = strings.TrimSpace(strings.Replace(eventTwitter, "@", "", 1))
 	}
-	if validateField(eventTwitter, "twitter") == false {
+	if helpers.ValidateField(eventTwitter, "twitter") == false {
 		return fmt.Errorf("That is an invalid Twitter handle. It must not contain spaces.")
 	}
 
@@ -210,7 +211,7 @@ func createEventFile(city, year, twitter string) (string, error) {
 
 	s := []string{strings.TrimSpace(year), "-", strings.Replace(strings.TrimSpace(strings.ToLower(city)), " ", "-", 10)}
 	slug := strings.Join(s, "")
-	// cityClean := strings.Replace(strings.TrimSpace(strings.ToLower(city)), " ", "-", 10)
+	// CityClean := strings.Replace(strings.TrimSpace(strings.ToLower(city)), " ", "-", 10)
 	// t := template.Must(template.New("event.yml.tmpl").ParseFile("templates/event.yml.tmpl"))
 	// parse and execute the template
 	t, err := template.New("event.yml").Parse(templateString)
@@ -227,10 +228,10 @@ func createEventFile(city, year, twitter string) (string, error) {
 		strings.TrimSpace(city),
 		strings.TrimSpace(year),
 		slug,
-		cityClean(city),
+		helpers.CityClean(city),
 		strings.TrimSpace(twitter),
 	}
-	f, err := os.Create(eventDataPath(webdir, city, year))
+	f, err := os.Create(helpers.EventDataPath(webdir, city, year))
 	if err != nil {
 		return "", err
 	}
@@ -239,13 +240,13 @@ func createEventFile(city, year, twitter string) (string, error) {
 	if err != nil {
 		fmt.Println(err)
 	} else {
-		fmt.Println("Created event file for", city, "for year", year, "at", eventDataPath(webdir, city, year))
+		fmt.Println("Created event file for", city, "for year", year, "at", helpers.EventDataPath(webdir, city, year))
 	}
 	return city, nil
 }
 
 func createEventContentDir(city, year string) (string, error) {
-	err := os.MkdirAll((eventContentPath(webdir, city, year)), 0755)
+	err := os.MkdirAll((helpers.EventContentPath(city, year)), 0755)
 	if err != nil {
 		return "", err
 	}
@@ -284,9 +285,9 @@ func createEventContentFile(city, year, page string) (string, error) { // add pa
 		strings.TrimSpace(city),
 		strings.TrimSpace(year),
 		slug,
-		cityClean(city),
+		helpers.CityClean(city),
 	}
-	filePath := filepath.Join((eventContentPath(webdir, city, year)), (page + ".md"))
+	filePath := filepath.Join((helpers.EventContentPath(city, year)), (page + ".md"))
 	f, err := os.Create(filePath)
 	if err != nil {
 		return "Cannot create", err
