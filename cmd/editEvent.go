@@ -10,72 +10,12 @@ import (
 	"strings"
 
 	"github.com/davecgh/go-spew/spew"
+	"github.com/devopsdays/devopsdays-cli/model"
 	"gopkg.in/yaml.v2"
 )
 
 var city string
 var year string
-
-type Event struct {
-	Name                  string `yaml:"name"`
-	Year                  string `yaml:"year"`
-	City                  string `yaml:"city"`
-	EventTwitter          string `yaml:"event_twitter"`
-	Description           string `yaml:"description"`
-	GaTrackingID          string `yaml:"ga_tracking_id"`
-	Startdate             string `yaml:"startdate"`
-	Enddate               string `yaml:"enddate"`
-	CfpDateStart          string `yaml:"cfp_date_start"`
-	CfpDateEnd            string `yaml:"cfp_date_end"`
-	CfpDateAnnounce       string `yaml:"cfp_date_announce"`
-	CfpOpen               string `yaml:"cfp_open"`
-	CfpLink               string `yaml:"cfp_link"`
-	RegistrationDateStart string `yaml:"registration_date_start"`
-	RegistrationDateEnd   string `yaml:"registration_date_end"`
-	RegistrationClosed    string `yaml:"registration_closed"`
-	RegistrationLink      string `yaml:"registration_link"`
-	Coordinates           string `yaml:"coordinates"`
-	Location              string `yaml:"location"`
-	LocationAddress       string `yaml:"location_address"`
-	NavElements           []struct {
-		Name string `yaml:"name"`
-	} `yaml:"nav_elements"`
-	TeamMembers []struct {
-		Name     string `yaml:"name"`
-		Twitter  string `yaml:"twitter,omitempty"`
-		Employer string `yaml:"employer,omitempty"`
-		Github   string `yaml:"github,omitempty"`
-		Facebook string `yaml:"facebook,omitempty"`
-		Linkedin string `yaml:"linkedin,omitempty"`
-		Website  string `yaml:"website,omitempty"`
-		Image    string `yaml:"image,omitempty"`
-		Bio      string `yaml:"bio,omitempty"`
-	} `yaml:"team_members"`
-	OrganizerEmail string `yaml:"organizer_email"`
-	ProposalEmail  string `yaml:"proposal_email"`
-	Sponsors       []struct {
-		ID    string `yaml:"id"`
-		Level string `yaml:"level"`
-	} `yaml:"sponsors"`
-	SponsorsAccepted string `yaml:"sponsors_accepted"`
-	SponsorLevels    []struct {
-		ID    string `yaml:"id"`
-		Label string `yaml:"label"`
-		Max   int    `yaml:"max,omitempty"`
-	} `yaml:"sponsor_levels"`
-}
-
-type Organizer struct {
-	Name     string
-	Twitter  string
-	Employer string
-	Github   string
-	Facebook string
-	Linkedin string
-	Website  string
-	Image    string
-	Bio      string
-}
 
 func organizerFieldMap() (fieldMap map[string]string) {
 	tempMap := make(map[string]string)
@@ -127,7 +67,7 @@ func organizerFields() []string {
 	return fields
 }
 
-func editEvent(event Event) (err error) {
+func editEvent(event model.Event) (err error) {
 
 	reader := bufio.NewReader(os.Stdin)
 	fmt.Println("Do you want to [1] edit the value of a field, [2] add an organizer, or [3] add a sponsor?")
@@ -212,7 +152,7 @@ func editEvent(event Event) (err error) {
 
 }
 
-func eventStruct(city, year string) (event Event) {
+func eventStruct(city, year string) (event model.Event) {
 	// var event Event
 	yamlFile, err := ioutil.ReadFile(eventDataPath(webdir, city, year))
 	err = yaml.Unmarshal(yamlFile, &event)
@@ -222,8 +162,8 @@ func eventStruct(city, year string) (event Event) {
 	return event
 }
 
-func organizerStruct(name, twitter, employer, github, facebook, linkedin, website, image, bio string) (organizer Organizer) {
-	o := Organizer{name, twitter, employer, github, facebook, linkedin, website, image, bio}
+func organizerStruct(name, twitter, employer, github, facebook, linkedin, website, image, bio string) (organizer model.Organizer) {
+	o := model.Organizer{name, twitter, employer, github, facebook, linkedin, website, image, bio}
 
 	return o
 
@@ -251,13 +191,13 @@ func makeMenu(items []string) (field string) {
 	return field
 }
 
-func returnField(event Event, field string) (name string) {
+func returnField(event model.Event, field string) (name string) {
 	r := reflect.ValueOf(event)
 	f := reflect.Indirect(r).FieldByName(field)
 	return f.String()
 }
 
-func editField(event Event, field, value string) {
+func editField(event model.Event, field, value string) {
 	// r := reflect.ValueOf(event)
 	// f := reflect.Indirect(r).FieldByName(field)
 	reflect.ValueOf(&event).Elem().FieldByName(field).SetString(value)
@@ -266,7 +206,7 @@ func editField(event Event, field, value string) {
 	return
 }
 
-func updateOrganizer(event Event, name, field, value string) {
+func updateOrganizer(event model.Event, name, field, value string) {
 	for _, loopvalue := range event.TeamMembers {
 		s := reflect.ValueOf(&loopvalue).Elem()
 		r := reflect.Indirect(s).FieldByName(field)
@@ -280,7 +220,7 @@ func updateOrganizer(event Event, name, field, value string) {
 	}
 }
 
-func editOrganizer(event Event, organizer, field, value string) {
+func editOrganizer(event model.Event, organizer, field, value string) {
 	for _, value := range event.TeamMembers {
 		s := reflect.ValueOf(&value).Elem()
 		fmt.Print(s)
