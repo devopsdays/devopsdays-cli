@@ -1,4 +1,14 @@
 
+0.10.16
+
+  * Fix up travis script
+
+  - Matt Stratton <matt.stratton@gmail.com>
+
+-- Matt Stratton <matt.stratton@gmail.com>; Mon, 02 Oct 2017 07:41:54 -0500
+
+
+
 0.10.15
 
   * Make travis great again
@@ -155,6 +165,8 @@
 
     Also moved the doctor command under show config.
     Fixes #34
+
+
 
 
 
