@@ -1,4 +1,14 @@
 
+0.10.20
+
+  * Try fixing package name
+
+  - Matt Stratton <matt.stratton@gmail.com>
+
+-- Matt Stratton <matt.stratton@gmail.com>; Mon, 02 Oct 2017 09:00:44 -0500
+
+
+
 0.10.19
 
   * Fix travis vars
@@ -195,6 +205,8 @@
 
     Also moved the doctor command under show config.
     Fixes #34
+
+
 
 
 
