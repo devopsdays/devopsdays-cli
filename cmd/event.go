@@ -30,7 +30,7 @@ to quickly create a Cobra application.`,
 	// },
 }
 
-// createEventCmd represents the "event create" command
+// createEventCmd represents the "create event" command
 var createEventCmd = &cobra.Command{
 	Use:   "event create [city year]",
 	Short: "Create a new event",
@@ -46,10 +46,10 @@ City must not have a space. Replace spaces with '-'`,
 	},
 }
 
-// editEventCmd represents the editEvent command
+// editEventCmd represents the "edit event" command
 var editEventCmd = &cobra.Command{
-	Use:   "edit",
-	Short: "A brief description of your command",
+	Use:   "event",
+	Short: "Edit an existing event",
 	Long: `A longer description that spans multiple lines and likely contains examples
 and usage of using your command. For example:
 
@@ -83,10 +83,27 @@ to quickly create a Cobra application.`,
 	},
 }
 
+// showEventCmd represents the "show event" command
+var showEventCmd = &cobra.Command{
+	Use:   "event",
+	Short: "Show a event from an event",
+	Long: `A longer description that spans multiple lines and likely contains examples
+and usage of using your command. For example:
+
+Cobra is a CLI library for Go that empowers applications.
+This application is a tool to generate the needed files
+to quickly create a Cobra application.`,
+	Run: func(cmd *cobra.Command, args []string) {
+		// TODO: Work your own magic here
+		showEvent()
+	},
+}
+
 func init() {
-	RootCmd.AddCommand(eventCmd)
-	eventCmd.AddCommand(createEventCmd)
-	eventCmd.AddCommand(editEventCmd)
+	// RootCmd.AddCommand(eventCmd)
+	createCmd.AddCommand(createEventCmd)
+	editCmd.AddCommand(editEventCmd)
+	showCmd.AddCommand(showEventCmd)
 
 	// Here you will define your flags and configuration settings.
 
@@ -98,6 +115,16 @@ func init() {
 	// is called directly, e.g.:
 	// eventCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 
+}
+
+// Main functions go here
+
+func createEvent() {
+	fmt.Println("you would have created an event if this happened")
+}
+
+func showEvent() {
+	fmt.Println("You would have shown an event if this happened")
 }
 
 // addEvent creates a new event based upon city, year, and twitter handle.

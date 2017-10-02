@@ -32,8 +32,59 @@ The name argument must not contain any spaces.`,
 	},
 }
 
+// addSponsorCmd represents the "sponsor add" command
+var addSponsorCmd = &cobra.Command{
+	Use:   "sponsor",
+	Short: "Add a sponsor to an event",
+	Long: `A longer description that spans multiple lines and likely contains examples
+and usage of using your command. For example:
+
+Cobra is a CLI library for Go that empowers applications.
+This application is a tool to generate the needed files
+to quickly create a Cobra application.`,
+	Run: func(cmd *cobra.Command, args []string) {
+		// TODO: Work your own magic here
+		addSponsorFake() //TODO: This is the fake one
+	},
+}
+
+// createSponsorCmd represents the "sponsor create" command
+var createSponsorCmd = &cobra.Command{
+	Use:   "sponsor",
+	Short: "Create a new sponsor",
+	Long: `A longer description that spans multiple lines and likely contains examples
+and usage of using your command. For example:
+
+Cobra is a CLI library for Go that empowers applications.
+This application is a tool to generate the needed files
+to quickly create a Cobra application.`,
+	Run: func(cmd *cobra.Command, args []string) {
+		// TODO: Work your own magic here
+		createSponsor()
+	},
+}
+
+// addSponsorCmd represents the "sponsor add" command
+var removeSponsorCmd = &cobra.Command{
+	Use:   "sponsor",
+	Short: "Remove a sponsor from an event",
+	Long: `A longer description that spans multiple lines and likely contains examples
+and usage of using your command. For example:
+
+Cobra is a CLI library for Go that empowers applications.
+This application is a tool to generate the needed files
+to quickly create a Cobra application.`,
+	Run: func(cmd *cobra.Command, args []string) {
+		// TODO: Work your own magic here
+		removeSponsor() //TODO: This is the fake one
+	},
+}
+
 func init() {
-	RootCmd.AddCommand(sponsorCmd)
+	// RootCmd.AddCommand(sponsorCmd)
+	addCmd.AddCommand(addSponsorCmd)
+	createCmd.AddCommand(createSponsorCmd)
+	removeCmd.AddCommand(removeSponsorCmd)
 
 	// Here you will define your flags and configuration settings.
 
@@ -45,6 +96,24 @@ func init() {
 	// is called directly, e.g.:
 	// sponsorCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 
+}
+
+// Main functions go down here
+
+func addSponsorFake() {
+	fmt.Println("You would have added a sponsor if this happened")
+}
+
+func createSponsor() {
+	fmt.Println("You would have created a new sponsor if this happened")
+}
+
+func removeSponsor() {
+	fmt.Println("You would have removed a sponsor from the event if this happened")
+}
+
+func showSponsor() {
+	fmt.Println("You would have shown a sponsor if this happened")
 }
 
 func addSponsor(sponsor string) (err error) {

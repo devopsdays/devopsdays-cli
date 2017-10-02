@@ -6,10 +6,10 @@ import (
 	"github.com/spf13/cobra"
 )
 
-// programCmd represents the program command
-var programCmd = &cobra.Command{
+// createProgramCmd represents the "program create" command
+var createProgramCmd = &cobra.Command{
 	Use:   "program",
-	Short: "Create or modify your program",
+	Short: "Create a new program for an event",
 	Long: `A longer description that spans multiple lines and likely contains examples
 and usage of using your command. For example:
 
@@ -18,12 +18,46 @@ This application is a tool to generate the needed files
 to quickly create a Cobra application.`,
 	Run: func(cmd *cobra.Command, args []string) {
 		// TODO: Work your own magic here
-		fmt.Println("Sorry! This feature isn't implmented yet.")
+		createProgram()
+	},
+}
+
+// editProgramCmd represents the "program edi" command
+var editProgramCmd = &cobra.Command{
+	Use:   "program",
+	Short: "Edit an event's program",
+	Long: `A longer description that spans multiple lines and likely contains examples
+and usage of using your command. For example:
+
+Cobra is a CLI library for Go that empowers applications.
+This application is a tool to generate the needed files
+to quickly create a Cobra application.`,
+	Run: func(cmd *cobra.Command, args []string) {
+		// TODO: Work your own magic here
+		editProgram()
+	},
+}
+
+// showProgramCmd represents the "program show" command
+var showProgramCmd = &cobra.Command{
+	Use:   "program",
+	Short: "Show an event's program",
+	Long: `A longer description that spans multiple lines and likely contains examples
+and usage of using your command. For example:
+
+Cobra is a CLI library for Go that empowers applications.
+This application is a tool to generate the needed files
+to quickly create a Cobra application.`,
+	Run: func(cmd *cobra.Command, args []string) {
+		// TODO: Work your own magic here
+		showProgram()
 	},
 }
 
 func init() {
-	RootCmd.AddCommand(programCmd)
+	createCmd.AddCommand(createProgramCmd)
+	editCmd.AddCommand(editProgramCmd)
+	showCmd.AddCommand(showProgramCmd)
 
 	// Here you will define your flags and configuration settings.
 
@@ -35,4 +69,18 @@ func init() {
 	// is called directly, e.g.:
 	// programCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 
+}
+
+// Main functions go down here
+
+func createProgram() {
+	fmt.Println("You would have created a program if this happened")
+}
+
+func editProgram() {
+	fmt.Println("You would have edited a program if this happened")
+}
+
+func showProgram() {
+	fmt.Println("You would have shown the program if this happened")
 }

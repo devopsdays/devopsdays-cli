@@ -1,8 +1,6 @@
 package cmd
 
 import (
-	"fmt"
-
 	"github.com/spf13/cobra"
 )
 
@@ -11,11 +9,11 @@ var addCmd = &cobra.Command{
 	Use:   "add [thing]",
 	Short: "Add a thing to another thing",
 	Long:  `Use this to add sponsors to events, etc.`,
-	Args:  cobra.MinimumNArgs(1),
-	Run: func(cmd *cobra.Command, args []string) {
-		// TODO: Work your own magic here
-		fmt.Println("add called")
-	},
+	// Args:  cobra.MinimumNArgs(1),
+	// Run: func(cmd *cobra.Command, args []string) {
+	// 	// TODO: Work your own magic here
+	// 	fmt.Println("add called")
+	// },
 }
 
 func init() {
