@@ -7,7 +7,7 @@ import (
 // addCmd represents the remove command
 var removeCmd = &cobra.Command{
 	Use:   "remove [thing]",
-	Short: "Remove a thing to another thing",
+	Short: "Remove a thing from another thing",
 	Long:  `Use this to remove sponsors to events, etc.`,
 	// Args:  cobra.MinimumNArgs(1),
 	// Run: func(cmd *cobra.Command, args []string) {
