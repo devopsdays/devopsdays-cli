@@ -1,4 +1,14 @@
 
+0.10.18
+
+  * Change to use direct API instead of CLI for bintray
+
+  - Matt Stratton <matt.stratton@gmail.com>
+
+-- Matt Stratton <matt.stratton@gmail.com>; Mon, 02 Oct 2017 07:56:05 -0500
+
+
+
 0.10.17
 
   * Move bintray back to make
@@ -175,6 +185,8 @@
 
     Also moved the doctor command under show config.
     Fixes #34
+
+
 
 
 
