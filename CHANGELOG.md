@@ -1,5 +1,19 @@
 # Changelog - devopsdays-cli
 
+### 0.10.19
+
+__Changes__
+
+- Fix travis vars
+
+__Contributors__
+
+- Matt Stratton
+
+Released by Matt Stratton, Mon 02 Oct 2017 -
+[see the diff](https://github.com/mh-cbon/devopsdays-cli/compare/0.10.18...0.10.19#diff)
+______________
+
 ### 0.10.18
 
 __Changes__
@@ -260,6 +274,8 @@ __Changes__
 
   Also moved the doctor command under show config.
   Fixes #34
+
+
 
 
 
