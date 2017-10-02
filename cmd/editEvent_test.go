@@ -2,6 +2,8 @@ package cmd
 
 import (
 	"testing"
+
+	"github.com/devopsdays/devopsdays-cli/helpers"
 )
 
 // func TestMakeMenu(t *testing.T) {
@@ -32,7 +34,7 @@ func TestOrganizerFields(t *testing.T) {
 
 func TestFieldMap(t *testing.T) {
 	t.Log("Testing field mappings (expected result: 'myMap[EventTwitter]' = 'Twitter')")
-	myMap := fieldMap()
+	myMap := helpers.FieldMap()
 
 	if myMap["EventTwitter"] != "Twitter" {
 		t.Errorf("Expected result of 'myMap[EventTwitter]' = 'Twitter' but it was %s instead.", myMap["EventTwitter"])

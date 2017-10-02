@@ -10,6 +10,7 @@ import (
 	"strings"
 
 	"github.com/davecgh/go-spew/spew"
+	"github.com/devopsdays/devopsdays-cli/helpers"
 	"github.com/devopsdays/devopsdays-cli/model"
 	"gopkg.in/yaml.v2"
 )
@@ -146,7 +147,7 @@ func editEvent(event model.Event) (err error) {
 	// event.Name = "mugsyville"
 	// fmt.Print(event.Name)
 	// y, err := yaml.Marshal(&event)
-	// ioutil.WriteFile((eventDataPath(webdir, city, year)), y, 0755)
+	// ioutil.WriteFile((helpers.EventDataPath(webdir, city, year)), y, 0755)
 
 	return
 
@@ -154,7 +155,7 @@ func editEvent(event model.Event) (err error) {
 
 func eventStruct(city, year string) (event model.Event) {
 	// var event Event
-	yamlFile, err := ioutil.ReadFile(eventDataPath(webdir, city, year))
+	yamlFile, err := ioutil.ReadFile(helpers.EventDataPath(webdir, city, year))
 	err = yaml.Unmarshal(yamlFile, &event)
 	if err != nil {
 		panic(err)
@@ -163,7 +164,7 @@ func eventStruct(city, year string) (event model.Event) {
 }
 
 func organizerStruct(name, twitter, employer, github, facebook, linkedin, website, image, bio string) (organizer model.Organizer) {
-	o := model.Organizer{name, twitter, employer, github, facebook, linkedin, website, image, bio}
+	o := model.Organizer{Name: name, Twitter: twitter, Employer: employer, Github: github, Facebook: facebook, Linkedin: linkedin, Website: website, Image: image, Bio: bio}
 
 	return o
 
@@ -172,7 +173,7 @@ func organizerStruct(name, twitter, employer, github, facebook, linkedin, websit
 // TODO: This should actually return the key to change; rather than just create the menu
 func makeMenu(items []string) (field string) {
 	fmt.Println("Which field would you like to modify?")
-	myMap := fieldMap()
+	myMap := helpers.FieldMap()
 	menu := "\n"
 	for i, v := range items {
 		menu += "["
@@ -202,7 +203,7 @@ func editField(event model.Event, field, value string) {
 	// f := reflect.Indirect(r).FieldByName(field)
 	reflect.ValueOf(&event).Elem().FieldByName(field).SetString(value)
 	y, _ := yaml.Marshal(&event)
-	ioutil.WriteFile((eventDataPath(webdir, event.City, event.Year)), y, 0755)
+	ioutil.WriteFile((helpers.EventDataPath(webdir, event.City, event.Year)), y, 0755)
 	return
 }
 
@@ -215,7 +216,7 @@ func updateOrganizer(event model.Event, name, field, value string) {
 			fmt.Println(r)
 			spew.Dump(event.TeamMembers)
 			y, _ := yaml.Marshal(&event)
-			ioutil.WriteFile((eventDataPath(webdir, event.City, event.Year)), y, 0755)
+			ioutil.WriteFile((helpers.EventDataPath(webdir, event.City, event.Year)), y, 0755)
 		}
 	}
 }
