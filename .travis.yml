@@ -19,16 +19,7 @@ before_deploy:
 deploy:
   skip_cleanup: true
   provider: script
-  script:
-  - curl -sL https://git.io/goreleaser | rvm 2.4.1 do bash
-  - util/jfrog bt pc --key=$BTKEY --user=devopsdays --licenses=MIT --vcs-url=https://github.com/devopsdays/rpm devopsdays/rpm/devopsdays-cli || echo "package already exists"
-  - util/jfrog bt upload --override=true --key $BTKEY --publish=true dist/devopdays-cli_$TRAVIS_TAG_linux-386.rpm devopsdays/rpm/devopdays-cli/$TRAVIS_TAG pool/d/devopdays-cli/
-  - util/jfrog bt upload --override=true --key $BTKEY --publish=true dist/devopdays-cli_$TRAVIS_TAG_linux-amd64.rpm devopsdays/rpm/devopdays-cli/$TRAVIS_TAG pool/d/devopdays-cli/
-  - util/jfrog bt pc --key=$BTKEY --user=devopsdays --licenses=MIT --vcs-url=https://github.com/devopsdays/deb devopsdays/deb/devopdays-cli || echo "package already exists"
-  - util/jfrog bt upload --override=true --key $BTKEY --publish=true --deb=unstable/main/386 dist/devopdays-cli_$TRAVIS_TAG_linux-386.deb devopsdays/deb/devopdays-cli/$TRAVIS_TAG pool/d/devopdays-cli/
-  - util/jfrog bt upload --override=true --key $BTKEY --publish=true --deb=unstable/main/amd64 dist/devopdays-cli_$TRAVIS_TAG_linux-amd64.deb devopsdays/deb/devopdays-cli/$TRAVIS_TAG pool/d/devopdays-cli/
-  - curl -X POST -u mattstratton:${BTKEY} https://api.bintray.com/calc_metadata/devopsdays/deb
-  - curl -X POST -u mattstratton:${BTKEY} https://api.bintray.com/calc_metadata/devopsdays/rpm
+  script: make deploy
   on:
     tags: true
 notifications:

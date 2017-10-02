@@ -47,8 +47,8 @@ test:
 
 deploy:
 	# go get -v github.com/inconshreveable/mousetrap
-	curl -sL https://git.io/goreleaser | rvm 2.4.1 do bash
-	ls dist
+	- curl -sL https://git.io/goreleaser | rvm 2.4.1 do bash
+	- ls dist
 	- ./util/jfrog bt pc --key=$BTKEY --user=devopsdays --licenses=MIT --vcs-url=https://github.com/devopsdays/rpm devopsdays/rpm/$GH_APP || echo "package already exists"
 	- ./util/jfrog bt upload --override=true --key $BTKEY --publish=true dist/devopdays-cli_$VERSION_linux-386.rpm devopsdays/rpm/devopdays-cli/$VERSION pool/$POOL/devopdays-cli/
 	- ./util/jfrog bt upload --override=true --key $BTKEY --publish=true dist/devopdays-cli_$VERSION_linux-amd64.rpm devopsdays/rpm/devopdays-cli/$VERSION pool/$POOL/devopdays-cli/
