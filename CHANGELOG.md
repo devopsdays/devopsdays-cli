@@ -1,5 +1,19 @@
 # Changelog - devopsdays-cli
 
+### 0.11.0
+
+__Changes__
+
+- Scaffold out nouns and verbs
+
+__Contributors__
+
+- Matt Stratton
+
+Released by Matt Stratton, Mon 02 Oct 2017 -
+[see the diff](https://github.com/mh-cbon/devopsdays-cli/compare/0.10.20...0.11.0#diff)
+______________
+
 ### 0.10.20
 
 __Changes__
@@ -288,6 +302,8 @@ __Changes__
 
   Also moved the doctor command under show config.
   Fixes #34
+
+
 
 
 
