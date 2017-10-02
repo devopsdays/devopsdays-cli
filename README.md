@@ -52,17 +52,12 @@ Usage:
   devopsdays-cli [command]
 
 Available Commands:
-  add         A brief description of your command
-  create      A brief description of your command
-  edit        A brief description of your command
-  event       A brief description of your command
+  add         Add a thing to another thing
+  create      Make a new thing
+  edit        Edit an existing thing
   help        Help about any command
-  program     Create or modify your program
-  remove      A brief description of your command
-  show        A brief description of your command
-  speaker     A brief description of your command
-  sponsor     Create a sponsor
-  talk        A brief description of your command
+  remove      Remove a thing to another thing
+  show        Show details about a thing
 
 Flags:
   -c, --city string   city name
