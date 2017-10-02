@@ -1,4 +1,14 @@
 
+0.11.2
+
+  * Make version script use better commit tense
+
+  - Matt Stratton <matt.stratton@gmail.com>
+
+-- Matt Stratton <matt.stratton@gmail.com>; Mon, 02 Oct 2017 14:18:33 -0500
+
+
+
 0.11.1
 
   * Fix docs and help
@@ -225,6 +235,8 @@
 
     Also moved the doctor command under show config.
     Fixes #34
+
+
 
 
 
