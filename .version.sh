@@ -14,17 +14,17 @@ PREVERSION=
   echo "finalizing changelog..."
   changelog finalize --version !newversion!
   echo "committing change.log..."
-  commit -q -m "changelog: !newversion!" -f change.log
+  commit -q -m "Update change log file for !newversion!" -f change.log
   echo "exporting changelog..."
   changelog md -o CHANGELOG.md --vars='{"name":"devopsdays-cli", "user":"devopsdays"}'
   echo "committing CHANGELOG.md..."
-  commit -q -m "changelog: !newversion!" -f CHANGELOG.md
+  commit -q -m "Update changelog markdown for !newversion!" -f CHANGELOG.md
   echo "installing latest devopsdays-cli"
   go install --ldflags "-X github.com/devopsdays/devopsdays-cli/cmd.Version=!newversion!"
   echo "generating README.md..."
   emd gen -in README.e.md > README.md
   echo "committing README.md..."
-  commit -q -m "README: !newversion!" -f README.md
+  commit -q -m "Update README for !newversion!" -f README.md
   echo "preversion script complete"
 
 # POSTVERSION runs for any kind of bumps
