@@ -32,7 +32,7 @@ The name argument must not contain any spaces.`,
 	},
 }
 
-// addSponsorCmd represents the "sponsor add" command
+// addSponsorCmd represents the "add sponsor" command
 var addSponsorCmd = &cobra.Command{
 	Use:   "sponsor",
 	Short: "Add a sponsor to an event",
@@ -48,7 +48,7 @@ to quickly create a Cobra application.`,
 	},
 }
 
-// createSponsorCmd represents the "sponsor create" command
+// createSponsorCmd represents the "create sponsor" command
 var createSponsorCmd = &cobra.Command{
 	Use:   "sponsor",
 	Short: "Create a new sponsor",
@@ -64,7 +64,23 @@ to quickly create a Cobra application.`,
 	},
 }
 
-// addSponsorCmd represents the "sponsor add" command
+// editSponsorCmd represents the "edit sponsor" command
+var editSponsorCmd = &cobra.Command{
+	Use:   "sponsor",
+	Short: "Create a new sponsor",
+	Long: `A longer description that spans multiple lines and likely contains examples
+and usage of using your command. For example:
+
+Cobra is a CLI library for Go that empowers applications.
+This application is a tool to generate the needed files
+to quickly edit a Cobra application.`,
+	Run: func(cmd *cobra.Command, args []string) {
+		// TODO: Work your own magic here
+		editSponsor()
+	},
+}
+
+// removeSponsorCmd represents the "remove sponsor" command
 var removeSponsorCmd = &cobra.Command{
 	Use:   "sponsor",
 	Short: "Remove a sponsor from an event",
@@ -80,11 +96,29 @@ to quickly create a Cobra application.`,
 	},
 }
 
+// showSponsorCmd represents the "show sponsor" command
+var showSponsorCmd = &cobra.Command{
+	Use:   "sponsor",
+	Short: "Remove a sponsor from an event",
+	Long: `A longer description that spans multiple lines and likely contains examples
+and usage of using your command. For example:
+
+Cobra is a CLI library for Go that empowers applications.
+This application is a tool to generate the needed files
+to quickly create a Cobra application.`,
+	Run: func(cmd *cobra.Command, args []string) {
+		// TODO: Work your own magic here
+		showSponsor() //TODO: This is the fake one
+	},
+}
+
 func init() {
 	// RootCmd.AddCommand(sponsorCmd)
 	addCmd.AddCommand(addSponsorCmd)
 	createCmd.AddCommand(createSponsorCmd)
+	editCmd.AddCommand(editSponsorCmd)
 	removeCmd.AddCommand(removeSponsorCmd)
+	showCmd.AddCommand(showSponsorCmd)
 
 	// Here you will define your flags and configuration settings.
 
@@ -106,6 +140,10 @@ func addSponsorFake() {
 
 func createSponsor() {
 	fmt.Println("You would have created a new sponsor if this happened")
+}
+
+func editSponsor() {
+	fmt.Println("You would have edited an existing sponsor if this happened")
 }
 
 func removeSponsor() {

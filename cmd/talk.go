@@ -6,6 +6,22 @@ import (
 	"github.com/spf13/cobra"
 )
 
+// addTalkCmd represents the "talk add" command
+var addTalkCmd = &cobra.Command{
+	Use:   "talk",
+	Short: "Add a talk to an event's program",
+	Long: `A longer description that spans multiple lines and likely contains examples
+and usage of using your command. For example:
+
+Cobra is a CLI library for Go that empowers applications.
+This application is a tool to generate the needed files
+to quickly create a Cobra application.`,
+	Run: func(cmd *cobra.Command, args []string) {
+		// TODO: Work your own magic here
+		createTalk()
+	},
+}
+
 // createTalkCmd represents the "talk create" command
 var createTalkCmd = &cobra.Command{
 	Use:   "talk",
@@ -71,6 +87,7 @@ to quickly create a Cobra application.`,
 }
 
 func init() {
+	addCmd.AddCommand(createTalkCmd)
 	createCmd.AddCommand(createTalkCmd)
 	editCmd.AddCommand(editTalkCmd)
 	removeCmd.AddCommand(removeTalkCmd)
@@ -89,6 +106,10 @@ func init() {
 }
 
 // Main functions go down here
+
+func addTalk() {
+	fmt.Println("You would have added a talk to a program if this happened")
+}
 
 func createTalk() {
 	fmt.Println("You would have created a talk if this happened")
