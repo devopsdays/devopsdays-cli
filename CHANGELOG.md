@@ -1,5 +1,31 @@
 # Changelog - devopsdays-cli
 
+### 0.12.0
+
+__Changes__
+
+- Implement create speaker functionality
+
+  Fixes #41
+- Change most tests to convey tests
+- Add some convey tests
+- Scaffold out beginnings of new speaker code
+- Remove unnecessary files
+- Merge pull request #62 from devopsdays/data-model
+
+  Migrate to data model and use helpers package
+- Move all helpers to other package
+- Initialize model package
+- Add a couple more scaffolds to sponsor and talk
+
+__Contributors__
+
+- Matt Stratton
+
+Released by Matt Stratton, Tue 03 Oct 2017 -
+[see the diff](https://github.com/mh-cbon/devopsdays-cli/compare/0.11.2...0.12.0#diff)
+______________
+
 ### 0.11.2
 
 __Changes__
@@ -330,6 +356,8 @@ __Changes__
 
   Also moved the doctor command under show config.
   Fixes #34
+
+
 
 
 
