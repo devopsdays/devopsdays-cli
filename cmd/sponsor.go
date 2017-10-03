@@ -16,8 +16,6 @@ import (
 	"github.com/spf13/cobra"
 )
 
-var All string
-
 // sponsorCmd represents the sponsor command
 var sponsorCmd = &cobra.Command{
 	Use:   "sponsor [name]",
@@ -122,15 +120,12 @@ func init() {
 	removeCmd.AddCommand(removeSponsorCmd)
 	showCmd.AddCommand(showSponsorCmd)
 
-	// Here you will define your flags and configuration settings.
-
-	// Cobra supports Persistent Flags which will work for this command
-	// and all subcommands, e.g.:
-	// sponsorCmd.PersistentFlags().String("foo", "", "A help for foo")
-
-	// Cobra supports local flags which will only run when this command
-	// is called directly, e.g.:
-	showSponsorCmd.Flags().BoolP("all", "a", false, "Show all sponsors")
+	addSponsorCmd.Flags().StringVarP(&City, "city", "c", "", "city to use")
+	addSponsorCmd.Flags().StringVarP(&Year, "year", "y", "", "year to use")
+	removeSponsorCmd.Flags().StringVarP(&City, "city", "c", "", "city to use")
+	removeSponsorCmd.Flags().StringVarP(&Year, "year", "y", "", "year to use")
+	showSponsorCmd.Flags().StringVarP(&City, "city", "c", "", "city to use")
+	showSponsorCmd.Flags().StringVarP(&Year, "year", "y", "", "year to use")
 
 }
 

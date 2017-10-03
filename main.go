@@ -3,6 +3,7 @@ package main
 
 import (
 	"github.com/devopsdays/devopsdays-cli/cmd"
+	_ "github.com/dimiro1/banner/autoload"
 )
 
 func main() {

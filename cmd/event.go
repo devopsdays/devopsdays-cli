@@ -60,8 +60,8 @@ to quickly create a Cobra application.`,
 	Run: func(cmd *cobra.Command, args []string) {
 		// TODO: Work your own magic here
 		// TODO: Check for args first
-		city := cityFlag
-		year := yearFlag
+		city := ""
+		year := ""
 		if city != "" {
 			if helpers.CheckEvent(city, year) == false {
 				log.Fatal("That city does not exist.")
@@ -106,15 +106,12 @@ func init() {
 	editCmd.AddCommand(editEventCmd)
 	showCmd.AddCommand(showEventCmd)
 
-	// Here you will define your flags and configuration settings.
-
-	// Cobra supports Persistent Flags which will work for this command
-	// and all subcommands, e.g.:
-	// eventCmd.PersistentFlags().String("foo", "", "A help for foo")
-
-	// Cobra supports local flags which will only run when this command
-	// is called directly, e.g.:
-	// eventCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
+	createEventCmd.Flags().StringVarP(&City, "city", "c", "", "city to use")
+	createEventCmd.Flags().StringVarP(&Year, "year", "y", "", "year to use")
+	editEventCmd.Flags().StringVarP(&City, "city", "c", "", "city to use")
+	editEventCmd.Flags().StringVarP(&Year, "year", "y", "", "year to use")
+	showEventCmd.Flags().StringVarP(&City, "city", "c", "", "city to use")
+	showEventCmd.Flags().StringVarP(&Year, "year", "y", "", "year to use")
 
 }
 

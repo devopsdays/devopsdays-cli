@@ -11,10 +11,12 @@ import (
 var addSpeakerCmd = &cobra.Command{
 	Use:   "speaker",
 	Short: "Add a speaker to an existing talk",
-	Long: `Add a speaker to an existing talk
-
-You can provide the speaker's name as an argument to this command, but it must be in quotes. For example:
-	devopsdays-cli create speaker "George Bluth"`,
+	Long: `Add a speaker to an existing talk.
+You can provide the speaker's name as an argument to this command, but it must be the "cleaned" name.
+		`,
+	Example: `  devopsdays-cli add speaker george-bluth
+  devopsdays-cli add speaker --city new-york
+  devopsdays-cli add speaker george-bluth -c "New York" --year "2017"`,
 	Args: cobra.MaximumNArgs(1),
 	Run: func(cmd *cobra.Command, args []string) {
 		// TODO: Work your own magic here
@@ -26,10 +28,13 @@ You can provide the speaker's name as an argument to this command, but it must b
 var createSpeakerCmd = &cobra.Command{
 	Use:   "speaker",
 	Short: "Creates a new speaker for an event",
-	Long: `Creates a new speaker for an event
+	Long: `Creates a new speaker for an event.
+You can provide the speaker's name as an argument to this command, but it must be the "cleaned" name.
+	`,
+	Example: `  devopsdays-cli create speaker george-bluth
+  devopsdays-cli create speaker --city new-york
+  devopsdays-cli create speaker george-bluth -c "New York" --year "2017"`,
 
-You can provide the speaker's name as an argument to this command, but it must be in quotes. For example:
-devopsdays-cli create speaker "George Bluth"`,
 	Args: cobra.MaximumNArgs(1),
 	Run: func(cmd *cobra.Command, args []string) {
 		if len(args) > 0 {
@@ -44,11 +49,12 @@ devopsdays-cli create speaker "George Bluth"`,
 var editSpeakerCmd = &cobra.Command{
 	Use:   "speaker",
 	Short: "Edit an event's speaker",
-	Long: `Edit an event's speaker
-
-You can provide the speaker's name as an argument to this command, but it must be the "cleaned" name. For example:
-
-	devopsdays-cli edit speaker george-bluth`,
+	Long: `Edit an event's speaker.
+You can provide the speaker's name as an argument to this command, but it must be the "cleaned" name.
+`,
+	Example: `  devopsdays-cli edit speaker george-bluth
+  devopsdays-cli edit speaker --city new-york
+  devopsdays-cli edit speaker george-bluth -c "New York" --year "2017"`,
 	Args: cobra.MaximumNArgs(1),
 	Run: func(cmd *cobra.Command, args []string) {
 		if len(args) > 0 {
@@ -63,10 +69,12 @@ You can provide the speaker's name as an argument to this command, but it must b
 var removeSpeakerCmd = &cobra.Command{
 	Use:   "speaker",
 	Short: "Remove a speaker from an event",
-	Long: `Remove a speaker from an event
-You can provide the speaker's name as an argument to this command, but it must be the "cleaned" name. For example:
-
-		devopsdays-cli remove speaker george-bluth`,
+	Long: `Remove a speaker from an event.
+You can provide the speaker's name as an argument to this command, but it must be the "cleaned" name.
+	`,
+	Example: `  devopsdays-cli remove speaker george-bluth
+  devopsdays-cli remove speaker --city new-york
+  devopsdays-cli remove speaker george-bluth -c "New York" --year "2017"`,
 	Args: cobra.MaximumNArgs(1),
 	Run: func(cmd *cobra.Command, args []string) {
 		// TODO: Work your own magic here
@@ -78,10 +86,12 @@ You can provide the speaker's name as an argument to this command, but it must b
 var showSpeakerCmd = &cobra.Command{
 	Use:   "speaker",
 	Short: "Show a speaker from an event",
-	Long: `Show a speaker from an event
-You can provide the speaker's name as an argument to this command, but it must be the "cleaned" name. For example:
-
-		devopsdays-cli show speaker george-bluth`,
+	Long: `Show a speaker from an event.
+You can provide the speaker's name as an argument to this command, but it must be the "cleaned" name.
+		`,
+	Example: `  devopsdays-cli remove speaker george-bluth
+  devopsdays-cli show speaker --city new-york --year 2017 --all
+  devopsdays-cli remove speaker george-bluth -c "New York" --year "2017"`,
 	Args: cobra.MaximumNArgs(1),
 	Run: func(cmd *cobra.Command, args []string) {
 		// TODO: Work your own magic here
@@ -96,15 +106,17 @@ func init() {
 	removeCmd.AddCommand(removeSpeakerCmd)
 	showCmd.AddCommand(showSpeakerCmd)
 
-	// Here you will define your flags and configuration settings.
-
-	// Cobra supports Persistent Flags which will work for this command
-	// and all subcommands, e.g.:
-	// speakerCmd.PersistentFlags().String("foo", "", "A help for foo")
-
-	// Cobra supports local flags which will only run when this command
-	// is called directly, e.g.:
-	// speakerCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
+	addSpeakerCmd.Flags().StringVarP(&City, "city", "c", "", "city to use")
+	addSpeakerCmd.Flags().StringVarP(&Year, "year", "y", "", "year to use")
+	createSpeakerCmd.Flags().StringVarP(&City, "city", "c", "", "city to use")
+	createSpeakerCmd.Flags().StringVarP(&Year, "year", "y", "", "year to use")
+	editSpeakerCmd.Flags().StringVarP(&City, "city", "c", "", "city to use")
+	editSpeakerCmd.Flags().StringVarP(&Year, "year", "y", "", "year to use")
+	removeSpeakerCmd.Flags().StringVarP(&City, "city", "c", "", "city to use")
+	removeSpeakerCmd.Flags().StringVarP(&Year, "year", "y", "", "year to use")
+	showSpeakerCmd.Flags().StringVarP(&City, "city", "c", "", "city to use")
+	showSpeakerCmd.Flags().StringVarP(&Year, "year", "y", "", "year to use")
+	showSpeakerCmd.Flags().BoolVarP(&All, "all", "a", false, "show all")
 
 }
 

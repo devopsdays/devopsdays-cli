@@ -76,15 +76,15 @@ func init() {
 	removeCmd.AddCommand(removeOrganizerCmd)
 	showCmd.AddCommand(showOrganizerCmd)
 
-	// Here you will define your flags and configuration settings.
-
-	// Cobra supports Persistent Flags which will work for this command
-	// and all subcommands, e.g.:
-	// OrganizerCmd.PersistentFlags().String("foo", "", "A help for foo")
-
-	// Cobra supports local flags which will only run when this command
-	// is called directly, e.g.:
-	// OrganizerCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
+	createOrganizerCmd.Flags().StringVarP(&City, "city", "c", "", "city to use")
+	createOrganizerCmd.Flags().StringVarP(&Year, "year", "y", "", "year to use")
+	editOrganizerCmd.Flags().StringVarP(&City, "city", "c", "", "city to use")
+	editOrganizerCmd.Flags().StringVarP(&Year, "year", "y", "", "year to use")
+	removeOrganizerCmd.Flags().StringVarP(&City, "city", "c", "", "city to use")
+	removeOrganizerCmd.Flags().StringVarP(&Year, "year", "y", "", "year to use")
+	showOrganizerCmd.Flags().StringVarP(&City, "city", "c", "", "city to use")
+	showOrganizerCmd.Flags().StringVarP(&Year, "year", "y", "", "year to use")
+	showOrganizerCmd.Flags().BoolVarP(&All, "all", "a", false, "show all")
 
 }
 

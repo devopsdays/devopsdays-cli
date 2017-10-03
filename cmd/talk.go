@@ -87,21 +87,23 @@ to quickly create a Cobra application.`,
 }
 
 func init() {
-	addCmd.AddCommand(createTalkCmd)
+	addCmd.AddCommand(addTalkCmd)
 	createCmd.AddCommand(createTalkCmd)
 	editCmd.AddCommand(editTalkCmd)
 	removeCmd.AddCommand(removeTalkCmd)
 	showCmd.AddCommand(showTalkCmd)
 
-	// Here you will define your flags and configuration settings.
-
-	// Cobra supports Persistent Flags which will work for this command
-	// and all subcommands, e.g.:
-	// talkCmd.PersistentFlags().String("foo", "", "A help for foo")
-
-	// Cobra supports local flags which will only run when this command
-	// is called directly, e.g.:
-	// talkCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
+	addTalkCmd.Flags().StringVarP(&City, "city", "c", "", "city to use")
+	addTalkCmd.Flags().StringVarP(&Year, "year", "y", "", "year to use")
+	createTalkCmd.Flags().StringVarP(&City, "city", "c", "", "city to use")
+	createTalkCmd.Flags().StringVarP(&Year, "year", "y", "", "year to use")
+	editTalkCmd.Flags().StringVarP(&City, "city", "c", "", "city to use")
+	editTalkCmd.Flags().StringVarP(&Year, "year", "y", "", "year to use")
+	removeTalkCmd.Flags().StringVarP(&City, "city", "c", "", "city to use")
+	removeTalkCmd.Flags().StringVarP(&Year, "year", "y", "", "year to use")
+	showTalkCmd.Flags().StringVarP(&City, "city", "c", "", "city to use")
+	showTalkCmd.Flags().StringVarP(&Year, "year", "y", "", "year to use")
+	showTalkCmd.Flags().BoolVarP(&All, "all", "a", false, "show all")
 
 }
 

@@ -17,14 +17,25 @@ var webdir = setWebdir()
 // const webdir = "/Users/mattstratton/src/devopsdays-web"
 
 var cfgFile string
-var cityFlag string
-var yearFlag string
+
+// Debug means should we run in debug mode. Duh.
+var Debug bool
+
+// City is the city we will be using - obtained via local flag
+var City string
+
+// Year is the year we will be using - obtained via local flag
+var Year string
+
+// All is used by a flag on Show commands to represent showing all of a thing
+var All bool
 
 // RootCmd represents the base command when called without any subcommands
 var RootCmd = &cobra.Command{
 	Use:   "devopsdays-cli",
 	Short: "Run maintenance tasks for the devopsdays.org website",
-	Long: `Command-line utilities for the devopsdays.org website
+	Long: `
+Command-line utilities for the devopsdays.org website
 built with love by mattstratton in Go.
 
 Complete documentation is available at https://github.com/devopsdays/devopsdays-cli`,
@@ -41,17 +52,8 @@ func Execute() {
 
 func init() {
 	cobra.OnInitialize(initConfig)
-	RootCmd.PersistentFlags().StringVarP(&cityFlag, "city", "c", "", "city name")
-	RootCmd.PersistentFlags().StringVarP(&yearFlag, "year", "y", "", "year")
+	RootCmd.PersistentFlags().BoolVarP(&Debug, "debug", "d", false, "enable debug mode")
 
-	// Here you will define your flags and configuration settings.
-	// Cobra supports Persistent Flags, which, if defined here,
-	// will be global for your application.
-
-	// RootCmd.PersistentFlags().StringVar(&cfgFile, "config", "", "config file (default is $HOME/.devopsdays.yaml)")
-	// Cobra also supports local flags, which will only run
-	// when this action is called directly.
-	// RootCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 }
 
 // initConfig reads in config file and ENV variables if set.
