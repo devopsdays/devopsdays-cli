@@ -1,4 +1,14 @@
 
+0.12.1
+
+  * Small updates for deploy
+
+  - Matt Stratton <matt.stratton@gmail.com>
+
+-- Matt Stratton <matt.stratton@gmail.com>; Tue, 03 Oct 2017 01:15:00 -0500
+
+
+
 0.12.0
 
   * Implement create speaker functionality
@@ -257,6 +267,8 @@
 
     Also moved the doctor command under show config.
     Fixes #34
+
+
 
 
 
