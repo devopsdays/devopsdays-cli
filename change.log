@@ -1,4 +1,14 @@
 
+0.12.2
+
+  * Add rpm deploy
+
+  - Matt Stratton <matt.stratton@gmail.com>
+
+-- Matt Stratton <matt.stratton@gmail.com>; Tue, 03 Oct 2017 01:32:52 -0500
+
+
+
 0.12.1
 
   * Small updates for deploy
@@ -267,6 +277,8 @@
 
     Also moved the doctor command under show config.
     Fixes #34
+
+
 
 
 
