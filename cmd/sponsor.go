@@ -16,6 +16,8 @@ import (
 	"github.com/spf13/cobra"
 )
 
+var All string
+
 // sponsorCmd represents the sponsor command
 var sponsorCmd = &cobra.Command{
 	Use:   "sponsor [name]",
@@ -128,7 +130,7 @@ func init() {
 
 	// Cobra supports local flags which will only run when this command
 	// is called directly, e.g.:
-	// sponsorCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
+	showSponsorCmd.Flags().BoolP("all", "a", false, "Show all sponsors")
 
 }
 

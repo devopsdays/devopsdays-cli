@@ -183,6 +183,7 @@ func CreateSpeaker(speakerName, city, year string) (err error) {
 
 	if (imageQuery == "Y") || (imageQuery == "y") {
 		imagePath = CreateSpeakerImage(helpers.NameClean(name), city, year)
+		fmt.Println(imagePath)
 	} else {
 		imagePath = ""
 	}
@@ -252,7 +253,7 @@ func CreateSpeakerImage(speaker, city, year string) (imageFile string) {
 				return fmt.Errorf("please enter a proper path")
 			}
 
-			if _, err := os.Stat(s); err == nil {
+			if _, err := os.Stat(s); err != nil {
 				return fmt.Errorf("File not found.")
 			}
 
@@ -262,26 +263,37 @@ func CreateSpeakerImage(speaker, city, year string) (imageFile string) {
 	if err != nil {
 		log.Fatal(err)
 	}
-	// create the destPath better here
 
-	re := regexp.MustCompile("\\.[^.]+$")
+	var eventStaticPath string
+	eventStaticPath, err = helpers.EventStaticPath(city, year)
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Println(eventStaticPath)
+
+	if err := os.MkdirAll(filepath.Join(eventStaticPath, "speakers"), 0777); err != nil {
+		log.Fatal(err)
+	}
+
+	re := regexp.MustCompile(`\.[^.]+$`)
 	ext := strings.ToLower(re.FindString(srcPath))
+	fmt.Println("extension is " + ext)
 	switch ext {
-	case "jpg":
+	case ".jpg":
 		s := []string{strings.TrimSpace(speaker), ".jpg"}
-		destPath := filepath.Join(helpers.EventContentPath(city, year), "speakers", strings.Join(s, ""))
+		destPath := filepath.Join(eventStaticPath, "speakers", strings.Join(s, ""))
 		helpers.ResizeImage(srcPath, destPath, "jpg", 600, 600)
 		return strings.Join(s, "")
-	case "jpeg":
+	case ".jpeg":
 		s := []string{strings.TrimSpace(speaker), ".jpg"}
-		destPath := filepath.Join(helpers.EventContentPath(city, year), "speakers", strings.Join(s, ""))
+		destPath := filepath.Join(eventStaticPath, "speakers", strings.Join(s, ""))
 		helpers.ResizeImage(srcPath, destPath, "jpg", 600, 600)
 		return strings.Join(s, "")
-	case "png":
+	case ".png":
 		s := []string{strings.TrimSpace(speaker), ".png"}
-		destPath := filepath.Join(helpers.EventContentPath(city, year), "speakers", strings.Join(s, ""))
+		destPath := filepath.Join(eventStaticPath, "speakers", strings.Join(s, ""))
 		helpers.ResizeImage(srcPath, destPath, "png", 600, 600)
 		return strings.Join(s, "")
 	}
-	return ""
+	return "busted"
 }
