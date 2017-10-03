@@ -1,4 +1,19 @@
 
+0.12.8
+
+  * Various cobra cleanup and added banner
+  * Add speaker image creation feature
+  * WIP on the speaker image functionality
+  * Add coveralls
+  * Add more badges
+  * Fix badges
+
+  - Matt Stratton <matt.stratton@gmail.com>
+
+-- Matt Stratton <matt.stratton@gmail.com>; Tue, 03 Oct 2017 17:54:40 -0500
+
+
+
 0.12.7
 
   * Remove bintray for now
@@ -327,6 +342,8 @@
 
     Also moved the doctor command under show config.
     Fixes #34
+
+
 
 
 
