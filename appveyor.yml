@@ -74,11 +74,10 @@ deploy:
     provider: GitHub
     release: devopsdays-cli-v$(VERSION)
     tag: $(appveyor_repo_tag_name)
-    description: Automated release of v$(VERSION)
     artifact: msi-x86, msi-x64
     force_update: true
     draft: false
-    prerelease: false
+    prerelease: true
     auth_token:
       secure: 7bl6S1pr1BMfewnyzvgZeuaArs2mhO04rQg5XbzCXs4zYemWKRaeKoMmXNaPRpfP
     on:

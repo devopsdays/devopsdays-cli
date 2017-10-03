@@ -15,33 +15,6 @@ build:
 install:
 	go get -t -v ./...
 
-release:
-	go get -v github.com/inconshreveable/mousetrap
-	rm -rf build/devopsdays-cli
-	mkdir -p build/devopsdays-cli
-	mkdir -p build/linux-amd64
-	mkdir -p build/linux-386
-	mkdir -p build/darwin-amd64
-	mkdir -p build/darwin-386
-	mkdir -p build/windows-amd64
-	mkdir -p build/windows-386
-
-	GOOS=linux GOARCH=amd64 go build ${LDFLAGS} -o build/linux-amd64/devopsdays-cli_${VERSION} $(package)
-	GOOS=linux GOARCH=386 go build ${LDFLAGS} -o build/linux-386/devopsdays-cli_${VERSION} $(package)
-	GOOS=darwin GOARCH=amd64 go build ${LDFLAGS} -o build/darwin-amd64/devopsdays-cli_${VERSION} $(package)
-	GOOS=darwin GOARCH=386 go build ${LDFLAGS} -o build/darwin-386/devopsdays-cli_${VERSION} $(package)
-	GOOS=windows GOARCH=amd64 go build ${LDFLAGS} -o build/windows-amd64/devopsdays-cli_${VERSION}.exe $(package)
-	GOOS=windows GOARCH=386 go build ${LDFLAGS} -o build/windows-386/devopsdays-cli_${VERSION}.exe $(package)
-
-	zip -r build/linux-amd64/devopsdays-cli_${VERSION}.zip release/linux-amd64_devopsdays-cli_${VERSION}
-	zip -r build/linux-amd64/devopsdays-cli_${VERSION}.zip release/linux-386_devopsdays-cli_${VERSION}
-	zip -r build/linux-amd64/devopsdays-cli_${VERSION}.zip release/darwin-amd64_devopsdays-cli_${VERSION}
-	zip -r build/linux-amd64/devopsdays-cli_${VERSION}.zip release/darwin-386_devopsdays-cli_${VERSION}
-	zip -r build/linux-amd64/devopsdays-cli_${VERSION}.zip release/windows-amd64_devopsdays-cli_${VERSION}
-	zip -r build/linux-amd64/devopsdays-cli_${VERSION}.zip release/windows-386_devopsdays-cli_${VERSION}
-
-	ls release
-
 test:
 	go test -v
 
@@ -49,7 +22,7 @@ deploy:
 	# go get -v github.com/inconshreveable/mousetrap
 	- curl -sL https://git.io/goreleaser | rvm 2.4.1 do bash
 	- ls dist
-	- curl -X PUT -T devopdays-cli_${VERSION}_linux-386.deb -mattstratton:${BTKEY} 'https://api.bintray.com/content/devopsdays/deb/devopsdays-cli/${VERSION}/pool/main/d/devopsdays/devopdays-cli_${VERSION}_linux-386.deb;deb_distribution=devopsdays;deb_component=main;deb_architecture=i386;publish=1'
+	- curl -X PUT -T devopdays-cli_${VERSION}_linux-386.deb -umattstratton:${BTKEY} 'https://api.bintray.com/content/devopsdays/deb/devopsdays-cli/${VERSION}/pool/main/d/devopsdays/devopdays-cli_${VERSION}_linux-386.deb;deb_distribution=devopsdays;deb_component=main;deb_architecture=i386;publish=1'
 	# - ./util/jfrog bt pc --key=$BTKEY --user=devopsdays --licenses=MIT --vcs-url=https://github.com/devopsdays/rpm devopsdays/rpm/$GH_APP || echo "package already exists"
 	# - ./util/jfrog bt upload --override=true --key $BTKEY --publish=true dist/devopdays-cli_$VERSION_linux-386.rpm devopsdays/rpm/devopdays-cli/$VERSION pool/$POOL/devopdays-cli/
 	# - ./util/jfrog bt upload --override=true --key $BTKEY --publish=true dist/devopdays-cli_$VERSION_linux-amd64.rpm devopsdays/rpm/devopdays-cli/$VERSION pool/$POOL/devopdays-cli/
