@@ -2,13 +2,9 @@ package cmd
 
 import (
 	"fmt"
-	"log"
 
 	"github.com/devopsdays/devopsdays-cli/create"
-	"github.com/devopsdays/devopsdays-cli/helpers"
-	"github.com/devopsdays/devopsdays-cli/model"
 	"github.com/spf13/cobra"
-	"github.com/tcnksm/go-input"
 )
 
 // addSpeakerCmd represents the "speaker add" command
@@ -37,9 +33,9 @@ devopsdays-cli create speaker "George Bluth"`,
 	Args: cobra.MaximumNArgs(1),
 	Run: func(cmd *cobra.Command, args []string) {
 		if len(args) > 0 {
-			createSpeaker(args[0], "", "")
+			create.CreateSpeaker(args[0], "", "")
 		} else {
-			createSpeaker("", "", "")
+			create.CreateSpeaker("", "", "")
 		}
 	},
 }
@@ -116,108 +112,6 @@ func init() {
 
 func addSpeaker() {
 	fmt.Println("You would have added a speaker to a talk if this happened")
-}
-
-func createSpeaker(speakerName, city, year string) (err error) {
-	// debug
-	fmt.Println("Creating new speaker")
-	fmt.Println("Value of city is")
-	fmt.Println(cityFlag)
-	// actual stuff
-	ui := &input.UI{}
-
-	if city == "" {
-		cityName, err := ui.Ask("City", &input.Options{
-			// Read the default val from env var
-			Required:  true,
-			Loop:      true,
-			HideOrder: true,
-		})
-		if err != nil {
-			log.Fatal(err)
-		}
-		city = cityName
-	}
-
-	if year == "" {
-		yearName, err := ui.Ask("Year", &input.Options{
-			// Read the default val from env var
-			Required:  true,
-			Loop:      true,
-			HideOrder: true,
-		})
-		if err != nil {
-			log.Fatal(err)
-		}
-		year = yearName
-	}
-
-	name, err := ui.Ask("Speaker Name", &input.Options{
-		Required:  true,
-		Loop:      true,
-		HideOrder: true,
-	})
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	website, err := ui.Ask("Website (optional)", &input.Options{
-		HideOrder: true,
-	})
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	twitter, err := ui.Ask("Twitter (optional)", &input.Options{
-		HideOrder: true,
-	})
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	facebook, err := ui.Ask("Facebook (optional)", &input.Options{
-		HideOrder: true,
-	})
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	linkedin, err := ui.Ask("LinkedIn (optional)", &input.Options{
-		HideOrder: true,
-	})
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	github, err := ui.Ask("GitHub (optional)", &input.Options{
-		HideOrder: true,
-	})
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	gitlab, err := ui.Ask("GitLab (optional)", &input.Options{
-		HideOrder: true,
-	})
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	mySpeaker := model.Speaker{
-		Name:      helpers.NameClean(name),
-		Title:     name,
-		Website:   website,
-		Twitter:   twitter,
-		Facebook:  facebook,
-		Linkedin:  linkedin,
-		Github:    github,
-		Gitlab:    gitlab,
-		ImagePath: "",
-	}
-
-	create.NewSpeaker(mySpeaker, "ponyville", "2017")
-
-	return
 }
 
 func editSpeaker(speakerName, city, year string) {

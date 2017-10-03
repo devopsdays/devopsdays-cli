@@ -3,6 +3,8 @@ package helpers
 import (
 	"strconv"
 	"strings"
+
+	"github.com/asaskevich/govalidator"
 )
 
 // ValidateField performs field validation for common types
@@ -21,13 +23,43 @@ func ValidateField(input, field string) bool {
 				return false
 			}
 			return true
-
 		}
 	case "twitter":
-		if strings.ContainsAny(input, " ") {
+		if (strings.ContainsAny(input, " ")) || (strings.ContainsAny(input, "@")) {
 			return false
 		}
 		return true
+	case "website":
+		if govalidator.IsRequestURL(input) {
+			return true
+		} else {
+			return false
+		}
+	case "facebook":
+		if govalidator.IsRequestURL(input) {
+			return true
+		} else {
+			return false
+		}
+	case "linkedin":
+		if govalidator.IsRequestURL(input) {
+			return true
+		} else {
+			return false
+		}
+	case "github":
+		if (govalidator.IsRequestURL(input)) || (strings.ContainsAny(input, " ")) {
+			return false
+		}
+		return true
+	case "gitlab":
+		if (govalidator.IsRequestURL(input)) || (strings.ContainsAny(input, " ")) {
+			return false
+		}
+		return true
+	case "filepath":
+		ret, _ := govalidator.IsFilePath(input)
+		return ret
 	}
 	return true // TODO: Make this return an error if no field was matched
 }
