@@ -16,7 +16,7 @@ install:
 	go get -t -v ./...
 
 test:
-	go test -v
+	go test ./... -v
 
 deploy:
 	# go get -v github.com/inconshreveable/mousetrap
