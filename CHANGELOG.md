@@ -1,5 +1,19 @@
 # Changelog - devopsdays-cli
 
+### 0.12.2
+
+__Changes__
+
+- Add rpm deploy
+
+__Contributors__
+
+- Matt Stratton
+
+Released by Matt Stratton, Tue 03 Oct 2017 -
+[see the diff](https://github.com/mh-cbon/devopsdays-cli/compare/0.12.1...0.12.2#diff)
+______________
+
 ### 0.12.1
 
 __Changes__
@@ -370,6 +384,8 @@ __Changes__
 
   Also moved the doctor command under show config.
   Fixes #34
+
+
 
 
 
