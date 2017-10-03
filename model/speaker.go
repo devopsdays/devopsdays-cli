@@ -11,4 +11,5 @@ type Speaker struct {
 	Github    string `toml:"github,omitempty"`
 	Gitlab    string `toml:"gitlab,omitempty"`
 	ImagePath string `toml:"image,omitempty"`
+	Bio       string
 }

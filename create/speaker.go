@@ -27,8 +27,7 @@ type = "speaker"
 {{ with .Gitlab }}gitlab = "{{ . }}"{{ end }}
 {{ with .ImagePath }}image = "{{ . }}"{{ end }}
 +++
-Food-truck SpaceTeam pivot earned media agile big data entrepreneur actionable insight iterate unicorn convergence driven moleskine. User centered design piverate physical computing disrupt moleskine co-working fund pivot. Waterfall is so 2000 and late integrate responsive big data agile piverate affordances. Agile earned media pivot viral engaging thought leader prototype workflow.
-
+{{ with .Bio }}{{.}}{{ end }}
 `
 
 // CreateSpeaker takes input from the user to create a new speaker
@@ -67,6 +66,14 @@ func CreateSpeaker(speakerName, city, year string) (err error) {
 	name, err := ui.Ask("Speaker Name", &input.Options{
 		Required:  true,
 		Loop:      true,
+		HideOrder: true,
+	})
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Println("You can enter a speaker bio. However, you might find it more useful edit the speaker's markdown file later for greater control.")
+	bio, err := ui.Ask("Speaker Bio (optional)", &input.Options{
+		Required:  false,
 		HideOrder: true,
 	})
 	if err != nil {
@@ -200,6 +207,7 @@ func CreateSpeaker(speakerName, city, year string) (err error) {
 		Github:    github,
 		Gitlab:    gitlab,
 		ImagePath: imagePath,
+		Bio:       bio,
 	}
 
 	NewSpeaker(mySpeaker, city, year)
