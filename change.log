@@ -1,4 +1,14 @@
 
+0.12.3
+
+  * Troubleshoot travis
+
+  - Matt Stratton <matt.stratton@gmail.com>
+
+-- Matt Stratton <matt.stratton@gmail.com>; Tue, 03 Oct 2017 01:42:23 -0500
+
+
+
 0.12.2
 
   * Add rpm deploy
@@ -277,6 +287,8 @@
 
     Also moved the doctor command under show config.
     Fixes #34
+
+
 
 
 
