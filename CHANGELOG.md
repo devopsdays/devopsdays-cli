@@ -1,5 +1,19 @@
 # Changelog - devopsdays-cli
 
+### 0.12.6
+
+__Changes__
+
+- Change to dist directory to see if travis can find it
+
+__Contributors__
+
+- Matt Stratton
+
+Released by Matt Stratton, Tue 03 Oct 2017 -
+[see the diff](https://github.com/mh-cbon/devopsdays-cli/compare/0.12.5...0.12.6#diff)
+______________
+
 ### 0.12.5
 
 __Changes__
@@ -426,6 +440,8 @@ __Changes__
 
   Also moved the doctor command under show config.
   Fixes #34
+
+
 
 
 
