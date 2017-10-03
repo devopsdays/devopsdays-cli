@@ -2,13 +2,17 @@ package helpers
 
 import (
 	"testing"
+
+	. "github.com/smartystreets/goconvey/convey"
 )
 
 func TestCityClean(t *testing.T) {
-	t.Log("Cleaning city value... (expected result: 'new-york')")
-	cleanCity := CityClean("New York")
 
-	if cleanCity != "new-york" {
-		t.Errorf("Expected result of 'new-york' but it was %s instead.", cleanCity)
-	}
+	Convey("Given the city name of New York", t, func() {
+		city := "New York"
+		Convey("The result should be new-york", func() {
+			So(CityClean(city), ShouldEqual, "new-york")
+		})
+
+	})
 }

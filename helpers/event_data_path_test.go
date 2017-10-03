@@ -2,12 +2,20 @@ package helpers
 
 import (
 	"testing"
+
+	. "github.com/smartystreets/goconvey/convey"
 )
 
 func TestEventDataPath(t *testing.T) {
-	t.Log("Testing eventDataPath function... (expected result: '" + GetWebdir() + "/data/events/2018-new-york.yml')")
-	testDataPath := EventDataPath(GetWebdir(), "New York", "2018")
-	if testDataPath != GetWebdir()+"/data/events/2018-new-york.yml" {
-		t.Errorf("Expected result of '"+GetWebdir()+"/data/events/2018-new-york.yml' but it was %s instead.", testDataPath)
-	}
+
+	Convey("Given a city of New York and a year of 2018", t, func() {
+		city := "New York"
+		year := "2018"
+
+		testContentPath := EventDataPath(GetWebdir(), city, year)
+
+		Convey("The response should be "+GetWebdir()+"/data/events/2018-new-york.yml", func() {
+			So(testContentPath, ShouldEqual, GetWebdir()+"/data/events/2018-new-york.yml")
+		})
+	})
 }

@@ -2,13 +2,17 @@ package helpers
 
 import (
 	"testing"
+
+	. "github.com/smartystreets/goconvey/convey"
 )
 
 func TestNameClean(t *testing.T) {
-	t.Log("Cleaning name value... (expected result: 'george-bluth')")
-	cleanName := NameClean("George Bluth")
 
-	if cleanName != "george-bluth" {
-		t.Errorf("Expected result of 'george-bluth' but it was %s instead.", cleanName)
-	}
+	Convey("Given a name of George Bluth", t, func() {
+		name := "George Bluth"
+
+		Convey("The response should be George Bluth", func() {
+			So(NameClean(name), ShouldEqual, "george-bluth")
+		})
+	})
 }

@@ -9,22 +9,18 @@ import (
 func TestCheckSpeaker(t *testing.T) {
 
 	Convey("Given a speaker name", t, func() {
-		speaker := "apple-jack"
 		Convey("When the speaker exists", func() {
-			result := CheckSpeaker("ponyville", "2017", speaker)
+			speaker := "apple-jack"
 			Convey("Then the result should be true", func() {
-				So(result, ShouldEqual, true)
+				So(CheckSpeaker("ponyville", "2017", speaker), ShouldEqual, true)
+			})
+		})
+		Convey("When the speaker does not exist", func() {
+			speaker := "orange-jack"
+			Convey("Then the response should be false", func() {
+				So(CheckSpeaker("ponyville", "2017", speaker), ShouldEqual, false)
 			})
 		})
 	})
 
-	Convey("Given a speaker name", t, func() {
-		speaker := "orange-jack"
-		Convey("When the speaker does not exist", func() {
-			result := CheckSpeaker("ponyville", "2017", speaker)
-			Convey("Then the result should be false", func() {
-				So(result, ShouldEqual, false)
-			})
-		})
-	})
 }
