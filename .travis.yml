@@ -11,7 +11,7 @@ before_install:
 - export DODPATH=$HOME/gopath/src/github.com/devopsdays/devopsdays-cli/sampleData
 install:
 - make install
-script: go test ./...
+script: go test ./... -v
 before_deploy:
 - go get -v github.com/inconshreveable/mousetrap
 - gem install fpm
