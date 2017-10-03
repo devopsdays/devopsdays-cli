@@ -1,5 +1,24 @@
 # Changelog - devopsdays-cli
 
+### 0.12.8
+
+__Changes__
+
+- Various cobra cleanup and added banner
+- Add speaker image creation feature
+- WIP on the speaker image functionality
+- Add coveralls
+- Add more badges
+- Fix badges
+
+__Contributors__
+
+- Matt Stratton
+
+Released by Matt Stratton, Tue 03 Oct 2017 -
+[see the diff](https://github.com/mh-cbon/devopsdays-cli/compare/0.12.7...0.12.8#diff)
+______________
+
 ### 0.12.7
 
 __Changes__
@@ -454,6 +473,8 @@ __Changes__
 
   Also moved the doctor command under show config.
   Fixes #34
+
+
 
 
 
