@@ -1,4 +1,14 @@
 
+0.12.6
+
+  * Change to dist directory to see if travis can find it
+
+  - Matt Stratton <matt.stratton@gmail.com>
+
+-- Matt Stratton <matt.stratton@gmail.com>; Tue, 03 Oct 2017 02:04:05 -0500
+
+
+
 0.12.5
 
   * Fix i386 upload to bintray
@@ -307,6 +317,8 @@
 
     Also moved the doctor command under show config.
     Fixes #34
+
+
 
 
 
