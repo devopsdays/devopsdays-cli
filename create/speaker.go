@@ -18,22 +18,8 @@ import (
 	survey "gopkg.in/AlecAivazis/survey.v1"
 )
 
-const tmpl = `+++
-Title = "{{ .Title }}"
-type = "speaker"
-{{ with .Website }}website = "{{ . }}"{{ end }}
-{{ with .Twitter }}twitter = "{{ . }}"{{ end }}
-{{ with .Facebook }}facebook = "{{ . }}"{{ end }}
-{{ with .Linkedin }}linkedin = "{{ . }}"{{ end }}
-{{ with .Github }}github = "{{ . }}"{{ end }}
-{{ with .Gitlab }}gitlab = "{{ . }}"{{ end }}
-{{ with .ImagePath }}image = "{{ . }}"{{ end }}
-+++
-{{ with .Bio }}{{.}}{{ end }}
-`
-
-// the questions to ask
-var qs = []*survey.Question{
+//  Prompts for a new speaker
+var qsCreateSpeaker = []*survey.Question{
 	{
 		Name: "name",
 		Prompt: &survey.Input{
@@ -145,6 +131,7 @@ func Speaker(speakerName, city, year string) (err error) {
 		Github    string
 		Gitlab    string
 		ImagePath string
+		Talk      string
 	}{}
 
 	if city == "" {
@@ -161,10 +148,26 @@ func Speaker(speakerName, city, year string) (err error) {
 		survey.AskOne(prompt, &year, survey.Required)
 	}
 
-	surveyErr := survey.Ask(qs, &answers)
+	surveyErr := survey.Ask(qsCreateSpeaker, &answers)
 	if surveyErr != nil {
 		fmt.Println(surveyErr.Error())
 		return
+	}
+
+	name := false
+	prompt := &survey.Confirm{
+		Message: "Do you want to add this speaker to an existing talk?",
+	}
+	survey.AskOne(prompt, &name, nil)
+
+	talk := ""
+	if name == true {
+		prompt := &survey.Select{
+			Message: "Choose a talk:",
+			Options: helpers.GetTalks("", ""),
+		}
+		survey.AskOne(prompt, &talk, nil)
+		color.Yellow("NOT IMPLEMENTED")
 	}
 
 	if answers.ImagePath != "" {
@@ -195,17 +198,11 @@ func NewSpeaker(speaker model.Speaker, city string, year string) (err error) {
 	cleanName := helpers.NameClean(speaker.Name)
 	t := template.New("Speaker template")
 
-	t, err = t.Parse(tmpl)
+	t, err = t.Parse(speakerTmpl)
 	if err != nil {
 		log.Fatal("Parse: ", err)
 		return
 	}
-
-	// err = t.Execute(os.Stdout, speaker)
-	// if err != nil {
-	// 	log.Fatal("Execute: ", err)
-	// 	return
-	// }
 
 	s := []string{strings.TrimSpace(cleanName), ".md"}
 	f, err := os.Create(filepath.Join(helpers.EventContentPath(city, year), "speakers", strings.Join(s, "")))
