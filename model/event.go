@@ -7,18 +7,19 @@ type Event struct {
 	City                  string         `yaml:"city"`
 	EventTwitter          string         `yaml:"event_twitter"`
 	Description           string         `yaml:"description"`
-	GaTrackingID          string         `yaml:"ga_tracking_id"`
-	Startdate             string         `yaml:"startdate"`
-	Enddate               string         `yaml:"enddate"`
-	CfpDateStart          string         `yaml:"cfp_date_start"`
-	CfpDateEnd            string         `yaml:"cfp_date_end"`
-	CfpDateAnnounce       string         `yaml:"cfp_date_announce"`
-	CfpOpen               string         `yaml:"cfp_open"`
-	CfpLink               string         `yaml:"cfp_link"`
+	GoogleAnalytics       string         `yaml:"ga_tracking_id"`
+	StartDate             string         `yaml:"startdate"`
+	EndDate               string         `yaml:"enddate"`
+	CFPDateStart          string         `yaml:"cfp_date_start"`
+	CFPDateEnd            string         `yaml:"cfp_date_end"`
+	CFPDateAnnounce       string         `yaml:"cfp_date_announce"`
+	CFPOpen               string         `yaml:"cfp_open"`
+	CFPLink               string         `yaml:"cfp_link"`
 	RegistrationDateStart string         `yaml:"registration_date_start"`
 	RegistrationDateEnd   string         `yaml:"registration_date_end"`
 	RegistrationClosed    string         `yaml:"registration_closed"`
 	RegistrationLink      string         `yaml:"registration_link"`
+	MastheadBackground    string         `yaml:"masthead_background"`
 	Coordinates           string         `yaml:"coordinates"`
 	Location              string         `yaml:"location"`
 	LocationAddress       string         `yaml:"location_address"`
