@@ -1,5 +1,34 @@
 # Changelog - devopsdays-cli
 
+### 0.13.0
+
+__Changes__
+
+- Update README
+- Merge pull request #74 from devopsdays/add-survey
+
+  Switch to using survey for prompts
+- Switch to using survey for prompts
+
+  We now use the survey package, which is a lot prettier. It also handles the use of an editor for the bio, etc, which is much MUCH better.
+
+  This commit also enables the city and year flags on the create speaker command properly.
+
+  Fixes #72
+- Add bio for create speaker
+
+  Also added bio to speaker model.
+  Fixes #65
+- Remove old docs folder
+
+__Contributors__
+
+- Matt Stratton
+
+Released by Matt Stratton, Wed 04 Oct 2017 -
+[see the diff](https://github.com/mh-cbon/devopsdays-cli/compare/0.12.8...0.13.0#diff)
+______________
+
 ### 0.12.8
 
 __Changes__
@@ -473,6 +502,8 @@ __Changes__
 
   Also moved the doctor command under show config.
   Fixes #34
+
+
 
 
 
