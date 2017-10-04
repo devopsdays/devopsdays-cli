@@ -2,6 +2,7 @@
 package create
 
 import (
+	"errors"
 	"fmt"
 	"log"
 	"os"
@@ -13,7 +14,8 @@ import (
 
 	"github.com/devopsdays/devopsdays-cli/helpers"
 	"github.com/devopsdays/devopsdays-cli/model"
-	"github.com/tcnksm/go-input"
+	"github.com/fatih/color"
+	survey "gopkg.in/AlecAivazis/survey.v1"
 )
 
 const tmpl = `+++
@@ -30,184 +32,156 @@ type = "speaker"
 {{ with .Bio }}{{.}}{{ end }}
 `
 
-// CreateSpeaker takes input from the user to create a new speaker
-func CreateSpeaker(speakerName, city, year string) (err error) {
+// the questions to ask
+var qs = []*survey.Question{
+	{
+		Name: "name",
+		Prompt: &survey.Input{
+			Message: "What is the speaker's name?",
+			Help:    "This is the speaker's full name",
+		},
+		Validate: survey.Required,
+	},
+	{
+		Name:   "bio",
+		Prompt: &survey.Editor{Message: "Enter the speaker's bio [Enter to launch editor]"},
+	},
+	{
+		Name: "twitter",
+		Prompt: &survey.Input{
+			Message: "What is the speaker's Twitter? [optional]",
+			Help:    "Twitter username should not include the @ symbol",
+		},
+		Validate: func(val interface{}) error {
+			if str, _ := val.(string); (str != "") && (helpers.ValidateField(str, "twitter") == false) {
+				return errors.New("Please enter a valid Twitter handle. It should not have the @ symbol.")
+			}
+			return nil
+		},
+	},
+	{
+		Name: "facebook",
+		Prompt: &survey.Input{
+			Message: "What is the speaker's Facebook URL? [optional]",
+			Help:    "This should be the full URL to the speaker's Facebook page. Example: https://www.facebook.com/matt.stratton",
+		},
+		Validate: func(val interface{}) error {
+			if str, _ := val.(string); (str != "") && (helpers.ValidateField(str, "facebook") == false) {
+				return errors.New("Please enter a valid Facebook URL. It should be a URL.")
+			}
+			return nil
+		},
+	},
+	{
+		Name: "linkedin",
+		Prompt: &survey.Input{
+			Message: "What is the speaker's LinkedIn URL? [optional]",
+			Help:    "This should be the full URL to the speaker's LinkedIn profile. Example: https://www.linkedin.com/in/mattstratton/",
+		},
+		Validate: func(val interface{}) error {
+			if str, _ := val.(string); (str != "") && (helpers.ValidateField(str, "linkedin")) == false {
+				return errors.New("Please enter a valid LinkedIn URL. It should be a URL.")
+			}
+			return nil
+		},
+	},
+	{
+		Name: "github",
+		Prompt: &survey.Input{
+			Message: "What is the speaker's GitHub username?",
+			Help:    "This should be the username, not the URL. Example: mattstratton",
+		},
+		Validate: func(val interface{}) error {
+			if str, _ := val.(string); (str != "") && (helpers.ValidateField(str, "github")) == false {
+				return errors.New("Please enter a valid GitHub username. It should be the username, not URL.")
+			}
+			return nil
+		},
+	},
+	{
+		Name: "gitlab",
+		Prompt: &survey.Input{
+			Message: "What is the speaker's GitLab username? [optional]",
+			Help:    "This should be the username, not the URL. Example: mattstratton",
+		},
+		Validate: func(val interface{}) error {
+			if str, _ := val.(string); (str != "") && (helpers.ValidateField(str, "gitlab")) == false {
+				return errors.New("Please enter a valid GitLab username. It should be the username, not URL.")
+			}
+			return nil
+		},
+	},
+	{
+		Name: "imagepath",
+		Prompt: &survey.Input{
+			Message: "Enter the path to the speaker's image. [optional]",
+			Help:    "Path to speaker image. Must be a PNG or JPG file. Example: /Users/mattstratton/Pictures/matt-stratton.png",
+		},
+		Validate: func(val interface{}) error {
+			str, _ := val.(string)
+			if str != "" {
+				if _, err := os.Stat(str); err != nil {
+					return errors.New("File not found.")
+				}
+			}
 
-	var imagePath string
+			return nil
+		},
+	},
+}
 
-	ui := &input.UI{}
+// Speaker takes input from the user to create a new speaker
+func Speaker(speakerName, city, year string) (err error) {
+
+	// var imagePath string
+
+	answers := struct {
+		Name      string
+		Bio       string
+		Website   string
+		Twitter   string
+		Facebook  string
+		Linkedin  string
+		Github    string
+		Gitlab    string
+		ImagePath string
+	}{}
 
 	if city == "" {
-		cityName, err := ui.Ask("City", &input.Options{
-			// Read the default val from env var
-			Required:  true,
-			Loop:      true,
-			HideOrder: true,
-		})
-		if err != nil {
-			log.Fatal(err)
+		prompt := &survey.Input{
+			Message: "Enter the city name:",
 		}
-		city = cityName
+		survey.AskOne(prompt, &city, survey.Required)
 	}
 
 	if year == "" {
-		yearName, err := ui.Ask("Year", &input.Options{
-			// Read the default val from env var
-			Required:  true,
-			Loop:      true,
-			HideOrder: true,
-		})
-		if err != nil {
-			log.Fatal(err)
+		prompt := &survey.Input{
+			Message: "Enter the year:",
 		}
-		year = yearName
+		survey.AskOne(prompt, &year, survey.Required)
 	}
 
-	name, err := ui.Ask("Speaker Name", &input.Options{
-		Required:  true,
-		Loop:      true,
-		HideOrder: true,
-	})
-	if err != nil {
-		log.Fatal(err)
-	}
-	fmt.Println("You can enter a speaker bio. However, you might find it more useful edit the speaker's markdown file later for greater control.")
-	bio, err := ui.Ask("Speaker Bio (optional)", &input.Options{
-		Required:  false,
-		HideOrder: true,
-	})
-	if err != nil {
-		log.Fatal(err)
+	surveyErr := survey.Ask(qs, &answers)
+	if surveyErr != nil {
+		fmt.Println(surveyErr.Error())
+		return
 	}
 
-	website, err := ui.Ask("Website (optional)", &input.Options{
-		HideOrder: true,
-		Required:  false,
-		Loop:      true,
-		ValidateFunc: func(s string) error {
-			if (s != "") && (helpers.ValidateField(s, "website") != true) {
-				return fmt.Errorf("please enter a properly formed URL")
-			}
-
-			return nil
-		},
-	})
-	if err != nil {
-		log.Fatal(err)
+	if answers.ImagePath != "" {
+		answers.ImagePath = SpeakerImage(answers.ImagePath, helpers.NameClean(answers.Name), city, year)
 	}
-
-	twitter, err := ui.Ask("Twitter (optional)", &input.Options{
-		HideOrder: true,
-		Loop:      true,
-		Required:  false,
-		ValidateFunc: func(s string) error {
-			if (s != "") && (helpers.ValidateField(s, "twitter") != true) {
-				return fmt.Errorf("please enter a properly formed twitter handle")
-			}
-
-			return nil
-		},
-	})
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	facebook, err := ui.Ask("Facebook (optional)", &input.Options{
-		HideOrder: true,
-		Loop:      true,
-		Required:  false,
-		ValidateFunc: func(s string) error {
-			if (s != "") && (helpers.ValidateField(s, "facebook") != true) {
-				return fmt.Errorf("please enter a properly formed Facebook profile URL")
-			}
-
-			return nil
-		},
-	})
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	linkedin, err := ui.Ask("LinkedIn (optional)", &input.Options{
-		HideOrder: true, Loop: true,
-		Required: false,
-		ValidateFunc: func(s string) error {
-			if (s != "") && (helpers.ValidateField(s, "linkedin") != true) {
-				return fmt.Errorf("please enter a properly formed LinkedIn URL")
-			}
-
-			return nil
-		},
-	})
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	github, err := ui.Ask("GitHub (optional)", &input.Options{
-		HideOrder: true, Loop: true,
-		Required: false,
-		ValidateFunc: func(s string) error {
-			if (s != "") && (helpers.ValidateField(s, "github") != true) {
-				return fmt.Errorf("please enter a properly formed GitHub handle")
-			}
-
-			return nil
-		},
-	})
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	gitlab, err := ui.Ask("GitLab (optional)", &input.Options{
-		HideOrder: true,
-		Loop:      true,
-		Required:  false,
-		ValidateFunc: func(s string) error {
-			if (s != "") && (helpers.ValidateField(s, "gitlab") != true) {
-				return fmt.Errorf("please enter a properly formed GitLab handle")
-			}
-
-			return nil
-		},
-	})
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	imageQuery, err := ui.Ask("Would you like to add the speaker image now? [Y/n]", &input.Options{
-		Default:   "Y",
-		HideOrder: true,
-		Loop:      true,
-		Required:  true,
-		ValidateFunc: func(s string) error {
-			if s != "Y" && s != "y" && s != "N" && s != "n" {
-				return fmt.Errorf("input must be Y or n")
-			}
-
-			return nil
-		},
-	})
-
-	if (imageQuery == "Y") || (imageQuery == "y") {
-		imagePath = CreateSpeakerImage(helpers.NameClean(name), city, year)
-		fmt.Println(imagePath)
-	} else {
-		imagePath = ""
-	}
-
-	fmt.Println(imageQuery)
 
 	mySpeaker := model.Speaker{
-		Name:      helpers.NameClean(name),
-		Title:     name,
-		Website:   website,
-		Twitter:   twitter,
-		Facebook:  facebook,
-		Linkedin:  linkedin,
-		Github:    github,
-		Gitlab:    gitlab,
-		ImagePath: imagePath,
-		Bio:       bio,
+		Name:      helpers.NameClean(answers.Name),
+		Title:     answers.Name,
+		Website:   answers.Website,
+		Twitter:   answers.Twitter,
+		Facebook:  answers.Facebook,
+		Linkedin:  answers.Linkedin,
+		Github:    answers.Github,
+		Gitlab:    answers.Gitlab,
+		ImagePath: answers.ImagePath,
+		Bio:       answers.Bio,
 	}
 
 	NewSpeaker(mySpeaker, city, year)
@@ -227,11 +201,11 @@ func NewSpeaker(speaker model.Speaker, city string, year string) (err error) {
 		return
 	}
 
-	err = t.Execute(os.Stdout, speaker)
-	if err != nil {
-		log.Fatal("Execute: ", err)
-		return
-	}
+	// err = t.Execute(os.Stdout, speaker)
+	// if err != nil {
+	// 	log.Fatal("Execute: ", err)
+	// 	return
+	// }
 
 	s := []string{strings.TrimSpace(cleanName), ".md"}
 	f, err := os.Create(filepath.Join(helpers.EventContentPath(city, year), "speakers", strings.Join(s, "")))
@@ -244,40 +218,21 @@ func NewSpeaker(speaker model.Speaker, city string, year string) (err error) {
 	if err != nil {
 		fmt.Println(err)
 	} else {
-		fmt.Println("Created speaker file for", speaker.Title, "at", filepath.Join(helpers.EventContentPath(city, year), "speakers", strings.Join(s, "")))
+		fmt.Fprintf(color.Output, "\n\n\nCreated speaker file for %s\n", color.GreenString(speaker.Title))
+		fmt.Fprintf(color.Output, "at %s\n\n\n", color.BlueString(filepath.Join(helpers.EventContentPath(city, year), "speakers", strings.Join(s, ""))))
 	}
 	return
 }
 
-// CreateSpeakerImage takes in a path to an image and resizes it to the proper dimensions and copies it to the destination
-func CreateSpeakerImage(speaker, city, year string) (imageFile string) {
-	ui := &input.UI{}
-	srcPath, err := ui.Ask("Path to speaker image. Must be a PNG or JPG file.", &input.Options{
-		Required:  true,
-		Loop:      true,
-		HideOrder: true,
-		ValidateFunc: func(s string) error {
-			if (s != "") && (helpers.ValidateField(s, "filepath") != true) {
-				return fmt.Errorf("please enter a proper path")
-			}
-
-			if _, err := os.Stat(s); err != nil {
-				return fmt.Errorf("File not found.")
-			}
-
-			return nil
-		},
-	})
-	if err != nil {
-		log.Fatal(err)
-	}
+// SpeakerImage takes in a path to an image and resizes it to the proper dimensions and copies it to the destination
+func SpeakerImage(srcPath, speaker, city, year string) (imageFile string) {
 
 	var eventStaticPath string
+	var err error
 	eventStaticPath, err = helpers.EventStaticPath(city, year)
 	if err != nil {
 		log.Fatal(err)
 	}
-	fmt.Println(eventStaticPath)
 
 	if err := os.MkdirAll(filepath.Join(eventStaticPath, "speakers"), 0777); err != nil {
 		log.Fatal(err)
@@ -285,7 +240,6 @@ func CreateSpeakerImage(speaker, city, year string) (imageFile string) {
 
 	re := regexp.MustCompile(`\.[^.]+$`)
 	ext := strings.ToLower(re.FindString(srcPath))
-	fmt.Println("extension is " + ext)
 	switch ext {
 	case ".jpg":
 		s := []string{strings.TrimSpace(speaker), ".jpg"}
