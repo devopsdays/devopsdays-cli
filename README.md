@@ -13,7 +13,7 @@ Command-line utilities for the [devopsdays](https://www.devopsdays.org) website 
   - [homebrew](#homebrew)
   - [via Go](#via-go)
 - [Usage](#usage)
-  - [$ devopsdays-cli --help](#-devopsdays-cli---help)
+  - [$ devopsdays-cli](#-devopsdays-cli)
 - [History](#history)
 - [How to release](#how-to-release)
   - [Tools needed for release](#tools-needed-for-release)
@@ -42,8 +42,15 @@ go get github.com/devopsdays/devopsdays-cli
 
 # Usage
 
-#### $ devopsdays-cli --help
+#### $ devopsdays-cli
 ```sh
+_                               _                            _ _
+   __| | _____   _____  _ __  ___  __| | __ _ _   _ ___        ___| (_)
+  / _` |/ _ \ \ / / _ \| '_ \/ __|/ _` |/ _` | | | / __|_____ / __| | |
+ | (_| |  __/\ V / (_) | |_) \__ \ (_| | (_| | |_| \__ \_____| (__| | |
+  \__,_|\___| \_/ \___/| .__/|___/\__,_|\__,_|\__, |___/      \___|_|_|
+                       |_|                    |___/
+
 Command-line utilities for the devopsdays.org website
 built with love by mattstratton in Go.
 
@@ -53,19 +60,45 @@ Usage:
   devopsdays-cli [command]
 
 Available Commands:
-  add         Add a thing to another thing
-  create      Make a new thing
-  edit        Edit an existing thing
+  add         Add items to talks, programs, or events
+  create      Create a new event, organizer, program, speaker, sponsor, or talk
+  edit        Edit an existing item
   help        Help about any command
-  remove      Remove a thing to another thing
-  show        Show details about a thing
+  remove      Remove items from an event, a talk, or a program
+  show        Show details about various items
 
 Flags:
-  -c, --city string   city name
-  -h, --help          help for devopsdays-cli
-  -y, --year string   year
+  -d, --debug   enable debug mode
+  -h, --help    help for devopsdays-cli
 
 Use "devopsdays-cli [command] --help" for more information about a command.
+```
+
+#### $ devopsdays-cli create speaker --help
+```sh
+_                               _                            _ _
+   __| | _____   _____  _ __  ___  __| | __ _ _   _ ___        ___| (_)
+  / _` |/ _ \ \ / / _ \| '_ \/ __|/ _` |/ _` | | | / __|_____ / __| | |
+ | (_| |  __/\ V / (_) | |_) \__ \ (_| | (_| | |_| \__ \_____| (__| | |
+  \__,_|\___| \_/ \___/| .__/|___/\__,_|\__,_|\__, |___/      \___|_|_|
+                       |_|                    |___/
+Creates a new speaker for an event.
+
+Usage:
+  devopsdays-cli create speaker [flags]
+
+Examples:
+  devopsdays-cli create speaker
+  devopsdays-cli create speaker --city new-york
+  devopsdays-cli create speaker -c "New York" --year "2017"
+
+Flags:
+  -c, --city string   city to use
+  -h, --help          help for speaker
+  -y, --year string   year to use
+
+Global Flags:
+  -d, --debug   enable debug mode
 ```
 
 # History
