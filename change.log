@@ -1,4 +1,29 @@
 
+0.13.0
+
+  * Update README
+  * Merge pull request #74 from devopsdays/add-survey
+
+    Switch to using survey for prompts
+  * Switch to using survey for prompts
+
+    We now use the survey package, which is a lot prettier. It also handles the use of an editor for the bio, etc, which is much MUCH better.
+
+    This commit also enables the city and year flags on the create speaker command properly.
+
+    Fixes #72
+  * Add bio for create speaker
+
+    Also added bio to speaker model.
+    Fixes #65
+  * Remove old docs folder
+
+  - Matt Stratton <matt.stratton@gmail.com>
+
+-- Matt Stratton <matt.stratton@gmail.com>; Wed, 04 Oct 2017 12:31:17 -0500
+
+
+
 0.12.8
 
   * Various cobra cleanup and added banner
@@ -342,6 +367,8 @@
 
     Also moved the doctor command under show config.
     Fixes #34
+
+
 
 
 
