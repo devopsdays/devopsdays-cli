@@ -29,19 +29,14 @@ var createSpeakerCmd = &cobra.Command{
 	Use:   "speaker",
 	Short: "Creates a new speaker for an event",
 	Long: `Creates a new speaker for an event.
-You can provide the speaker's name as an argument to this command, but it must be the "cleaned" name.
 	`,
-	Example: `  devopsdays-cli create speaker george-bluth
+	Example: `  devopsdays-cli create speaker
   devopsdays-cli create speaker --city new-york
-  devopsdays-cli create speaker george-bluth -c "New York" --year "2017"`,
+  devopsdays-cli create speaker -c "New York" --year "2017"`,
 
 	Args: cobra.MaximumNArgs(1),
 	Run: func(cmd *cobra.Command, args []string) {
-		if len(args) > 0 {
-			create.CreateSpeaker(args[0], "", "")
-		} else {
-			create.CreateSpeaker("", "", "")
-		}
+		create.Speaker("", City, Year)
 	},
 }
 
