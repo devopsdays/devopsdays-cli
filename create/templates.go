@@ -3,7 +3,7 @@ package create
 const eventTmpl = `name: "{{ .Year}}-{{ .City}}" # The name of the event. Four digit year with the city name in lower-case, with no spaces.
 year: "{{ .Year}}" # The year of the event. Make sure it is in quotes.
 city: "{{ .City}}" # The displayed city name of the event. Capitalize it.
-event_twitter: "{{ .Twitter}}" # Change this to the twitter handle for your event such as devopsdayschi or devopsdaysmsp
+event_twitter: "{{ .EventTwitter}}" # Change this to the twitter handle for your event such as devopsdayschi or devopsdaysmsp
 description: "Devopsdays is coming to {{ .City}}!" # Edit this to suit your preferences
 ga_tracking_id: "{{ .GoogleAnalytics}}" # If you have your own Google Analytics tracking ID, enter it here. Example: "UA-74738648-1"
 
