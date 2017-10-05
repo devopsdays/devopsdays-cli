@@ -3,13 +3,24 @@
 package cmd
 
 import (
+	"bytes"
 	"fmt"
 	"os"
 	"strings"
 
+	"github.com/dimiro1/banner"
+	"github.com/mattn/go-colorable"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 )
+
+var myBanner = `
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|d|e|v|o|p|s|d|a|y|s|-|c|l|i|
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+
+`
 
 // webdir is the path to the source files for the Hugo website
 var webdir = setWebdir()
@@ -52,6 +63,10 @@ func Execute() {
 
 func init() {
 	cobra.OnInitialize(initConfig)
+	isEnabled := true
+	isColorEnabled := true
+	banner.Init(colorable.NewColorableStdout(), isEnabled, isColorEnabled, bytes.NewBufferString(myBanner))
+
 	RootCmd.PersistentFlags().BoolVarP(&Debug, "debug", "d", false, "enable debug mode")
 
 }
