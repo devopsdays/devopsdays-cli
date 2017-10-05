@@ -1,5 +1,22 @@
 # Changelog - devopsdays-cli
 
+### 0.15.1
+
+__Changes__
+
+- Update goreleaser to make it a prerelease
+
+  Signed-off-by: Matt Stratton <matt.stratton@gmail.com>
+- Update README with video
+
+__Contributors__
+
+- Matt Stratton
+
+Released by Matt Stratton, Thu 05 Oct 2017 -
+[see the diff](https://github.com/mh-cbon/devopsdays-cli/compare/0.15.0...0.15.1#diff)
+______________
+
 ### 0.15.0
 
 __Changes__
@@ -9,6 +26,8 @@ __Changes__
   Fixes #90
 
   Signed-off-by: Matt Stratton <matt.stratton@gmail.com>
+
+
 
 
 
@@ -578,6 +597,8 @@ __Changes__
 
   Also moved the doctor command under show config.
   Fixes #34
+
+
 
 
 
