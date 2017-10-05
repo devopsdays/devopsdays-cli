@@ -119,8 +119,6 @@ var qsCreateSpeaker = []*survey.Question{
 // Speaker takes input from the user to create a new speaker
 func Speaker(speakerName, city, year string) (err error) {
 
-	// var imagePath string
-
 	answers := struct {
 		Name      string
 		Bio       string
@@ -164,7 +162,7 @@ func Speaker(speakerName, city, year string) (err error) {
 	if name == true {
 		prompt := &survey.Select{
 			Message: "Choose a talk:",
-			Options: helpers.GetTalks("", ""),
+			Options: helpers.GetTalks(city, year),
 		}
 		survey.AskOne(prompt, &talk, nil)
 		color.Yellow("NOT IMPLEMENTED")
