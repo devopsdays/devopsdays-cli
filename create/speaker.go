@@ -202,6 +202,9 @@ func NewSpeaker(speaker model.Speaker, city string, year string) (err error) {
 		return
 	}
 
+	if err := os.MkdirAll(filepath.Join(helpers.EventContentPath(city, year), "speakers"), 0777); err != nil {
+		log.Fatal(err)
+	}
 	s := []string{strings.TrimSpace(cleanName), ".md"}
 	f, err := os.Create(filepath.Join(helpers.EventContentPath(city, year), "speakers", strings.Join(s, "")))
 	if err != nil {
