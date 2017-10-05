@@ -4,6 +4,7 @@ release:
     owner: devopsdays
     name: devopsdays-cli
   draft: false
+  prerelease: true
 builds:
 - goos:
   - linux

@@ -32,14 +32,14 @@ type Event struct {
 	SponsorLevels         []SponsorLevel `yaml:"sponsor_levels"`
 }
 
-//TODO: Does NavElement need to be exported?
+//@TODO: Does NavElement need to be exported?
 
 // NavElement represents a navigation element for the event
 type NavElement struct {
 	Name string `yaml:"name"`
 }
 
-//TODO: Does EventSponsor need to be exported?
+//@TODO: Does EventSponsor need to be exported?
 
 // EventSponsor represents a sponsor for an event.
 type EventSponsor struct {
