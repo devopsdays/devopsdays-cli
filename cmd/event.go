@@ -11,6 +11,7 @@ import (
 	"time"
 
 	rice "github.com/GeertJohan/go.rice"
+	"github.com/devopsdays/devopsdays-cli/create"
 	"github.com/devopsdays/devopsdays-cli/helpers"
 	"github.com/spf13/cobra"
 )
@@ -33,17 +34,15 @@ to quickly create a Cobra application.`,
 
 // createEventCmd represents the "create event" command
 var createEventCmd = &cobra.Command{
-	Use:   "event create [city year]",
+	Use:   "event create",
 	Short: "Create a new event",
 	Long: `Create a new event.
-The 'city' and 'year' arguments are optional, but if you provide year, you must also provide city.
-City must not have a space. Replace spaces with '-'`,
+`,
+	Example: `  devopsdays-cli create event
+  devopsdays-cli create event -c New York --year 2017`,
+
 	Run: func(cmd *cobra.Command, args []string) {
-		if len(args) > 0 {
-			addEvent(args[0])
-		} else {
-			addEvent("")
-		}
+		create.Event(City, Year)
 	},
 }
 
