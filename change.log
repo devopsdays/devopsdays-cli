@@ -1,4 +1,19 @@
 
+0.15.0
+
+  * Ensure that event content path exists
+
+    Fixes #90
+
+    Signed-off-by: Matt Stratton <matt.stratton@gmail.com>
+
+
+  - Matt Stratton <matt.stratton@gmail.com>
+
+-- Matt Stratton <matt.stratton@gmail.com>; Thu, 05 Oct 2017 14:23:58 -0500
+
+
+
 0.14.0
 
   * Move banner call
@@ -419,6 +434,8 @@
 
     Also moved the doctor command under show config.
     Fixes #34
+
+
 
 
 
