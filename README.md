@@ -14,6 +14,9 @@ Command-line utilities for the [devopsdays](https://www.devopsdays.org) website 
   - [via Go](#via-go)
 - [Usage](#usage)
   - [$ devopsdays-cli](#-devopsdays-cli)
+  - [$ devopsdays-cli create speaker --help](#-devopsdays-cli-create-speaker---help)
+- [Reference](#reference)
+  - [Matrix of commands](#matrix-of-commands)
 - [History](#history)
 - [How to release](#how-to-release)
   - [Tools needed for release](#tools-needed-for-release)
@@ -44,12 +47,10 @@ go get github.com/devopsdays/devopsdays-cli
 
 #### $ devopsdays-cli
 ```sh
-_                               _                            _ _
-   __| | _____   _____  _ __  ___  __| | __ _ _   _ ___        ___| (_)
-  / _` |/ _ \ \ / / _ \| '_ \/ __|/ _` |/ _` | | | / __|_____ / __| | |
- | (_| |  __/\ V / (_) | |_) \__ \ (_| | (_| | |_| \__ \_____| (__| | |
-  \__,_|\___| \_/ \___/| .__/|___/\__,_|\__,_|\__, |___/      \___|_|_|
-                       |_|                    |___/
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|d|e|v|o|p|s|d|a|y|s|-|c|l|i|
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+
 
 Command-line utilities for the devopsdays.org website
 built with love by mattstratton in Go.
@@ -76,12 +77,10 @@ Use "devopsdays-cli [command] --help" for more information about a command.
 
 #### $ devopsdays-cli create speaker --help
 ```sh
-_                               _                            _ _
-   __| | _____   _____  _ __  ___  __| | __ _ _   _ ___        ___| (_)
-  / _` |/ _ \ \ / / _ \| '_ \/ __|/ _` |/ _` | | | / __|_____ / __| | |
- | (_| |  __/\ V / (_) | |_) \__ \ (_| | (_| | |_| \__ \_____| (__| | |
-  \__,_|\___| \_/ \___/| .__/|___/\__,_|\__,_|\__, |___/      \___|_|_|
-                       |_|                    |___/
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|d|e|v|o|p|s|d|a|y|s|-|c|l|i|
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+
 Creates a new speaker for an event.
 
 Usage:
@@ -100,6 +99,19 @@ Flags:
 Global Flags:
   -d, --debug   enable debug mode
 ```
+
+# Reference
+
+## Matrix of commands
+
+
+|        | config | event | organizer | program | speaker | sponsor | talk | version |
+|--------|--------|-------|-----------|---------|---------|---------|------|---------|
+| add    |        |       |           |         | x       | x       | x    |         |
+| create |        | x     | x         | x       | x       | x       | x    |         |
+| edit   |        | x     | x         | x       | x       | x       | x    |         |
+| remove |        |       | x         |         | x       | x       | x    |         |
+| show   | x      | x     | x         | x       | x       | x       | x    | x       |
 
 # History
 
