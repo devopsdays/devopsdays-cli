@@ -1,5 +1,25 @@
 # Changelog - devopsdays-cli
 
+### 0.15.0
+
+__Changes__
+
+- Ensure that event content path exists
+
+  Fixes #90
+
+  Signed-off-by: Matt Stratton <matt.stratton@gmail.com>
+
+
+
+__Contributors__
+
+- Matt Stratton
+
+Released by Matt Stratton, Thu 05 Oct 2017 -
+[see the diff](https://github.com/mh-cbon/devopsdays-cli/compare/0.14.0...0.15.0#diff)
+______________
+
 ### 0.14.0
 
 __Changes__
@@ -558,6 +578,8 @@ __Changes__
 
   Also moved the doctor command under show config.
   Fixes #34
+
+
 
 
 
