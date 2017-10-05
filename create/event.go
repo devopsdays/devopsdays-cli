@@ -154,11 +154,10 @@ func Event(city, year string) (err error) {
 		return
 	}
 
-	// slug := []string{strings.TrimSpace(year), "-", helpers.CityClean(city)}
 	orgEmail := []string{"organizers-", strings.Replace(strings.TrimSpace(strings.ToLower(helpers.CityClean(city))), " ", "-", 10), "-", strings.TrimSpace(year), "@devopsdays.org"}
 	proposalEmail := []string{"proposals-", helpers.CityClean(city), "-", strings.TrimSpace(year), "@devopsdays.org"}
 	myEvent := model.Event{
-		Name:            "matt smells",
+		Name:            strings.Join([]string{strings.TrimSpace(year), "-", helpers.CityClean(city)}, ""),
 		Year:            year,
 		City:            city,
 		EventTwitter:    answers.Twitter,

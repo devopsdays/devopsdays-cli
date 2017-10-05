@@ -1,26 +1,26 @@
 package create
 
-const eventTmpl = `name: "{{ .Year}}-{{ .City}}" # The name of the event. Four digit year with the city name in lower-case, with no spaces.
-year: "{{ .Year}}" # The year of the event. Make sure it is in quotes.
-city: "{{ .City}}" # The displayed city name of the event. Capitalize it.
-event_twitter: "{{ .EventTwitter}}" # Change this to the twitter handle for your event such as devopsdayschi or devopsdaysmsp
-description: "Devopsdays is coming to {{ .City}}!" # Edit this to suit your preferences
+const eventTmpl = `name: "{{ .Name }}" # The name of the event. Four digit year with the city name in lower-case, with no spaces.
+year: "{{ .Year }}" # The year of the event. Make sure it is in quotes.
+city: "{{ .City }}" # The displayed city name of the event. Capitalize it.
+event_twitter: "{{ .EventTwitter }}" # Change this to the twitter handle for your event such as devopsdayschi or devopsdaysmsp
+description: "Devopsdays is coming to {{ .City }}!" # Edit this to suit your preferences
 ga_tracking_id: "{{ .GoogleAnalytics}}" # If you have your own Google Analytics tracking ID, enter it here. Example: "UA-74738648-1"
 
 # All dates are in unquoted YYYY-MM-DD, like this:   variable: 2016-01-05
-startdate: {{ .StartDate}} # The start date of your event. Leave blank if you don't have a venue reserved yet.
-enddate: {{ .StartDate}} # The end date of your event. Leave blank if you don't have a venue reserved yet.
+startdate: {{ .StartDate }} # The start date of your event. Leave blank if you don't have a venue reserved yet.
+enddate: {{ .StartDate }} # The end date of your event. Leave blank if you don't have a venue reserved yet.
 
 # Leave CFP dates blank if you don't know yet, or set all three at once.
-cfp_date_start: {{ .CFPDateStart}} # start accepting talk proposals.
-cfp_date_end: {{ .CFPDateEnd}} # close your call for proposals.
-cfp_date_announce: {{ .CFPDateAnnounce}} # inform proposers of status
+cfp_date_start: {{ .CFPDateStart }} # start accepting talk proposals.
+cfp_date_end: {{ .CFPDateEnd }} # close your call for proposals.
+cfp_date_announce: {{ .CFPDateAnnounce }} # inform proposers of status
 
-cfp_open: "{{ .CFPOpen}}"
-cfp_link: "{{ .CFPLink}}" #if you have a custom link for submitting proposals, add it here. This will control the Propose menu item as well as the "Propose" button.
+cfp_open: "{{ .CFPOpen }}"
+cfp_link: "{{ .CFPLink }}" #if you have a custom link for submitting proposals, add it here. This will control the Propose menu item as well as the "Propose" button.
 
-registration_date_start: {{ .RegistrationDateStart}} # start accepting registration. Leave blank if registration is not open yet
-registration_date_end: {{ .RegistrationDateEnd}} # close registration. Leave blank if registration is not open yet.
+registration_date_start: {{ .RegistrationDateStart }} # start accepting registration. Leave blank if registration is not open yet
+registration_date_end: {{ .RegistrationDateEnd }} # close registration. Leave blank if registration is not open yet.
 
 registration_closed: "{{ .RegistrationClosed }}" # set this to true if you need to manually close registration before your registration end date
 registration_link: "{{ .RegistrationLink }}" # If you have a custom registration link, enter it here. This will control the Registration menu item as well as the "Register" button.
