@@ -74,7 +74,7 @@ var qsCreateSpeaker = []*survey.Question{
 	{
 		Name: "github",
 		Prompt: &survey.Input{
-			Message: "What is the speaker's GitHub username?",
+			Message: "What is the speaker's GitHub username? [optional]",
 			Help:    "This should be the username, not the URL. Example: mattstratton",
 		},
 		Validate: func(val interface{}) error {
