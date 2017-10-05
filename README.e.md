@@ -37,6 +37,19 @@ brew install devopsdays/tap/devopsdays-cli
 
 #### $ {{exec "devopsdays-cli" "create" "speaker" "--help"| color "sh"}}
 
+# Reference
+
+## Matrix of commands
+
+
+|        | config | event | organizer | program | speaker | sponsor | talk | version |
+|--------|--------|-------|-----------|---------|---------|---------|------|---------|
+| add    |        |       |           |         | x       | x       | x    |         |
+| create |        | x     | x         | x       | x       | x       | x    |         |
+| edit   |        | x     | x         | x       | x       | x       | x    |         |
+| remove |        |       | x         |         | x       | x       | x    |         |
+| show   | x      | x     | x         | x       | x       | x       | x    | x       |
+
 # History
 
 [CHANGELOG](CHANGELOG.md)
