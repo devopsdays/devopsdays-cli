@@ -1,4 +1,17 @@
 
+0.15.1
+
+  * Update goreleaser to make it a prerelease
+
+    Signed-off-by: Matt Stratton <matt.stratton@gmail.com>
+  * Update README with video
+
+  - Matt Stratton <matt.stratton@gmail.com>
+
+-- Matt Stratton <matt.stratton@gmail.com>; Thu, 05 Oct 2017 15:37:37 -0500
+
+
+
 0.15.0
 
   * Ensure that event content path exists
@@ -6,6 +19,8 @@
     Fixes #90
 
     Signed-off-by: Matt Stratton <matt.stratton@gmail.com>
+
+
 
 
   - Matt Stratton <matt.stratton@gmail.com>
@@ -434,6 +449,8 @@
 
     Also moved the doctor command under show config.
     Fixes #34
+
+
 
 
 
