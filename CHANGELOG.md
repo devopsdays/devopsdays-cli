@@ -1,5 +1,61 @@
 # Changelog - devopsdays-cli
 
+### 0.14.0
+
+__Changes__
+
+- Move banner call
+
+  This gives a little more flexability, and it also handles the issue where banner was hijacking the help flags.
+
+  Fixes #75
+
+  Signed-off-by: Matt Stratton <matt.stratton@gmail.com>
+- Add proper fetching of talks
+
+  Signed-off-by: Matt Stratton <matt.stratton@gmail.com>
+- Add small functionality to helpers.GetTalks
+
+  It only returns the filenames right now, but it’s a start
+
+  Signed-off-by: Matt Stratton <matt.stratton@gmail.com>
+- Fix regression with event name
+
+  Signed-off-by: Matt Stratton <matt.stratton@gmail.com>
+- MVP of create event function
+
+  Introduced bug - name field in YAML has the city name capitalized (it is not getting this value from the struct)
+
+  Signed-off-by: Matt Stratton <matt.stratton@gmail.com>
+- Fix twitter field in event template
+
+  Signed-off-by: Matt Stratton <matt.stratton@gmail.com>
+- Add helpers.CopyFile function
+
+  Signed-off-by: Matt Stratton <matt.stratton@gmail.com>
+- Add nouns and verbs to README
+
+  Signed-off-by: Matt Stratton <matt.stratton@gmail.com>
+- Remove dummy file
+- Adding dummy file to test auto-sign
+
+  Signed-off-by: Matt Stratton <matt.stratton@gmail.com>
+- Add configuration for stale bot
+
+  Signed-off-by: Matt Stratton <matt.stratton@gmail.com>
+- Fix spacing error in speaker template
+- Update event model
+- Move templates into template file
+- Implement scaffold of GetTalks function
+
+__Contributors__
+
+- Matt Stratton
+
+Released by Matt Stratton, Thu 05 Oct 2017 -
+[see the diff](https://github.com/mh-cbon/devopsdays-cli/compare/0.13.0...0.14.0#diff)
+______________
+
 ### 0.13.0
 
 __Changes__
@@ -502,6 +558,8 @@ __Changes__
 
   Also moved the doctor command under show config.
   Fixes #34
+
+
 
 
 
