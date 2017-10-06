@@ -150,4 +150,76 @@ func TestValidateField(t *testing.T) {
 			})
 		})
 	})
+	Convey("Given a validation request for a date", t, func() {
+		Convey("When the string is 2016-01-05", func() {
+			date := "2016-01-05"
+			Convey("Then the response should be true", func() {
+				So(ValidateField(date, "date"), ShouldEqual, true)
+			})
+		})
+		Convey("When the string is 16-01-05", func() {
+			date := "16-01-05"
+			Convey("Then the response should be false", func() {
+				So(ValidateField(date, "date"), ShouldEqual, false)
+			})
+		})
+		Convey("When the date is March 1, 2016", func() {
+			date := "March 1, 2016"
+			Convey("Then the response should be false", func() {
+				So(ValidateField(date, "date"), ShouldEqual, false)
+			})
+		})
+		Convey("When the date is 2016-30-01", func() {
+			date := "2016-30-01"
+			Convey("Then the response should be false", func() {
+				So(ValidateField(date, "date"), ShouldEqual, false)
+			})
+		})
+	})
+	Convey("Given a validation request for a GA ID", t, func() {
+		Convey("When the ID is UA-74738648-1", func() {
+			googleanalytics := "UA-74738648-1"
+			Convey("Then the response should be true", func() {
+				So(ValidateField(googleanalytics, "googleanalytics"), ShouldEqual, true)
+			})
+		})
+		Convey("When the ID is 123456", func() {
+			googleanalytics := "123456"
+			Convey("Then the response should be false", func() {
+				So(ValidateField(googleanalytics, "googleanalytics"), ShouldEqual, false)
+			})
+		})
+	})
+	Convey("Given a validation request for coordinates", t, func() {
+		Convey("When the string is 41.882219, -87.640530", func() {
+			coordinates := "41.882219, -87.640530"
+			Convey("Then the response should be true", func() {
+				So(ValidateField(coordinates, "coordinates"), ShouldEqual, true)
+			})
+		})
+		Convey("When the string is 41.882219,-87.640530", func() {
+			coordinates := "41.882219,-87.640530"
+			Convey("Then the response should be true", func() {
+				So(ValidateField(coordinates, "coordinates"), ShouldEqual, true)
+			})
+		})
+		Convey("When the string is 41.882219,  -87.640530", func() {
+			coordinates := "41.882219,  -87.640530"
+			Convey("Then the response should be false", func() {
+				So(ValidateField(coordinates, "coordinates"), ShouldEqual, false)
+			})
+		})
+		Convey("When the string is 41, -87", func() {
+			coordinates := "41, -87"
+			Convey("Then the response should be false", func() {
+				So(ValidateField(coordinates, "coordinates"), ShouldEqual, false)
+			})
+		})
+		Convey("When the string is 41.882219 -87.640530", func() {
+			coordinates := "41.882219 -87.640530"
+			Convey("Then the response should be false", func() {
+				So(ValidateField(coordinates, "coordinates"), ShouldEqual, false)
+			})
+		})
+	})
 }

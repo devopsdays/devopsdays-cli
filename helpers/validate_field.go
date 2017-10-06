@@ -1,6 +1,7 @@
 package helpers
 
 import (
+	"regexp"
 	"strconv"
 	"strings"
 
@@ -59,6 +60,15 @@ func ValidateField(input, field string) bool {
 		return true
 	case "filepath":
 		ret, _ := govalidator.IsFilePath(input)
+		return ret
+	case "date":
+		ret := govalidator.IsTime(input, "2006-01-02")
+		return ret
+	case "googleanalytics":
+		ret, _ := regexp.MatchString(`UA-[0-9]{8}-[0-9]`, input)
+		return ret
+	case "coordinates":
+		ret, _ := regexp.MatchString(`-?[0-9]+\.[0-9]+,\W?-?[0-9]+.[0-9]+`, input)
 		return ret
 	}
 	return true // TODO: Make this return an error if no field was matched
