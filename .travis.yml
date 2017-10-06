@@ -8,7 +8,7 @@ addons:
 go: 1.9
 before_install:
 - go get github.com/mattn/goveralls
-- export DODPATH=$HOME/gopath/src/github.com/devopsdays/devopsdays-cli/sampleData
+- export DODPATH=$HOME/gopath/src/github.com/devopsdays/devopsdays-cli/testdata
 install:
 - make install
 script:
