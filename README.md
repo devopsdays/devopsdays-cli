@@ -6,6 +6,8 @@
 
 Command-line utilities for the [devopsdays](https://www.devopsdays.org) website built with :heart: by [mattstratton](https://github.com/mattstratton) in [Go](https://golang.org/).
 
+![devopsdays gopher](https://raw.githubusercontent.com/devopsdays/devopsdays-cli/master/gopher.png)
+
 [![asciicast](https://asciinema.org/a/htDFVyRFgai6p8yq2QAplLTd3.png)](https://asciinema.org/a/htDFVyRFgai6p8yq2QAplLTd3)
 
 # TOC
