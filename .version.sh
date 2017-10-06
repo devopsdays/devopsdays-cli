@@ -12,11 +12,12 @@ PREVERSION=
   go run main.go
   # finalize the changelog
   echo "finalizing changelog..."
-  changelog finalize --version !newversion!
-  echo "committing change.log..."
-  commit -q -m "Update change log file for !newversion!" -f change.log
-  echo "exporting changelog..."
-  changelog md -o CHANGELOG.md --vars='{"name":"devopsdays-cli", "user":"devopsdays"}'
+  github_changelog_generator --future-release "!newversion!"
+  # changelog finalize --version !newversion!
+  # echo "committing change.log..."
+  # commit -q -m "Update change log file for !newversion!" -f change.log
+  # echo "exporting changelog..."
+  # changelog md -o CHANGELOG.md --vars='{"name":"devopsdays-cli", "user":"devopsdays"}'
   echo "committing CHANGELOG.md..."
   commit -q -m "Update changelog markdown for !newversion!" -f CHANGELOG.md
   echo "installing latest devopsdays-cli"
