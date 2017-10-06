@@ -1,7 +1,6 @@
 package helpers
 
 import (
-	"fmt"
 	"io"
 	"os"
 )
@@ -27,6 +26,6 @@ func CopyFile(srcPath, destPath string) (err error) {
 		return err
 	}
 
-	fmt.Printf("Copied %v bytes\n", n)
+	// fmt.Printf("Copied %v bytes\n", n)
 	return nil
 }

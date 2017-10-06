@@ -11,6 +11,8 @@ import (
 
 	"github.com/alecthomas/template"
 	helpers "github.com/devopsdays/devopsdays-cli/helpers"
+	paths "github.com/devopsdays/devopsdays-cli/helpers/paths"
+	"github.com/devopsdays/devopsdays-cli/images"
 	"github.com/devopsdays/devopsdays-cli/model"
 	"github.com/fatih/color"
 	survey "gopkg.in/AlecAivazis/survey.v1"
@@ -155,10 +157,10 @@ func CreateEvent(city, year string) (err error) {
 		return
 	}
 
-	orgEmail := []string{"organizers-", strings.Replace(strings.TrimSpace(strings.ToLower(helpers.CityClean(city))), " ", "-", 10), "-", strings.TrimSpace(year), "@devopsdays.org"}
-	proposalEmail := []string{"proposals-", helpers.CityClean(city), "-", strings.TrimSpace(year), "@devopsdays.org"}
+	orgEmail := []string{"organizers-", strings.Replace(strings.TrimSpace(strings.ToLower(CityClean(city))), " ", "-", 10), "-", strings.TrimSpace(year), "@devopsdays.org"}
+	proposalEmail := []string{"proposals-", CityClean(city), "-", strings.TrimSpace(year), "@devopsdays.org"}
 	myEvent := model.Event{
-		Name:            strings.Join([]string{strings.TrimSpace(year), "-", helpers.CityClean(city)}, ""),
+		Name:            strings.Join([]string{strings.TrimSpace(year), "-", CityClean(city)}, ""),
 		Year:            year,
 		City:            city,
 		EventTwitter:    answers.Twitter,
@@ -173,14 +175,14 @@ func CreateEvent(city, year string) (err error) {
 		ProposalEmail:   strings.Join(proposalEmail, ""),
 	}
 
-	NewEvent(myEvent, helpers.CityClean(city), year)
+	NewEvent(myEvent, CityClean(city), year)
 
 	if answers.LogoPath != "" {
-		err = EventLogo(answers.LogoPath, helpers.CityClean(city), year)
+		err = EventLogo(answers.LogoPath, CityClean(city), year)
 	}
 
 	if answers.SquareLogoPath != "" {
-		err = EventLogoSquare(answers.SquareLogoPath, helpers.CityClean(city), year)
+		err = EventLogoSquare(answers.SquareLogoPath, CityClean(city), year)
 	}
 
 	return
@@ -195,7 +197,7 @@ func NewEvent(event model.Event, city string, year string) (err error) {
 		log.Fatal("Parse: ", err)
 		return
 	}
-	f, err := os.Create(helpers.EventDataPath(helpers.GetWebdir(), city, year))
+	f, err := os.Create(paths.EventDataPath(paths.GetWebdir(), city, year))
 	defer f.Close()
 	t.Execute(f, event)
 
@@ -203,7 +205,7 @@ func NewEvent(event model.Event, city string, year string) (err error) {
 		fmt.Println(err)
 	} else {
 		fmt.Fprintf(color.Output, "\n\n\nCreated event file for %s\n", color.GreenString(event.City))
-		fmt.Fprintf(color.Output, "at %s\n\n\n", color.BlueString(helpers.EventDataPath(helpers.GetWebdir(), city, year)))
+		fmt.Fprintf(color.Output, "at %s\n\n\n", color.BlueString(paths.EventDataPath(paths.GetWebdir(), city, year)))
 	}
 	return
 }
@@ -211,7 +213,7 @@ func NewEvent(event model.Event, city string, year string) (err error) {
 // EventLogo takes in a path to an event's main logo and copies/renames it to the proper destination
 func EventLogo(srcPath, city, year string) (err error) {
 
-	eventStaticPath, err := helpers.EventStaticPath(city, year)
+	eventStaticPath, err := paths.EventStaticPath(city, year)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -227,12 +229,12 @@ func EventLogo(srcPath, city, year string) (err error) {
 
 // EventLogoSquare takes in a path the event's square logo, and crops/resizes it and copies it to the proper destination
 func EventLogoSquare(srcPath, city, year string) (err error) {
-	eventStaticPath, err := helpers.EventStaticPath(city, year)
+	eventStaticPath, err := paths.EventStaticPath(city, year)
 	if err != nil {
 		log.Fatal(err)
 	}
 	destPath := filepath.Join(eventStaticPath, "logo-square.png")
-	helpers.ResizeImage(srcPath, destPath, "png", 600, 600)
+	images.ResizeImage(srcPath, destPath, "png", 600, 600)
 
 	// @TODO update helpers.ResizeImage to return error code and do something with it here
 

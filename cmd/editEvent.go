@@ -11,6 +11,7 @@ import (
 
 	"github.com/davecgh/go-spew/spew"
 	"github.com/devopsdays/devopsdays-cli/helpers"
+	"github.com/devopsdays/devopsdays-cli/helpers/paths"
 	"github.com/devopsdays/devopsdays-cli/model"
 	"gopkg.in/yaml.v2"
 )
@@ -155,7 +156,7 @@ func editEvent(event model.Event) (err error) {
 
 func eventStruct(city, year string) (event model.Event) {
 	// var event Event
-	yamlFile, err := ioutil.ReadFile(helpers.EventDataPath(webdir, city, year))
+	yamlFile, err := ioutil.ReadFile(paths.EventDataPath(webdir, city, year))
 	err = yaml.Unmarshal(yamlFile, &event)
 	if err != nil {
 		panic(err)
@@ -203,7 +204,7 @@ func editField(event model.Event, field, value string) {
 	// f := reflect.Indirect(r).FieldByName(field)
 	reflect.ValueOf(&event).Elem().FieldByName(field).SetString(value)
 	y, _ := yaml.Marshal(&event)
-	ioutil.WriteFile((helpers.EventDataPath(webdir, event.City, event.Year)), y, 0755)
+	ioutil.WriteFile((paths.EventDataPath(webdir, event.City, event.Year)), y, 0755)
 	return
 }
 
@@ -216,7 +217,7 @@ func updateOrganizer(event model.Event, name, field, value string) {
 			fmt.Println(r)
 			spew.Dump(event.TeamMembers)
 			y, _ := yaml.Marshal(&event)
-			ioutil.WriteFile((helpers.EventDataPath(webdir, event.City, event.Year)), y, 0755)
+			ioutil.WriteFile((paths.EventDataPath(webdir, event.City, event.Year)), y, 0755)
 		}
 	}
 }

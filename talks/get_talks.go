@@ -5,13 +5,13 @@ import (
 	"io/ioutil"
 	"path/filepath"
 
-	"github.com/devopsdays/devopsdays-cli/helpers"
+	"github.com/devopsdays/devopsdays-cli/helpers/paths"
 )
 
 // GetTalks takes in the city and year and returns a list of the talks
 func GetTalks(city, year string) []string {
 
-	talksDir := filepath.Join(helpers.EventContentPath(city, year), "program")
+	talksDir := filepath.Join(paths.EventContentPath(city, year), "program")
 
 	fmt.Println(talksDir)
 

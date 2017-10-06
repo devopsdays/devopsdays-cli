@@ -13,6 +13,7 @@ import (
 	rice "github.com/GeertJohan/go.rice"
 	"github.com/devopsdays/devopsdays-cli/event"
 	"github.com/devopsdays/devopsdays-cli/helpers"
+	"github.com/devopsdays/devopsdays-cli/helpers/paths"
 	"github.com/spf13/cobra"
 )
 
@@ -62,7 +63,7 @@ to quickly create a Cobra application.`,
 		city := ""
 		year := ""
 		if city != "" {
-			if helpers.CheckEvent(city, year) == false {
+			if event.CheckEvent(city, year) == false {
 				log.Fatal("That city does not exist.")
 			}
 			myEvent := eventStruct(city, year)
@@ -73,7 +74,7 @@ to quickly create a Cobra application.`,
 			city, _ := reader.ReadString('\n')
 			fmt.Println("Enter the year:")
 			year, _ := reader.ReadString('\n')
-			if helpers.CheckEvent(city, year) == false {
+			if event.CheckEvent(city, year) == false {
 				log.Fatal("That city does not exist.")
 			}
 			myEvent := eventStruct(city, year)
@@ -224,10 +225,10 @@ func createEventFile(city, year, twitter string) (string, error) {
 		strings.TrimSpace(city),
 		strings.TrimSpace(year),
 		slug,
-		helpers.CityClean(city),
+		event.CityClean(city),
 		strings.TrimSpace(twitter),
 	}
-	f, err := os.Create(helpers.EventDataPath(webdir, city, year))
+	f, err := os.Create(paths.EventDataPath(webdir, city, year))
 	if err != nil {
 		return "", err
 	}
@@ -236,13 +237,13 @@ func createEventFile(city, year, twitter string) (string, error) {
 	if err != nil {
 		fmt.Println(err)
 	} else {
-		fmt.Println("Created event file for", city, "for year", year, "at", helpers.EventDataPath(webdir, city, year))
+		fmt.Println("Created event file for", city, "for year", year, "at", paths.EventDataPath(webdir, city, year))
 	}
 	return city, nil
 }
 
 func createEventContentDir(city, year string) (string, error) {
-	err := os.MkdirAll((helpers.EventContentPath(city, year)), 0755)
+	err := os.MkdirAll((paths.EventContentPath(city, year)), 0755)
 	if err != nil {
 		return "", err
 	}
@@ -281,9 +282,9 @@ func createEventContentFile(city, year, page string) (string, error) { // add pa
 		strings.TrimSpace(city),
 		strings.TrimSpace(year),
 		slug,
-		helpers.CityClean(city),
+		event.CityClean(city),
 	}
-	filePath := filepath.Join((helpers.EventContentPath(city, year)), (page + ".md"))
+	filePath := filepath.Join((paths.EventContentPath(city, year)), (page + ".md"))
 	f, err := os.Create(filePath)
 	if err != nil {
 		return "Cannot create", err

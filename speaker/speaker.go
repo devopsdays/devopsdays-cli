@@ -13,7 +13,10 @@ import (
 	"text/template"
 
 	"github.com/devopsdays/devopsdays-cli/helpers"
+	"github.com/devopsdays/devopsdays-cli/helpers/paths"
+	"github.com/devopsdays/devopsdays-cli/images"
 	"github.com/devopsdays/devopsdays-cli/model"
+	"github.com/devopsdays/devopsdays-cli/names"
 	"github.com/devopsdays/devopsdays-cli/talks"
 	"github.com/fatih/color"
 	survey "gopkg.in/AlecAivazis/survey.v1"
@@ -170,11 +173,11 @@ func CreateSpeaker(speakerName, city, year string) (err error) {
 	}
 
 	if answers.ImagePath != "" {
-		answers.ImagePath = SpeakerImage(answers.ImagePath, helpers.NameClean(answers.Name), city, year)
+		answers.ImagePath = SpeakerImage(answers.ImagePath, names.NameClean(answers.Name), city, year)
 	}
 
 	mySpeaker := model.Speaker{
-		Name:      helpers.NameClean(answers.Name),
+		Name:      names.NameClean(answers.Name),
 		Title:     answers.Name,
 		Website:   answers.Website,
 		Twitter:   answers.Twitter,
@@ -194,7 +197,7 @@ func CreateSpeaker(speakerName, city, year string) (err error) {
 // NewSpeaker takes in a constructed Speaker type and generates the stuff
 func NewSpeaker(speaker model.Speaker, city string, year string) (err error) {
 
-	cleanName := helpers.NameClean(speaker.Name)
+	cleanName := names.NameClean(speaker.Name)
 	t := template.New("Speaker template")
 
 	t, err = t.Parse(speakerTmpl)
@@ -203,11 +206,11 @@ func NewSpeaker(speaker model.Speaker, city string, year string) (err error) {
 		return
 	}
 
-	if err := os.MkdirAll(filepath.Join(helpers.EventContentPath(city, year), "speakers"), 0777); err != nil {
+	if err := os.MkdirAll(filepath.Join(paths.EventContentPath(city, year), "speakers"), 0777); err != nil {
 		log.Fatal(err)
 	}
 	s := []string{strings.TrimSpace(cleanName), ".md"}
-	f, err := os.Create(filepath.Join(helpers.EventContentPath(city, year), "speakers", strings.Join(s, "")))
+	f, err := os.Create(filepath.Join(paths.EventContentPath(city, year), "speakers", strings.Join(s, "")))
 	if err != nil {
 		return err
 	}
@@ -218,7 +221,7 @@ func NewSpeaker(speaker model.Speaker, city string, year string) (err error) {
 		fmt.Println(err)
 	} else {
 		fmt.Fprintf(color.Output, "\n\n\nCreated speaker file for %s\n", color.GreenString(speaker.Title))
-		fmt.Fprintf(color.Output, "at %s\n\n\n", color.BlueString(filepath.Join(helpers.EventContentPath(city, year), "speakers", strings.Join(s, ""))))
+		fmt.Fprintf(color.Output, "at %s\n\n\n", color.BlueString(filepath.Join(paths.EventContentPath(city, year), "speakers", strings.Join(s, ""))))
 	}
 	return
 }
@@ -228,7 +231,7 @@ func SpeakerImage(srcPath, speaker, city, year string) (imageFile string) {
 
 	var eventStaticPath string
 	var err error
-	eventStaticPath, err = helpers.EventStaticPath(city, year)
+	eventStaticPath, err = paths.EventStaticPath(city, year)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -243,17 +246,17 @@ func SpeakerImage(srcPath, speaker, city, year string) (imageFile string) {
 	case ".jpg":
 		s := []string{strings.TrimSpace(speaker), ".jpg"}
 		destPath := filepath.Join(eventStaticPath, "speakers", strings.Join(s, ""))
-		helpers.ResizeImage(srcPath, destPath, "jpg", 600, 600)
+		images.ResizeImage(srcPath, destPath, "jpg", 600, 600)
 		return strings.Join(s, "")
 	case ".jpeg":
 		s := []string{strings.TrimSpace(speaker), ".jpg"}
 		destPath := filepath.Join(eventStaticPath, "speakers", strings.Join(s, ""))
-		helpers.ResizeImage(srcPath, destPath, "jpg", 600, 600)
+		images.ResizeImage(srcPath, destPath, "jpg", 600, 600)
 		return strings.Join(s, "")
 	case ".png":
 		s := []string{strings.TrimSpace(speaker), ".png"}
 		destPath := filepath.Join(eventStaticPath, "speakers", strings.Join(s, ""))
-		helpers.ResizeImage(srcPath, destPath, "png", 600, 600)
+		images.ResizeImage(srcPath, destPath, "png", 600, 600)
 		return strings.Join(s, "")
 	}
 	return "busted"
