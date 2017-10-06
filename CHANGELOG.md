@@ -1,5 +1,8 @@
 # Change Log
 
+## [0.16.4](https://github.com/devopsdays/devopsdays-cli/tree/0.16.4) (2017-10-06)
+[Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/0.16.3...0.16.4)
+
 ## [0.16.3](https://github.com/devopsdays/devopsdays-cli/tree/0.16.3) (2017-10-06)
 [Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/0.16.2...0.16.3)
 

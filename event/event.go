@@ -49,19 +49,37 @@ var qsCreateEvent = []*survey.Question{
 			Message: "Enter your Google Analytics ID [optional]:",
 			Help:    "This will allow your page to be tracked. Example: UA-74738648-1.",
 		},
+		Validate: func(val interface{}) error {
+			if str, _ := val.(string); (str != "") && (helpers.ValidateField(str, "googleanalytics") == false) {
+				return errors.New("Please enter a valid Google Analytics ID. Example: UA-74738648-1")
+			}
+			return nil
+		},
 	},
 	{
 		Name: "startdate",
 		Prompt: &survey.Input{
-			Message: "Enter the event's start date [optional]:",
+			Message: "Enter the event's start date in the format of YYYY-MM-YY [optional]:",
 			Help:    "You can only provide a date for your event if you have a signed contract with your venue.",
+		},
+		Validate: func(val interface{}) error {
+			if str, _ := val.(string); (str != "") && (helpers.ValidateField(str, "date") == false) {
+				return errors.New("Please enter a valid date. Example: 2018-01-30.")
+			}
+			return nil
 		},
 	},
 	{
 		Name: "enddate",
 		Prompt: &survey.Input{
-			Message: "Enter the event's end date [optional]:",
+			Message: "Enter the event's end date in the format of YYYY-MM-YY [optional]:",
 			Help:    "For single-day events make the end date the same as the start date. You can only provide a date for your event if you have a signed contract with your venue.",
+		},
+		Validate: func(val interface{}) error {
+			if str, _ := val.(string); (str != "") && (helpers.ValidateField(str, "date") == false) {
+				return errors.New("Please enter a valid date. Example: 2018-01-30.")
+			}
+			return nil
 		},
 	},
 	{
@@ -149,6 +167,11 @@ func CreateEvent(city, year string) (err error) {
 			Message: "Enter the year:",
 		}
 		survey.AskOne(prompt, &year, survey.Required)
+	}
+
+	if CheckEvent(city, year) {
+		fmt.Println("This event already exists. If you would like to edit it, please run `devopsdays-cli edit event`")
+		return
 	}
 
 	surveyErr := survey.Ask(qsCreateEvent, &answers)
