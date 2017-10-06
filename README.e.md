@@ -13,8 +13,6 @@ Command-line utilities for the [devopsdays](https://www.devopsdays.org) website 
 
 ![devopsdays gopher](gopher.png)![devopsdays yak](yak.png)
 
-[![asciicast](https://asciinema.org/a/htDFVyRFgai6p8yq2QAplLTd3.png)](https://asciinema.org/a/htDFVyRFgai6p8yq2QAplLTd3)
-
 # {{toc 5}}
 
 # Demo
