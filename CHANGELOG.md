@@ -1,5 +1,18 @@
 # Change Log
 
+## [0.17.0](https://github.com/devopsdays/devopsdays-cli/tree/0.17.0) (2017-10-06)
+[Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/0.16.5...0.17.0)
+
+**Implemented enhancements:**
+
+- Change create event functionality to use the model package [\#61](https://github.com/devopsdays/devopsdays-cli/issues/61)
+- create createSponsor function [\#39](https://github.com/devopsdays/devopsdays-cli/issues/39)
+- Create createEvent function [\#37](https://github.com/devopsdays/devopsdays-cli/issues/37)
+
+**Fixed bugs:**
+
+- Extra newlines in generated speaker file [\#63](https://github.com/devopsdays/devopsdays-cli/issues/63)
+
 ## [0.16.5](https://github.com/devopsdays/devopsdays-cli/tree/0.16.5) (2017-10-06)
 [Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/0.16.4...0.16.5)
 
