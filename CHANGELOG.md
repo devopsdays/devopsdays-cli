@@ -1,5 +1,16 @@
 # Change Log
 
+## [0.16.5](https://github.com/devopsdays/devopsdays-cli/tree/0.16.5) (2017-10-06)
+[Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/0.16.4...0.16.5)
+
+**Implemented enhancements:**
+
+- Add all event fields to validateField [\#16](https://github.com/devopsdays/devopsdays-cli/issues/16)
+
+**Merged pull requests:**
+
+- Add additional event validation [\#107](https://github.com/devopsdays/devopsdays-cli/pull/107) ([mattstratton](https://github.com/mattstratton))
+
 ## [0.16.4](https://github.com/devopsdays/devopsdays-cli/tree/0.16.4) (2017-10-06)
 [Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/0.16.3...0.16.4)
 
