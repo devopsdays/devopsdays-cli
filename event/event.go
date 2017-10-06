@@ -126,6 +126,7 @@ var qsCreateEvent = []*survey.Question{
 			Message: "Enter the path to your event's square logo, for use on the main home page. [optional]",
 			Help:    "Path to logo image. Must be a PNG file, 600 x 600 px. Example: /Users/mattstratton/Pictures/chicago-square.png.",
 		},
+		// @TODO Check for png on event logo
 		Validate: func(val interface{}) error {
 			str, _ := val.(string)
 			if str != "" {
