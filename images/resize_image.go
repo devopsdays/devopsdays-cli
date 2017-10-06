@@ -1,4 +1,4 @@
-package helpers
+package images
 
 import (
 	"fmt"

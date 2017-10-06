@@ -1,4 +1,4 @@
-package create
+package event
 
 const eventTmpl = `name: "{{ .Name }}" # The name of the event. Four digit year with the city name in lower-case, with no spaces.
 year: "{{ .Year }}" # The year of the event. Make sure it is in quotes.
@@ -90,17 +90,3 @@ sponsor_levels:
   - id: community
     label: Community
     `
-
-const speakerTmpl = `+++
-Title = "{{ .Title }}"
-type = "speaker"
-{{ with .Website }}website = "{{ . }}"{{ end }}
-{{ with .Twitter }}twitter = "{{ . }}"{{ end }}
-{{ with .Facebook }}facebook = "{{ . }}"{{ end }}
-{{ with .Linkedin }}linkedin = "{{ . }}"{{ end }}
-{{ with .Github }}github = "{{ . }}"{{ end }}
-{{ with .Gitlab }}gitlab = "{{ . }}"{{ end }}
-{{ with .ImagePath }}image = "{{ . }}"{{ end }}
-+++
-{{ with .Bio }}{{.}}{{ end }}
-`
