@@ -1,15 +1,17 @@
-package helpers
+package talks
 
 import (
 	"fmt"
 	"io/ioutil"
 	"path/filepath"
+
+	"github.com/devopsdays/devopsdays-cli/helpers"
 )
 
 // GetTalks takes in the city and year and returns a list of the talks
 func GetTalks(city, year string) []string {
 
-	talksDir := filepath.Join(EventContentPath(city, year), "program")
+	talksDir := filepath.Join(helpers.EventContentPath(city, year), "program")
 
 	fmt.Println(talksDir)
 
