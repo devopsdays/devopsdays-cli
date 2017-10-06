@@ -1,15 +1,17 @@
 # Change Log
 
-## [0.16.5](https://github.com/devopsdays/devopsdays-cli/tree/0.16.5) (2017-10-06)
-[Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/0.16.4...0.16.5)
+## [0.17.0](https://github.com/devopsdays/devopsdays-cli/tree/0.17.0) (2017-10-06)
+[Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/0.16.5...0.17.0)
 
 **Implemented enhancements:**
 
-- Add all event fields to validateField [\#16](https://github.com/devopsdays/devopsdays-cli/issues/16)
+- Change create event functionality to use the model package [\#61](https://github.com/devopsdays/devopsdays-cli/issues/61)
+- create createSponsor function [\#39](https://github.com/devopsdays/devopsdays-cli/issues/39)
+- Create createEvent function [\#37](https://github.com/devopsdays/devopsdays-cli/issues/37)
 
-**Merged pull requests:**
+**Fixed bugs:**
 
-- Add additional event validation [\#107](https://github.com/devopsdays/devopsdays-cli/pull/107) ([mattstratton](https://github.com/mattstratton))
+- Extra newlines in generated speaker file [\#63](https://github.com/devopsdays/devopsdays-cli/issues/63)
 
 
 
