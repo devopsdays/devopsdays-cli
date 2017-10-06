@@ -11,7 +11,7 @@ import (
 	"time"
 
 	rice "github.com/GeertJohan/go.rice"
-	"github.com/devopsdays/devopsdays-cli/create"
+	"github.com/devopsdays/devopsdays-cli/event"
 	"github.com/devopsdays/devopsdays-cli/helpers"
 	"github.com/spf13/cobra"
 )
@@ -42,7 +42,7 @@ var createEventCmd = &cobra.Command{
   devopsdays-cli create event -c New York --year 2017`,
 
 	Run: func(cmd *cobra.Command, args []string) {
-		create.Event(City, Year)
+		event.CreateEvent(City, Year)
 	},
 }
 

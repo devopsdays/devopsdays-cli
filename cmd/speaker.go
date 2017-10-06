@@ -3,7 +3,7 @@ package cmd
 import (
 	"fmt"
 
-	"github.com/devopsdays/devopsdays-cli/create"
+	"github.com/devopsdays/devopsdays-cli/speaker"
 	"github.com/spf13/cobra"
 )
 
@@ -36,7 +36,7 @@ var createSpeakerCmd = &cobra.Command{
 
 	Args: cobra.MaximumNArgs(1),
 	Run: func(cmd *cobra.Command, args []string) {
-		create.Speaker("", City, Year)
+		speaker.CreateSpeaker("", City, Year)
 	},
 }
 

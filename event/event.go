@@ -1,4 +1,5 @@
-package create
+// Package event provides the functions for creating, editing, and showing events
+package event
 
 import (
 	"errors"
@@ -118,8 +119,8 @@ var qsCreateEvent = []*survey.Question{
 	},
 }
 
-// Event takes input from the user to create a new event
-func Event(city, year string) (err error) {
+// CreateEvent takes input from the user to create a new event
+func CreateEvent(city, year string) (err error) {
 
 	answers := struct {
 		Twitter         string

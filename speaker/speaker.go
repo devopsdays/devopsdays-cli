@@ -1,5 +1,5 @@
-// Package create provides functions to create new content.
-package create
+// Package speaker provides functions to add, create, edit, delete, and show speakers
+package speaker
 
 import (
 	"errors"
@@ -116,8 +116,8 @@ var qsCreateSpeaker = []*survey.Question{
 	},
 }
 
-// Speaker takes input from the user to create a new speaker
-func Speaker(speakerName, city, year string) (err error) {
+// CreateSpeaker takes input from the user to create a new speaker
+func CreateSpeaker(speakerName, city, year string) (err error) {
 
 	answers := struct {
 		Name      string
