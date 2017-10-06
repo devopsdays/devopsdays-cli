@@ -1,5 +1,19 @@
 # Change Log
 
+## [0.16.2](https://github.com/devopsdays/devopsdays-cli/tree/0.16.2) (2017-10-06)
+[Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/0.16.1...0.16.2)
+
+**Implemented enhancements:**
+
+- specify @ symbol or not when asking for Twitter handle [\#68](https://github.com/devopsdays/devopsdays-cli/issues/68)
+
+**Merged pull requests:**
+
+- Allow twitter names to include @ symbol. [\#106](https://github.com/devopsdays/devopsdays-cli/pull/106) ([mattstratton](https://github.com/mattstratton))
+
+## [0.16.1](https://github.com/devopsdays/devopsdays-cli/tree/0.16.1) (2017-10-06)
+[Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/0.16.0...0.16.1)
+
 ## [0.16.0](https://github.com/devopsdays/devopsdays-cli/tree/0.16.0) (2017-10-06)
 [Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/0.15.1...0.16.0)
 
