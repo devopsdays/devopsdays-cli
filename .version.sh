@@ -20,6 +20,10 @@ PREVERSION=
   # changelog md -o CHANGELOG.md --vars='{"name":"devopsdays-cli", "user":"devopsdays"}'
   echo "committing CHANGELOG.md..."
   commit -q -m "Update changelog markdown for !newversion!" -f CHANGELOG.md
+  echo "finalizing release notes..."
+  github_changelog_generator --future-release "!newversion!" -o RELEASE.md --unreleased-only
+  echo "committing CHANGELOG.md..."
+  commit -q -m "Update release notes markdown for !newversion!" -f RELEASE.md
   echo "installing latest devopsdays-cli"
   go install --ldflags "-X github.com/devopsdays/devopsdays-cli/cmd.Version=!newversion!"
   echo "generating README.md..."
