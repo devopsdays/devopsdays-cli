@@ -16,6 +16,7 @@ Command-line utilities for the [devopsdays](https://www.devopsdays.org) website 
 - [Usage](#usage)
   - [$ devopsdays-cli](#-devopsdays-cli)
   - [$ devopsdays-cli create speaker --help](#-devopsdays-cli-create-speaker---help)
+  - [$ devopsdays-cli create event --help](#-devopsdays-cli-create-event---help)
 - [Reference](#reference)
   - [Matrix of commands](#matrix-of-commands)
 - [History](#history)
@@ -100,6 +101,31 @@ Flags:
 Global Flags:
   -d, --debug   enable debug mode
 ```
+
+#### $ devopsdays-cli create event --help
+```sh
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|d|e|v|o|p|s|d|a|y|s|-|c|l|i|
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+
+Create a new event.
+
+Usage:
+  devopsdays-cli create event create [flags]
+
+Examples:
+  devopsdays-cli create event
+  devopsdays-cli create event -c New York --year 2017
+
+Flags:
+  -c, --city string   city to use
+  -h, --help          help for event
+  -y, --year string   year to use
+
+Global Flags:
+  -d, --debug   enable debug mode
+```
+
 
 # Reference
 
