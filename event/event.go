@@ -201,6 +201,17 @@ func CreateEvent(city, year string) (err error) {
 
 	NewEvent(myEvent, CityClean(city), year)
 
+	// create the event content files
+	contentfiles := []string{"index", "conduct", "contact", "location", "program", "propose", "registration", "sponsor"}
+	for _, contentFile := range contentfiles {
+
+		if result, err := createEventContentFile(city, year, contentFile); err != nil {
+			fmt.Printf("Error: %s\n", err)
+		} else {
+			fmt.Printf("Event content file created for %s!!!\n", result)
+		}
+
+	}
 	if answers.LogoPath != "" {
 		err = EventLogo(answers.LogoPath, CityClean(city), year)
 	}
