@@ -40,11 +40,11 @@ var qsCreateSpeaker = []*survey.Question{
 		Name: "twitter",
 		Prompt: &survey.Input{
 			Message: "What is the speaker's Twitter? [optional]",
-			Help:    "Twitter username should not include the @ symbol",
+			Help:    "Twitter username can include the @ symbol or not. Examples: '@mattstratton' or 'mattstratton",
 		},
 		Validate: func(val interface{}) error {
 			if str, _ := val.(string); (str != "") && (helpers.ValidateField(str, "twitter") == false) {
-				return errors.New("Please enter a valid Twitter handle. It should not have the @ symbol.")
+				return errors.New("Please enter a valid Twitter handle. It should not have any spaces.")
 			}
 			return nil
 		},
@@ -180,7 +180,7 @@ func CreateSpeaker(speakerName, city, year string) (err error) {
 		Name:      names.NameClean(answers.Name),
 		Title:     answers.Name,
 		Website:   answers.Website,
-		Twitter:   answers.Twitter,
+		Twitter:   helpers.TwitterClean(answers.Twitter),
 		Facebook:  answers.Facebook,
 		Linkedin:  answers.Linkedin,
 		Github:    answers.Github,

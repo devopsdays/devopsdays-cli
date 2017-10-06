@@ -62,8 +62,8 @@ func TestValidateField(t *testing.T) {
 		})
 		Convey("When the account name is @devopsdays", func() {
 			twitter := "@devopsdays"
-			Convey("Then the response should be false", func() {
-				So(ValidateField(twitter, "twitter"), ShouldEqual, false)
+			Convey("Then the response should be true", func() {
+				So(ValidateField(twitter, "twitter"), ShouldEqual, true)
 			})
 		})
 	})

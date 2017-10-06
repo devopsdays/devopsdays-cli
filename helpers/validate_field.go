@@ -25,7 +25,7 @@ func ValidateField(input, field string) bool {
 			return true
 		}
 	case "twitter":
-		if (strings.ContainsAny(input, " ")) || (strings.ContainsAny(input, "@")) {
+		if strings.ContainsAny(input, " ") {
 			return false
 		}
 		return true

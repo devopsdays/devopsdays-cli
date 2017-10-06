@@ -26,12 +26,12 @@ var qsCreateEvent = []*survey.Question{
 	{
 		Name: "twitter",
 		Prompt: &survey.Input{
-			Message: "Enter your devopsdays event twitter handle (defaults to devopsdays):",
-			Help:    "Twitter username should not include the @ symbol",
+			Message: "Enter your devopsdays event twitter handle (defaults to @devopsdays):",
+			Help:    "Twitter username can include the @ symbol or not. Examples: '@devopsdays' or 'devopsdays",
 		},
 		Validate: func(val interface{}) error {
 			if str, _ := val.(string); (str != "") && (helpers.ValidateField(str, "twitter") == false) {
-				return errors.New("Please enter a valid Twitter handle. It should not have the @ symbol.")
+				return errors.New("Please enter a valid Twitter handle. Spaces are not allowed.")
 			}
 			return nil
 		},
@@ -163,7 +163,7 @@ func CreateEvent(city, year string) (err error) {
 		Name:            strings.Join([]string{strings.TrimSpace(year), "-", CityClean(city)}, ""),
 		Year:            year,
 		City:            city,
-		EventTwitter:    answers.Twitter,
+		EventTwitter:    helpers.TwitterClean(answers.Twitter),
 		Description:     answers.Description,
 		GoogleAnalytics: answers.GoogleAnalytics,
 		StartDate:       answers.StartDate,
