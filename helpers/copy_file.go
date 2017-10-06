@@ -21,7 +21,7 @@ func CopyFile(srcPath, destPath string) (err error) {
 	defer w.Close()
 
 	// do the actual work
-	n, err := io.Copy(w, r) // <------ here !
+	_, err = io.Copy(w, r) // <------ here !
 	if err != nil {
 		return err
 	}
