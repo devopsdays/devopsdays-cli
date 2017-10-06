@@ -1,5 +1,49 @@
 # Changelog - devopsdays-cli
 
+### 0.16.0
+
+__Changes__
+
+- Update README with create event help
+
+  Signed-off-by: Matt Stratton <matt.stratton@gmail.com>
+- Merge pull request #104 from devopsdays/refactor-packages
+
+  Remove update line in copy file
+- Remove update line in copy file
+
+  Signed-off-by: Matt Stratton <matt.stratton@gmail.com>
+- Merge pull request #98 from devopsdays/refactor-packages
+
+  Refactor packages
+- Refactor out almost all of the helpers package
+
+  Signed-off-by: Matt Stratton <matt.stratton@gmail.com>
+- Move helpers.GetTalks to talks.GetTalks
+
+  Signed-off-by: Matt Stratton <matt.stratton@gmail.com>
+- Refactor into event and speaker packages
+
+  Signed-off-by: Matt Stratton <matt.stratton@gmail.com>
+- Add helpers.TwitterClean function
+
+  Signed-off-by: Matt Stratton <matt.stratton@gmail.com>
+- Add optional test to github usernam in create speaker
+
+  Fixes #89
+
+  Signed-off-by: Matt Stratton <matt.stratton@gmail.com>
+
+
+
+__Contributors__
+
+- Matt Stratton
+
+Released by Matt Stratton, Fri 06 Oct 2017 -
+[see the diff](https://github.com/mh-cbon/devopsdays-cli/compare/0.15.1...0.16.0#diff)
+______________
+
 ### 0.15.1
 
 __Changes__
@@ -26,6 +70,8 @@ __Changes__
   Fixes #90
 
   Signed-off-by: Matt Stratton <matt.stratton@gmail.com>
+
+
 
 
 
@@ -597,6 +643,8 @@ __Changes__
 
   Also moved the doctor command under show config.
   Fixes #34
+
+
 
 
 
