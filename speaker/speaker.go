@@ -37,6 +37,19 @@ var qsCreateSpeaker = []*survey.Question{
 		Prompt: &survey.Editor{Message: "Enter the speaker's bio [Enter to launch editor]"},
 	},
 	{
+		Name: "website",
+		Prompt: &survey.Input{
+			Message: "What is the speaker's website? [optional]",
+			Help:    "This should be the full URL to the speaker's website. Example: https://www.mattstratton.com",
+		},
+		Validate: func(val interface{}) error {
+			if str, _ := val.(string); (str != "") && (helpers.ValidateField(str, "facebook") == false) {
+				return errors.New("Please enter a valid URL.")
+			}
+			return nil
+		},
+	},
+	{
 		Name: "twitter",
 		Prompt: &survey.Input{
 			Message: "What is the speaker's Twitter? [optional]",

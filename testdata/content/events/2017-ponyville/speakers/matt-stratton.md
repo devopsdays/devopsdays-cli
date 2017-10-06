@@ -6,7 +6,6 @@ twitter = "mattstratton"
 facebook = "https://www.facebook.com/matt.stratton"
 linkedin = "https://www.linkedin.com/in/mattstratton/"
 github = "mattstratton"
-gitlab = "mattstratton"
-image = "matt-stratton.jpg"
+gitlab = "mattstratton"image = "matt-stratton.jpg"
 +++
 
