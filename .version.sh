@@ -21,9 +21,9 @@ PREVERSION=
   echo "committing CHANGELOG.md..."
   commit -q -m "Update changelog markdown for !newversion!" -f CHANGELOG.md
   echo "finalizing release notes..."
-  github_changelog_generator --future-release "!newversion!" -o RELEASE.md --unreleased-only
+  github_changelog_generator --future-release "!newversion!" -o RELEASE_NOTES.md --unreleased-only
   echo "committing CHANGELOG.md..."
-  commit -q -m "Update release notes markdown for !newversion!" -f RELEASE.md
+  commit -q -m "Update release notes markdown for !newversion!" -f RELEASE_NOTES.md
   echo "installing latest devopsdays-cli"
   go install --ldflags "-X github.com/devopsdays/devopsdays-cli/cmd.Version=!newversion!"
   echo "generating README.md..."
