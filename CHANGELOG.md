@@ -1,16 +1,19 @@
 # Change Log
 
-## [0.18.0](https://github.com/devopsdays/devopsdays-cli/tree/0.18.0) (2017-10-07)
-[Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/0.17.8...0.18.0)
+## [0.18.1](https://github.com/devopsdays/devopsdays-cli/tree/0.18.1) (2017-10-07)
+[Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/0.18.0...0.18.1)
 
-## [0.17.8](https://github.com/devopsdays/devopsdays-cli/tree/0.17.8) (2017-10-07)
-[Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/0.17.7...0.17.8)
+## [0.18.0](https://github.com/devopsdays/devopsdays-cli/tree/0.18.0) (2017-10-07)
+[Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/0.17.7...0.18.0)
 
 ## [0.17.7](https://github.com/devopsdays/devopsdays-cli/tree/0.17.7) (2017-10-07)
 [Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/0.17.9...0.17.7)
 
 ## [0.17.9](https://github.com/devopsdays/devopsdays-cli/tree/0.17.9) (2017-10-07)
-[Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/0.17.6...0.17.9)
+[Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/0.17.8...0.17.9)
+
+## [0.17.8](https://github.com/devopsdays/devopsdays-cli/tree/0.17.8) (2017-10-07)
+[Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/0.17.6...0.17.8)
 
 ## [0.17.6](https://github.com/devopsdays/devopsdays-cli/tree/0.17.6) (2017-10-07)
 [Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/0.17.5...0.17.6)
