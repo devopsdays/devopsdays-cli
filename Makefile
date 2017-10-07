@@ -20,9 +20,7 @@ test:
 
 deploy:
 	# go get -v github.com/inconshreveable/mousetrap
-	- ./goreleaser -v
-	- ./goreleaser
-	# - curl -sL https://git.io/goreleaser | rvm 2.4.1 do bash -s -- --release-notes=RELEASE.md
+	- curl -sL https://git.io/goreleaser | rvm 2.4.1 do bash -s -- --release-notes=RELEASE.md
 	# - curl -X PUT -T devopdays-cli_${VERSION}_linux-i386.deb -umattstratton:${BTKEY} 'https://api.bintray.com/content/devopsdays/deb/devopsdays-cli/${VERSION}/pool/main/d/devopsdays/devopdays-cli_${VERSION}_linux-386.deb;deb_distribution=devopsdays;deb_component=main;deb_architecture=i386;publish=1'
 	# - curl -X PUT -T devopdays-cli_${VERSION}_linux-amd64.deb -umattstratton:${BTKEY} 'https://api.bintray.com/content/devopsdays/deb/devopsdays-cli/${VERSION}/pool/main/d/devopsdays/devopdays-cli_${VERSION}_linux-amd64.deb;deb_distribution=devopsdays;deb_component=main;deb_architecture=amd64;publish=1'
 	# - curl PUT -T devopdays-cli_$VERSION_linux-i386.rpm -umattstratton:{BTKEY} 'https://api.bintray.com/content/devopsdays/rpm/devopsdays-cli/${VERSION}/devopdays-cli_$VERSION_linux-386.rpm;publish=1'
