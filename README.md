@@ -17,9 +17,10 @@ This project adheres to the Contributor Covenant [code of conduct](CODE_OF_CONDU
   - [homebrew](#homebrew)
   - [via Go](#via-go)
 - [Usage](#usage)
-  - [$ devopsdays-cli](#-devopsdays-cli)
+  - [$ devopsdays-cli --help](#-devopsdays-cli---help)
   - [$ devopsdays-cli create speaker --help](#-devopsdays-cli-create-speaker---help)
   - [$ devopsdays-cli create event --help](#-devopsdays-cli-create-event---help)
+  - [$ devopsdays-cli create sponsor --help](#-devopsdays-cli-create-sponsor---help)
 - [Reference](#reference)
   - [Matrix of commands](#matrix-of-commands)
   - [Contributing](#contributing)
@@ -56,7 +57,7 @@ go get github.com/devopsdays/devopsdays-cli
 
 # Usage
 
-#### $ devopsdays-cli
+#### $ devopsdays-cli --help
 ```sh
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 |d|e|v|o|p|s|d|a|y|s|-|c|l|i|
@@ -69,6 +70,7 @@ built with love by mattstratton in Go.
 Complete documentation is available at https://github.com/devopsdays/devopsdays-cli
 
 Usage:
+  devopsdays-cli [flags]
   devopsdays-cli [command]
 
 Available Commands:
@@ -130,6 +132,29 @@ Flags:
   -c, --city string   city to use
   -h, --help          help for event
   -y, --year string   year to use
+
+Global Flags:
+  -d, --debug   enable debug mode
+```
+
+#### $ devopsdays-cli create sponsor --help
+```sh
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|d|e|v|o|p|s|d|a|y|s|-|c|l|i|
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+
+Create a new sponsor file add the sponsor's image.
+The name argument must not contain any spaces.
+
+Usage:
+  devopsdays-cli create sponsor [name] [flags]
+
+Examples:
+  devopsdays-cli create sponsor
+  devopsdays-cli create sponsor bluth-company
+
+Flags:
+  -h, --help   help for sponsor
 
 Global Flags:
   -d, --debug   enable debug mode

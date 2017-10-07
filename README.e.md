@@ -40,11 +40,13 @@ brew install devopsdays/tap/devopsdays-cli
 
 # Usage
 
-#### $ {{exec "devopsdays-cli" | color "sh"}}
+#### $ {{exec "devopsdays-cli" "--help" | color "sh"}}
 
 #### $ {{exec "devopsdays-cli" "create" "speaker" "--help"| color "sh"}}
 
 #### $ {{exec "devopsdays-cli" "create" "event" "--help"| color "sh"}}
+
+#### $ {{exec "devopsdays-cli" "create" "sponsor" "--help"| color "sh"}}
 
 
 # Reference
