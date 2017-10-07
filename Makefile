@@ -16,10 +16,11 @@ install:
 	go get -t -v ./...
 
 test:
-	go test ./... -v
+	go test ./... 
 
 deploy:
 	# go get -v github.com/inconshreveable/mousetrap
+	- ./goreleaser -v
 	- ./goreleaser
 	# - curl -sL https://git.io/goreleaser | rvm 2.4.1 do bash -s -- --release-notes=RELEASE.md
 	# - curl -X PUT -T devopdays-cli_${VERSION}_linux-i386.deb -umattstratton:${BTKEY} 'https://api.bintray.com/content/devopsdays/deb/devopsdays-cli/${VERSION}/pool/main/d/devopsdays/devopdays-cli_${VERSION}_linux-386.deb;deb_distribution=devopsdays;deb_component=main;deb_architecture=i386;publish=1'
