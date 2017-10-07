@@ -5,6 +5,7 @@ release:
     name: devopsdays-cli
   draft: false
   prerelease: true
+  name_template: "{{.ProjectName}}-v{{.Version}}"
 builds:
 - goos:
   - linux
