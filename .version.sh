@@ -9,7 +9,7 @@ PREVERSION=
   # use it to declare tasks that should run for any kind of bump
   go vet ./...
   go fmt ./...
-  go run main.go
+  go run main.go --help
   # finalize the changelog
   echo "finalizing changelog..."
   github_changelog_generator --future-release "!newversion!"
