@@ -7,17 +7,15 @@ addons:
     - rpm
 go: 1.9
 before_install:
-- go get github.com/mattn/goveralls
-- export DODPATH=$HOME/gopath/src/github.com/devopsdays/devopsdays-cli/testdata
+  - make setup
+  - export DODPATH=$HOME/gopath/src/github.com/devopsdays/devopsdays-cli/testdata
+  - gem install fpm
 install:
 - make install
 script:
   - make travis
-  - make test
-before_deploy:
-- go get -v github.com/inconshreveable/mousetrap
-- gem install fpm
-- which fpm
+  - make ci
+  - test -n "$TRAVIS_TAG"
 deploy:
   skip_cleanup: true
   provider: script

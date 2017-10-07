@@ -33,3 +33,6 @@ vendor/
 dist/
 release/
 build/
+
+vendor
+coverage.txt
