@@ -25,7 +25,7 @@ func createEventContentFile(city, year, page string) (string, error) {
 	if err != nil {
 		log.Fatal(err)
 	}
-	templateName := "events/" + page + ".md.tmpl"
+	templateName := page + ".md.tmpl"
 	// templateName := "index.md.tmpl"
 	// get file contents as string
 	templateString, err := templateBox.String(templateName)
