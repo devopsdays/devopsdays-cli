@@ -2,8 +2,37 @@ package cmd
 
 import (
 	"github.com/AlecAivazis/survey"
+	"github.com/devopsdays/devopsdays-cli/event"
 	"github.com/devopsdays/devopsdays-cli/speaker"
+	"github.com/devopsdays/devopsdays-cli/sponsor"
 )
+
+func mainPrompt() (err error) {
+	var selection string
+
+	for selection != "Quit the application" {
+		prompt := &survey.Select{
+			Message: "Select an action:",
+			Options: []string{
+				"Create a new event",
+				"Create a new speaker",
+				"Create a new sponsor",
+				"Quit the application",
+			},
+		}
+		survey.AskOne(prompt, &selection, nil)
+		switch selection {
+		case "Create a new event":
+			event.CreateEvent("", "")
+		case "Create a new speaker":
+			createSpeakerPrompt("", "")
+		case "Create a new sponsor":
+			sponsor.CreateSponsor("")
+		}
+	}
+
+	return
+}
 
 func createSpeakerPrompt(city, year string) (err error) {
 	var exitCode = true

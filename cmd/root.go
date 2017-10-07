@@ -50,6 +50,9 @@ Command-line utilities for the devopsdays.org website
 built with love by mattstratton in Go.
 
 Complete documentation is available at https://github.com/devopsdays/devopsdays-cli`,
+	Run: func(cmd *cobra.Command, args []string) {
+		mainPrompt()
+	},
 }
 
 // Execute adds all child commands to the root command sets flags appropriately.
