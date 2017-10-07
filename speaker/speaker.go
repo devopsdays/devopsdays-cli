@@ -149,20 +149,6 @@ func CreateSpeaker(speakerName, city, year string) (err error) {
 		Talk      string
 	}{}
 
-	if city == "" {
-		prompt := &survey.Input{
-			Message: "Enter the city name:",
-		}
-		survey.AskOne(prompt, &city, survey.Required)
-	}
-
-	if year == "" {
-		prompt := &survey.Input{
-			Message: "Enter the year:",
-		}
-		survey.AskOne(prompt, &year, survey.Required)
-	}
-
 	surveyErr := survey.Ask(qsCreateSpeaker, &answers)
 	if surveyErr != nil {
 		fmt.Println(surveyErr.Error())
