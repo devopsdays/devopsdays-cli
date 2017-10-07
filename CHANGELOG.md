@@ -1,5 +1,15 @@
 # Change Log
 
+## [0.19.0](https://github.com/devopsdays/devopsdays-cli/tree/0.19.0) (2017-10-07)
+[Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/0.18.3...0.19.0)
+
+**Implemented enhancements:**
+
+- Create interactive menus [\#103](https://github.com/devopsdays/devopsdays-cli/issues/103)
+
+## [0.18.3](https://github.com/devopsdays/devopsdays-cli/tree/0.18.3) (2017-10-07)
+[Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/0.18.2...0.18.3)
+
 ## [0.18.2](https://github.com/devopsdays/devopsdays-cli/tree/0.18.2) (2017-10-07)
 [Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/0.18.1...0.18.2)
 
@@ -7,16 +17,16 @@
 [Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/0.18.0...0.18.1)
 
 ## [0.18.0](https://github.com/devopsdays/devopsdays-cli/tree/0.18.0) (2017-10-07)
-[Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/0.17.8...0.18.0)
+[Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/0.17.9...0.18.0)
+
+## [0.17.9](https://github.com/devopsdays/devopsdays-cli/tree/0.17.9) (2017-10-07)
+[Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/0.17.8...0.17.9)
 
 ## [0.17.8](https://github.com/devopsdays/devopsdays-cli/tree/0.17.8) (2017-10-07)
 [Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/0.17.7...0.17.8)
 
 ## [0.17.7](https://github.com/devopsdays/devopsdays-cli/tree/0.17.7) (2017-10-07)
-[Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/0.17.9...0.17.7)
-
-## [0.17.9](https://github.com/devopsdays/devopsdays-cli/tree/0.17.9) (2017-10-07)
-[Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/0.17.6...0.17.9)
+[Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/0.17.6...0.17.7)
 
 ## [0.17.6](https://github.com/devopsdays/devopsdays-cli/tree/0.17.6) (2017-10-07)
 [Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/0.17.5...0.17.6)
