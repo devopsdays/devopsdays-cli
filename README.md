@@ -8,6 +8,8 @@ Command-line utilities for the [devopsdays](https://www.devopsdays.org) website 
 
 ![devopsdays gopher](gopher.png)![devopsdays yak](yak.png)
 
+This project adheres to the Contributor Covenant [code of conduct](CODE_OF_CONDUCT.md). By participating, you are expected to uphold this code. We appreciate your contribution. Please refer to the [contributing guidelines](CONTRIBUTING.md) for details on how to help.
+
 # TOC
 - [Demo](#demo)
 - [Install](#install)
@@ -20,9 +22,11 @@ Command-line utilities for the [devopsdays](https://www.devopsdays.org) website 
   - [$ devopsdays-cli create event --help](#-devopsdays-cli-create-event---help)
 - [Reference](#reference)
   - [Matrix of commands](#matrix-of-commands)
+  - [Contributing](#contributing)
 - [History](#history)
 - [How to release](#how-to-release)
   - [Tools needed for release](#tools-needed-for-release)
+- [License](#license)
 
 # Demo
 
@@ -145,6 +149,11 @@ Global Flags:
 | remove |        |       | x         |         | x       | x       | x    |         |
 | show   | x      | x     | x         | x       | x       | x       | x    | x       |
 
+
+## Contributing
+
+See [CONTRIBUTING.md](contributing.md) for details on how to contribute to this project.
+
 # History
 
 [CHANGELOG](CHANGELOG.md)
@@ -161,3 +170,24 @@ $ gump <patch|minor|major>
 - [commit](https://github.com/mh-cbon/commit)
 - [changelog](https://github.com/mh-cbon/changelog)
 - [emd](https://github.com/mh-cbon/emd)
+
+# License
+
+devopsdays-cli - Command-line utilities for the devopsdays.org website
+
+|                      |                                          |
+|:---------------------|:-----------------------------------------|
+| **Author:**          | Matt Stratton (<matt.stratton@gmail.com>)
+| **Copyright:**       | Copyright 2017, Matt Stratton
+| **License:**         | The MIT License
+
+```
+The MIT License (MIT)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+```
