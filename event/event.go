@@ -7,6 +7,7 @@ import (
 	"log"
 	"os"
 	"path/filepath"
+	"regexp"
 	"strings"
 
 	"github.com/alecthomas/template"
@@ -115,6 +116,10 @@ var qsCreateEvent = []*survey.Question{
 				if _, err := os.Stat(str); err != nil {
 					return errors.New("File not found.")
 				}
+				ret, _ := regexp.MatchString(`[0-9a-z]+\.(png|PNG)`, str)
+				if ret != true {
+					return errors.New("Logo image must be a PNG file")
+				}
 			}
 
 			return nil
@@ -132,6 +137,10 @@ var qsCreateEvent = []*survey.Question{
 			if str != "" {
 				if _, err := os.Stat(str); err != nil {
 					return errors.New("File not found.")
+				}
+				ret, _ := regexp.MatchString(`[0-9a-z]+\.(png|PNG)`, str)
+				if ret != true {
+					return errors.New("Logo image must be a PNG file")
 				}
 			}
 
