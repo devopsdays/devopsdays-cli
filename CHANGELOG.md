@@ -1,83 +1,42 @@
 # Change Log
 
+## [0.19.1](https://github.com/devopsdays/devopsdays-cli/tree/0.19.1) (2017-10-07)
+[Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/0.19.0...0.19.1)
+
+**Implemented enhancements:**
+
+- Check for png on event logo [\#108](https://github.com/devopsdays/devopsdays-cli/issues/108)
+
 ## [0.19.0](https://github.com/devopsdays/devopsdays-cli/tree/0.19.0) (2017-10-07)
-[Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/0.18.3...0.19.0)
+[Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/0.17.4...0.19.0)
 
 **Implemented enhancements:**
 
 - Create interactive menus [\#103](https://github.com/devopsdays/devopsdays-cli/issues/103)
 
-## [0.18.3](https://github.com/devopsdays/devopsdays-cli/tree/0.18.3) (2017-10-07)
-[Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/0.18.2...0.18.3)
-
-## [0.18.2](https://github.com/devopsdays/devopsdays-cli/tree/0.18.2) (2017-10-07)
-[Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/0.18.1...0.18.2)
-
-## [0.18.1](https://github.com/devopsdays/devopsdays-cli/tree/0.18.1) (2017-10-07)
-[Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/0.18.0...0.18.1)
-
-## [0.18.0](https://github.com/devopsdays/devopsdays-cli/tree/0.18.0) (2017-10-07)
-[Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/0.17.9...0.18.0)
-
-## [0.17.9](https://github.com/devopsdays/devopsdays-cli/tree/0.17.9) (2017-10-07)
-[Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/0.17.8...0.17.9)
-
-## [0.17.8](https://github.com/devopsdays/devopsdays-cli/tree/0.17.8) (2017-10-07)
-[Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/0.17.7...0.17.8)
-
-## [0.17.7](https://github.com/devopsdays/devopsdays-cli/tree/0.17.7) (2017-10-07)
-[Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/0.17.6...0.17.7)
-
-## [0.17.6](https://github.com/devopsdays/devopsdays-cli/tree/0.17.6) (2017-10-07)
-[Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/0.17.5...0.17.6)
-
-## [0.17.5](https://github.com/devopsdays/devopsdays-cli/tree/0.17.5) (2017-10-07)
-[Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/0.17.4...0.17.5)
-
 ## [0.17.4](https://github.com/devopsdays/devopsdays-cli/tree/0.17.4) (2017-10-06)
-[Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/0.17.3...0.17.4)
-
-## [0.17.3](https://github.com/devopsdays/devopsdays-cli/tree/0.17.3) (2017-10-06)
-[Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/0.17.2...0.17.3)
-
-## [0.17.2](https://github.com/devopsdays/devopsdays-cli/tree/0.17.2) (2017-10-06)
-[Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/0.17.1...0.17.2)
-
-## [0.17.1](https://github.com/devopsdays/devopsdays-cli/tree/0.17.1) (2017-10-06)
-[Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/0.17.0...0.17.1)
+[Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/0.17.0...0.17.4)
 
 ## [0.17.0](https://github.com/devopsdays/devopsdays-cli/tree/0.17.0) (2017-10-06)
-[Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/0.16.5...0.17.0)
+[Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/0.16.2...0.17.0)
 
 **Implemented enhancements:**
 
 - Change create event functionality to use the model package [\#61](https://github.com/devopsdays/devopsdays-cli/issues/61)
 - create createSponsor function [\#39](https://github.com/devopsdays/devopsdays-cli/issues/39)
 - Create createEvent function [\#37](https://github.com/devopsdays/devopsdays-cli/issues/37)
+- Add all event fields to validateField [\#16](https://github.com/devopsdays/devopsdays-cli/issues/16)
 
 **Fixed bugs:**
 
 - Extra newlines in generated speaker file [\#63](https://github.com/devopsdays/devopsdays-cli/issues/63)
 
-## [0.16.5](https://github.com/devopsdays/devopsdays-cli/tree/0.16.5) (2017-10-06)
-[Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/0.16.4...0.16.5)
-
-**Implemented enhancements:**
-
-- Add all event fields to validateField [\#16](https://github.com/devopsdays/devopsdays-cli/issues/16)
-
 **Merged pull requests:**
 
 - Add additional event validation [\#107](https://github.com/devopsdays/devopsdays-cli/pull/107) ([mattstratton](https://github.com/mattstratton))
 
-## [0.16.4](https://github.com/devopsdays/devopsdays-cli/tree/0.16.4) (2017-10-06)
-[Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/0.16.3...0.16.4)
-
-## [0.16.3](https://github.com/devopsdays/devopsdays-cli/tree/0.16.3) (2017-10-06)
-[Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/0.16.2...0.16.3)
-
 ## [0.16.2](https://github.com/devopsdays/devopsdays-cli/tree/0.16.2) (2017-10-06)
-[Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/0.16.1...0.16.2)
+[Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/0.16.0...0.16.2)
 
 **Implemented enhancements:**
 
@@ -86,9 +45,6 @@
 **Merged pull requests:**
 
 - Allow twitter names to include @ symbol. [\#106](https://github.com/devopsdays/devopsdays-cli/pull/106) ([mattstratton](https://github.com/mattstratton))
-
-## [0.16.1](https://github.com/devopsdays/devopsdays-cli/tree/0.16.1) (2017-10-06)
-[Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/0.16.0...0.16.1)
 
 ## [0.16.0](https://github.com/devopsdays/devopsdays-cli/tree/0.16.0) (2017-10-06)
 [Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/0.15.1...0.16.0)
@@ -151,27 +107,9 @@
 - Switch to using survey for prompts [\#74](https://github.com/devopsdays/devopsdays-cli/pull/74) ([mattstratton](https://github.com/mattstratton))
 
 ## [0.12.8](https://github.com/devopsdays/devopsdays-cli/tree/0.12.8) (2017-10-03)
-[Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/0.12.7...0.12.8)
-
 **Implemented enhancements:**
 
 - Add validation to fields in create speaker function [\#64](https://github.com/devopsdays/devopsdays-cli/issues/64)
-- convert user prompts to a loop [\#13](https://github.com/devopsdays/devopsdays-cli/issues/13)
-- prompt user to retry on invalid entries [\#12](https://github.com/devopsdays/devopsdays-cli/issues/12)
-
-**Closed issues:**
-
-- ! separators made me think it didn't work [\#69](https://github.com/devopsdays/devopsdays-cli/issues/69)
-
-## [0.12.7](https://github.com/devopsdays/devopsdays-cli/tree/0.12.7) (2017-10-03)
-[Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/0.12.6...0.12.7)
-
-## [0.12.6](https://github.com/devopsdays/devopsdays-cli/tree/0.12.6) (2017-10-03)
-[Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/0.12.5...0.12.6)
-
-## [0.12.5](https://github.com/devopsdays/devopsdays-cli/tree/0.12.5) (2017-10-03)
-**Implemented enhancements:**
-
 - Create createSpeaker function [\#41](https://github.com/devopsdays/devopsdays-cli/issues/41)
 - Move doctor command [\#34](https://github.com/devopsdays/devopsdays-cli/issues/34)
 - Add functionality to doctor command  [\#24](https://github.com/devopsdays/devopsdays-cli/issues/24)
@@ -180,6 +118,8 @@
 - Create release process that generates deb package [\#20](https://github.com/devopsdays/devopsdays-cli/issues/20)
 - Create release process that generates msi package for windows [\#19](https://github.com/devopsdays/devopsdays-cli/issues/19)
 - Create release process that generates brew capability [\#18](https://github.com/devopsdays/devopsdays-cli/issues/18)
+- convert user prompts to a loop [\#13](https://github.com/devopsdays/devopsdays-cli/issues/13)
+- prompt user to retry on invalid entries [\#12](https://github.com/devopsdays/devopsdays-cli/issues/12)
 - change webdir from being a constant [\#10](https://github.com/devopsdays/devopsdays-cli/issues/10)
 
 **Fixed bugs:**
@@ -188,6 +128,7 @@
 
 **Closed issues:**
 
+- ! separators made me think it didn't work [\#69](https://github.com/devopsdays/devopsdays-cli/issues/69)
 - Rename package to devopsdays  [\#26](https://github.com/devopsdays/devopsdays-cli/issues/26)
 - Consider rewriting the whole thing in golang [\#6](https://github.com/devopsdays/devopsdays-cli/issues/6)
 - Ensure the user is not in master when running the commands [\#5](https://github.com/devopsdays/devopsdays-cli/issues/5)
