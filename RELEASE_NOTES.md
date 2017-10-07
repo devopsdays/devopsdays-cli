@@ -1,11 +1,11 @@
 # Change Log
 
-## [0.19.0](https://github.com/devopsdays/devopsdays-cli/tree/0.19.0) (2017-10-07)
-[Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/0.18.3...0.19.0)
+## [0.19.1](https://github.com/devopsdays/devopsdays-cli/tree/0.19.1) (2017-10-07)
+[Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/0.19.0...0.19.1)
 
 **Implemented enhancements:**
 
-- Create interactive menus [\#103](https://github.com/devopsdays/devopsdays-cli/issues/103)
+- Check for png on event logo [\#108](https://github.com/devopsdays/devopsdays-cli/issues/108)
 
 
 
