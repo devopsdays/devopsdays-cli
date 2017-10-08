@@ -21,7 +21,7 @@ github = "{{ . }}"
 {{- with .Gitlab }}
 gitlab = "{{ . }}"
 {{- end }}
-{{- with .ImagePath -}}
+{{- with .ImagePath }}
 image = "{{ . }}"
 {{- end }}
 +++
