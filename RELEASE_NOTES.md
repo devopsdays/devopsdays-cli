@@ -1,11 +1,15 @@
 # Change Log
 
-## [0.20.0](https://github.com/devopsdays/devopsdays-cli/tree/0.20.0) (2017-10-08)
-[Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/0.19.1...0.20.0)
+## [0.20.1](https://github.com/devopsdays/devopsdays-cli/tree/0.20.1) (2017-10-08)
+[Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/0.20.0...0.20.1)
 
 **Implemented enhancements:**
 
-- Create showSpeaker function [\#58](https://github.com/devopsdays/devopsdays-cli/issues/58)
+- Prettify the output of show speaker [\#114](https://github.com/devopsdays/devopsdays-cli/issues/114)
+
+**Fixed bugs:**
+
+- Create speaker is not inserting a newline between gitlab and imagepath [\#113](https://github.com/devopsdays/devopsdays-cli/issues/113)
 
 
 
