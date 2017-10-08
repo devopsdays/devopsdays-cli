@@ -264,43 +264,59 @@ func SpeakerImage(srcPath, speaker, city, year string) (imageFile string) {
 func ShowSpeakers(city, year string) (err error) {
 	var selection string
 
-	options, _ := GetSpeakers(city, year)
-	options = append(options, "Return to Main Menu")
+	speakerList, _ := GetSpeakers(city, year)
+	options2, _ := listSpeakerNames(speakerList, city, year)
+
+	options2 = append(options2, "Return to Main Menu")
 	for selection != "Return to Main Menu" {
 		prompt := &survey.Select{
 			Message: "Select a speaker:",
-			Options: options,
+			Options: options2,
 		}
 		survey.AskOne(prompt, &selection, nil)
 		if selection == "Return to Main Menu" {
 			return
 		}
+		speakerFileName := strings.Join([]string{strings.TrimSpace(names.NameClean(selection)), ".md"}, "")
+
 		var mySpeaker model.Speaker
-		mySpeaker, err = GetSpeakerInfo(selection, city, year)
+		mySpeaker, err = GetSpeakerInfo(speakerFileName, city, year)
+		fmt.Println()
 		color.Cyan("+-+-+-+-+-+-+-+-+-+-+-+-+-+-+")
-		fmt.Println("Name is " + mySpeaker.Title)
+		fmt.Fprintf(color.Output, "%s %s\n", color.CyanString("Name: "), color.GreenString(mySpeaker.Title))
+
 		if mySpeaker.Website != "" {
-			fmt.Println("Website is " + mySpeaker.Website)
+			fmt.Fprintf(color.Output, "%s %s\n", color.CyanString("WebsiteName: "), color.GreenString(mySpeaker.Website))
 		}
 		if mySpeaker.Twitter != "" {
-			fmt.Println("Twitter is @" + mySpeaker.Twitter)
+			fmt.Fprintf(color.Output, "%s %s\n", color.CyanString("Twitter: "), color.GreenString(fmt.Sprintf("@%s", mySpeaker.Twitter)))
 		}
 		if mySpeaker.Facebook != "" {
-			fmt.Println("Facebook is " + mySpeaker.Facebook)
+			fmt.Fprintf(color.Output, "%s %s\n", color.CyanString("Facebook: "), color.GreenString(mySpeaker.Facebook))
 		}
 		if mySpeaker.Linkedin != "" {
-			fmt.Println("Website is " + mySpeaker.Linkedin)
+			fmt.Fprintf(color.Output, "%s %s\n", color.CyanString("LinkedIn: "), color.GreenString(mySpeaker.Linkedin))
 		}
 		if mySpeaker.Github != "" {
-			fmt.Println("Github is @" + mySpeaker.Github)
+			fmt.Fprintf(color.Output, "%s %s\n", color.CyanString("GitHub: "), color.GreenString(mySpeaker.Github))
 		}
 		if mySpeaker.Gitlab != "" {
-			fmt.Println("Gitlab is " + mySpeaker.Gitlab)
+			fmt.Fprintf(color.Output, "%s %s\n", color.CyanString("GitLab: "), color.GreenString(mySpeaker.Gitlab))
 		}
 		if mySpeaker.Bio != "" {
-			fmt.Println("Bio is " + mySpeaker.Bio)
+			fmt.Fprintf(color.Output, "%s %s\n", color.CyanString("Bio: "), color.GreenString(mySpeaker.Bio))
 		}
 		color.Cyan("+-+-+-+-+-+-+-+-+-+-+-+-+-+-+")
+		fmt.Println()
+	}
+	return
+}
+
+func listSpeakerNames(speakers []string, city string, year string) (speakerFullNames []string, err error) {
+	for _, f := range speakers {
+		var mySpeaker model.Speaker
+		mySpeaker, err = GetSpeakerInfo(f, city, year)
+		speakerFullNames = append(speakerFullNames, mySpeaker.Title)
 	}
 	return
 }

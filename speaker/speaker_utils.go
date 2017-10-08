@@ -1,7 +1,6 @@
 package speaker
 
 import (
-	"fmt"
 	"io/ioutil"
 	"log"
 	"path/filepath"
@@ -19,14 +18,12 @@ func GetSpeakers(city, year string) ([]string, error) {
 
 	speakerdir := filepath.Join(paths.EventContentPath(city, year), "speakers")
 
-	fmt.Println(speakerdir)
 	files, err := ioutil.ReadDir(speakerdir)
 
 	if err != nil {
 		return nil, errors.Wrap(err, "read speaker directory failed")
 	}
 	var s []string
-	// s := make([]string, len(files))
 	for _, f := range files {
 		s = append(s, f.Name())
 	}
@@ -35,22 +32,8 @@ func GetSpeakers(city, year string) ([]string, error) {
 
 func GetSpeakerInfo(file, city, year string) (speaker model.Speaker, err error) {
 
-	// speakerPerson := `+++
-	// Website = ""
-	// Title = "Rainbow Dash"
-	// Twitter = ""
-	// date = "2016-12-08T20:55:58-06:00"
-	// Type = "speaker"
-	// Image = "rainbow-dash.png"
-	// Facebook = ""
-	// Linkedin = ""
-	// Pronouns = ""
-	// +++
-	// Food-truck SpaceTeam pivot
-	// `
 	filePath := filepath.Join(paths.EventContentPath(city, year), "speakers", file)
 	dat, err := ioutil.ReadFile(filePath)
-	// lines.WriteTo(os.Stdout)
 	m := front.NewMatter()
 	m.Handle("+++", TOMLHandler)
 
@@ -78,20 +61,6 @@ func GetSpeakerInfo(file, city, year string) (speaker model.Speaker, err error) 
 // TOMLHandler decodes ymal string into a go map[string]interface{}
 func TOMLHandler(front string) (map[string]interface{}, error) {
 
-	// type thing struct {
-	// 	Name      string
-	// 	Title     string
-	// 	Website   string `toml:"website,omitempty"`
-	// 	Twitter   string `toml:"twitter,omitempty"`
-	// 	Facebook  string `toml:"facebook,omitempty"`
-	// 	Linkedin  string `toml:"linkedin,omitempty"`
-	// 	Github    string `toml:"github,omitempty"`
-	// 	Gitlab    string `toml:"gitlab,omitempty"`
-	// 	ImagePath string `toml:"image,omitempty"`
-	// 	Bio       string
-	// }
-
-	// var stuff thing
 	var stuff model.Speaker
 	if _, err := toml.Decode(front, &stuff); err != nil {
 		log.Fatal(err)
