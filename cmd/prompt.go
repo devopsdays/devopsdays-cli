@@ -17,6 +17,7 @@ func mainPrompt() (err error) {
 				"Create a new event",
 				"Create a new speaker",
 				"Create a new sponsor",
+				"Show a speaker",
 				"Quit the application",
 			},
 		}
@@ -28,6 +29,8 @@ func mainPrompt() (err error) {
 			createSpeakerPrompt("", "")
 		case "Create a new sponsor":
 			sponsor.CreateSponsor("")
+		case "Show a speaker":
+			showSpeakerPrompt("", "")
 		}
 	}
 
@@ -57,5 +60,25 @@ func createSpeakerPrompt(city, year string) (err error) {
 		}
 		survey.AskOne(prompt, &exitCode, nil)
 	}
+	return
+}
+
+func showSpeakerPrompt(city, year string) (err error) {
+
+	if city == "" {
+		prompt := &survey.Input{
+			Message: "Enter the city name:",
+		}
+		survey.AskOne(prompt, &city, survey.Required)
+	}
+
+	if year == "" {
+		prompt := &survey.Input{
+			Message: "Enter the year:",
+		}
+		survey.AskOne(prompt, &year, survey.Required)
+	}
+	speaker.ShowSpeakers(city, year)
+
 	return
 }

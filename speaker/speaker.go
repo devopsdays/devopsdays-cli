@@ -260,3 +260,47 @@ func SpeakerImage(srcPath, speaker, city, year string) (imageFile string) {
 	}
 	return "busted"
 }
+
+func ShowSpeakers(city, year string) (err error) {
+	var selection string
+
+	options, _ := GetSpeakers(city, year)
+	options = append(options, "Return to Main Menu")
+	for selection != "Return to Main Menu" {
+		prompt := &survey.Select{
+			Message: "Select a speaker:",
+			Options: options,
+		}
+		survey.AskOne(prompt, &selection, nil)
+		if selection == "Return to Main Menu" {
+			return
+		}
+		var mySpeaker model.Speaker
+		mySpeaker, err = GetSpeakerInfo(selection, city, year)
+		color.Cyan("+-+-+-+-+-+-+-+-+-+-+-+-+-+-+")
+		fmt.Println("Name is " + mySpeaker.Title)
+		if mySpeaker.Website != "" {
+			fmt.Println("Website is " + mySpeaker.Website)
+		}
+		if mySpeaker.Twitter != "" {
+			fmt.Println("Twitter is @" + mySpeaker.Twitter)
+		}
+		if mySpeaker.Facebook != "" {
+			fmt.Println("Facebook is " + mySpeaker.Facebook)
+		}
+		if mySpeaker.Linkedin != "" {
+			fmt.Println("Website is " + mySpeaker.Linkedin)
+		}
+		if mySpeaker.Github != "" {
+			fmt.Println("Github is @" + mySpeaker.Github)
+		}
+		if mySpeaker.Gitlab != "" {
+			fmt.Println("Gitlab is " + mySpeaker.Gitlab)
+		}
+		if mySpeaker.Bio != "" {
+			fmt.Println("Bio is " + mySpeaker.Bio)
+		}
+		color.Cyan("+-+-+-+-+-+-+-+-+-+-+-+-+-+-+")
+	}
+	return
+}

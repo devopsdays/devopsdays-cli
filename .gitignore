@@ -36,4 +36,4 @@ build/
 
 vendor
 coverage.txt
-/delver.sh
+delver.sh

@@ -3,6 +3,7 @@ package cmd
 import (
 	"fmt"
 
+	speaker "github.com/devopsdays/devopsdays-cli/speaker"
 	"github.com/spf13/cobra"
 )
 
@@ -81,7 +82,6 @@ var showSpeakerCmd = &cobra.Command{
 	Use:   "speaker",
 	Short: "Show a speaker from an event",
 	Long: `Show a speaker from an event.
-You can provide the speaker's name as an argument to this command, but it must be the "cleaned" name.
 		`,
 	Example: `  devopsdays-cli remove speaker george-bluth
   devopsdays-cli show speaker --city new-york --year 2017 --all
@@ -89,7 +89,7 @@ You can provide the speaker's name as an argument to this command, but it must b
 	Args: cobra.MaximumNArgs(1),
 	Run: func(cmd *cobra.Command, args []string) {
 		// TODO: Work your own magic here
-		showSpeaker()
+		showSpeakerPrompt(City, Year)
 	},
 }
 
@@ -129,5 +129,7 @@ func removeSpeaker() {
 }
 
 func showSpeaker() {
-	fmt.Println("You would have shown a speaker if this happened")
+	fmt.Println("Showing a speaker")
+	mySpeaker, _ := speaker.GetSpeakerInfo("fluttershy.md", "ponyville", "2017")
+	fmt.Println(mySpeaker)
 }
