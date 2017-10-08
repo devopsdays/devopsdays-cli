@@ -1,5 +1,12 @@
 # Change Log
 
+## [0.20.0](https://github.com/devopsdays/devopsdays-cli/tree/0.20.0) (2017-10-08)
+[Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/0.19.1...0.20.0)
+
+**Implemented enhancements:**
+
+- Create showSpeaker function [\#58](https://github.com/devopsdays/devopsdays-cli/issues/58)
+
 ## [0.19.1](https://github.com/devopsdays/devopsdays-cli/tree/0.19.1) (2017-10-07)
 [Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/0.19.0...0.19.1)
 
