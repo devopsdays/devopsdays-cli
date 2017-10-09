@@ -6,9 +6,9 @@ LicenseColor: yellow
 
 # {{.Name}}
 
-{{template "badge/travis" .}} [![Build status](https://ci.appveyor.com/api/projects/status/u7pu7ins2csxngxu?svg=true)](https://ci.appveyor.com/project/DevOpsDays/devopsdays-cli) [![Coveralls](https://img.shields.io/coveralls/devopsdays/devopsdays-cli.svg)]()
- {{template "badge/goreport" .}} {{template "badge/godoc" .}} [![GitHub release](https://img.shields.io/github/release/devopsdays/devopsdays-cli.svg)](https://github.com/devopsdays/devopsdays-cli/releases) {{template "license/shields" .}}
- [![BCH compliance](https://bettercodehub.com/edge/badge/devopsdays/devopsdays-cli?branch=master)](https://bettercodehub.com/) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/759c4057de4d4f69a2c528f352c7fca5)](https://www.codacy.com/app/devopsdays/devopsdays-cli?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=devopsdays/devopsdays-cli&amp;utm_campaign=Badge_Grade) [![Ebert](https://ebertapp.io/github/devopsdays/devopsdays-cli.svg)](https://ebertapp.io/github/devopsdays/devopsdays-cli) [![codebeat badge](https://codebeat.co/badges/9acd2699-7397-45fb-8219-e0e5a68c8399)](https://codebeat.co/projects/github-com-devopsdays-devopsdays-cli-master)
+{{template "badge/travis" .}} [![Build status](https://ci.appveyor.com/api/projects/status/u7pu7ins2csxngxu?svg=true)](https://ci.appveyor.com/project/DevOpsDays/devopsdays-cli)
+ {{template "badge/goreport" .}} {{template "badge/godoc" .}} [![GitHub release](https://img.shields.io/github/release/devopsdays/devopsdays-cli.svg)](https://github.com/devopsdays/devopsdays-cli/releases) {{template "license/shields" .}} <br />
+ [![Coveralls](https://img.shields.io/coveralls/devopsdays/devopsdays-cli.svg)]() [![BCH compliance](https://bettercodehub.com/edge/badge/devopsdays/devopsdays-cli?branch=master)](https://bettercodehub.com/) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/759c4057de4d4f69a2c528f352c7fca5)](https://www.codacy.com/app/devopsdays/devopsdays-cli?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=devopsdays/devopsdays-cli&amp;utm_campaign=Badge_Grade) [![Ebert](https://ebertapp.io/github/devopsdays/devopsdays-cli.svg)](https://ebertapp.io/github/devopsdays/devopsdays-cli) [![codebeat badge](https://codebeat.co/badges/9acd2699-7397-45fb-8219-e0e5a68c8399)](https://codebeat.co/projects/github-com-devopsdays-devopsdays-cli-master)
 
 Command-line utilities for the [devopsdays](https://www.devopsdays.org) website built with :heart: by [mattstratton](https://github.com/mattstratton) in [Go](https://golang.org/).
 
