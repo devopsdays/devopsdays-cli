@@ -1,4 +1,4 @@
-package talks
+package talk
 
 import (
 	"fmt"

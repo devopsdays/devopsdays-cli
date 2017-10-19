@@ -17,7 +17,7 @@ import (
 	"github.com/devopsdays/devopsdays-cli/images"
 	"github.com/devopsdays/devopsdays-cli/model"
 	"github.com/devopsdays/devopsdays-cli/names"
-	"github.com/devopsdays/devopsdays-cli/talks"
+	"github.com/devopsdays/devopsdays-cli/talk"
 	"github.com/fatih/color"
 	survey "gopkg.in/AlecAivazis/survey.v1"
 )
@@ -161,13 +161,13 @@ func CreateSpeaker(speakerName, city, year string) (err error) {
 	}
 	survey.AskOne(prompt, &name, nil)
 
-	talk := ""
+	t := ""
 	if name == true {
 		prompt := &survey.Select{
 			Message: "Choose a talk:",
-			Options: talks.GetTalks(city, year),
+			Options: talk.GetTalks(city, year),
 		}
-		survey.AskOne(prompt, &talk, nil)
+		survey.AskOne(prompt, &t, nil)
 		color.Yellow("NOT IMPLEMENTED")
 	}
 
