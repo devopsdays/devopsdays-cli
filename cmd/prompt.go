@@ -21,7 +21,10 @@ func mainPrompt() (err error) {
 				"Quit the application",
 			},
 		}
-		survey.AskOne(prompt, &selection, nil)
+		err := survey.AskOne(prompt, &selection, nil)
+		if err != nil {
+			break
+		}
 		switch selection {
 		case "Create a new event":
 			event.CreateEvent("", "")
@@ -45,40 +48,67 @@ func createSpeakerPrompt(city, year string) (err error) {
 			prompt := &survey.Input{
 				Message: "Enter the city name:",
 			}
-			survey.AskOne(prompt, &city, survey.Required)
+			err := survey.AskOne(prompt, &city, survey.Required)
+			// handle interrupts
+			if err != nil {
+				exitCode = false
+				break
+			}
 		}
 
 		if year == "" {
 			prompt := &survey.Input{
 				Message: "Enter the year:",
 			}
-			survey.AskOne(prompt, &year, survey.Required)
+			err := survey.AskOne(prompt, &year, survey.Required)
+			// handle interrupts
+			if err != nil {
+				exitCode = false
+				break
+			}
 		}
 		speaker.CreateSpeaker("", city, year)
 		prompt := &survey.Confirm{
 			Message: "Do you want to add another speaker?",
 		}
-		survey.AskOne(prompt, &exitCode, nil)
+		err := survey.AskOne(prompt, &exitCode, nil)
+		// handle interrupts
+		if err != nil {
+			exitCode = false
+			break
+		}
 	}
 	return
 }
 
 func showSpeakerPrompt(city, year string) (err error) {
-
-	if city == "" {
-		prompt := &survey.Input{
-			Message: "Enter the city name:",
+	var exitCode = true
+	for exitCode {
+		if city == "" {
+			prompt := &survey.Input{
+				Message: "Enter the city name:",
+			}
+			err := survey.AskOne(prompt, &city, survey.Required)
+			// handle interrupts
+			if err != nil {
+				exitCode = false
+				break
+			}
 		}
-		survey.AskOne(prompt, &city, survey.Required)
-	}
 
-	if year == "" {
-		prompt := &survey.Input{
-			Message: "Enter the year:",
+		if year == "" {
+			prompt := &survey.Input{
+				Message: "Enter the year:",
+			}
+			err := survey.AskOne(prompt, &year, survey.Required)
+			// handle interrupts
+			if err != nil {
+				exitCode = false
+				break
+			}
 		}
-		survey.AskOne(prompt, &year, survey.Required)
-	}
-	speaker.ShowSpeakers(city, year)
+		speaker.ShowSpeakers(city, year)
 
+	}
 	return
 }

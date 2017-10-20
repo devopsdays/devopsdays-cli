@@ -168,14 +168,20 @@ func CreateEvent(city, year string) (err error) {
 		prompt := &survey.Input{
 			Message: "Enter the city name:",
 		}
-		survey.AskOne(prompt, &city, survey.Required)
+		cityErr := survey.AskOne(prompt, &city, survey.Required)
+		if cityErr != nil {
+			return
+		}
 	}
 
 	if year == "" {
 		prompt := &survey.Input{
 			Message: "Enter the year:",
 		}
-		survey.AskOne(prompt, &year, survey.Required)
+		yearErr := survey.AskOne(prompt, &year, survey.Required)
+		if yearErr != nil {
+			return
+		}
 	}
 
 	if CheckEvent(city, year) {
