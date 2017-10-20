@@ -1,15 +1,15 @@
 # Change Log
 
-## [0.20.1](https://github.com/devopsdays/devopsdays-cli/tree/0.20.1) (2017-10-08)
-[Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/0.20.0...0.20.1)
+## [0.21.0](https://github.com/devopsdays/devopsdays-cli/tree/0.21.0) (2017-10-20)
+[Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/0.20.1...0.21.0)
 
 **Implemented enhancements:**
 
-- Prettify the output of show speaker [\#114](https://github.com/devopsdays/devopsdays-cli/issues/114)
+- Shorter name for the binary? [\#116](https://github.com/devopsdays/devopsdays-cli/issues/116)
 
 **Fixed bugs:**
 
-- Create speaker is not inserting a newline between gitlab and imagepath [\#113](https://github.com/devopsdays/devopsdays-cli/issues/113)
+- Need to add abiilty to quit application at all prompts [\#119](https://github.com/devopsdays/devopsdays-cli/issues/119)
 
 
 
