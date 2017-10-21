@@ -72,16 +72,15 @@ to quickly create a Cobra application.`,
 	},
 }
 
-// showTalkCmd represents the "talk show" command
+// showTalkCmd represents the "show talk" command
 var showTalkCmd = &cobra.Command{
 	Use:   "talk",
 	Short: "Show a talk from an event",
-	Long: `A longer description that spans multiple lines and likely contains examples
-and usage of using your command. For example:
-
-Cobra is a CLI library for Go that empowers applications.
-This application is a tool to generate the needed files
-to quickly create a Cobra application.`,
+	Long: `Show a speaker from an event.
+	`,
+	Example: `  devopsdays-cli show talk
+  devopsdays-cli show talk --city new-york --year 2017 --all
+  devopsdays-cli show talk -c "New York" --year "2017"`,
 	Run: func(cmd *cobra.Command, args []string) {
 		// TODO: Work your own magic here
 		showTalkPrompt(City, Year)
@@ -105,7 +104,7 @@ func init() {
 	removeTalkCmd.Flags().StringVarP(&Year, "year", "y", "", "year to use")
 	showTalkCmd.Flags().StringVarP(&City, "city", "c", "", "city to use")
 	showTalkCmd.Flags().StringVarP(&Year, "year", "y", "", "year to use")
-	showTalkCmd.Flags().BoolVarP(&All, "all", "a", false, "show all")
+	showTalkCmd.Flags().BoolVarP(&All, "all", "a", false, "show all NOT IMPLEMENTED")
 
 }
 
