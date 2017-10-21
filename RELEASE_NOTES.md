@@ -1,15 +1,11 @@
 # Change Log
 
-## [0.21.0](https://github.com/devopsdays/devopsdays-cli/tree/0.21.0) (2017-10-20)
-[Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/0.20.1...0.21.0)
+## [0.22.0](https://github.com/devopsdays/devopsdays-cli/tree/0.22.0) (2017-10-21)
+[Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/0.21.0...0.22.0)
 
 **Implemented enhancements:**
 
-- Shorter name for the binary? [\#116](https://github.com/devopsdays/devopsdays-cli/issues/116)
-
-**Fixed bugs:**
-
-- Need to add abiilty to quit application at all prompts [\#119](https://github.com/devopsdays/devopsdays-cli/issues/119)
+- Create showTalk function [\#59](https://github.com/devopsdays/devopsdays-cli/issues/59)
 
 
 
