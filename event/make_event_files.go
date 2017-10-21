@@ -26,17 +26,13 @@ func createEventContentFile(city, year, page string) (string, error) {
 		log.Fatal(err)
 	}
 	templateName := page + ".md.tmpl"
-	// templateName := "index.md.tmpl"
 	// get file contents as string
 	templateString, err := templateBox.String(templateName)
 	if err != nil {
-		// log.Fatal(templateName)
 		log.Fatal(err)
 	}
 	s := []string{strings.TrimSpace(year), "-", strings.Replace(strings.TrimSpace(strings.ToLower(city)), " ", "-", 10)}
 	slug := strings.Join(s, "")
-	// t := template.Must(template.New(page+".md.tmpl").Delims("[[", "]]").ParseFiles(templateString))
-	// parse and execute the template
 	t, err := template.New(page+".md").Delims("[[", "]]").Parse(templateString)
 	if err != nil {
 		log.Fatal(err)
