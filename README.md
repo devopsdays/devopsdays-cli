@@ -22,6 +22,8 @@ This project adheres to the Contributor Covenant [code of conduct](CODE_OF_CONDU
   - [$ devopsdays-cli create speaker --help](#-devopsdays-cli-create-speaker---help)
   - [$ devopsdays-cli create event --help](#-devopsdays-cli-create-event---help)
   - [$ devopsdays-cli create sponsor --help](#-devopsdays-cli-create-sponsor---help)
+  - [$ devopsdays-cli show speaker --help](#-devopsdays-cli-show-speaker---help)
+  - [$ devopsdays-cli show talk --help](#-devopsdays-cli-show-talk---help)
 - [Reference](#reference)
   - [Matrix of commands](#matrix-of-commands)
   - [Contributing](#contributing)
@@ -156,6 +158,58 @@ Examples:
 
 Flags:
   -h, --help   help for sponsor
+
+Global Flags:
+  -d, --debug   enable debug mode
+```
+
+#### $ devopsdays-cli show speaker --help
+```sh
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|d|e|v|o|p|s|d|a|y|s|-|c|l|i|
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+
+Show a speaker from an event.
+
+Usage:
+  devopsdays-cli show speaker [flags]
+
+Examples:
+  devopsdays-cli show speaker george-bluth
+  devopsdays-cli show speaker --city new-york --year 2017 --all
+  devopsdays-cli show speaker george-bluth -c "New York" --year "2017"
+
+Flags:
+  -a, --all           show all
+  -c, --city string   city to use
+  -h, --help          help for speaker
+  -y, --year string   year to use
+
+Global Flags:
+  -d, --debug   enable debug mode
+```
+
+#### $ devopsdays-cli show talk --help
+```sh
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|d|e|v|o|p|s|d|a|y|s|-|c|l|i|
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+
+Show a speaker from an event.
+
+Usage:
+  devopsdays-cli show talk [flags]
+
+Examples:
+  devopsdays-cli show talk
+  devopsdays-cli show talk --city new-york --year 2017 --all
+  devopsdays-cli show talk -c "New York" --year "2017"
+
+Flags:
+  -a, --all           show all NOT IMPLEMENTED
+  -c, --city string   city to use
+  -h, --help          help for talk
+  -y, --year string   year to use
 
 Global Flags:
   -d, --debug   enable debug mode
