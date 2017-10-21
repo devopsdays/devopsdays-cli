@@ -15,7 +15,7 @@ install:
 script:
   - make travis
   - make ci
-  - test -n "$TRAVIS_TAG"
+  # - test -n "$TRAVIS_TAG"
 deploy:
   skip_cleanup: true
   provider: script
