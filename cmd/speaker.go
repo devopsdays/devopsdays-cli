@@ -83,9 +83,9 @@ var showSpeakerCmd = &cobra.Command{
 	Short: "Show a speaker from an event",
 	Long: `Show a speaker from an event.
 		`,
-	Example: `  devopsdays-cli remove speaker george-bluth
+	Example: `  devopsdays-cli show speaker george-bluth
   devopsdays-cli show speaker --city new-york --year 2017 --all
-  devopsdays-cli remove speaker george-bluth -c "New York" --year "2017"`,
+  devopsdays-cli show speaker george-bluth -c "New York" --year "2017"`,
 	Args: cobra.MaximumNArgs(1),
 	Run: func(cmd *cobra.Command, args []string) {
 		// TODO: Work your own magic here
