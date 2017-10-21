@@ -3,6 +3,7 @@ package cmd
 import (
 	"github.com/AlecAivazis/survey"
 	"github.com/devopsdays/devopsdays-cli/event"
+	"github.com/devopsdays/devopsdays-cli/model"
 	"github.com/devopsdays/devopsdays-cli/speaker"
 	"github.com/devopsdays/devopsdays-cli/sponsor"
 	"github.com/devopsdays/devopsdays-cli/talk"
@@ -20,6 +21,7 @@ func mainPrompt() (err error) {
 				"Create a new sponsor",
 				"Show a speaker",
 				"Show a talk",
+				"Test",
 				"Quit the application",
 			},
 		}
@@ -38,6 +40,8 @@ func mainPrompt() (err error) {
 			showSpeakerPrompt("", "")
 		case "Show a talk":
 			showTalkPrompt("", "")
+		case "Test":
+			model.ShowEvent()
 		}
 	}
 

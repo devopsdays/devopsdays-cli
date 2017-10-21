@@ -1,5 +1,7 @@
 package model
 
+import "fmt"
+
 // Event defines a devopsdays event in the data yaml file
 type Event struct {
 	Name                  string         `yaml:"name"`
@@ -52,4 +54,16 @@ type SponsorLevel struct {
 	ID    string `yaml:"id"`
 	Label string `yaml:"label"`
 	Max   int    `yaml:"max,omitempty"`
+}
+
+func (e *Event) Create(city, year string) (*Event, error) {
+	myEvent := new(Event)
+	myEvent.Name = "Hello"
+	return myEvent, nil
+}
+
+func ShowEvent() {
+	e := new(Event)
+	event, _ := e.Create("Ponyville", "2017")
+	fmt.Println(event)
 }
