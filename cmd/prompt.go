@@ -5,6 +5,7 @@ import (
 	"github.com/devopsdays/devopsdays-cli/event"
 	"github.com/devopsdays/devopsdays-cli/speaker"
 	"github.com/devopsdays/devopsdays-cli/sponsor"
+	"github.com/devopsdays/devopsdays-cli/talk"
 )
 
 func mainPrompt() (err error) {
@@ -18,6 +19,7 @@ func mainPrompt() (err error) {
 				"Create a new speaker",
 				"Create a new sponsor",
 				"Show a speaker",
+				"Show a talk",
 				"Quit the application",
 			},
 		}
@@ -34,6 +36,8 @@ func mainPrompt() (err error) {
 			sponsor.CreateSponsor("")
 		case "Show a speaker":
 			showSpeakerPrompt("", "")
+		case "Show a talk":
+			showTalkPrompt("", "")
 		}
 	}
 
@@ -108,6 +112,38 @@ func showSpeakerPrompt(city, year string) (err error) {
 			}
 		}
 		speaker.ShowSpeakers(city, year)
+
+	}
+	return
+}
+
+func showTalkPrompt(city, year string) (err error) {
+	var exitCode = true
+	for exitCode {
+		if city == "" {
+			prompt := &survey.Input{
+				Message: "Enter the city name:",
+			}
+			err := survey.AskOne(prompt, &city, survey.Required)
+			// handle interrupts
+			if err != nil {
+				exitCode = false
+				break
+			}
+		}
+
+		if year == "" {
+			prompt := &survey.Input{
+				Message: "Enter the year:",
+			}
+			err := survey.AskOne(prompt, &year, survey.Required)
+			// handle interrupts
+			if err != nil {
+				exitCode = false
+				break
+			}
+		}
+		talk.ShowTalks(city, year)
 
 	}
 	return

@@ -58,7 +58,7 @@ func GetSpeakerInfo(file, city, year string) (speaker model.Speaker, err error) 
 	return
 }
 
-// TOMLHandler decodes ymal string into a go map[string]interface{}
+// TOMLHandler decodes TOML string into a go map[string]interface{}
 func TOMLHandler(front string) (map[string]interface{}, error) {
 
 	var stuff model.Speaker

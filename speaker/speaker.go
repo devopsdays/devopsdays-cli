@@ -163,9 +163,10 @@ func CreateSpeaker(speakerName, city, year string) (err error) {
 
 	t := ""
 	if name == true {
+		myList, _ := talk.GetTalks(city, year)
 		prompt := &survey.Select{
 			Message: "Choose a talk:",
-			Options: talk.GetTalks(city, year),
+			Options: myList,
 		}
 		survey.AskOne(prompt, &t, nil)
 		color.Yellow("NOT IMPLEMENTED")

@@ -4,6 +4,8 @@ import (
 	"fmt"
 
 	"github.com/spf13/cobra"
+
+	"github.com/devopsdays/devopsdays-cli/talk"
 )
 
 // addTalkCmd represents the "talk add" command
@@ -82,7 +84,7 @@ This application is a tool to generate the needed files
 to quickly create a Cobra application.`,
 	Run: func(cmd *cobra.Command, args []string) {
 		// TODO: Work your own magic here
-		showTalk()
+		showTalkPrompt(City, Year)
 	},
 }
 
@@ -126,5 +128,9 @@ func removeTalk() {
 }
 
 func showTalk() {
+	err := talk.ShowTalks("Ponyville", "2017")
+	if err != nil {
+		fmt.Println("error")
+	}
 	fmt.Println("You would have shown a talk if this happened")
 }
