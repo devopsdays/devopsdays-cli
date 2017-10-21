@@ -1,5 +1,12 @@
 # Change Log
 
+## [0.22.1](https://github.com/devopsdays/devopsdays-cli/tree/0.22.1) (2017-10-21)
+[Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/0.22.0...0.22.1)
+
+**Implemented enhancements:**
+
+- implement error checking in helpers.GetTalks [\#88](https://github.com/devopsdays/devopsdays-cli/issues/88)
+
 ## [0.22.0](https://github.com/devopsdays/devopsdays-cli/tree/0.22.0) (2017-10-21)
 [Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/0.21.0...0.22.0)
 
