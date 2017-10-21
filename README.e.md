@@ -79,7 +79,6 @@ See [CONTRIBUTING.md](contributing.md) for details on how to contribute to this 
 # How to release
 
 ```sh
-$ changelog prepare
 $ gump <patch|minor|major>
 ```
 
