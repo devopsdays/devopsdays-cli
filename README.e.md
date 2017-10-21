@@ -8,7 +8,7 @@ LicenseColor: yellow
 
 {{template "badge/travis" .}} [![Build status](https://ci.appveyor.com/api/projects/status/u7pu7ins2csxngxu?svg=true)](https://ci.appveyor.com/project/DevOpsDays/devopsdays-cli)
  {{template "badge/goreport" .}} {{template "badge/godoc" .}} [![GitHub release](https://img.shields.io/github/release/devopsdays/devopsdays-cli.svg)](https://github.com/devopsdays/devopsdays-cli/releases) {{template "license/shields" .}} <br />
- [![Coveralls](https://img.shields.io/coveralls/devopsdays/devopsdays-cli.svg)]() [![BCH compliance](https://bettercodehub.com/edge/badge/devopsdays/devopsdays-cli?branch=master)](https://bettercodehub.com/) [![Ebert](https://ebertapp.io/github/devopsdays/devopsdays-cli.svg)](https://ebertapp.io/github/devopsdays/devopsdays-cli) [![codebeat badge](https://codebeat.co/badges/9acd2699-7397-45fb-8219-e0e5a68c8399)](https://codebeat.co/projects/github-com-devopsdays-devopsdays-cli-master)
+ [![Coveralls](https://img.shields.io/coveralls/devopsdays/devopsdays-cli.svg)]() [![BCH compliance](https://bettercodehub.com/edge/badge/devopsdays/devopsdays-cli?branch=master)](https://bettercodehub.com/results/devopsdays/devopsdays-cli) [![Ebert](https://ebertapp.io/github/devopsdays/devopsdays-cli.svg)](https://ebertapp.io/github/devopsdays/devopsdays-cli) [![codebeat badge](https://codebeat.co/badges/9acd2699-7397-45fb-8219-e0e5a68c8399)](https://codebeat.co/projects/github-com-devopsdays-devopsdays-cli-master)
 
 Command-line utilities for the [devopsdays](https://www.devopsdays.org) website built with :heart: by [mattstratton](https://github.com/mattstratton) in [Go](https://golang.org/).
 
