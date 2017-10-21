@@ -3,14 +3,13 @@ package speaker
 import (
 	"testing"
 
-	"github.com/devopsdays/devopsdays-cli/model"
 	. "github.com/smartystreets/goconvey/convey"
 )
 
 func TestNewSpeaker(t *testing.T) {
 
 	Convey("Given a new object of type Speaker", t, func() {
-		mySpeaker := model.Speaker{
+		mySpeaker := Speaker{
 			Name:      "matt-stratton",
 			Title:     "Matt Stratton",
 			Website:   "http://www.mattstratton.com",

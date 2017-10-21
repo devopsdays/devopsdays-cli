@@ -8,7 +8,6 @@ import (
 
 	"github.com/BurntSushi/toml"
 	paths "github.com/devopsdays/devopsdays-cli/helpers/paths"
-	"github.com/devopsdays/devopsdays-cli/model"
 	"github.com/gernest/front"
 	"github.com/pkg/errors"
 )
@@ -30,7 +29,7 @@ func GetSpeakers(city, year string) ([]string, error) {
 	return s, nil
 }
 
-func GetSpeakerInfo(file, city, year string) (speaker model.Speaker, err error) {
+func GetSpeakerInfo(file, city, year string) (speaker Speaker, err error) {
 
 	filePath := filepath.Join(paths.EventContentPath(city, year), "speakers", file)
 	dat, err := ioutil.ReadFile(filePath)
@@ -42,7 +41,7 @@ func GetSpeakerInfo(file, city, year string) (speaker model.Speaker, err error) 
 		panic(err)
 	}
 
-	speaker = model.Speaker{
+	speaker = Speaker{
 		Name:      file,
 		Title:     f["Title"].(string),
 		Website:   f["Website"].(string),
@@ -61,7 +60,7 @@ func GetSpeakerInfo(file, city, year string) (speaker model.Speaker, err error) 
 // TOMLHandler decodes TOML string into a go map[string]interface{}
 func TOMLHandler(front string) (map[string]interface{}, error) {
 
-	var stuff model.Speaker
+	var stuff Speaker
 	if _, err := toml.Decode(front, &stuff); err != nil {
 		log.Fatal(err)
 	}
