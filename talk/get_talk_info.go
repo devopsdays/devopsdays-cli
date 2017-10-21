@@ -8,14 +8,13 @@ import (
 
 	"github.com/BurntSushi/toml"
 	"github.com/devopsdays/devopsdays-cli/helpers/paths"
-	"github.com/devopsdays/devopsdays-cli/model"
 	"github.com/gernest/front"
 	"github.com/pkg/errors"
 )
 
 // GetTalkInfo loads in a talk file and returns a struct with the information, decoded
 // from the TOML in the frontmatter
-func GetTalkInfo(file, city, year string) (talk *model.Talk, err error) {
+func GetTalkInfo(file, city, year string) (talk *Talk, err error) {
 
 	filePath := filepath.Join(paths.EventContentPath(city, year), "program", file)
 	dat, err := ioutil.ReadFile(filePath)
@@ -30,7 +29,7 @@ func GetTalkInfo(file, city, year string) (talk *model.Talk, err error) {
 		return talk, errors.Wrap(err, "get list of talks failed")
 	}
 
-	talk = &model.Talk{
+	talk = &Talk{
 		Name:         file,
 		Title:        f["Title"].(string),
 		Description:  f["Description"].(string),
@@ -51,7 +50,7 @@ func GetTalkInfo(file, city, year string) (talk *model.Talk, err error) {
 // TOMLHandler decodes TOML string into a go map[string]interface{}
 func TOMLHandler(front string) (map[string]interface{}, error) {
 
-	var thisTalk model.Talk
+	var thisTalk Talk
 	if _, err := toml.Decode(front, &thisTalk); err != nil {
 
 		log.Fatal(err)
@@ -72,4 +71,5 @@ func TOMLHandler(front string) (map[string]interface{}, error) {
 	}
 
 	return x, nil
+
 }
