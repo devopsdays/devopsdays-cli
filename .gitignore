@@ -37,3 +37,5 @@ build/
 vendor
 coverage.txt
 delver.sh
+devopsdays-cli
+debug

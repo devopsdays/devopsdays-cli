@@ -58,7 +58,8 @@ type SponsorLevel struct {
 
 func (e *Event) Create(city, year string) (*Event, error) {
 	myEvent := new(Event)
-	myEvent.Name = "Hello"
+	myEvent.City = city
+	myEvent.Year = year
 	return myEvent, nil
 }
 

@@ -9,8 +9,9 @@ import (
 	"path/filepath"
 	"regexp"
 	"strings"
+	
+	"text/template"
 
-	"github.com/alecthomas/template"
 	helpers "github.com/devopsdays/devopsdays-cli/helpers"
 	paths "github.com/devopsdays/devopsdays-cli/helpers/paths"
 	"github.com/devopsdays/devopsdays-cli/images"
