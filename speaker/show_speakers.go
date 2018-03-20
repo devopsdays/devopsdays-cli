@@ -9,7 +9,7 @@ import (
 	survey "gopkg.in/AlecAivazis/survey.v1"
 )
 
-func ShowSpeakers(city, year string) (err error) {
+func ShowSpeakers(city, year string) (exitCode bool, err error) {
 	var selection string
 
 	speakerList, _ := GetSpeakers(city, year)
@@ -23,7 +23,7 @@ func ShowSpeakers(city, year string) (err error) {
 		}
 		survey.AskOne(prompt, &selection, nil)
 		if selection == "Return to Main Menu" {
-			return
+			return true, nil
 		}
 		speakerFileName := strings.Join([]string{strings.TrimSpace(names.NameClean(selection)), ".md"}, "")
 
@@ -57,5 +57,5 @@ func ShowSpeakers(city, year string) (err error) {
 		color.Cyan("+-+-+-+-+-+-+-+-+-+-+-+-+-+-+")
 		fmt.Println()
 	}
-	return
+	return true, nil
 }

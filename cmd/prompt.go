@@ -115,7 +115,10 @@ func showSpeakerPrompt(city, year string) (err error) {
 				break
 			}
 		}
-		speaker.ShowSpeakers(city, year)
+		exitCode, err = speaker.ShowSpeakers(city, year)
+		if exitCode == true {
+			return
+		}
 
 	}
 	return

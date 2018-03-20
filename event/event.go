@@ -9,7 +9,7 @@ import (
 	"path/filepath"
 	"regexp"
 	"strings"
-	
+
 	"text/template"
 
 	helpers "github.com/devopsdays/devopsdays-cli/helpers"
@@ -32,7 +32,7 @@ var qsCreateEvent = []*survey.Question{
 			Help:    "Twitter username can include the @ symbol or not. Examples: '@devopsdays' or 'devopsdays",
 		},
 		Validate: func(val interface{}) error {
-			if str, _ := val.(string); (str != "") && (helpers.ValidateField(str, "twitter") == false) {
+			if str, _ := val.(string); (str != "") && !helpers.ValidateField(str, "twitter") {
 				return errors.New("Please enter a valid Twitter handle. Spaces are not allowed.")
 			}
 			return nil
