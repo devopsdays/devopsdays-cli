@@ -20,10 +20,10 @@ $ cd $_
 $ git clone git@github.com:devopsdays/devopsdays-cli.git .
 ```
 
-Install the build and lint dependencies:
+Install the Go dependencies:
 
 ```console
-$ make setup
+$ make deps
 ```
 
 Before starting your own work, ensure the setup is good by running the test suite:
