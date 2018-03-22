@@ -1,12 +1,23 @@
 version: 2
+group_defaults:
+  reset_on_push:
+    enabled: true
+  approve_by_comment:
+    approve_regex: ^Approved
+    enabled: true
+    reject_regex: ^Rejected
+  author_approval:
+    auto: true
 groups:
   code-review:
-    approve_by_comment:
-      approve_regex: ^Approved
-      enabled: true
-      reject_regex: ^Rejected
     required: 1
-    reset_on_push:
-      enabled: false
     users:
     - mattstratton
+  
+  pullapprove-admins:
+    conditions:
+      files:
+        - ".pullapprove.yml"
+    required: 1
+    users:
+      - mattstratton
