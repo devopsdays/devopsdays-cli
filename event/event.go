@@ -20,7 +20,10 @@ import (
 	survey "gopkg.in/AlecAivazis/survey.v1"
 )
 
+// LogoPath is the fully qualified path to the event's logo
 var LogoPath string
+
+// SquareLogoPath is the fully qualified path to the event's square logo
 var SquareLogoPath string
 
 // the questions to ask
@@ -286,7 +289,7 @@ func EventLogoSquare(srcPath, city, year string) (err error) {
 	destPath := filepath.Join(eventStaticPath, "logo-square.png")
 	images.ResizeImage(srcPath, destPath, "png", 600, 600)
 
-	// @TODO update helpers.ResizeImage to return error code and do something with it here
+	// @todo update helpers.ResizeImage to return error code and do something with it here
 
 	return nil
 }

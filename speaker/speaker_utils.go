@@ -29,6 +29,7 @@ func GetSpeakers(city, year string) ([]string, error) {
 	return s, nil
 }
 
+// GetSpeakerInfo takes the filename, city, and year of a speaker and returns a Speaker object with the details.
 func GetSpeakerInfo(file, city, year string) (speaker Speaker, err error) {
 
 	filePath := filepath.Join(paths.EventContentPath(city, year), "speakers", file)

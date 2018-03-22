@@ -19,7 +19,6 @@ Cobra is a CLI library for Go that empowers applications.
 This application is a tool to generate the needed files
 to quickly create a Cobra application.`,
 	Run: func(cmd *cobra.Command, args []string) {
-		// TODO: Work your own magic here
 		createTalk()
 	},
 }
@@ -35,7 +34,6 @@ Cobra is a CLI library for Go that empowers applications.
 This application is a tool to generate the needed files
 to quickly create a Cobra application.`,
 	Run: func(cmd *cobra.Command, args []string) {
-		// TODO: Work your own magic here
 		createTalk()
 	},
 }
@@ -51,7 +49,6 @@ Cobra is a CLI library for Go that empowers applications.
 This application is a tool to generate the needed files
 to quickly create a Cobra application.`,
 	Run: func(cmd *cobra.Command, args []string) {
-		// TODO: Work your own magic here
 		editTalk()
 	},
 }
@@ -67,7 +64,6 @@ Cobra is a CLI library for Go that empowers applications.
 This application is a tool to generate the needed files
 to quickly create a Cobra application.`,
 	Run: func(cmd *cobra.Command, args []string) {
-		// TODO: Work your own magic here
 		removeTalk()
 	},
 }
@@ -82,7 +78,6 @@ var showTalkCmd = &cobra.Command{
   devopsdays-cli show talk --city new-york --year 2017 --all
   devopsdays-cli show talk -c "New York" --year "2017"`,
 	Run: func(cmd *cobra.Command, args []string) {
-		// TODO: Work your own magic here
 		showTalkPrompt(City, Year)
 	},
 }

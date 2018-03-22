@@ -19,7 +19,6 @@ You can provide the speaker's name as an argument to this command, but it must b
   devopsdays-cli add speaker george-bluth -c "New York" --year "2017"`,
 	Args: cobra.MaximumNArgs(1),
 	Run: func(cmd *cobra.Command, args []string) {
-		// TODO: Work your own magic here
 		addSpeaker()
 	},
 }
@@ -72,7 +71,6 @@ You can provide the speaker's name as an argument to this command, but it must b
   devopsdays-cli remove speaker george-bluth -c "New York" --year "2017"`,
 	Args: cobra.MaximumNArgs(1),
 	Run: func(cmd *cobra.Command, args []string) {
-		// TODO: Work your own magic here
 		removeSpeaker()
 	},
 }
@@ -88,7 +86,6 @@ var showSpeakerCmd = &cobra.Command{
   devopsdays-cli show speaker george-bluth -c "New York" --year "2017"`,
 	Args: cobra.MaximumNArgs(1),
 	Run: func(cmd *cobra.Command, args []string) {
-		// TODO: Work your own magic here
 		showSpeakerPrompt(City, Year)
 	},
 }

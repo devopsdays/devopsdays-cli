@@ -36,8 +36,7 @@ Cobra is a CLI library for Go that empowers applications.
 This application is a tool to generate the needed files
 to quickly create a Cobra application.`,
 	Run: func(cmd *cobra.Command, args []string) {
-		// TODO: Work your own magic here
-		addSponsor("") //TODO: This is the fake one
+		addSponsor("") // This is the fake one
 	},
 }
 
@@ -71,7 +70,6 @@ Cobra is a CLI library for Go that empowers applications.
 This application is a tool to generate the needed files
 to quickly edit a Cobra application.`,
 	Run: func(cmd *cobra.Command, args []string) {
-		// TODO: Work your own magic here
 		editSponsor()
 	},
 }
@@ -87,8 +85,7 @@ Cobra is a CLI library for Go that empowers applications.
 This application is a tool to generate the needed files
 to quickly create a Cobra application.`,
 	Run: func(cmd *cobra.Command, args []string) {
-		// TODO: Work your own magic here
-		removeSponsor() //TODO: This is the fake one
+		removeSponsor() // This is the fake one
 	},
 }
 
@@ -103,8 +100,7 @@ Cobra is a CLI library for Go that empowers applications.
 This application is a tool to generate the needed files
 to quickly create a Cobra application.`,
 	Run: func(cmd *cobra.Command, args []string) {
-		// TODO: Work your own magic here
-		showSponsor() //TODO: This is the fake one
+		showSponsor() // This is the fake one
 	},
 }
 

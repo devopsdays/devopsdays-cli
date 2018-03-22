@@ -22,4 +22,6 @@ engines:
     enabled: true
 exclude_paths:
 - testdata
+- vendor
+- .version.sh
 

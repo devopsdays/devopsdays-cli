@@ -5,7 +5,7 @@ import (
 	"os"
 )
 
-// Copyfile takes a source and destination file path and copies the file. Destination needs to be complete path of file, not a directory
+// CopyFile takes a source and destination file path and copies the file. Destination needs to be complete path of file, not a directory.
 func CopyFile(srcPath, destPath string) (err error) {
 	// open files r and w
 	r, err := os.Open(srcPath)

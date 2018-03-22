@@ -18,7 +18,6 @@ var configCmd = &cobra.Command{
 	Short: "Returns the current configuration",
 	Long:  `Displays any environment variables and configurations.`,
 	Run: func(cmd *cobra.Command, args []string) {
-		// TODO: Work your own magic here
 		color.Blue("Current configuration")
 		fmt.Println("DODPATH = ", os.Getenv("DODPATH"))
 		pwd, err := os.Getwd()
@@ -40,7 +39,7 @@ func init() {
 }
 
 func checkHugo() {
-	supportedVersions := map[string]bool{"0.23": true, "0.24.1": true, "0.25.1": true, "0.26": true, "0.27": true, "0.28": true, "0.29": true}
+	supportedVersions := map[string]bool{"0.36.1": true, "0.37": true, "0.37.1": true}
 	out, err := exec.Command("hugo", "version").Output()
 	if err != nil {
 		log.Fatal(err)
@@ -53,7 +52,7 @@ func checkHugo() {
 	} else {
 		fmt.Println("\u2717 Hugo version", hugoVersion, "is incompatible.")
 		fmt.Println("Supported Versions are:")
-		for k, _ := range supportedVersions {
+		for k := range supportedVersions {
 			fmt.Println(k)
 		}
 	}

@@ -9,6 +9,7 @@ import (
 	survey "gopkg.in/AlecAivazis/survey.v1"
 )
 
+// ShowSpeakers provides an interactive list of existing speakers for an event, and then displays details about a selected speaker.
 func ShowSpeakers(city, year string) (exitCode bool, err error) {
 	var selection string
 
