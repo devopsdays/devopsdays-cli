@@ -1,0 +1,16 @@
+[
+    { "name": "Status: Abandoned", "color": "#000000" },
+    { "name": "Status: Accepted", "color": "#0e8a16" },
+    { "name": "Status: Completed", "color": "#006b75" },
+    { "name": "Status: In Progress", "color": "#ededed" },
+    { "name": "Status: On Hold", "color": "#d93f0b" },
+    { "name": "Status: Blocked", "color": "#d93f0b"},
+    { "name": "Status: Review Needed", "color": "#fbca04" },
+    { "name": "Type: Question", "color": "#cc317c" },
+    { "name": "Type: Bug", "color": "#d93f0b" },
+    { "name": "Type: Enhancement", "color": "#84b6eb" },
+    { "name": "Type: Documentation", "color": "#00B0D8" },
+    { "name": "wontfix", "color": "#ffffff" },
+    { "name": "help wanted", "color": "#128A0C" },
+    { "name": "quick win", "color": "ffccf8"}
+  ]
