@@ -40,12 +40,15 @@ type Event struct {
 	SponsorLevels         []string `yaml:"sponsor_levels"`
 }
 
+// Create is a method to create a new Event
 func (e *Event) Create(city, year string) (*Event, error) {
 	myEvent := new(Event)
 	myEvent.Name = "Hello"
 	return myEvent, nil
 }
 
+// ShowEvent is a method to dislay the event of a thing
+// @todo Revisit the ShowEvent method and the "item" package.
 func ShowEvent() {
 	e := new(Event)
 	event, _ := e.Create("Ponyville", "2017")

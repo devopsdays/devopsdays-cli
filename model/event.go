@@ -56,6 +56,7 @@ type SponsorLevel struct {
 	Max   int    `yaml:"max,omitempty"`
 }
 
+// Create is a method to create a new Event
 func (e *Event) Create(city, year string) (*Event, error) {
 	myEvent := new(Event)
 	myEvent.City = city
@@ -63,6 +64,7 @@ func (e *Event) Create(city, year string) (*Event, error) {
 	return myEvent, nil
 }
 
+// ShowEvent is a method to dislay the details of an Event
 func ShowEvent() {
 	e := new(Event)
 	event, _ := e.Create("Ponyville", "2017")

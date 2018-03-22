@@ -12,8 +12,11 @@ import (
 )
 
 var (
+	// Version is the current version of the devopsdays-cli tool. Unless set elsehwere, it is referred to as "master"
 	Version = "master"
-	Build   string
+	// Build is the current build of the devopsdays-cli tool.
+	// @todo The Build variable in cmd/version.go needs to be set somewhere.
+	Build string
 )
 
 func init() {
@@ -55,6 +58,8 @@ func getThemeVersion() (themeVersion string) {
 
 }
 
+// Theme represents the currently installed devopsdays-theme Hugo theme.
+// The field Version represents the current version.
 type Theme struct {
 	Version string `toml:"theme_version"`
 }

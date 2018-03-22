@@ -15,10 +15,10 @@ func GetWebdir() string {
 			os.Exit(1)
 		}
 		return pwd
-	} else {
-		s := os.Getenv("DODPATH")
-		s = strings.TrimSuffix(s, "/")
-		s = strings.TrimSuffix(s, "\\")
-		return s
 	}
+	s := os.Getenv("DODPATH")
+	s = strings.TrimSuffix(s, "/")
+	s = strings.TrimSuffix(s, "\\")
+	return s
+
 }

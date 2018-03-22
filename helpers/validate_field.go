@@ -33,21 +33,21 @@ func ValidateField(input, field string) bool {
 	case "website":
 		if govalidator.IsRequestURL(input) {
 			return true
-		} else {
-			return false
 		}
+		return false
+
 	case "facebook":
 		if govalidator.IsRequestURL(input) {
 			return true
-		} else {
-			return false
 		}
+		return false
+
 	case "linkedin":
 		if govalidator.IsRequestURL(input) {
 			return true
-		} else {
-			return false
 		}
+		return false
+
 	case "github":
 		if (govalidator.IsRequestURL(input)) || (strings.ContainsAny(input, " ")) {
 			return false
