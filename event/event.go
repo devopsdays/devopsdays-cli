@@ -231,11 +231,11 @@ func CreateEvent(city, year string) (err error) {
 
 	}
 	if answers.LogoPath != "" {
-		err = EventLogo(answers.LogoPath, CityClean(city), year)
+		err = Logo(answers.LogoPath, CityClean(city), year)
 	}
 
 	if answers.SquareLogoPath != "" {
-		err = EventLogoSquare(answers.SquareLogoPath, CityClean(city), year)
+		err = LogoSquare(answers.SquareLogoPath, CityClean(city), year)
 	}
 
 	return
@@ -263,8 +263,8 @@ func NewEvent(event model.Event, city string, year string) (err error) {
 	return
 }
 
-// EventLogo takes in a path to an event's main logo and copies/renames it to the proper destination
-func EventLogo(srcPath, city, year string) (err error) {
+// Logo takes in a path to an event's main logo and copies/renames it to the proper destination
+func Logo(srcPath, city, year string) (err error) {
 
 	eventStaticPath, err := paths.EventStaticPath(city, year)
 	if err != nil {
@@ -280,8 +280,8 @@ func EventLogo(srcPath, city, year string) (err error) {
 
 }
 
-// EventLogoSquare takes in a path the event's square logo, and crops/resizes it and copies it to the proper destination
-func EventLogoSquare(srcPath, city, year string) (err error) {
+// LogoSquare takes in a path the event's square logo, and crops/resizes it and copies it to the proper destination
+func LogoSquare(srcPath, city, year string) (err error) {
 	eventStaticPath, err := paths.EventStaticPath(city, year)
 	if err != nil {
 		log.Fatal(err)
