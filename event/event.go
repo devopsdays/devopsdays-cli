@@ -117,12 +117,9 @@ var qsCreateEvent = []*survey.Question{
 		Validate: func(val interface{}) error {
 			str, _ := val.(string)
 			if str != "" {
-				if _, err := os.Stat(str); err != nil {
-					return errors.New("File not found.")
-				}
-				ret, _ := regexp.MatchString(`[0-9a-z]+\.(png|PNG)`, str)
-				if ret != true {
-					return errors.New("Logo image must be a PNG file")
+				err := checkPNG(str)
+				if err != nil {
+					return err
 				}
 			}
 
@@ -138,18 +135,28 @@ var qsCreateEvent = []*survey.Question{
 		Validate: func(val interface{}) error {
 			str, _ := val.(string)
 			if str != "" {
-				if _, err := os.Stat(str); err != nil {
-					return errors.New("File not found.")
-				}
-				ret, _ := regexp.MatchString(`[0-9a-z]+\.(png|PNG)`, str)
-				if ret != true {
-					return errors.New("Logo image must be a PNG file")
+				err := checkPNG(str)
+				if err != nil {
+					return err
 				}
 			}
 
 			return nil
 		},
 	},
+}
+
+// checkPNG ensures that an image file exists and is a PNG
+func checkPNG(imagePath string) error {
+	if _, err := os.Stat(imagePath); err != nil {
+		return errors.New("File not found.")
+	}
+	ret, _ := regexp.MatchString(`[0-9a-z]+\.(png|PNG)`, imagePath)
+	if ret != true {
+		return errors.New("Logo image must be a PNG file")
+	}
+
+	return nil
 }
 
 // CreateEvent takes input from the user to create a new event
