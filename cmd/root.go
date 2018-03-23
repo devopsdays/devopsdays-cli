@@ -6,8 +6,8 @@ import (
 	"bytes"
 	"fmt"
 	"os"
-	"strings"
 
+	"github.com/devopsdays/devopsdays-cli/helpers/paths"
 	"github.com/dimiro1/banner"
 	"github.com/mattn/go-colorable"
 	"github.com/spf13/cobra"
@@ -23,7 +23,7 @@ var myBanner = `
 `
 
 // webdir is the path to the source files for the Hugo website
-var webdir = setWebdir()
+var webdir = paths.GetWebdir()
 
 // const webdir = "/Users/mattstratton/src/devopsdays-web"
 
@@ -90,17 +90,25 @@ func initConfig() {
 	}
 }
 
-func setWebdir() string {
-	if os.Getenv("DODPATH") == "" {
-		pwd, err := os.Getwd()
-		if err != nil {
-			fmt.Println(err)
-			os.Exit(1)
-		}
-		return pwd
-	}
-	s := os.Getenv("DODPATH")
-	s = strings.TrimSuffix(s, "/")
-	s = strings.TrimSuffix(s, "\\")
-	return s
-}
+// func setWebdir() string {
+// 	if os.Getenv("DODPATH") == "" {
+// 		pwd, err := os.Getwd()
+// 		if err != nil {
+// 			fmt.Println(err)
+// 			os.Exit(1)
+// 		}
+// 		return pwd
+// 	}
+// 	s := os.Getenv("DODPATH")
+// 	s = strings.TrimSuffix(s, "/")
+// 	s = strings.TrimSuffix(s, "\\")
+// 	return s
+// }
+
+// func validateWebDir(webdir string) bool {
+// 	filename := "a-nonexistent-file"
+// 	if _, err := os.Stat(filename); os.IsNotExist(err) {
+// 		fmt.Printf("file does not exist")
+// 	}
+
+// }
