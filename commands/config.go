@@ -28,7 +28,7 @@ var configCmd = &cobra.Command{
 		fmt.Println("Current Working Directory = ", pwd)
 		fmt.Println("DevOpsDays web directory = ", webdir)
 		color.Blue("Checking your config...")
-		CheckHugo()
+		checkHugo()
 		checkGit()
 	},
 }
@@ -38,10 +38,10 @@ func init() {
 
 }
 
-// CheckHugo tests whether or not a compatible version of the Hugo static site generator is instealled.
+// checkHugo tests whether or not a compatible version of the Hugo static site generator is instealled.
 //
 // Currently, the list of supported versions is hard-coded using the `supportedVersions` variable, but this should be moved elsewhere eventually.
-func CheckHugo() {
+func checkHugo() {
 	supportedVersions := map[string]bool{"0.36.1": true, "0.37": true, "0.37.1": true}
 	out, err := exec.Command("hugo", "version").Output()
 	if err != nil {
