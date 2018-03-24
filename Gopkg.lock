@@ -23,15 +23,6 @@
   revision = "c02ca9a983da5807ddf7d796784928f5be4afd09"
 
 [[projects]]
-  branch = "master"
-  name = "github.com/alecthomas/template"
-  packages = [
-    ".",
-    "parse"
-  ]
-  revision = "a0175ee3bccc567396460bf5acd36800cb10c49c"
-
-[[projects]]
   name = "github.com/asaskevich/govalidator"
   packages = ["."]
   revision = "ccb8e960c48f04d6935e72476ae4a51028f9e22f"
@@ -253,6 +244,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "4ac97468d447f31f84f7745d7bf42eac57891ae27f0bee3cd8a697f8b5a1d687"
+  inputs-digest = "c4af5d15869d291e567ca1fd8f43df3ded508d0197bc051daaf42d68ad8ec796"
   solver-name = "gps-cdcl"
   solver-version = 1

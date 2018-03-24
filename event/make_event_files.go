@@ -7,8 +7,9 @@ import (
 	"path/filepath"
 	"strings"
 
+	"text/template"
+
 	rice "github.com/GeertJohan/go.rice"
-	"github.com/alecthomas/template"
 	"github.com/devopsdays/devopsdays-cli/helpers/paths"
 )
 
