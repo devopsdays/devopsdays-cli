@@ -38,10 +38,6 @@
   name = "github.com/GeertJohan/go.rice"
 
 [[constraint]]
-  branch = "master"
-  name = "github.com/alecthomas/template"
-
-[[constraint]]
   name = "github.com/asaskevich/govalidator"
   version = "9.0.0"
 
