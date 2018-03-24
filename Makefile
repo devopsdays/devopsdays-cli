@@ -11,7 +11,7 @@ VERSION:=$(shell git describe --tags)
 # VERSION := $(shell grep "const Version " version.go | sed -E 's/.*"(.+)"$$/\1/')
 BUILD:=$(shell date +%FT%T%z)
 
-LDFLAGS=-ldflags "-w -s -X github.com/devopsdays/devopsdays-cli/cmd.Version=${VERSION} -X github.com/devopsdays/devopsdays-cli/cmd.Build=${BUILD}"
+LDFLAGS=-ldflags "-w -s -X github.com/devopsdays/devopsdays-cli/commands.Version=${VERSION} -X github.com/devopsdays/devopsdays-cli/commands.Build=${BUILD}"
 
 help:
 	@echo 'Available commands:'
