@@ -2,7 +2,6 @@
 package event
 
 import (
-	"errors"
 	"fmt"
 	"log"
 	"os"
@@ -11,6 +10,8 @@ import (
 	"strings"
 
 	"text/template"
+
+	"github.com/pkg/errors"
 
 	helpers "github.com/devopsdays/devopsdays-cli/helpers"
 	paths "github.com/devopsdays/devopsdays-cli/helpers/paths"
@@ -227,14 +228,14 @@ func CreateEvent(city, year string) (err error) {
 	NewEvent(myEvent, CityClean(city), year)
 
 	// create the event content files
-	contentfiles := []string{"index", "conduct", "contact", "location", "program", "propose", "registration", "sponsor"}
+	contentfiles := []string{"welcome", "conduct", "contact", "location", "program", "propose", "registration", "sponsor"}
 	for _, contentFile := range contentfiles {
 
-		if result, err := createEventContentFile(city, year, contentFile); err != nil {
+		if err := createEventContentFile(city, year, contentFile); err != nil {
 			fmt.Printf("Error: %s\n", err)
-		} else {
-			fmt.Printf("Event content file created for %s!!!\n", result)
+			os.Exit(1)
 		}
+		fmt.Printf("Event content file created for %s!!!\n", city)
 
 	}
 	if answers.LogoPath != "" {
@@ -280,8 +281,7 @@ func Logo(srcPath, city, year string) (err error) {
 	err = helpers.CopyFile(srcPath, filepath.Join(eventStaticPath, "logo.png"))
 
 	if err != nil {
-		fmt.Println(err)
-		return err
+		return errors.Wrapf(err, "cannot copy logo for %s %s", city, year)
 	}
 	return nil
 
@@ -294,9 +294,10 @@ func LogoSquare(srcPath, city, year string) (err error) {
 		log.Fatal(err)
 	}
 	destPath := filepath.Join(eventStaticPath, "logo-square.png")
-	images.ResizeImage(srcPath, destPath, "png", 600, 600)
-
-	// @todo update helpers.ResizeImage to return error code and do something with it here
+	err = images.ResizeImage(srcPath, destPath, "png", 600, 600)
+	if err != nil {
+		return errors.Wrap(err, "cannot resize image")
+	}
 
 	return nil
 }
