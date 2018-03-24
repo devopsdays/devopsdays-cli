@@ -1,6 +1,7 @@
 package event
 
 import (
+	"fmt"
 	"testing"
 
 	. "github.com/smartystreets/goconvey/convey"
@@ -29,4 +30,13 @@ func TestCheckEvent(t *testing.T) {
 			})
 		})
 	})
+}
+
+func ExampleCheckEvent() {
+	city := "Ponyville"
+	year := "2017"
+	if CheckEvent(city, year) {
+		fmt.Println("This event already exists. If you would like to edit it, please run `devopsdays-cli edit event`")
+		return
+	}
 }
