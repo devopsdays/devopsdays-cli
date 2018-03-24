@@ -1,4 +1,4 @@
-// package Commands defines and implements command-line commands and flags
+// package commands defines and implements command-line commands and flags
 // used by devopsdays-cli. Commands and flags are implemented using Cobra.
 package commands
 
