@@ -1,5 +1,8 @@
 # Change Log
 
+## [0.24.0](https://github.com/devopsdays/devopsdays-cli/tree/0.24.0) (2018-05-25)
+[Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/0.23.1...0.24.0)
+
 ## [0.23.1](https://github.com/devopsdays/devopsdays-cli/tree/0.23.1) (2018-05-25)
 [Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/0.23.0...0.23.1)
 
