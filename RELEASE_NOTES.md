@@ -1,11 +1,22 @@
 # Change Log
 
-## [0.22.1](https://github.com/devopsdays/devopsdays-cli/tree/0.22.1) (2017-10-21)
-[Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/0.22.0...0.22.1)
+## [0.23.0](https://github.com/devopsdays/devopsdays-cli/tree/0.23.0) (2018-05-25)
+[Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/0.22.1...0.23.0)
 
-**Implemented enhancements:**
+**Closed issues:**
 
-- implement error checking in helpers.GetTalks [\#88](https://github.com/devopsdays/devopsdays-cli/issues/88)
+- Rename stuttering functions in Event package [\#127](https://github.com/devopsdays/devopsdays-cli/issues/127)
+- Refactor templates to not need to use rice box [\#121](https://github.com/devopsdays/devopsdays-cli/issues/121)
+- Fix 'Duplicate Code' issue in event\event.go [\#117](https://github.com/devopsdays/devopsdays-cli/issues/117)
+- update helpers.ResizeImage to return error code and do something with it here [\#105](https://github.com/devopsdays/devopsdays-cli/issues/105)
+- Create contributing doc [\#36](https://github.com/devopsdays/devopsdays-cli/issues/36)
+- Verify that webdir is valid [\#32](https://github.com/devopsdays/devopsdays-cli/issues/32)
+
+**Merged pull requests:**
+
+- Restructure packages [\#129](https://github.com/devopsdays/devopsdays-cli/pull/129) ([mattstratton](https://github.com/mattstratton))
+- Fix stuttering functions in Event package [\#128](https://github.com/devopsdays/devopsdays-cli/pull/128) ([mattstratton](https://github.com/mattstratton))
+- Quick wins [\#126](https://github.com/devopsdays/devopsdays-cli/pull/126) ([mattstratton](https://github.com/mattstratton))
 
 
 
