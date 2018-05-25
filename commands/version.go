@@ -55,7 +55,7 @@ func getHugoVersion() (hugoVersion string) {
 		log.Fatal(err)
 	}
 	s := string(out[:])
-	re := regexp.MustCompile("v....")
+	re := regexp.MustCompile("([0-9]\\.)\\w+")
 	hugoVersion = re.FindString(s)
 	return
 }
@@ -74,6 +74,10 @@ func getThemeVersion() (themeVersion string) {
 
 func getCliVersion() (cliVersion string) {
 	return Version
+}
+
+func chompVersion(version string) string {
+	return regexp.MustCompile("([0-9]\\.)\\w+").FindString(version)
 }
 
 // Theme represents the currently installed devopsdays-theme Hugo theme.

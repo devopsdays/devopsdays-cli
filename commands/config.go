@@ -71,16 +71,15 @@ func checkHugo() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	fmt.Println("\u2713 Supported cli version is ", currentCliVersion)
 
-	if currentHugoVersion == getHugoVersion() {
+	if chompVersion(currentHugoVersion) == chompVersion(getHugoVersion()) {
 		color.Green("\u2713 Hugo version %s is okay", getHugoVersion())
 	} else {
 		color.Red("\u2717 Hugo version %s is incompatible.", getHugoVersion())
 		color.Red("Supported Version is: %s", currentHugoVersion)
 	}
 
-	if currentThemeVersion == getThemeVersion() {
+	if chompVersion(currentThemeVersion) == chompVersion(getThemeVersion()) {
 		color.Green("\u2713 Theme version %s is okay", getThemeVersion())
 	} else {
 		color.Red("\u2717 Theme version %s is incompatible.", getThemeVersion())
@@ -143,4 +142,11 @@ func checkGit() {
 	} else {
 		fmt.Println("\u2713 git is installed")
 	}
+}
+
+func compareVersion(currentVersion string, localVersion string) bool {
+	if chompVersion(currentVersion) == chompVersion(localVersion) {
+		return true
+	}
+	return false
 }
