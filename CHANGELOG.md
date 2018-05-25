@@ -1,5 +1,13 @@
 # Change Log
 
+## [0.23.1](https://github.com/devopsdays/devopsdays-cli/tree/0.23.1) (2018-05-25)
+[Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/0.23.0...0.23.1)
+
+**Closed issues:**
+
+- CLI should check to see if it's the latest version [\#124](https://github.com/devopsdays/devopsdays-cli/issues/124)
+- Hugo version check should not use embedded code [\#123](https://github.com/devopsdays/devopsdays-cli/issues/123)
+
 ## [0.23.0](https://github.com/devopsdays/devopsdays-cli/tree/0.23.0) (2018-05-25)
 [Full Changelog](https://github.com/devopsdays/devopsdays-cli/compare/0.22.1...0.23.0)
 
@@ -7,8 +15,6 @@
 
 - Rename stuttering functions in Event package [\#127](https://github.com/devopsdays/devopsdays-cli/issues/127)
 - Refactor templates to not need to use rice box [\#121](https://github.com/devopsdays/devopsdays-cli/issues/121)
-- Fix 'Duplicate Code' issue in event\event.go [\#117](https://github.com/devopsdays/devopsdays-cli/issues/117)
-- update helpers.ResizeImage to return error code and do something with it here [\#105](https://github.com/devopsdays/devopsdays-cli/issues/105)
 - Create contributing doc [\#36](https://github.com/devopsdays/devopsdays-cli/issues/36)
 - Verify that webdir is valid [\#32](https://github.com/devopsdays/devopsdays-cli/issues/32)
 
