@@ -40,7 +40,7 @@ brew:
     - git
   install:
     bin.install "devopsdays-cli"
-fpm:
+nfpm:
   vendor: devopsdays
   homepage: https://www.devopsdays.org
   maintainer: Matt Stratton <matt.stratton@gmail.com>
