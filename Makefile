@@ -46,7 +46,8 @@ build/docker: build
 .PHONY: install release test travis
 
 install:
-	go get -t -v ./...
+	#go get -t -v ./...
+	@dep ensure
 
 test:
 	gotestcover $(TEST_OPTIONS) -covermode=atomic -coverprofile=coverage.txt $(SOURCE_FILES) -run $(TEST_PATTERN) -timeout=2m
