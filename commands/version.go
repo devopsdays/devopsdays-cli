@@ -12,7 +12,7 @@ import (
 )
 
 var (
-	// Version is the current version of the devopsdays-cli tool. Unless set elsehwere, it is referred to as "master"
+	// Version is the current version of the devopsdays-cli tool. Unless set elsewhere, it is referred to as "master"
 	Version = "master"
 	// Build is the current build of the devopsdays-cli tool.
 	// @todo The Build variable in cmd/version.go needs to be set somewhere.
