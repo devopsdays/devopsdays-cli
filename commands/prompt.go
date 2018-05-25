@@ -22,6 +22,8 @@ func mainPrompt() (err error) {
 				"Show a speaker",
 				"Show a talk",
 				"Test",
+				"Check your configuration",
+				"Show the version",
 				"Quit the application",
 			},
 		}
@@ -42,6 +44,11 @@ func mainPrompt() (err error) {
 			showTalkPrompt("", "")
 		case "Test":
 			model.ShowEvent()
+		case "Check your configuration":
+			showConfig()
+		case "Show the version":
+			showVersion()
+
 		}
 	}
 

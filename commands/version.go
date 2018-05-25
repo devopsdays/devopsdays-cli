@@ -1,8 +1,11 @@
 package commands
 
+// cSpell:disable
 import (
+	"bufio"
 	"fmt"
 	"log"
+	"os"
 	"os/exec"
 	"path/filepath"
 	"regexp"
@@ -10,6 +13,8 @@ import (
 	"github.com/BurntSushi/toml"
 	"github.com/spf13/cobra"
 )
+
+// cSpell:enable
 
 var (
 	// Version is the current version of the devopsdays-cli tool. Unless set elsewhere, it is referred to as "master"
@@ -35,6 +40,15 @@ var versionCmd = &cobra.Command{
 	},
 }
 
+func showVersion() {
+	fmt.Println("devopsdays-cli version: ", Version)
+	fmt.Println("devopsdays-cli build: ", Build)
+	fmt.Println("hugo version: ", getHugoVersion())
+	fmt.Println("devopsdays-theme version: ", getThemeVersion())
+	fmt.Print("Press 'Enter' to continue...")
+	bufio.NewReader(os.Stdin).ReadBytes('\n')
+}
+
 func getHugoVersion() (hugoVersion string) {
 	out, err := exec.Command("hugo", "version").Output()
 	if err != nil {
@@ -56,6 +70,10 @@ func getThemeVersion() (themeVersion string) {
 	themeVersion = theme.Version
 	return
 
+}
+
+func getCliVersion() (cliVersion string) {
+	return Version
 }
 
 // Theme represents the currently installed devopsdays-theme Hugo theme.
