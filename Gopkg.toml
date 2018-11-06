@@ -47,7 +47,7 @@
 
 [[constraint]]
   name = "github.com/fatih/color"
-  version = "1.6.0"
+  version = "1.7.0"
 
 [[constraint]]
   branch = "master"
@@ -71,15 +71,11 @@
 
 [[constraint]]
   name = "github.com/spf13/cobra"
-  version = "0.0.1"
+  version = "0.0.3"
 
 [[constraint]]
   name = "github.com/spf13/viper"
   version = "1.0.2"
-
-[[constraint]]
-  name = "gopkg.in/AlecAivazis/survey.v1"
-  version = "1.5.1"
 
 [prune]
   go-tests = true

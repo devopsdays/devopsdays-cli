@@ -298,10 +298,9 @@
   version = "v0.3.0"
 
 [[projects]]
-  digest = "1:6a352582a7f21849e2f007fc5d684a0443ca16c889d3036f3e5767fa4e03862e"
+  digest = "1:b0e2a9ee778a41537e07b6ee0e569c32f73d68832d610b35d5aeb84eed73f4ef"
   name = "gopkg.in/AlecAivazis/survey.v1"
   packages = [
-    ".",
     "core",
     "terminal",
   ]
@@ -335,7 +334,6 @@
     "github.com/smartystreets/goconvey/convey",
     "github.com/spf13/cobra",
     "github.com/spf13/viper",
-    "gopkg.in/AlecAivazis/survey.v1",
   ]
   solver-name = "gps-cdcl"
   solver-version = 1
