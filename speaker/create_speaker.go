@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"os"
 
-	survey "github.com/AlecAivazis/survey"
+	survey "github.com/AlecAivazis/survey/v2"
 	"github.com/devopsdays/devopsdays-cli/helpers"
 	"github.com/devopsdays/devopsdays-cli/names"
 	"github.com/devopsdays/devopsdays-cli/talk"

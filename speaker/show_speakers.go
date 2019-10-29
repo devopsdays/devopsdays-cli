@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"strings"
 
-	survey "github.com/AlecAivazis/survey"
+	survey "github.com/AlecAivazis/survey/v2"
 	"github.com/devopsdays/devopsdays-cli/names"
 	"github.com/fatih/color"
 )

@@ -54,7 +54,7 @@ func createEventContentFile(city, year, page string) error {
 		return errors.Wrapf(err, "cannot create file for %s", filePath)
 	}
 	defer f.Close()
-	t.Execute(f, data)
+	err = t.Execute(f, data)
 	if err != nil {
 		return errors.Wrapf(err, "template execute error for %s", templateName)
 	}
