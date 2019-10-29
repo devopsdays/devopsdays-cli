@@ -17,7 +17,7 @@ help:
 	@echo 'Available commands:'
 	@echo
 	@echo 'Usage:'
-	@echo '    make deps     		Install go deps.'
+	# @echo '    make deps     		Install go deps.'
 	@echo '    make build    		Compile the project.'
 	@echo '    make build/docker	Build and run the Docker stuff.'
 	@echo '    make restore  		Restore all dependencies.'
@@ -25,15 +25,15 @@ help:
 	@echo
 
 # Install all the build and lint dependencies
-deps:
-	go get -u github.com/alecthomas/gometalinter
-	go get -u github.com/golang/dep/cmd/dep
-	go get -u github.com/pierrre/gotestcover
-	go get -u golang.org/x/tools/cmd/cover
-	go get -u github.com/inconshreveable/mousetrap
-	go get -u github.com/mattn/goveralls
+# deps:
+# 	go get -u github.com/alecthomas/gometalinter
+# 	go get -u github.com/golang/dep/cmd/dep
+# 	go get -u github.com/pierrre/gotestcover
+# 	go get -u golang.org/x/tools/cmd/cover
+# 	go get -u github.com/inconshreveable/mousetrap
+# 	go get -u github.com/mattn/goveralls
 	# dep ensure
-	gometalinter --install
+	# gometalinter --install
 
 build:
 	@echo "Compiling..."
@@ -45,9 +45,9 @@ build/docker: build
 
 .PHONY: install release test travis
 
-install:
-	#go get -t -v ./...
-	@dep ensure
+#install:
+#	#go get -t -v ./...
+#	@dep ensure
 
 test:
 	gotestcover $(TEST_OPTIONS) -covermode=atomic -coverprofile=coverage.txt $(SOURCE_FILES) -run $(TEST_PATTERN) -timeout=2m
@@ -79,8 +79,8 @@ deploy:
 	# - curl PUT -T devopdays-cli_$VERSION_linux-i386.rpm -umattstratton:{BTKEY} 'https://api.bintray.com/content/devopsdays/rpm/devopsdays-cli/${VERSION}/devopdays-cli_$VERSION_linux-386.rpm;publish=1'
 	# - curl PUT -T devopdays-cli_$VERSION_linux-amd64.rpm -umattstratton:{BTKEY} 'https://api.bintray.com/content/devopsdays/rpm/devopsdays-cli/${VERSION}/devopdays-cli_$VERSION_linux-amd64.rpm;publish=1'
 
-restore:
-	@dep ensure
+# restore:
+# 	@dep ensure
 
 travis:
 	$(HOME)/gopath/bin/goveralls -service=travis-ci

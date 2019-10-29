@@ -20,7 +20,7 @@ import "testing"
 
 func TestCheckSponsor(t *testing.T) {
 	t.Log("Testing checkSponsor function... (expected result: 'true'")
-	testCheckSponsor := checkSponsor("chef")
+	testCheckSponsor := checkSponsor("pagerduty")
 	if testCheckSponsor != true {
 		t.Errorf("Expected result of 'true' but didn't get it")
 	}
