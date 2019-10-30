@@ -17,7 +17,7 @@ help:
 	@echo 'Available commands:'
 	@echo
 	@echo 'Usage:'
-	# @echo '    make deps     		Install go deps.'
+	@echo '    make deps     		Install go deps.'
 	@echo '    make build    		Compile the project.'
 	@echo '    make build/docker	Build and run the Docker stuff.'
 	@echo '    make restore  		Restore all dependencies.'
@@ -25,15 +25,10 @@ help:
 	@echo
 
 # Install all the build and lint dependencies
-# deps:
-# 	go get -u github.com/alecthomas/gometalinter
-# 	go get -u github.com/golang/dep/cmd/dep
-# 	go get -u github.com/pierrre/gotestcover
-# 	go get -u golang.org/x/tools/cmd/cover
-# 	go get -u github.com/inconshreveable/mousetrap
-# 	go get -u github.com/mattn/goveralls
-	# dep ensure
-	# gometalinter --install
+deps:
+	go get -u github.com/inconshreveable/mousetrap
+	go get -u github.com/mattn/goveralls
+	go get -u github.com/golangci/golangci-lint # we probably shouldn't do this...
 
 build:
 	@echo "Compiling..."
@@ -43,14 +38,14 @@ build:
 build/docker: build
 	@docker build -t devopsdays-cli:latest .
 
-.PHONY: install release test travis
+.PHONY: install release test goveralls
 
 #install:
 #	#go get -t -v ./...
 #	@dep ensure
 
 test:
-	gotestcover $(TEST_OPTIONS) -covermode=atomic -coverprofile=coverage.txt $(SOURCE_FILES) -run $(TEST_PATTERN) -timeout=2m
+	go test -cover $(TEST_OPTIONS) -covermode=atomic -coverprofile=coverage.txt $(SOURCE_FILES) -run $(TEST_PATTERN) -timeout=2m
 
 # Run all the tests and opens the coverage report
 cover: test
@@ -62,7 +57,7 @@ fmt:
 
 # Run all the linters
 lint:
-	gometalinter --vendor ./...
+	golangci-lint run
 
 vet: ## run go vet
 	@test -z "$$(go vet ${PACKAGES} 2>&1 | grep -v '*composite literal uses unkeyed fields|exit status 0)' | tee /dev/stderr)"
@@ -82,5 +77,5 @@ deploy:
 # restore:
 # 	@dep ensure
 
-travis:
-	$(HOME)/gopath/bin/goveralls -service=travis-ci
+goveralls:
+	$(HOME)/gopath/bin/goveralls -service=github-actions
