@@ -13,7 +13,7 @@ import (
 
 	"github.com/pkg/errors"
 
-	survey "github.com/AlecAivazis/survey"
+	survey "github.com/AlecAivazis/survey/v2"
 	helpers "github.com/devopsdays/devopsdays-cli/helpers"
 	paths "github.com/devopsdays/devopsdays-cli/helpers/paths"
 	"github.com/devopsdays/devopsdays-cli/images"
@@ -180,7 +180,7 @@ func CreateEvent(city, year string) (err error) {
 		prompt := &survey.Input{
 			Message: "Enter the city name:",
 		}
-		cityErr := survey.AskOne(prompt, &city, survey.Required)
+		cityErr := survey.AskOne(prompt, &city, survey.WithValidator(survey.Required))
 		if cityErr != nil {
 			return
 		}
@@ -190,7 +190,7 @@ func CreateEvent(city, year string) (err error) {
 		prompt := &survey.Input{
 			Message: "Enter the year:",
 		}
-		yearErr := survey.AskOne(prompt, &year, survey.Required)
+		yearErr := survey.AskOne(prompt, &year, survey.WithValidator(survey.Required))
 		if yearErr != nil {
 			return
 		}

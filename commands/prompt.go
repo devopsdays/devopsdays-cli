@@ -1,7 +1,7 @@
 package commands
 
 import (
-	"github.com/AlecAivazis/survey"
+	"github.com/AlecAivazis/survey/v2"
 	"github.com/devopsdays/devopsdays-cli/event"
 	"github.com/devopsdays/devopsdays-cli/model"
 	"github.com/devopsdays/devopsdays-cli/speaker"
@@ -63,7 +63,7 @@ func createSpeakerPrompt(city, year string) (err error) {
 			prompt := &survey.Input{
 				Message: "Enter the city name:",
 			}
-			err := survey.AskOne(prompt, &city, survey.Required)
+			err := survey.AskOne(prompt, &city, survey.WithValidator(survey.Required))
 			// handle interrupts
 			if err != nil {
 				exitCode = false
@@ -75,7 +75,7 @@ func createSpeakerPrompt(city, year string) (err error) {
 			prompt := &survey.Input{
 				Message: "Enter the year:",
 			}
-			err := survey.AskOne(prompt, &year, survey.Required)
+			err := survey.AskOne(prompt, &year, survey.WithValidator(survey.Required))
 			// handle interrupts
 			if err != nil {
 				exitCode = false
@@ -103,7 +103,7 @@ func showSpeakerPrompt(city, year string) (err error) {
 			prompt := &survey.Input{
 				Message: "Enter the city name:",
 			}
-			err := survey.AskOne(prompt, &city, survey.Required)
+			err := survey.AskOne(prompt, &city, survey.WithValidator(survey.Required))
 			// handle interrupts
 			if err != nil {
 				exitCode = false
@@ -115,7 +115,7 @@ func showSpeakerPrompt(city, year string) (err error) {
 			prompt := &survey.Input{
 				Message: "Enter the year:",
 			}
-			err := survey.AskOne(prompt, &year, survey.Required)
+			err := survey.AskOne(prompt, &year, survey.WithValidator(survey.Required))
 			// handle interrupts
 			if err != nil {
 				exitCode = false
@@ -138,7 +138,7 @@ func showTalkPrompt(city, year string) (err error) {
 			prompt := &survey.Input{
 				Message: "Enter the city name:",
 			}
-			err := survey.AskOne(prompt, &city, survey.Required)
+			err := survey.AskOne(prompt, &city, survey.WithValidator(survey.Required))
 			// handle interrupts
 			if err != nil {
 				exitCode = false
@@ -150,7 +150,7 @@ func showTalkPrompt(city, year string) (err error) {
 			prompt := &survey.Input{
 				Message: "Enter the year:",
 			}
-			err := survey.AskOne(prompt, &year, survey.Required)
+			err := survey.AskOne(prompt, &year, survey.WithValidator(survey.Required))
 			// handle interrupts
 			if err != nil {
 				exitCode = false
