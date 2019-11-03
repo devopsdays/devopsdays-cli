@@ -21,7 +21,7 @@ jobs:
       - run:
           name: Run Tests
           command: make test
-    
+
       - store_test_results:
           path: ~/test-data
 

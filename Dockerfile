@@ -8,9 +8,9 @@ ARG VERSION="unset"
 
 RUN DATE="$(date -u +%Y-%m-%d-%H:%M:%S-%Z)" \
     && GO111MODULE=on CGO_ENABLED=0 GOPROXY="https://proxy.golang.org" \
-     go build -ldflags "-s -w -X github.com/devopsdays/devopsdays-cli/cmd.Version=$VERSION -X github.com/devopsdays/devopsdays-cli/cmd.Build=$DATE" -o /bin/devopsdays-cli .
+    go build -ldflags "-s -w -X github.com/devopsdays/devopsdays-cli/cmd.Version=$VERSION -X github.com/devopsdays/devopsdays-cli/cmd.Build=$DATE" -o /bin/devopsdays-cli .
 
-FROM alpine
+FROM alpine:3.10.3
 
 ENV GO111MODULE=on
 
