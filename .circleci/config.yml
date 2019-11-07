@@ -7,7 +7,7 @@ jobs:
       GO111MODULE: "on"
       GOPROXY: "https://proxy.golang.org"
       DODPATH: "$CIRCLE_WORKING_DIRECTORY/test-data"
-    working_directory: "/go/src/github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME"
+    working_directory: "/go/src/github.com/devopsdays/devopsdays-cli"
     steps:
       - checkout
 
