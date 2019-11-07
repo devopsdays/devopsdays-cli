@@ -6,8 +6,8 @@ jobs:
     environment:
       GO111MODULE: "on"
       GOPROXY: "https://proxy.golang.org"
-      DODPATH: /go/src/github.com/devopsdays/devopsdays-cli/testdata
-    working_directory: /go/src/github.com/devopsdays/devopsdays-cli
+      DODPATH: /go/src/github.com/$ORG_NAME/$REPO_NAME/test-data
+    working_directory: /go/src/github.com/$ORG_NAME/$REPO_NAME
     steps:
       - checkout
 
@@ -53,4 +53,5 @@ workflows:
             branches:
               ignore: /.*/
             tags:
-              only: /v[0-9]+(\.[0-9]+)*(-.*)*/
+              only: master
+              # only: /v[0-9]+(\.[0-9]+)*(-.*)*/
