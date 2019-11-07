@@ -13,7 +13,7 @@ jobs:
 
       - restore_cache:
           keys:
-            - v1-pkg-cache
+            - v1-pkg-cache-{{ .Environment.CIRCLE_SHA1 }}
       - run:
           name: Install Dependencies
           command:  make deps
@@ -30,7 +30,7 @@ jobs:
           destination: test-data
 
       - save_cache:
-          key: v1-pkg-cache
+          key: v1-pkg-cache-{{ .Environment.CIRCLE_SHA1 }}
           paths:
             - "/go/pkg"
   release:
