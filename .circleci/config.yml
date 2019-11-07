@@ -6,8 +6,8 @@ jobs:
     environment:
       GO111MODULE: "on"
       GOPROXY: "https://proxy.golang.org"
-      DODPATH: /go/src/github.com/$ORG_NAME/$REPO_NAME/test-data
-    working_directory: /go/src/github.com/$ORG_NAME/$REPO_NAME
+      DODPATH: /go/src/github.com/$ORGNAME/$REPONAME/test-data
+    working_directory: /go/src/github.com/$ORGNAME/$REPONAME
     steps:
       - checkout
 
