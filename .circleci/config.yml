@@ -1,13 +1,14 @@
-version: 2.1
+version: 2.0
+
 jobs:
-  test:
+  build:
     docker:
       - image: circleci/golang:1.13
+    working_directory: "/go/src/github.com/devopsdays/devopsdays-cli"
     environment:
       GO111MODULE: "on"
       GOPROXY: "https://proxy.golang.org"
-      DODPATH: "$CIRCLE_WORKING_DIRECTORY/test-data"
-    working_directory: "/go/src/github.com/devopsdays/devopsdays-cli"
+      DODPATH: "/go/src/github.com/devopsdays/devopsdays-cli/testdata"
     steps:
       - checkout
 
@@ -45,7 +46,7 @@ jobs:
 workflows:
   test_and_release:
     jobs:
-      - test
+      - build
       - release:
           requires:
             - test
