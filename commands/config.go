@@ -67,7 +67,7 @@ func showConfig() {
 // Currently, the list of supported versions is hard-coded using the `supportedVersions` variable, but this should be moved elsewhere eventually.
 func checkHugo() {
 	// supportedVersions := map[string]bool{"0.36.1": true, "0.37": true, "0.37.1": true}
-	currentThemeVersion, currentHugoVersion, currentCliVersion, err := getCurrentVersions()
+	currentHugoVersion, currentCliVersion, err := getCurrentVersions()
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -79,13 +79,6 @@ func checkHugo() {
 		color.Red("Supported Version is: %s", currentHugoVersion)
 	}
 
-	if chompVersion(currentThemeVersion) == chompVersion(getThemeVersion()) {
-		color.Green("\u2713 Theme version %s is okay", getThemeVersion())
-	} else {
-		color.Red("\u2717 Theme version %s is incompatible.", getThemeVersion())
-		color.Red("Supported Version is: %s", currentThemeVersion)
-	}
-
 	if currentCliVersion == Version {
 		color.Green("\u2713 devopsdays-cli version %s is okay", Version)
 	} else {
@@ -95,13 +88,12 @@ func checkHugo() {
 }
 
 type currentVersion struct {
-	ThemeVersion         string `json:"theme_version"`
 	HugoVersion          string `json:"hugo_version"`
 	DevopsdaysCliVersion string `json:"devopsdays_cli_version"`
 }
 
 // getCurrentVersions returns the supported version of the devopsdays Hugo theme, hugo, and devopsdays-cli
-func getCurrentVersions() (themeVersion string, hugoVersion string, devopsdaysCliVersion string, err error) {
+func getCurrentVersions() (hugoVersion string, devopsdaysCliVersion string, err error) {
 
 	uri := "https://cdn.jsdelivr.net/gh/devopsdays/devopsdays-web/metadata.json"
 
@@ -132,7 +124,7 @@ func getCurrentVersions() (themeVersion string, hugoVersion string, devopsdaysCl
 		log.Fatal(jsonErr)
 	}
 
-	return myCurrentVersion.ThemeVersion, myCurrentVersion.HugoVersion, myCurrentVersion.DevopsdaysCliVersion, nil
+	return myCurrentVersion.HugoVersion, myCurrentVersion.DevopsdaysCliVersion, nil
 }
 
 func checkGit() {
