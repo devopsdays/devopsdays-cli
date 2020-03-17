@@ -95,7 +95,7 @@ type currentVersion struct {
 // getCurrentVersions returns the supported version of the devopsdays Hugo theme, hugo, and devopsdays-cli
 func getCurrentVersions() (hugoVersion string, devopsdaysCliVersion string, err error) {
 
-	uri := "https://cdn.jsdelivr.net/gh/devopsdays/devopsdays-web/metadata.json"
+	url := "https://cdn.jsdelivr.net/gh/devopsdays/devopsdays-web/metadata.json"
 
 	devopsdaysClient := http.Client{
 		Timeout: time.Second * 2, // Maximum of 2 secs
