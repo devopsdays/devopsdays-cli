@@ -28,9 +28,6 @@ help:
 deps:
 	go get -u github.com/inconshreveable/mousetrap
 	go get -u github.com/mattn/goveralls
-	# Below is not the recommended way to install golangci-lint
-	# Reasons for this can be found at
-	# https://github.com/golangci/golangci-lint#install
 	go get -u github.com/golangci/golangci-lint
 
 build:
@@ -48,6 +45,9 @@ install:
 
 test:
 	go test -cover $(TEST_OPTIONS) -covermode=atomic -coverprofile=coverage.txt $(SOURCE_FILES) -run $(TEST_PATTERN) -timeout=2m
+
+test-release: # Test release lifecycle
+	goreleaser --snapshot --skip-publish --rm-dist
 
 # Run all the tests and opens the coverage report
 cover: test

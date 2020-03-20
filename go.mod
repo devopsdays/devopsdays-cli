@@ -12,14 +12,15 @@ require (
 	github.com/daaku/go.zipexe v1.0.1 // indirect
 	github.com/dimiro1/banner v1.0.0
 	github.com/fatih/color v1.9.0
+	github.com/fsnotify/fsnotify v1.4.9 // indirect
 	github.com/gernest/front v0.0.0-20181129160812-ed80ca338b88
 	github.com/golangci/golangci-lint v1.21.0 // indirect
 	github.com/gopherjs/gopherjs v0.0.0-20190915194858-d3ddacdb130f // indirect
 	github.com/hinshun/vt10x v0.0.0-20180809195222-d55458df857c // indirect
 	github.com/kardianos/osext v0.0.0-20190222173326-2bc1f35cddc0 // indirect
-	github.com/mattn/go-colorable v0.1.4
-	github.com/mattn/go-isatty v0.0.12 // indirect
+	github.com/mattn/go-colorable v0.1.6
 	github.com/mattn/goveralls v0.0.3 // indirect
+	github.com/mitchellh/mapstructure v1.2.2 // indirect
 	github.com/nfnt/resize v0.0.0-20180221191011-83c6a9932646
 	github.com/pelletier/go-toml v1.6.0 // indirect
 	github.com/pkg/errors v0.9.1
@@ -31,9 +32,9 @@ require (
 	github.com/spf13/jwalterweatherman v1.1.0 // indirect
 	github.com/spf13/viper v1.6.2
 	golang.org/x/crypto v0.0.0-20191029031824-8986dd9e96cf // indirect
-	golang.org/x/sys v0.0.0-20200223170610-d5e6a3e2c0ae // indirect
+	golang.org/x/sys v0.0.0-20200317113312-5766fd39f98d // indirect
 	golang.org/x/tools v0.0.0-20191030211004-889af361d29c // indirect
 	gopkg.in/AlecAivazis/survey.v1 v1.6.3 // indirect
-	gopkg.in/ini.v1 v1.52.0 // indirect
+	gopkg.in/ini.v1 v1.55.0 // indirect
 	gopkg.in/yaml.v2 v2.2.8 // indirect
 )

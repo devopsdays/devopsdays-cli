@@ -16,8 +16,8 @@ builds:
     - 386
     main: .
     env:
-      - GOPROXY="https://proxy.golang.org"
-      - GO111MODULE="on"
+      - GOPROXY=https://proxy.golang.org
+      - GO111MODULE=on
       - CGO_ENABLED=0
     ldflags: -s -w -X github.com/devopsdays/devopsdays-cli/cmd.Version={{.Version}} -X github.com/devopsdays/devopsdays-cli/cmd.Build={{.Date}}
     binary: devopsdays-cli
