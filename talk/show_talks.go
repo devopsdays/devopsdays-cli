@@ -5,7 +5,7 @@ import (
 	"reflect"
 	"strings"
 
-	"github.com/AlecAivazis/survey"
+	"github.com/AlecAivazis/survey/v2"
 	"github.com/fatih/color"
 )
 

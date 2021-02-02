@@ -7,47 +7,54 @@ release:
   prerelease: true
   name_template: "{{.ProjectName}}-v{{.Version}}"
 builds:
-- goos:
-  - linux
-  - darwin
-  - windows
-  goarch:
-  - amd64
-  - 386
-  main: .
-  ldflags: -s -w -X github.com/devopsdays/devopsdays-cli/cmd.Version={{.Version}} -X github.com/devopsdays/devopsdays-cli/cmd.Build={{.Date}}
-  binary: devopsdays-cli
-archive:
-  format: tar.gz
-  format_overrides:
-    - goos: windows
-      format: zip
-  name_template: "{{.Binary}}_{{.Version}}_{{.Os}}-{{.Arch}}"
-  files:
-  - LICENSE*
-  - README*
+  - goos:
+    - linux
+    - darwin
+    - windows
+    goarch:
+    - amd64
+    - 386
+    main: .
+    env:
+      - GOPROXY=https://proxy.golang.org
+      - GO111MODULE=on
+      - CGO_ENABLED=0
+    ldflags: -s -w -X github.com/devopsdays/devopsdays-cli/cmd.Version={{.Version}} -X github.com/devopsdays/devopsdays-cli/cmd.Build={{.Date}}
+    binary: devopsdays-cli
+archives:
+  -
+    format: tar.gz
+    format_overrides:
+      - goos: windows
+        format: zip
+    name_template: "{{.Binary}}_{{.Version}}_{{.Os}}-{{.Arch}}"
+    files:
+    - LICENSE*
+    - README*
 snapshot:
   name_template: SNAPSHOT-{{ .Commit }}
 checksum:
   name_template: '{{ .ProjectName }}_{{ .Version }}_checksums.txt'
-brew:
-  github:
-    owner: devopsdays
-    name: homebrew-tap
-  homepage: https://www.devopsdays.org
-  description: Command-line utilities for the devopsdays website
-  dependencies:
-    - git
-  install:
-    bin.install "devopsdays-cli"
-nfpm:
-  vendor: devopsdays
-  homepage: https://www.devopsdays.org
-  maintainer: Matt Stratton <matt.stratton@gmail.com>
-  description: Command-line utilities for the devopsdays website
-  license: MIT
-  formats:
-    - deb
-    - rpm
-  dependencies:
-    - git
+brews:
+  -
+    github:
+      owner: devopsdays
+      name: homebrew-tap
+    homepage: https://www.devopsdays.org
+    description: Command-line utilities for the devopsdays website
+    dependencies:
+      - git
+    install:
+      bin.install "devopsdays-cli"
+nfpms:
+  -
+    vendor: devopsdays
+    homepage: https://www.devopsdays.org
+    maintainer: Matt Stratton <matt.stratton@gmail.com>
+    description: Command-line utilities for the devopsdays website
+    license: MIT
+    formats:
+      - deb
+      - rpm
+    dependencies:
+      - git

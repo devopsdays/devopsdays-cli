@@ -13,7 +13,7 @@ import (
 
 	"github.com/pkg/errors"
 
-	survey "github.com/AlecAivazis/survey"
+	survey "github.com/AlecAivazis/survey/v2"
 	helpers "github.com/devopsdays/devopsdays-cli/helpers"
 	paths "github.com/devopsdays/devopsdays-cli/helpers/paths"
 	"github.com/devopsdays/devopsdays-cli/images"
@@ -180,7 +180,7 @@ func CreateEvent(city, year string) (err error) {
 		prompt := &survey.Input{
 			Message: "Enter the city name:",
 		}
-		cityErr := survey.AskOne(prompt, &city, survey.Required)
+		cityErr := survey.AskOne(prompt, &city, survey.WithValidator(survey.Required))
 		if cityErr != nil {
 			return
 		}
@@ -190,7 +190,7 @@ func CreateEvent(city, year string) (err error) {
 		prompt := &survey.Input{
 			Message: "Enter the year:",
 		}
-		yearErr := survey.AskOne(prompt, &year, survey.Required)
+		yearErr := survey.AskOne(prompt, &year, survey.WithValidator(survey.Required))
 		if yearErr != nil {
 			return
 		}
@@ -225,7 +225,10 @@ func CreateEvent(city, year string) (err error) {
 		ProposalEmail:   strings.Join(proposalEmail, ""),
 	}
 
-	NewEvent(myEvent, CityClean(city), year)
+	if err := NewEvent(myEvent, CityClean(city), year); err != nil {
+		fmt.Printf("Error: %s\n", err)
+		os.Exit(1)
+	}
 
 	// create the event content files
 	contentfiles := []string{"welcome", "conduct", "contact", "location", "program", "propose", "registration", "sponsor"}
@@ -260,7 +263,7 @@ func NewEvent(event model.Event, city string, year string) (err error) {
 	}
 	f, err := os.Create(paths.EventDataPath(paths.GetWebdir(), city, year))
 	defer f.Close()
-	t.Execute(f, event)
+	err = t.Execute(f, event)
 
 	if err != nil {
 		fmt.Println(err)

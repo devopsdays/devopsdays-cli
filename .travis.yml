@@ -5,15 +5,15 @@ addons:
   apt:
     packages:
     - rpm
-go: 1.9
+go: 1.14
 before_install:
   - make deps
  # - make restore # only after using dep
   - export DODPATH=$HOME/gopath/src/github.com/devopsdays/devopsdays-cli/testdata
   - gem install fpm
 install:
-- export CI=TRAVIS # for gotest to force colors
-- make install
+  - export CI=TRAVIS # for gotest to force colors
+  - make install
 script:
   - make travis
   - make ci

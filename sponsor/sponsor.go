@@ -15,7 +15,7 @@ import (
 	"github.com/devopsdays/devopsdays-cli/model"
 	"github.com/fatih/color"
 
-	survey "github.com/AlecAivazis/survey"
+	survey "github.com/AlecAivazis/survey/v2"
 )
 
 var qsCreateSponsor = []*survey.Question{
@@ -82,7 +82,7 @@ func CreateSponsor(sponsorName string) (err error) {
 			Message: "What is the sponsors's name, without spaces?",
 			Help:    "This is the name of the sponsor. Examples: `chef` or `arrested-devops`",
 		}
-		survey.AskOne(prompt, &sponsorName, survey.Required)
+		survey.AskOne(prompt, &sponsorName, survey.WithValidator(survey.Required))
 	}
 
 	if checkSponsor(sponsorName) {
