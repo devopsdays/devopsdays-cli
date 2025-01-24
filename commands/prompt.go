@@ -1,12 +1,12 @@
 package commands
 
 import (
-	"github.com/AlecAivazis/survey"
 	"github.com/devopsdays/devopsdays-cli/event"
 	"github.com/devopsdays/devopsdays-cli/model"
 	"github.com/devopsdays/devopsdays-cli/speaker"
 	"github.com/devopsdays/devopsdays-cli/sponsor"
 	"github.com/devopsdays/devopsdays-cli/talk"
+	"gopkg.in/AlecAivazis/survey.v1"
 )
 
 func mainPrompt() (err error) {

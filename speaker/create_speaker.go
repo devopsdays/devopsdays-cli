@@ -5,14 +5,14 @@ import (
 	"fmt"
 	"os"
 
-	survey "github.com/AlecAivazis/survey"
 	"github.com/devopsdays/devopsdays-cli/helpers"
 	"github.com/devopsdays/devopsdays-cli/names"
 	"github.com/devopsdays/devopsdays-cli/talk"
 	"github.com/fatih/color"
+	survey "gopkg.in/AlecAivazis/survey.v1"
 )
 
-//  Prompts for a new speaker
+// Prompts for a new speaker
 var qsCreateSpeaker = []*survey.Question{
 	{
 		Name: "name",

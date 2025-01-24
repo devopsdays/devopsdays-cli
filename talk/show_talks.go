@@ -5,8 +5,8 @@ import (
 	"reflect"
 	"strings"
 
-	"github.com/AlecAivazis/survey"
 	"github.com/fatih/color"
+	"gopkg.in/AlecAivazis/survey.v1"
 )
 
 func ShowTalks(city, year string) (err error) {

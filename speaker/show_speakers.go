@@ -4,9 +4,9 @@ import (
 	"fmt"
 	"strings"
 
-	survey "github.com/AlecAivazis/survey"
 	"github.com/devopsdays/devopsdays-cli/names"
 	"github.com/fatih/color"
+	survey "gopkg.in/AlecAivazis/survey.v1"
 )
 
 // ShowSpeakers provides an interactive list of existing speakers for an event, and then displays details about a selected speaker.

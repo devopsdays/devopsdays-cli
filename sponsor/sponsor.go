@@ -15,7 +15,7 @@ import (
 	"github.com/devopsdays/devopsdays-cli/model"
 	"github.com/fatih/color"
 
-	survey "github.com/AlecAivazis/survey"
+	survey "gopkg.in/AlecAivazis/survey.v1"
 )
 
 var qsCreateSponsor = []*survey.Question{

@@ -13,12 +13,12 @@ import (
 
 	"github.com/pkg/errors"
 
-	survey "github.com/AlecAivazis/survey"
 	helpers "github.com/devopsdays/devopsdays-cli/helpers"
 	paths "github.com/devopsdays/devopsdays-cli/helpers/paths"
 	"github.com/devopsdays/devopsdays-cli/images"
 	"github.com/devopsdays/devopsdays-cli/model"
 	"github.com/fatih/color"
+	survey "gopkg.in/AlecAivazis/survey.v1"
 )
 
 // LogoPath is the fully qualified path to the event's logo
