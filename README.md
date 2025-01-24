@@ -5,7 +5,7 @@
  [![Go Report Card](https://goreportcard.com/badge/github.com/devopsdays/devopsdays-cli)](https://goreportcard.com/report/github.com/devopsdays/devopsdays-cli) [![GoDoc](https://godoc.org/github.com/devopsdays/devopsdays-cli?status.svg)](http://godoc.org/github.com/devopsdays/devopsdays-cli)
  [![GitHub release](https://img.shields.io/github/release/devopsdays/devopsdays-cli.svg)](https://github.com/devopsdays/devopsdays-cli/releases)
 
-Command-line utilities for the [devopsdays](https://www.devopsdays.org) website built with :heart: by [mattstratton](https://github.com/mattstratton) in [Go](https://golang.org/).
+Command-line utilities for the [devopsdays](https://www.devopsdays.org) website built with ❤️ by [mattstratton](https://github.com/mattstratton) in [Go](https://golang.org/).
 
 ![devopsdays gopher](gopher.png)![devopsdays yak](yak.png)
 
