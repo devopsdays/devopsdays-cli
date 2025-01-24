@@ -106,8 +106,9 @@ func getCurrentVersions() (themeVersion string, hugoVersion string, devopsdaysCl
 	// url := "https://rawgit.com/devopsdays/devopsdays-web/master/metadata.json"
 	url := "https://raw.githubusercontent.com/devopsdays/devopsdays-web/refs/heads/main/metadata.json"
 
-	devopsdaysClient := http.Client{
-		Timeout: time.Second * 2, // Maximum of 2 secs
+ devopsdaysClient := http.Client{
+     Timeout: time.Second * 10, // Maximum of 10 secs
+ }
 	}
 
 	req, err := http.NewRequest(http.MethodGet, url, nil)
